@@ -7,5 +7,4 @@
 | ![](myphoto)                                        |          Ryuji Kow           |  [Github](https://github.com/Ryujikjs)   |   [Portfolio](docs/team/RyujiKow.md)    |
 | ![](NoPhotos)                                       |      Reynold Samel Lam       | [Github](https://github.com/Reynold-SL)  |  [Portfolio](docs/team/reynoldlam.md)   |
 | ![](NoPhotos)                                       |          Keane Chan          | [Github](https://github.com/typingpanda) |   [Portfolio](docs/team/KeaneChan.md)   |
-| ![](https://via.placeholder.com/100.png?text=Photo) |           Don Roe            |      [Github](https://github.com/)       |    [Portfolio](docs/team/johndoe.md)    |
 
