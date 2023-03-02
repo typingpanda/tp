@@ -2,6 +2,6 @@
 
 ## Overview
 
-Hi Im Prince Pereira, an Aspiring Mechanical Engineer from National University Of Singapore, and these are my contributions
+Hi Im Keane Chan, an Aspiring Mechanical Engineer from National University Of Singapore, and these are my contributions
 
 ### Summary of Contributions
