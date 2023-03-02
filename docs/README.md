@@ -1,3 +1,5 @@
+theme: minima
+
 # Duke
 
 {Give product intro here}
