@@ -15,7 +15,6 @@ public class PC {
 
     @Override
     public String toString() {
-        return "PC [category=" + category + ", description=" + description + ", link=" + link + ", name=" + name
-                + ", price=" + price + ", tag=" + tag + "]";
+        return "PC [name=" + name + "]";
     }
 }
