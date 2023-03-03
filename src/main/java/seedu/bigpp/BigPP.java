@@ -1,8 +1,8 @@
-package seedu.duke;
+package seedu.bigpp;
 
 import java.util.Scanner;
 
-public class Duke {
+public class BigPP {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
