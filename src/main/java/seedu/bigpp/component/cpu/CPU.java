@@ -1,49 +1,46 @@
 package seedu.bigpp.component.cpu;
 
-public class CPU {
-    private String name;
-    private String brand;
-    private String socket;
-    private String core;
-    private String clock;
-    private String price;
+import seedu.bigpp.component.Component;
 
-    public CPU(String name, String brand, String socket, String core, String clock, String price) {
-        this.name = name;
-        this.brand = brand;
+public class CPU extends Component {
+    private String socket;
+    private int core;
+    private float clock;
+
+    public CPU(String socket, int core, float clock) {
         this.socket = socket;
         this.core = core;
         this.clock = clock;
-        this.price = price;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getBrand() {
-        return brand;
     }
 
     public String getSocket() {
         return socket;
     }
 
-    public String getCore() {
+    public int getCore() {
         return core;
     }
 
-    public String getClock() {
+    public float getClock() {
         return clock;
     }
 
-    public String getPrice() {
-        return price;
+    public void setSocket(String socket) {
+        this.socket = socket;
+    }
+
+    public void setCore(int core) {
+        this.core = core;
+    }
+
+    public void setClock(float clock) {
+        this.clock = clock;
     }
 
     @Override
     public String toString() {
-        return "cpu [brand=" + brand + ", clock=" + clock + ", core=" + core + ", name=" + name + ", price=" + price
-                + ", socket=" + socket + "]";
+        return "CPU [socket=" + socket + ", core=" + core + ", clock=" + clock + ", name=" + super.getName()
+                + ", brand=" + super.getBrand() + ", price=" + super.getPrice() + "]";
     }
+
 }
