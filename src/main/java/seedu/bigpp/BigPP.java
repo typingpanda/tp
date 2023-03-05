@@ -1,21 +1,36 @@
 package seedu.bigpp;
 
-import java.util.Scanner;
+import seedu.bigpp.command.Command;
+import seedu.bigpp.command.mainmenucommand.ByeCommand;
+import seedu.bigpp.parser.Parser;
+import seedu.bigpp.ui.UI;
 
 public class BigPP {
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+        new BigPP().run();
     }
+
+    public void run() {
+        UI.updateUI();
+        runLoopUntilExit();
+    }
+
+    /**
+     * Runs the program until the user issues the exit command.
+     */
+    private void runLoopUntilExit() {
+        Command command;
+        do {
+            String userInput = UI.getInput();
+            command = new Parser().parseCommand(userInput);
+            String result = command.executeCommand();
+            UI.updateUI();
+            UI.showResult(result);
+        } while (!(command instanceof ByeCommand));
+    }
+
 }
