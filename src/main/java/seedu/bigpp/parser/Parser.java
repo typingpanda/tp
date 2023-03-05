@@ -2,7 +2,6 @@ package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.ui.UI;
-import seedu.bigpp.ui.UIState;
 
 import seedu.bigpp.command.mainmenucommand.ByeCommand;
 import seedu.bigpp.command.mainmenucommand.EnterViewerCommand;
