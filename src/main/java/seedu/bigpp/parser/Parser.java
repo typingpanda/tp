@@ -1,6 +1,7 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.ui.UI;
 
 import seedu.bigpp.command.mainmenucommand.ByeCommand;
@@ -42,6 +43,8 @@ public class Parser {
             return new EnterViewerCommand();
         case "tutorial":
             return new EnterTutorialCommand();
+        case "back":
+            return new BackCommand();
         case "exit":
             return new ByeCommand();
         default:
@@ -54,7 +57,12 @@ public class Parser {
 
         commandWord = commandWord.toLowerCase();
 
-        return null;
+        switch (commandWord) {
+        case "back":
+            return new BackCommand();
+        default:
+            return null;
+        }
     }
 
     private Command parseBuilderCommand(String userInput) {

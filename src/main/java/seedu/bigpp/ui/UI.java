@@ -2,6 +2,7 @@ package seedu.bigpp.ui;
 
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public abstract class UI {
     private static UIState uiState = UIState.MAIN_MENU;
@@ -12,6 +13,8 @@ public abstract class UI {
 
     private static final Scanner in = new Scanner(System.in);
     private static final PrintStream out = System.out;
+
+    public static ArrayList<UIState> visitedMenus = new ArrayList<UIState>();
 
     public static UIState getUiState() {
         return uiState;
@@ -27,18 +30,23 @@ public abstract class UI {
 
         switch (uiState) {
         case MAIN_MENU:
+            visitedMenus.add(UIState.MAIN_MENU);
             printMainMenu();
             break;
         case VIEWER:
+            visitedMenus.add(UIState.VIEWER);
             printViewer();
             break;
         case BUILDER:
+            visitedMenus.add(UIState.BUILDER);
             printBuilder();
             break;
         case TUTORIAL:
+            visitedMenus.add(UIState.TUTORIAL);
             printTutorial();
             break;
         case COMPONENT:
+            visitedMenus.add(UIState.COMPONENT);
             printComponent();
             break;
         default:
@@ -66,6 +74,7 @@ public abstract class UI {
         out.println("What would you like to do?");
         out.println("View PC");
         out.println("Build PC");
+        out.println("back");
         out.println("exit");
     }
 
@@ -75,6 +84,7 @@ public abstract class UI {
         out.println("Add component");
         out.println("Remove component");
         out.println("View PC");
+        out.println("back");
         out.println("exit");
     }
 
@@ -82,6 +92,7 @@ public abstract class UI {
         out.println("PC tutorial");
         out.println("What would you like to do?");
         out.println("View tutorial");
+        out.println("back");
         out.println("exit");
     }
 
@@ -89,6 +100,7 @@ public abstract class UI {
         out.println("Component");
         out.println("What would you like to do?");
         out.println("View component");
+        out.println("back");
         out.println("exit");
     }
 
