@@ -1,5 +1,7 @@
 package seedu.bigpp.ui;
 
+import seedu.bigpp.pc.PCList;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -63,6 +65,7 @@ public abstract class UI {
 
     public static void printViewer() {
         out.println("PC viewer");
+        PCList.printPcList();
         out.println("What would you like to do?");
         out.println("View PC");
         out.println("Build PC");
