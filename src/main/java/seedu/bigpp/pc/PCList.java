@@ -10,6 +10,10 @@ public abstract class PCList {
         return pcList;
     }
 
+    public static void addPC(PC pc) {
+        pcList.add(pc);
+    }
+
     public static void printPcList(PrintStream out) {
         if (pcList.size() > 0) {
             out.println("Here is the list of PC Builds:");
