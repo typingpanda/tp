@@ -2,8 +2,6 @@ package seedu.bigpp.ui;
 
 import java.io.PrintStream;
 import java.util.Scanner;
-import java.util.Stack;
-
 public abstract class UI {
     private static UIState uiState = UIState.MAIN_MENU;
 
@@ -13,12 +11,6 @@ public abstract class UI {
 
     private static final Scanner in = new Scanner(System.in);
     private static final PrintStream out = System.out;
-
-    public static Stack<UIState> visitedMenusStack = new Stack<UIState>();
-
-    public static void initializeVisitedMenusStack() {
-        visitedMenusStack.push(UIState.MAIN_MENU);
-    }
 
     public static UIState getUiState() {
         return uiState;
@@ -108,27 +100,22 @@ public abstract class UI {
     }
 
     public static void setMainMenuMode() {
-        visitedMenusStack.push(UIState.MAIN_MENU);
         uiState = UIState.MAIN_MENU;
     }
 
     public static void setViewerMode() {
-        visitedMenusStack.push(UIState.VIEWER);
         uiState = UIState.VIEWER;
     }
 
     public static void setBuilderMode() {
-        visitedMenusStack.push(UIState.BUILDER);
         uiState = UIState.BUILDER;
     }
 
     public static void setTutorialMode() {
-        visitedMenusStack.push(UIState.TUTORIAL);
         uiState = UIState.TUTORIAL;
     }
 
     public static void setComponentMode() {
-        visitedMenusStack.push(UIState.COMPONENT);
         uiState = UIState.COMPONENT;
     }
 }

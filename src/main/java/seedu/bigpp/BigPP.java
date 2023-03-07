@@ -16,7 +16,6 @@ public class BigPP {
 
     public void run() {
         UI.updateUI();
-        UI.initializeVisitedMenusStack();
         runLoopUntilExit();
     }
 

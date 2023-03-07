@@ -1,32 +1,30 @@
 package seedu.bigpp.command.commoncommand;
 
 import seedu.bigpp.command.Command;
+
 import seedu.bigpp.ui.UI;
-import seedu.bigpp.ui.UIState;
 
 public class BackCommand extends Command {
 
     @Override
     public String executeCommand() {
-        UI.visitedMenusStack.pop();
-        UIState previousState = UI.visitedMenusStack.peek();
-        UI.visitedMenusStack.pop();
-        switch (previousState) {
+        switch (UI.getUiState()) {
         case MAIN_MENU:
-            UI.setMainMenuMode();
-            break;
+            return "cannot go back from main menu";
         case VIEWER:
-            UI.setViewerMode();
-            break;
+            UI.setMainMenuMode();
+            return "returned to main menu";
         case BUILDER:
-            UI.setBuilderMode();
-            break;
+            UI.setViewerMode();
+            return "returned to viewer";
         case TUTORIAL:
-            UI.setTutorialMode();
-            break;
+            UI.setMainMenuMode();
+            return "returned to main menu";
+        case COMPONENT:
+            UI.setBuilderMode();
+            return "returned to builder";
         default:
-            break;
+            return "";
         }
-        return "returned to previous menu";
     }
 }
