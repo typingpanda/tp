@@ -34,10 +34,14 @@ public class PC {
 
     public String buildType(Boolean isPrebuilt) {
         if (isPrebuilt) {
-            return "Prebuilt-PC";
+            return "Prebuilt-PC:";
         } else {
-            return "Custom-PC";
+            return "Custom-PC:";
         }
+    }
+    public void printComponents() {
+        System.out.println(cpu);
+        //print other components when classes are created for individual components
     }
 
     @Override

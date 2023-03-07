@@ -1,5 +1,7 @@
 package seedu.bigpp.pc;
 
+import seedu.bigpp.ui.UI;
+
 import java.util.ArrayList;
 
 public class PCList {
@@ -10,6 +12,7 @@ public class PCList {
     }
 
     public static void printPcList() {
+        
         if (pcList.size() > 0) {
             System.out.println("Here is the list of PC Builds:");
             for (int i = 0; i < pcList.size(); i++) {
