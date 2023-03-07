@@ -16,7 +16,7 @@ public abstract class UI {
 
     public static Stack<UIState> visitedMenusStack = new Stack<UIState>();
 
-    public static void instantiateVisitedMenusStack() {
+    public static void initializeVisitedMenusStack() {
         visitedMenusStack.push(UIState.MAIN_MENU);
     }
 
