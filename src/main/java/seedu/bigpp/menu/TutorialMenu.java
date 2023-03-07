@@ -1,14 +1,14 @@
 package seedu.bigpp.menu;
 
-import static seedu.bigpp.ui.UI.out;
+import static seedu.bigpp.ui.UI.OUT;
 
 public class TutorialMenu {
 
     public static void printMenu() {
-        out.println("PC tutorial");
-        out.println("What would you like to do?");
-        out.println("View tutorial");
-        out.println("back");
-        out.println("exit");
+        OUT.println("PC tutorial");
+        OUT.println("What would you like to do?");
+        OUT.println("View tutorial");
+        OUT.println("back");
+        OUT.println("exit");
     }
 }

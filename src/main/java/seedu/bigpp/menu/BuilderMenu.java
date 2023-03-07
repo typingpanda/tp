@@ -1,16 +1,16 @@
 package seedu.bigpp.menu;
 
-import static seedu.bigpp.ui.UI.out;
+import static seedu.bigpp.ui.UI.OUT;
 
 public class BuilderMenu {
 
     public static void printMenu() {
-        out.println("PC builder");
-        out.println("What would you like to do?");
-        out.println("Add component");
-        out.println("Remove component");
-        out.println("View PC");
-        out.println("back");
-        out.println("exit");
+        OUT.println("PC builder");
+        OUT.println("What would you like to do?");
+        OUT.println("Add component");
+        OUT.println("Remove component");
+        OUT.println("View PC");
+        OUT.println("back");
+        OUT.println("exit");
     }
 }

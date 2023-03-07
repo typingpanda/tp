@@ -7,14 +7,16 @@ import seedu.bigpp.menu.ComponentMenu;
 import seedu.bigpp.menu.BuilderMenu;
 import java.io.PrintStream;
 import java.util.Scanner;
+
 public abstract class UI {
     
+    public static final PrintStream OUT = System.out;
+    public static final String LOGO = "add logo here";
+
     private static UIState uiState = UIState.MAIN_MENU;
     private static final String DIVIDER = "===================================================";
     private static final Scanner in = new Scanner(System.in);
 
-    public static final String LOGO = "add logo here";
-    public static final PrintStream out = System.out;
 
     public static UIState getUiState() {
         return uiState;
@@ -26,7 +28,7 @@ public abstract class UI {
 
     public static void updateUI() {
         clearTerminal();
-        out.println(DIVIDER);
+        OUT.println(DIVIDER);
 
         switch (uiState) {
         case MAIN_MENU:
@@ -48,15 +50,15 @@ public abstract class UI {
             break;
         }
 
-        out.println(DIVIDER);
+        OUT.println(DIVIDER);
     }
 
     public static void clearTerminal() {
-        out.println("\033[H\033[2J");
+        OUT.println("\033[H\033[2J");
     }
 
     public static void showResult(String result) {
-        out.println(result);
+        OUT.println(result);
     }
 
     public static void setMainMenuMode() {
