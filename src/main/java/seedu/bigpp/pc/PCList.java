@@ -12,7 +12,6 @@ public abstract class PCList {
 
     /**
      * Add PC to the PC list
-     *
      * @param pc the PC that will be added to the list
      */
     public static void addPC(PC pc) {
@@ -21,7 +20,6 @@ public abstract class PCList {
 
     /**
      * Remove PC from the PC list
-     *
      * @param index the position of the PC in the PC list
      */
     public static void deletePC(int index) {

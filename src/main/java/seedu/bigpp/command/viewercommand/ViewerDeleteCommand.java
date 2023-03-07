@@ -12,9 +12,8 @@ public class ViewerDeleteCommand extends Command {
 
     /**
      * Delete a PC of a given index from the PC list
-     *
-     * @return if the index is a Prebuilt PC, inform the user that the PC of that index cannot be deleted
-     * @return the name of the PC deleted
+     * @return if the index is a Prebuilt PC, inform the user that the PC of that index cannot be deleted. Or else,
+     *         print the name of the PC deleted
      */
     @Override
     public String executeCommand() {

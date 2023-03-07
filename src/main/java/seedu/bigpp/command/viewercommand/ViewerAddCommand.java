@@ -12,7 +12,6 @@ public class ViewerAddCommand extends Command {
 
     /**
      * Add new PC of a given name to the PC list
-     *
      * @return the name of the PC created
      */
     @Override
