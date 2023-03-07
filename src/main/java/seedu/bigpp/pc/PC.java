@@ -39,6 +39,7 @@ public class PC {
             return "Custom-PC:";
         }
     }
+
     public void printComponents() {
         System.out.println(cpu);
         //print other components when classes are created for individual components

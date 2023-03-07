@@ -10,7 +10,6 @@ public class PCList {
     }
 
     public static void printPcList() {
-        
         if (pcList.size() > 0) {
             System.out.println("Here is the list of PC Builds:");
             for (int i = 0; i < pcList.size(); i++) {
