@@ -2,7 +2,7 @@ package seedu.bigpp.ui;
 
 import java.io.PrintStream;
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.Stack;
 
 public abstract class UI {
     private static UIState uiState = UIState.MAIN_MENU;
@@ -14,7 +14,11 @@ public abstract class UI {
     private static final Scanner in = new Scanner(System.in);
     private static final PrintStream out = System.out;
 
-    public static ArrayList<UIState> visitedMenus = new ArrayList<UIState>();
+    public static Stack<UIState> visitedMenusStack = new Stack<UIState>();
+
+    public static void instantiateVisitedMenusStack() {
+        visitedMenusStack.push(UIState.MAIN_MENU);
+    }
 
     public static UIState getUiState() {
         return uiState;
@@ -30,23 +34,18 @@ public abstract class UI {
 
         switch (uiState) {
         case MAIN_MENU:
-            visitedMenus.add(UIState.MAIN_MENU);
             printMainMenu();
             break;
         case VIEWER:
-            visitedMenus.add(UIState.VIEWER);
             printViewer();
             break;
         case BUILDER:
-            visitedMenus.add(UIState.BUILDER);
             printBuilder();
             break;
         case TUTORIAL:
-            visitedMenus.add(UIState.TUTORIAL);
             printTutorial();
             break;
         case COMPONENT:
-            visitedMenus.add(UIState.COMPONENT);
             printComponent();
             break;
         default:
@@ -113,18 +112,22 @@ public abstract class UI {
     }
 
     public static void setViewerMode() {
+        visitedMenusStack.push(UIState.VIEWER);
         uiState = UIState.VIEWER;
     }
 
     public static void setBuilderMode() {
+        visitedMenusStack.push(UIState.BUILDER);
         uiState = UIState.BUILDER;
     }
 
     public static void setTutorialMode() {
+        visitedMenusStack.push(UIState.TUTORIAL);
         uiState = UIState.TUTORIAL;
     }
 
     public static void setComponentMode() {
+        visitedMenusStack.push(UIState.COMPONENT);
         uiState = UIState.COMPONENT;
     }
 }
