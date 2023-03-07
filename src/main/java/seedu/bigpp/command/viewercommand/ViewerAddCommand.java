@@ -10,6 +10,11 @@ public class ViewerAddCommand extends Command {
         super.setArguments(arguments);
     }
 
+    /**
+     * Add new PC of a given name to the PC list
+     *
+     * @return the name of the PC created
+     */
     @Override
     public String executeCommand() {
         String name = super.getArguments();

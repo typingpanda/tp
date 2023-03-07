@@ -10,8 +10,22 @@ public abstract class PCList {
         return pcList;
     }
 
+    /**
+     * Add PC to the PC list
+     *
+     * @param pc the PC that will be added to the list
+     */
     public static void addPC(PC pc) {
         pcList.add(pc);
+    }
+
+    /**
+     * Remove PC from the PC list
+     *
+     * @param index the position of the PC in the PC list
+     */
+    public static void deletePC(int index) {
+        pcList.remove(index);
     }
 
     public static void printPcList(PrintStream out) {
