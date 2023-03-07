@@ -34,11 +34,7 @@ public abstract class UI {
 
         switch (uiState) {
         case MAIN_MENU:
-            if (isStartingMainMenu()) {
-                printStartingMainMenu();
-            } else {
-                printMainMenu();
-            }
+            printMainMenu();
             break;
         case VIEWER:
             printViewer();
@@ -59,21 +55,8 @@ public abstract class UI {
         out.println(DIVIDER);
     }
 
-    private static boolean isStartingMainMenu() {
-        return visitedMenusStack.size() == 1;
-    }
-
     public static void clearTerminal() {
         out.println("\033[H\033[2J");
-    }
-
-    public static void printStartingMainMenu() {
-        out.println(LOGO);
-        out.println("Welcome to BigPP!");
-        out.println("What would you like to do?");
-        out.println("PC viewer");
-        out.println("PC tutorial");
-        out.println("exit");
     }
 
     public static void printMainMenu() {
@@ -82,7 +65,6 @@ public abstract class UI {
         out.println("What would you like to do?");
         out.println("PC viewer");
         out.println("PC tutorial");
-        out.println("back");
         out.println("exit");
     }
 
