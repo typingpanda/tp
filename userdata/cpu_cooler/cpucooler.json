@@ -1,0 +1,28 @@
+{
+	"CPU_COOLERS": {
+		"Thermalright AXP90-X36": {
+			"RPM": 2700,
+			"Noise": 22.4,
+			"price": 22.9,
+			"brand": "Thermalright"
+		},
+		"Noctua NH-L9i": {
+			"RPM": 2500,
+			"Noise": 23.6,
+			"price": 44.95,
+			"brand": "Noctua"
+		},
+		"NZXT T120 RGB": {
+			"RPM": 1800,
+			"Noise": 27.5,
+			"price": 59.9,
+			"brand": "NZXT"
+		},
+		"Cooler Master MASTERLIQUID ML120L RGB V2": {
+			"RPM": 1800,
+			"Noise": 27,
+			"price": 86.78,
+			"brand": "Cooler Master"
+		}
+	}
+}
