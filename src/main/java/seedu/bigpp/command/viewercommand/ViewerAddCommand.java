@@ -15,6 +15,6 @@ public class ViewerAddCommand extends Command {
         String name = super.getArguments();
         PC pc = new PC(name, false);
         PCList.addPC(pc);
-        return "I have created the PC with the following name: " + name;
+        return "Custom PC: [ " + name + " ] has been created";
     }
 }
