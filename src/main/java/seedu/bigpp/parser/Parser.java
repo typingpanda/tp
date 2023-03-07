@@ -63,10 +63,10 @@ public class Parser {
 
         commandWord = commandWord.toLowerCase();
         switch (commandWord) {
-            case "add":
-                return new ViewerAddCommand(arguments);
-            default:
-                return null;
+        case "add":
+            return new ViewerAddCommand(arguments);
+        default:
+            return null;
         }
     }
 

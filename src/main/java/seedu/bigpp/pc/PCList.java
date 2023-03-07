@@ -10,7 +10,7 @@ public abstract class PCList {
         return pcList;
     }
 
-    public static void addPC (PC pc) {
+    public static void addPC(PC pc) {
         pcList.add(pc);
     }
 

@@ -9,6 +9,7 @@ public class ViewerAddCommand extends Command {
     public ViewerAddCommand(String arguments) {
         super.setArguments(arguments);
     }
+
     @Override
     public String executeCommand() {
         String name = super.getArguments();

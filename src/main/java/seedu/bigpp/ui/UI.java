@@ -4,6 +4,7 @@ import seedu.bigpp.pc.PCList;
 
 import java.io.PrintStream;
 import java.util.Scanner;
+
 public abstract class UI {
     private static UIState uiState = UIState.MAIN_MENU;
 
