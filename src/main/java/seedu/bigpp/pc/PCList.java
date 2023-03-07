@@ -1,7 +1,5 @@
 package seedu.bigpp.pc;
 
-import seedu.bigpp.ui.UI;
-
 import java.util.ArrayList;
 
 public class PCList {
