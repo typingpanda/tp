@@ -10,9 +10,11 @@ exit
 [H[2J
 ===================================================
 PC viewer
+List currently empty!
 What would you like to do?
 View PC
 Build PC
+back
 exit
 ===================================================
 Changed to viewer mode

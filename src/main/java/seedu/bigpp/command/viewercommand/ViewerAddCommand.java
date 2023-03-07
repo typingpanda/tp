@@ -12,7 +12,7 @@ public class ViewerAddCommand extends Command {
     @Override
     public String executeCommand() {
         String name = super.getArguments();
-        PC pc = new PC(name);
+        PC pc = new PC(name, false);
         PCList.addPC(pc);
         return "I have created the PC with the following name: " + name;
     }

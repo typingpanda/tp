@@ -1,6 +1,7 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.ui.UI;
 
 import seedu.bigpp.command.mainmenucommand.ByeCommand;
@@ -12,6 +13,11 @@ import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 public class Parser {
 
     public Command parseCommand(String userInput) {
+
+        if (userInput.equals("back")) {
+            return new BackCommand();
+        }
+
         switch (UI.getUiState()) {
 
         case MAIN_MENU:
