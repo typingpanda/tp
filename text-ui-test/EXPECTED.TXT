@@ -1,4 +1,4 @@
-[H[2J
+←[H←[2J
 ===================================================
 add logo here
 Welcome to BigPP!
@@ -7,12 +7,14 @@ PC viewer
 PC tutorial
 exit
 ===================================================
-[H[2J
+viewer
+←[H←[2J
 ===================================================
 PC viewer
 What would you like to do?
 View PC
 Build PC
+back
 exit
 ===================================================
 Changed to viewer mode
