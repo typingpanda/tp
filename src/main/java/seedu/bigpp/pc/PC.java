@@ -2,6 +2,8 @@ package seedu.bigpp.pc;
 
 import seedu.bigpp.component.cpu.CPU;
 
+import java.io.PrintStream;
+
 public class PC {
     private String name;
     // private CPU cpu;
@@ -40,8 +42,8 @@ public class PC {
         }
     }
 
-    public void printComponents() {
-        System.out.println(cpu);
+    public void printComponents(PrintStream out) {
+        out.println(cpu);
         //print other components when classes are created for individual components
     }
 

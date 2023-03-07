@@ -65,7 +65,7 @@ public abstract class UI {
 
     public static void printViewer() {
         out.println("PC viewer");
-        PCList.printPcList();
+        PCList.printPcList(out);
         out.println("What would you like to do?");
         out.println("View PC");
         out.println("Build PC");
