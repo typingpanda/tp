@@ -5,8 +5,8 @@ import seedu.bigpp.command.Command;
 public class BackCommand extends Command {
 
     @Override
-    public void executeCommand() {
+    public String executeCommand() {
         // TODO Auto-generated method stub
-
+        return "";
     }
 }
