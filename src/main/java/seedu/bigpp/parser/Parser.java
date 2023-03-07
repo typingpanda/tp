@@ -1,15 +1,23 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.ui.UI;
 
 import seedu.bigpp.command.mainmenucommand.ByeCommand;
 import seedu.bigpp.command.mainmenucommand.EnterViewerCommand;
 import seedu.bigpp.command.mainmenucommand.EnterTutorialCommand;
 
+import seedu.bigpp.command.viewercommand.ViewerAddCommand;
+
 public class Parser {
 
     public Command parseCommand(String userInput) {
+
+        if (userInput.equals("back")) {
+            return new BackCommand();
+        }
+
         switch (UI.getUiState()) {
 
         case MAIN_MENU:
@@ -51,10 +59,15 @@ public class Parser {
 
     private Command parseViewerCommand(String userInput) {
         String commandWord = userInput.split(" ")[0];
+        String arguments = userInput.split(" ")[1];
 
         commandWord = commandWord.toLowerCase();
-
-        return null;
+        switch (commandWord) {
+        case "add":
+            return new ViewerAddCommand(arguments);
+        default:
+            return null;
+        }
     }
 
     private Command parseBuilderCommand(String userInput) {

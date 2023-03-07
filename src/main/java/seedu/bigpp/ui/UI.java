@@ -1,5 +1,7 @@
 package seedu.bigpp.ui;
 
+import seedu.bigpp.pc.PCList;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -63,9 +65,11 @@ public abstract class UI {
 
     public static void printViewer() {
         out.println("PC viewer");
+        PCList.printPcList(out);
         out.println("What would you like to do?");
         out.println("View PC");
         out.println("Build PC");
+        out.println("back");
         out.println("exit");
     }
 
@@ -75,6 +79,7 @@ public abstract class UI {
         out.println("Add component");
         out.println("Remove component");
         out.println("View PC");
+        out.println("back");
         out.println("exit");
     }
 
@@ -82,6 +87,7 @@ public abstract class UI {
         out.println("PC tutorial");
         out.println("What would you like to do?");
         out.println("View tutorial");
+        out.println("back");
         out.println("exit");
     }
 
@@ -89,6 +95,7 @@ public abstract class UI {
         out.println("Component");
         out.println("What would you like to do?");
         out.println("View component");
+        out.println("back");
         out.println("exit");
     }
 
