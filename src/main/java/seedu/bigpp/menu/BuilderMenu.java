@@ -2,7 +2,7 @@ package seedu.bigpp.menu;
 
 import static seedu.bigpp.ui.UI.OUT;
 
-public class BuilderMenu {
+public abstract class BuilderMenu extends Menu{
 
     public static void printMenu() {
         OUT.println("PC builder");

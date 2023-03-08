@@ -2,7 +2,7 @@ package seedu.bigpp.menu;
 
 import static seedu.bigpp.ui.UI.OUT;
 
-public class ComponentMenu {
+public abstract class ComponentMenu extends Menu {
 
     public static void printMenu() {
         OUT.println("Component");

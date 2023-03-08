@@ -3,7 +3,7 @@ package seedu.bigpp.menu;
 import static seedu.bigpp.ui.UI.OUT;
 import static seedu.bigpp.ui.UI.LOGO;
 
-public class MainMenu extends Menu {
+public abstract class MainMenu extends Menu {
 
     public static void printMenu() {
         OUT.println(LOGO);
