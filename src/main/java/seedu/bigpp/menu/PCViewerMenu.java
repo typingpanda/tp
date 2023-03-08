@@ -7,7 +7,7 @@ public abstract class PCViewerMenu extends Menu {
 
     public static void printMenu() {
         OUT.println("PC viewer");
-        PCList.printPcList(OUT);
+        PCList.printPcList();
         OUT.println("What would you like to do?");
         OUT.println("View PC");
         OUT.println("Build PC");
