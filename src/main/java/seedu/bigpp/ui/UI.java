@@ -1,19 +1,22 @@
 package seedu.bigpp.ui;
 
-import seedu.bigpp.pc.PCList;
-
+import seedu.bigpp.menu.MainMenu;
+import seedu.bigpp.menu.PCViewerMenu;
+import seedu.bigpp.menu.TutorialMenu;
+import seedu.bigpp.menu.ComponentMenu;
+import seedu.bigpp.menu.BuilderMenu;
 import java.io.PrintStream;
 import java.util.Scanner;
 
 public abstract class UI {
+    
+    public static final PrintStream OUT = System.out;
+    public static final String LOGO = "add logo here";
+
     private static UIState uiState = UIState.MAIN_MENU;
-
     private static final String DIVIDER = "===================================================";
-
-    private static final String LOGO = "add logo here";
-
     private static final Scanner in = new Scanner(System.in);
-    private static final PrintStream out = System.out;
+
 
     public static UIState getUiState() {
         return uiState;
@@ -25,82 +28,37 @@ public abstract class UI {
 
     public static void updateUI() {
         clearTerminal();
-        out.println(DIVIDER);
+        OUT.println(DIVIDER);
 
         switch (uiState) {
         case MAIN_MENU:
-            printMainMenu();
+            MainMenu.printMenu();
             break;
         case VIEWER:
-            printViewer();
+            PCViewerMenu.printMenu();
             break;
         case BUILDER:
-            printBuilder();
+            BuilderMenu.printMenu();
             break;
         case TUTORIAL:
-            printTutorial();
+            TutorialMenu.printMenu();
             break;
         case COMPONENT:
-            printComponent();
+            ComponentMenu.printMenu();
             break;
         default:
             break;
         }
 
-        out.println(DIVIDER);
+        OUT.println(DIVIDER);
     }
 
     public static void clearTerminal() {
-        out.println("\033[H\033[2J");
-    }
-
-    public static void printMainMenu() {
-        out.println(LOGO);
-        out.println("Welcome to BigPP!");
-        out.println("What would you like to do?");
-        out.println("PC viewer");
-        out.println("PC tutorial");
-        out.println("exit");
-    }
-
-    public static void printViewer() {
-        out.println("PC viewer");
-        PCList.printPcList(out);
-        out.println("What would you like to do?");
-        out.println("View PC");
-        out.println("Build PC");
-        out.println("back");
-        out.println("exit");
-    }
-
-    public static void printBuilder() {
-        out.println("PC builder");
-        out.println("What would you like to do?");
-        out.println("Add component");
-        out.println("Remove component");
-        out.println("View PC");
-        out.println("back");
-        out.println("exit");
-    }
-
-    public static void printTutorial() {
-        out.println("PC tutorial");
-        out.println("What would you like to do?");
-        out.println("View tutorial");
-        out.println("back");
-        out.println("exit");
-    }
-
-    public static void printComponent() {
-        out.println("Component");
-        out.println("What would you like to do?");
-        out.println("View component");
-        out.println("back");
-        out.println("exit");
+        OUT.println("\033[H\033[2J");
     }
 
     public static void showResult(String result) {
-        out.println(result);
+        OUT.println(result);
     }
 
     public static void setMainMenuMode() {

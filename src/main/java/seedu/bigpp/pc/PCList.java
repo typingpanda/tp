@@ -1,7 +1,7 @@
 package seedu.bigpp.pc;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
+import static seedu.bigpp.ui.UI.OUT;
 
 public abstract class PCList {
     private static ArrayList<PC> pcList = new ArrayList<>();
@@ -26,14 +26,14 @@ public abstract class PCList {
         pcList.remove(index);
     }
 
-    public static void printPcList(PrintStream out) {
+    public static void printPcList() {
         if (pcList.size() > 0) {
-            out.println("Here is the list of PC Builds:");
+            OUT.println("Here is the list of PC Builds:");
             for (int i = 0; i < pcList.size(); i++) {
-                out.println((i + 1) + "." + pcList.get(i));
+                OUT.println((i + 1) + "." + pcList.get(i));
             }
         } else {
-            out.println("List currently empty!");
+            OUT.println("List currently empty!");
         }
     }
 }
