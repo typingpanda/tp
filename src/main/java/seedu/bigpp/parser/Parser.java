@@ -2,11 +2,14 @@ package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.commoncommand.BackCommand;
+import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.ui.UI;
 
 import seedu.bigpp.command.mainmenucommand.ByeCommand;
 import seedu.bigpp.command.mainmenucommand.EnterViewerCommand;
 import seedu.bigpp.command.mainmenucommand.EnterTutorialCommand;
+
+import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 
 public class Parser {
 
@@ -57,11 +60,17 @@ public class Parser {
 
     private Command parseViewerCommand(String userInput) {
         String commandWord = userInput.split(" ")[0];
+        String arguments = userInput.split(" ")[1];
 
         commandWord = commandWord.toLowerCase();
-
-        return null;
-
+        switch (commandWord) {
+        case "add":
+            return new ViewerAddCommand(arguments);
+        case "delete":
+            return new ViewerDeleteCommand(arguments);
+        default:
+            return null;
+        }
     }
 
     private Command parseBuilderCommand(String userInput) {

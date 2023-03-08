@@ -21,6 +21,10 @@ public class PC {
         return name;
     }
 
+    public boolean getIsPreBuilt() {
+        return isPrebuilt;
+    }
+
     public void setCPU(CPU cpu) {
         this.cpu = cpu;
     }
