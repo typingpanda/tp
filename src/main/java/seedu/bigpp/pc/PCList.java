@@ -1,6 +1,5 @@
 package seedu.bigpp.pc;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import static seedu.bigpp.ui.UI.OUT;
 
