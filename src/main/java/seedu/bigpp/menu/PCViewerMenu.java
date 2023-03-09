@@ -1,17 +1,17 @@
 package seedu.bigpp.menu;
 
-import static seedu.bigpp.ui.UI.OUT;
+import static seedu.bigpp.ui.UI.out;
 import seedu.bigpp.pc.PCList;
 
 public class PCViewerMenu extends Menu {
 
     public void printMenu() {
-        OUT.println("PC viewer");
+        out.println("PC viewer");
         PCList.printPcList();
-        OUT.println("What would you like to do?");
-        OUT.println("View PC");
-        OUT.println("Build PC");
-        OUT.println("back");
-        OUT.println("exit");
+        out.println("What would you like to do?");
+        out.println("View PC");
+        out.println("Build PC");
+        out.println("back");
+        out.println("exit");
     }
 }

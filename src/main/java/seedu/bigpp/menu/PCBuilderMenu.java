@@ -1,7 +1,7 @@
 package seedu.bigpp.menu;
 
 import seedu.bigpp.pc.PC;
-import static seedu.bigpp.ui.UI.OUT;
+import static seedu.bigpp.ui.UI.out;
 
 public class PCBuilderMenu extends Menu {
 
@@ -12,12 +12,12 @@ public class PCBuilderMenu extends Menu {
     }
 
     public void printMenu() {
-        OUT.println("PC builder");
+        out.println("PC builder");
         pc.printComponents();
-        OUT.println("Add component");
-        OUT.println("Remove component");
-        OUT.println("View PC");
-        OUT.println("back");
-        OUT.println("exit");
+        out.println("Add component");
+        out.println("Remove component");
+        out.println("View PC");
+        out.println("back");
+        out.println("exit");
     }
 }
