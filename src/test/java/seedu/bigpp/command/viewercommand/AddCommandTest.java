@@ -1,7 +1,6 @@
 package seedu.bigpp.command.viewercommand;
 
 import org.junit.jupiter.api.Test;
-import seedu.bigpp.command.commoncommand.ByeCommand;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
