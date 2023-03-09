@@ -3,9 +3,9 @@ package seedu.bigpp.menu;
 import static seedu.bigpp.ui.UI.OUT;
 import seedu.bigpp.pc.PCList;
 
-public abstract class PCViewerMenu extends Menu {
+public class PCViewerMenu extends Menu {
 
-    public static void printMenu() {
+    public void printMenu() {
         OUT.println("PC viewer");
         PCList.printPcList();
         OUT.println("What would you like to do?");

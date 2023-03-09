@@ -1,4 +1,4 @@
-package seedu.bigpp.command.mainmenucommand;
+package seedu.bigpp.command.commoncommand;
 
 import seedu.bigpp.command.Command;
 

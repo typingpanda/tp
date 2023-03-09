@@ -9,20 +9,13 @@ public class BackCommand extends Command {
     @Override
     public String executeCommand() {
         switch (UI.getUiState()) {
-        case MAIN_MENU:
-            return "cannot go back from main menu";
-        case VIEWER:
-            UI.setMainMenuMode();
-            return "returned to main menu";
-        case BUILDER:
-            UI.setViewerMode();
-            return "returned to viewer";
-        case TUTORIAL:
-            UI.setMainMenuMode();
-            return "returned to main menu";
-        case COMPONENT:
-            UI.setBuilderMode();
-            return "returned to builder";
+        case PCVIEWER:
+            return "Cannot go back from PCViewer";
+
+        case PCBUILDER:
+            UI.setPCViewerMode();
+            return "returned to PCViewer";
+
         default:
             return "";
         }

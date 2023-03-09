@@ -1,22 +1,24 @@
 package seedu.bigpp.ui;
 
-import seedu.bigpp.menu.MainMenu;
 import seedu.bigpp.menu.PCViewerMenu;
-import seedu.bigpp.menu.TutorialMenu;
-import seedu.bigpp.menu.ComponentMenu;
-import seedu.bigpp.menu.BuilderMenu;
+import seedu.bigpp.menu.PCBuilderMenu;
+import seedu.bigpp.ui.UIState;
+import seedu.bigpp.pc.PC;
 import java.io.PrintStream;
 import java.util.Scanner;
 
 public abstract class UI {
-    
-    public static final PrintStream OUT = System.out;
+
     public static final String LOGO = "add logo here";
-
-    private static UIState uiState = UIState.MAIN_MENU;
     private static final String DIVIDER = "===================================================";
-    private static final Scanner in = new Scanner(System.in);
 
+    private static final Scanner in = new Scanner(System.in);
+    public static final PrintStream OUT = System.out;
+
+    private static UIState uiState = UIState.PCVIEWER;
+
+    private static PCViewerMenu viewerMenu = new PCViewerMenu();
+    private static PCBuilderMenu builderMenu = null;
 
     public static UIState getUiState() {
         return uiState;
@@ -31,20 +33,11 @@ public abstract class UI {
         OUT.println(DIVIDER);
 
         switch (uiState) {
-        case MAIN_MENU:
-            MainMenu.printMenu();
+        case PCVIEWER:
+            viewerMenu.printMenu();
             break;
-        case VIEWER:
-            PCViewerMenu.printMenu();
-            break;
-        case BUILDER:
-            BuilderMenu.printMenu();
-            break;
-        case TUTORIAL:
-            TutorialMenu.printMenu();
-            break;
-        case COMPONENT:
-            ComponentMenu.printMenu();
+        case PCBUILDER:
+            builderMenu.printMenu();
             break;
         default:
             break;
@@ -61,23 +54,13 @@ public abstract class UI {
         OUT.println(result);
     }
 
-    public static void setMainMenuMode() {
-        uiState = UIState.MAIN_MENU;
+    public static void setPCViewerMode() {
+        uiState = UIState.PCVIEWER;
+        builderMenu = null;
     }
 
-    public static void setViewerMode() {
-        uiState = UIState.VIEWER;
-    }
-
-    public static void setBuilderMode() {
-        uiState = UIState.BUILDER;
-    }
-
-    public static void setTutorialMode() {
-        uiState = UIState.TUTORIAL;
-    }
-
-    public static void setComponentMode() {
-        uiState = UIState.COMPONENT;
+    public static void setPCBuilderMode(PC pc) {
+        uiState = UIState.PCBUILDER;
+        builderMenu = new PCBuilderMenu(pc);
     }
 }

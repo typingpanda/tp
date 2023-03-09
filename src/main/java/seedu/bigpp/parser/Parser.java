@@ -2,12 +2,9 @@ package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.commoncommand.BackCommand;
+import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.ui.UI;
-
-import seedu.bigpp.command.mainmenucommand.ByeCommand;
-import seedu.bigpp.command.mainmenucommand.EnterViewerCommand;
-import seedu.bigpp.command.mainmenucommand.EnterTutorialCommand;
 
 import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 
@@ -15,44 +12,24 @@ public class Parser {
 
     public Command parseCommand(String userInput) {
 
+        // try common commands first
         if (userInput.equals("back")) {
             return new BackCommand();
         }
 
+        if (userInput.equals("bye")) {
+            return new ByeCommand();
+        }
+
+        // once common commands are tried, try menu specific commands
         switch (UI.getUiState()) {
 
-        case MAIN_MENU:
-            return parseMainMenuCommand(userInput);
-
-        case VIEWER:
+        case PCVIEWER:
             return parseViewerCommand(userInput);
 
-        case BUILDER:
+        case PCBUILDER:
             return parseBuilderCommand(userInput);
 
-        case TUTORIAL:
-            return parseTutorialCommand(userInput);
-
-        case COMPONENT:
-            return parseComponentCommand(userInput);
-
-        default:
-            return null;
-        }
-    }
-
-    private Command parseMainMenuCommand(String userInput) {
-        String commandWord = userInput.split(" ")[0];
-
-        commandWord = commandWord.toLowerCase();
-
-        switch (commandWord) {
-        case "viewer":
-            return new EnterViewerCommand();
-        case "tutorial":
-            return new EnterTutorialCommand();
-        case "exit":
-            return new ByeCommand();
         default:
             return null;
         }
@@ -74,20 +51,6 @@ public class Parser {
     }
 
     private Command parseBuilderCommand(String userInput) {
-        String commandWord = userInput.split(" ")[0];
-
-        commandWord = commandWord.toLowerCase();
-        return null;
-    }
-
-    private Command parseTutorialCommand(String userInput) {
-        String commandWord = userInput.split(" ")[0];
-
-        commandWord = commandWord.toLowerCase();
-        return null;
-    }
-
-    private Command parseComponentCommand(String userInput) {
         String commandWord = userInput.split(" ")[0];
 
         commandWord = commandWord.toLowerCase();

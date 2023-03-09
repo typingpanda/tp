@@ -1,12 +1,19 @@
 package seedu.bigpp.menu;
 
+import seedu.bigpp.pc.PC;
 import static seedu.bigpp.ui.UI.OUT;
 
-public abstract class BuilderMenu extends Menu{
+public class PCBuilderMenu extends Menu {
 
-    public static void printMenu() {
+    private PC pc;
+
+    public PCBuilderMenu(PC pc) {
+        this.pc = pc;
+    }
+
+    public void printMenu() {
         OUT.println("PC builder");
-        OUT.println("What would you like to do?");
+        pc.printComponents();
         OUT.println("Add component");
         OUT.println("Remove component");
         OUT.println("View PC");
