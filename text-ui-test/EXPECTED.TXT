@@ -1,14 +1,5 @@
 [H[2J
 ===================================================
-add logo here
-Welcome to BigPP!
-What would you like to do?
-PC viewer
-PC tutorial
-exit
-===================================================
-[H[2J
-===================================================
 PC viewer
 List currently empty!
 What would you like to do?
@@ -17,4 +8,40 @@ Build PC
 back
 exit
 ===================================================
-Changed to viewer mode
+[H[2J
+===================================================
+PC viewer
+Here is the list of PC Builds:
+1.Custom-PC: [newpc1] - $0.0
+What would you like to do?
+View PC
+Build PC
+back
+exit
+===================================================
+Custom PC: [ newpc1 ] has been created
+[H[2J
+===================================================
+PC viewer
+Here is the list of PC Builds:
+1.Custom-PC: [newpc1] - $0.0
+2.Custom-PC: [newpc2] - $0.0
+What would you like to do?
+View PC
+Build PC
+back
+exit
+===================================================
+Custom PC: [ newpc2 ] has been created
+[H[2J
+===================================================
+PC viewer
+Here is the list of PC Builds:
+1.Custom-PC: [newpc2] - $0.0
+What would you like to do?
+View PC
+Build PC
+back
+exit
+===================================================
+Custom PC: [ newpc1 ] has been deleted
