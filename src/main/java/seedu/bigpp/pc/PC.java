@@ -1,8 +1,7 @@
 package seedu.bigpp.pc;
 
 import seedu.bigpp.component.cpu.CPU;
-
-import java.io.PrintStream;
+import static seedu.bigpp.ui.UI.out;
 
 public class PC {
     private String name;
@@ -46,9 +45,9 @@ public class PC {
         }
     }
 
-    public void printComponents(PrintStream out) {
+    public void printComponents() {
         out.println(cpu);
-        //print other components when classes are created for individual components
+        // print other components when classes are created for individual components
     }
 
     @Override
