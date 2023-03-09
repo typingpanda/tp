@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ByeCommandTest {
     @Test
-    public void testByeCommand() {
+    public void executeCommand_byeCommand_success() {
         ByeCommand byeCommand = new ByeCommand();
         String expectedOutput = "Bye. Hope to see you again soon!";
         String actualOutput = byeCommand.executeCommand();
