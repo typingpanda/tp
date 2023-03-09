@@ -1,0 +1,52 @@
+1. Determine your budget: This is an important first step in building a custom PC. Make sure to
+factor in the cost of all the components you'll need, as well as any peripherals like a monitor
+or keyboard.
+
+2. Choose your CPU: Your CPU will determine the overall performance of your PC. There are two main
+brands to choose from - Intel and AMD. Determine which brand suits your needs and then choose a
+specific model based on benchmarks, reviews, and price.
+
+3. Select a compatible motherboard: Once you have chosen your CPU, you'll need to select a
+compatible motherboard. Make sure it has the necessary chipset for your CPU, has the right
+number of expansion slots, and has enough fan headers to keep your system cool.
+
+4. Choose your RAM: RAM is important for multitasking and running applications smoothly. Look for
+RAM that is compatible with your motherboard and CPU, and choose the amount that meets your
+needs. For most users, 16GB of RAM is sufficient.
+
+5. Pick a storage solution: You have two options for storage - a traditional hard drive or a
+faster, more expensive solid-state drive (SSD). An SSD will provide faster boot and load
+times, but a traditional hard drive will provide more storage space at a lower cost.
+Consider your needs and choose the right storage solution for you.
+
+6. Choose a graphics card: If you plan on gaming or doing any kind of graphic design work, you'll
+need a dedicated graphics card. Make sure it's compatible with your motherboard and has enough
+power to handle your needs. Look at benchmarks and reviews to determine the best card for your
+budget.
+
+7. Select a power supply: Your power supply needs to be powerful enough to handle all your
+components, but not so powerful that you're wasting money on extra wattage. Choose a
+reputable brand and make sure it has enough connectors for all your components.
+
+8. Choose a case: Your case needs to be big enough to fit all your components and have good airflow
+to keep everything cool. Look for a case that has plenty of cable management options to keep your
+build looking neat. Consider the aesthetics and make sure it fits with your overall vision for
+your PC.
+
+9. Assemble your PC: Now that you have all your components, it's time to put them together. Start
+with the motherboard and CPU, then install the RAM, storage, graphics card, and power supply.
+Make sure to connect all the necessary cables and use standoffs to secure the motherboard to
+the case.
+
+10. Install your operating system: Once your PC is assembled, it's time to install your operating
+system. This can be done via a USB drive or CD/DVD, depending on your software. Follow the
+instructions carefully to complete the installation.
+
+11. Install drivers and software: After the operating system is installed, you'll need to install
+drivers for your components. This includes drivers for your graphics card, motherboard, and other
+peripherals. Install any necessary software for your needs as well, such as gaming or
+productivity software.
+
+12. Test and optimize: Once your PC is up and running, it's important to test it for stability and
+performance. Use benchmarking tools to make sure your components are working as they should be,
+and optimize your settings for the best performance.

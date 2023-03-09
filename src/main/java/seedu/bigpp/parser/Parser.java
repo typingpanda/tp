@@ -2,6 +2,7 @@ package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.commoncommand.BackCommand;
+import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.ui.UI;
 
 import seedu.bigpp.command.mainmenucommand.ByeCommand;
@@ -65,6 +66,8 @@ public class Parser {
         switch (commandWord) {
         case "add":
             return new ViewerAddCommand(arguments);
+        case "delete":
+            return new ViewerDeleteCommand(arguments);
         default:
             return null;
         }
