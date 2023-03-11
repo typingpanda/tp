@@ -1,7 +1,6 @@
 package seedu.bigpp.command.commoncommand;
 
 import seedu.bigpp.command.Command;
-
 import seedu.bigpp.ui.UI;
 
 public class BackCommand extends Command {

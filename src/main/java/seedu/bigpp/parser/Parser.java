@@ -1,15 +1,15 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
+import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
+import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
-import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
-import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
+import seedu.bigpp.command.viewercommand.ViewerViewCommand;
 import seedu.bigpp.ui.UI;
-
-import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 
 public class Parser {
 
@@ -48,6 +48,8 @@ public class Parser {
             return new ViewerAddCommand(arguments);
         case "delete":
             return new ViewerDeleteCommand(arguments);
+        case "view":
+            return new ViewerViewCommand(arguments);
         case "edit":
             return new ViewerEditCommand(arguments);
         default:

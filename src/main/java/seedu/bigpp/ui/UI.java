@@ -1,7 +1,8 @@
 package seedu.bigpp.ui;
 
-import seedu.bigpp.menu.PCViewerMenu;
 import seedu.bigpp.menu.PCBuilderMenu;
+import seedu.bigpp.menu.PCViewerMenu;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 

@@ -1,8 +1,9 @@
 package seedu.bigpp.command.commoncommand;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import seedu.bigpp.ui.UI;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BackCommandTest {
 
