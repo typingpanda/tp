@@ -92,7 +92,16 @@ public class PC {
         String componentString = "";
         componentString += (buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + '\n');
         componentString += ("Components:" + '\n');
-        String[] componentNames = { "CPU        ","CPU Cooler ","GPU        ","Motherboard","RAM        ","Storage    ","PSU        "};
+        //        ArrayList<String> componentNames = new ArrayList<>();
+        //        componentNames.add("CPU        ");
+        //        componentNames.add("CPU Cooler ");
+        //        componentNames.add("GPU        ");
+        //        componentNames.add("Motherboard");
+        //        componentNames.add("RAM        ");
+        //        componentNames.add("Storage    ");
+        //        componentNames.add("PSU        ");
+        String[] componentNames = { "CPU        ", "CPU Cooler ", "GPU        ", "Motherboard", "RAM        ",
+            "Storage    ", "PSU        " };
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu };
         int index = 0;
         for (Component component : components) {
