@@ -1,23 +1,26 @@
 package seedu.bigpp.menu;
 
-import seedu.bigpp.pc.PC;
+import seedu.bigpp.pc.PCList;
+
 import static seedu.bigpp.ui.UI.out;
 
 public class PCBuilderMenu extends Menu {
 
-    private PC pc;
+    private int pcIndex;
 
-    public PCBuilderMenu(PC pc) {
-        this.pc = pc;
+    public PCBuilderMenu(int pcIndex) {
+        this.pcIndex = pcIndex;
+    }
+
+    public int getPCIndex() {
+        return pcIndex;
     }
 
     public void printMenu() {
         out.println("PC builder");
-        pc.printComponents();
-        out.println("Add component");
-        out.println("Remove component");
-        out.println("View PC");
+        PCList.getPC(pcIndex).printComponents();
+        out.println("Edit name");
+        out.println("Set budget");
         out.println("back");
-        out.println("exit");
     }
 }
