@@ -4,8 +4,8 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.builder.Builder;
 import seedu.bigpp.builder.CurrentBuilder;
 
-public class CreateBuildCommand extends Command {
-    public CreateBuildCommand(String arguments) {
+public class BuilderCreateCommand extends Command {
+    public BuilderCreateCommand(String arguments) {
         super.setArguments(arguments);
     }
 

@@ -4,17 +4,16 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.builder.Builder;
 import seedu.bigpp.builder.CurrentBuilder;
 
-public class EditNameCommand extends Command {
-
-    public EditNameCommand(String arguments) {
+public class BuilderEditBudget extends Command {
+    public BuilderEditBudget(String arguments) {
         super.setArguments(arguments);
     }
 
     @Override
     public String executeCommand() {
-        String name = super.getArguments();
+        int budget = Integer.parseInt(super.getArguments());
         Builder currentBuilder = CurrentBuilder.getBuilder();
-        currentBuilder.setName(name);
-        return "Current build name is now: " + name;
+        currentBuilder.setBudget(budget);
+        return "Current build budget is now: " + budget;
     }
 }

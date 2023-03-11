@@ -1,12 +1,12 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.command.buildercommand.CreateBuildCommand;
+import seedu.bigpp.command.buildercommand.BuilderCreateCommand;
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.pc.PCList;
-import seedu.bigpp.command.buildercommand.EditNameCommand;
+import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
 import seedu.bigpp.ui.UI;
 
 import seedu.bigpp.command.viewercommand.ViewerAddCommand;
@@ -50,7 +50,7 @@ public class Parser {
             return new ViewerDeleteCommand(arguments);
         case "edit":
             UI.setPCBuilderMode(PCList.getPC(Integer.parseInt(arguments) - 1));
-            return new CreateBuildCommand(arguments);
+            return new BuilderCreateCommand(arguments);
         default:
             return null;
         }
@@ -63,7 +63,7 @@ public class Parser {
 
         switch (commandWord) {
         case "editname":
-            return new EditNameCommand(arguments);
+            return new BuilderEditNameCommand(arguments);
         }
 
         commandWord = commandWord.toLowerCase();
