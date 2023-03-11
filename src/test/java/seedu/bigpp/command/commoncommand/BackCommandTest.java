@@ -10,11 +10,11 @@ public class BackCommandTest {
     public void executeCommand_backCommand_success() {
         BackCommand backCommand = new BackCommand();
         UI.setPCViewerMode();
-        String PCViewerBackCommandResult = backCommand.executeCommand();
-        assertEquals("Cannot go back from PCViewer", PCViewerBackCommandResult);
-        
+        String pcViewerBackCommandResult = backCommand.executeCommand();
+        assertEquals("Cannot go back from PCViewer", pcViewerBackCommandResult);
+
         UI.setPCBuilderMode(null);
-        String PCBuilderBackCommandResult = backCommand.executeCommand();
-        assertEquals("returned to PCViewer", PCBuilderBackCommandResult);
+        String pcBuilderBackCommandResult = backCommand.executeCommand();
+        assertEquals("returned to PCViewer", pcBuilderBackCommandResult);
     }
 }

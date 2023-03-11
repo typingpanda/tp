@@ -59,9 +59,15 @@ jar {
 sourceSets {
     main {
         java {
+            srcDir "src/main/java"
             resources {
                 srcDir "src/main/java/seedu/bigpp/resources"
             }    
+        }
+    }
+    test {
+        java {
+            srcDir "src/test/java" 
         }
     }
 }
