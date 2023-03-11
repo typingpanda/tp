@@ -5,7 +5,6 @@ import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
-import seedu.bigpp.pc.PCList;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
 import seedu.bigpp.ui.UI;
 

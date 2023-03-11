@@ -2,22 +2,21 @@ package seedu.bigpp.ui;
 
 import seedu.bigpp.menu.PCViewerMenu;
 import seedu.bigpp.menu.PCBuilderMenu;
-import seedu.bigpp.pc.PC;
 import java.io.PrintStream;
 import java.util.Scanner;
 
 public abstract class UI {
-
+    public static PrintStream out = System.out;
+    public static PCBuilderMenu builderMenu = null;
+    
     private static final String LOGO = "add logo here";
     private static final String DIVIDER = "===================================================";
-
-    private static UIState uiState = UIState.PCVIEWER;
-
-    private static PCViewerMenu viewerMenu = new PCViewerMenu();
     
+    private static UIState uiState = UIState.PCVIEWER;
+    
+    private static PCViewerMenu viewerMenu = new PCViewerMenu();
     private static Scanner in = new Scanner(System.in);
-    public static PCBuilderMenu builderMenu = null;
-    public static PrintStream out = System.out;
+    
 
     public static UIState getUiState() {
         return uiState;
