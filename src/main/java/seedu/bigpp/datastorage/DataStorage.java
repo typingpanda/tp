@@ -27,17 +27,17 @@ import seedu.bigpp.component.storage.Storage;
 import seedu.bigpp.component.storage.StorageList;
 
 public abstract class DataStorage {
-    private static final String CHASSIS_PATH = "./userdata/chassis/chassis.json";
-    private static final String CPU_PATH = "./userdata/cpu/cpu.json";
-    private static final String CPU_COOLER_PATH = "./userdata/cpucooler/cpucooler.json";
-    private static final String GPU_PATH = "./userdata/gpu/gpu.json";
-    private static final String MOTHERBOARD_PATH = "./userdata/motherboard/motherboard.json";
-    private static final String PSU_PATH = "./userdata/psu/psu.json";
-    private static final String RAM_PATH = "./userdata/ram/ram.json";
-    private static final String STORAGE_PATH = "./userdata/storage/storage.json";
+    private static final String CHASSIS_PATH = "./appdata/chassis/chassis.json";
+    private static final String CPU_PATH = "./appdata/cpu/cpu.json";
+    private static final String CPU_COOLER_PATH = "./appdata/cpucooler/cpucooler.json";
+    private static final String GPU_PATH = "./appdata/gpu/gpu.json";
+    private static final String MOTHERBOARD_PATH = "./appdata/motherboard/motherboard.json";
+    private static final String PSU_PATH = "./appdata/psu/psu.json";
+    private static final String RAM_PATH = "./appdata/ram/ram.json";
+    private static final String STORAGE_PATH = "./appdata/storage/storage.json";
 
-    private static final String PREBUILT_PATH = "./userdata/prebuilt/prebuilt.json";
-    private static final String USER_PATH = "./userdata/user/user.json";
+    private static final String PREBUILT_PATH = "./appdata/prebuilt/prebuilt.json";
+    private static final String USER_PATH = "./appdata/user/user.json";
 
     private static final Gson GSON = new Gson();
 
