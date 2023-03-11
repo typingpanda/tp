@@ -1,9 +1,9 @@
 package seedu.bigpp.component;
 
 public abstract class Component {
-    private String name;
-    private String brand;
-    private float price;
+    protected String name;
+    protected String brand;
+    protected float price;
 
     public String getName() {
         return this.name;

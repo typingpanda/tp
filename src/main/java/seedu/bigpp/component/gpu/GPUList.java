@@ -8,4 +8,8 @@ public abstract class GPUList {
     public static void addGPU(GPU gpu) {
         gpuList.add(gpu);
     }
+
+    public static ArrayList<GPU> getGpuList() {
+        return gpuList;
+    }
 }

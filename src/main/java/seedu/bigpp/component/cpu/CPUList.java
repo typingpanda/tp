@@ -9,4 +9,8 @@ public abstract class CPUList {
     public static void addCPU(CPU cpu) {
         cpuList.add(cpu);
     }
+
+    public static ArrayList<CPU> getCpuList() {
+        return cpuList;
+    }
 }

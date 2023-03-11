@@ -65,6 +65,8 @@ public abstract class DataStorage {
             Map<String, Chassis> chassisMap = GSON.fromJson(json, new TypeToken<Map<String, Chassis>>() {
             }.getType());
 
+            chassisMap.forEach((name, chassis) -> chassisMap.get(name).setName(name));
+
             // Add each chassis to the chassis list
             chassisMap.forEach((name, chassis) -> ChassisList.addChassis(chassis));
 
@@ -83,6 +85,8 @@ public abstract class DataStorage {
 
             Map<String, CPU> cpuMap = GSON.fromJson(json, new TypeToken<Map<String, CPU>>() {
             }.getType());
+
+            cpuMap.forEach((name, cpu) -> cpuMap.get(name).setName(name));
 
             // Add each CPU to the CPU list
             cpuMap.forEach((name, cpu) -> CPUList.addCPU(cpu));
@@ -103,6 +107,8 @@ public abstract class DataStorage {
             Map<String, CPUCooler> cpuCoolerMap = GSON.fromJson(json, new TypeToken<Map<String, CPUCooler>>() {
             }.getType());
 
+            cpuCoolerMap.forEach((name, cpuCooler) -> cpuCoolerMap.get(name).setName(name));
+
             // Add each CPU Cooler to the CPU Cooler list
             cpuCoolerMap.forEach((name, cpuCooler) -> CPUCoolerList.addCPUCooler(cpuCooler));
 
@@ -121,6 +127,8 @@ public abstract class DataStorage {
 
             Map<String, GPU> gpuMap = GSON.fromJson(json, new TypeToken<Map<String, GPU>>() {
             }.getType());
+
+            gpuMap.forEach((name, gpu) -> gpuMap.get(name).setName(name));
 
             // Add each GPU to the GPU list
             gpuMap.forEach((name, gpu) -> GPUList.addGPU(gpu));
@@ -141,6 +149,8 @@ public abstract class DataStorage {
             Map<String, Motherboard> motherboardMap = GSON.fromJson(json, new TypeToken<Map<String, Motherboard>>() {
             }.getType());
 
+            motherboardMap.forEach((name, motherboard) -> motherboardMap.get(name).setName(name));
+
             // Add each Motherboard to the Motherboard list
             motherboardMap.forEach((name, motherboard) -> MotherboardList.addMotherboard(motherboard));
 
@@ -159,6 +169,8 @@ public abstract class DataStorage {
 
             Map<String, PSU> psuMap = GSON.fromJson(json, new TypeToken<Map<String, PSU>>() {
             }.getType());
+
+            psuMap.forEach((name, psu) -> psuMap.get(name).setName(name));
 
             // Add each PSU to the PSU list
             psuMap.forEach((name, psu) -> PSUList.addPSU(psu));
@@ -179,6 +191,8 @@ public abstract class DataStorage {
             Map<String, RAM> ramMap = GSON.fromJson(json, new TypeToken<Map<String, RAM>>() {
             }.getType());
 
+            ramMap.forEach((name, ram) -> ramMap.get(name).setName(name));
+
             // Add each RAM to the RAM list
             ramMap.forEach((name, ram) -> RAMList.addRAM(ram));
 
@@ -197,6 +211,8 @@ public abstract class DataStorage {
 
             Map<String, Storage> storageMap = GSON.fromJson(json, new TypeToken<Map<String, Storage>>() {
             }.getType());
+
+            storageMap.forEach((name, storage) -> storageMap.get(name).setName(name));
 
             // Add each Storage to the Storage list
             storageMap.forEach((name, storage) -> StorageList.addStorage(storage));

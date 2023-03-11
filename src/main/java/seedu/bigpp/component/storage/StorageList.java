@@ -8,4 +8,8 @@ public abstract class StorageList {
     public static void addStorage(Storage storage) {
         storageList.add(storage);
     }
+
+    public static ArrayList<Storage> getStorageList() {
+        return storageList;
+    }
 }

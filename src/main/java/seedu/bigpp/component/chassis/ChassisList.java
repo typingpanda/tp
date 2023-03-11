@@ -8,4 +8,8 @@ public abstract class ChassisList {
     public static void addChassis(Chassis chassis) {
         chassisList.add(chassis);
     }
+
+    public static ArrayList<Chassis> getChassisList() {
+        return chassisList;
+    }
 }

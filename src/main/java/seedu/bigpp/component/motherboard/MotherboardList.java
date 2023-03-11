@@ -8,4 +8,8 @@ public abstract class MotherboardList {
     public static void addMotherboard(Motherboard motherboard) {
         motherboardList.add(motherboard);
     }
+
+    public static ArrayList<Motherboard> getMotherboardList() {
+        return motherboardList;
+    }
 }

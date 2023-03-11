@@ -8,4 +8,8 @@ public abstract class PSUList {
     public static void addPSU(PSU psu) {
         psuList.add(psu);
     }
+
+    public static ArrayList<PSU> getPsuList() {
+        return psuList;
+    }
 }

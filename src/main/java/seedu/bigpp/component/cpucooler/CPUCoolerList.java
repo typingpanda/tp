@@ -8,4 +8,8 @@ public abstract class CPUCoolerList {
     public static void addCPUCooler(CPUCooler cpuCooler) {
         cpuCoolerList.add(cpuCooler);
     }
+
+    public static ArrayList<CPUCooler> getCPUCoolerList() {
+        return cpuCoolerList;
+    }
 }

@@ -8,4 +8,8 @@ public abstract class RAMList {
     public static void addRAM(RAM ram) {
         ramList.add(ram);
     }
+
+    public static ArrayList<RAM> getRamList() {
+        return ramList;
+    }
 }
