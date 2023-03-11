@@ -1,14 +1,7 @@
 package seedu.bigpp.datastorage;
 
-import static seedu.bigpp.ui.UI.out;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Map;
-
 import seedu.bigpp.component.chassis.Chassis;
 import seedu.bigpp.component.chassis.ChassisList;
 import seedu.bigpp.component.cpu.CPU;
@@ -25,6 +18,13 @@ import seedu.bigpp.component.ram.RAM;
 import seedu.bigpp.component.ram.RAMList;
 import seedu.bigpp.component.storage.Storage;
 import seedu.bigpp.component.storage.StorageList;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Map;
+
+import static seedu.bigpp.ui.UI.out;
 
 public abstract class DataStorage {
     private static final String CHASSIS_PATH = "./appdata/chassis/chassis.json";

@@ -2,9 +2,9 @@ package seedu.bigpp;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.commoncommand.ByeCommand;
+import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.parser.Parser;
 import seedu.bigpp.ui.UI;
-import seedu.bigpp.datastorage.DataStorage;
 
 public class BigPP {
 
