@@ -18,7 +18,7 @@ public class PCBuilderMenu extends Menu {
 
     public void printMenu() {
         out.println("PC builder");
-        out.println(PCList.getPC(pcIndex).printComponents());
+        out.println(PCList.getPC(pcIndex).viewComponents());
         out.println("Edit name");
         out.println("Set budget");
         out.println("back");

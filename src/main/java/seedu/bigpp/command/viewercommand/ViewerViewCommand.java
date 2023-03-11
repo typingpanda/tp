@@ -11,12 +11,14 @@ public class ViewerViewCommand extends Command {
     }
 
     /**
+     *Display all the components of the PC of a given index
      *
+     * @return the components of the PC of that index
      */
     @Override
     public String executeCommand() {
         String index = super.getArguments();
         PC pc = (PCList.getList()).get(Integer.parseInt(index) - 1);
-        return pc.printComponents();
+        return pc.viewComponents();
     }
 }

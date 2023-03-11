@@ -103,7 +103,7 @@ public class PC {
     /**
      * Method to print all the components of the PC.
      */
-    public String printComponents() {
+    public String viewComponents() {
         String componentString = "";
         componentString += (buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + '\n');
         componentString += ("Components:" + '\n');
