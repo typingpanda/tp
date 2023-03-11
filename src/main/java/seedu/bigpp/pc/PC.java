@@ -20,6 +20,8 @@ public class PC {
     private Storage storage = null;
     private PSU psu = null;
 
+    private int budget;
+
     public PC(String name, Boolean isPrebuilt) {
         this.name = name;
         // this.cpu = new CPU();
@@ -53,6 +55,14 @@ public class PC {
     public void setPsu(PSU psu) {
         this.psu = psu;
     }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
+    }
 
     public String getName() {
         return name;
@@ -60,6 +70,10 @@ public class PC {
 
     public boolean getIsPreBuilt() {
         return isPrebuilt;
+    }
+ 
+    public int getBudget() {
+        return budget;
     }
 
     /**
@@ -76,6 +90,7 @@ public class PC {
         }
         return totalCost;
     }
+    
 
     public String buildType(Boolean isPrebuilt) {
         if (isPrebuilt) {
@@ -92,14 +107,6 @@ public class PC {
         String componentString = "";
         componentString += (buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + '\n');
         componentString += ("Components:" + '\n');
-        //        ArrayList<String> componentNames = new ArrayList<>();
-        //        componentNames.add("CPU        ");
-        //        componentNames.add("CPU Cooler ");
-        //        componentNames.add("GPU        ");
-        //        componentNames.add("Motherboard");
-        //        componentNames.add("RAM        ");
-        //        componentNames.add("Storage    ");
-        //        componentNames.add("PSU        ");
         String[] componentNames = { "CPU        ", "CPU Cooler ", "GPU        ", "Motherboard", "RAM        ",
             "Storage    ", "PSU        " };
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu };
