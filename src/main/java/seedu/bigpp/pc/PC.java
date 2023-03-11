@@ -9,10 +9,6 @@ import seedu.bigpp.component.psu.PSU;
 import seedu.bigpp.component.ram.RAM;
 import seedu.bigpp.component.storage.Storage;
 
-import java.util.ArrayList;
-
-import static seedu.bigpp.ui.UI.out;
-
 public class PC {
     private String name;
     private Boolean isPrebuilt;
@@ -66,15 +62,13 @@ public class PC {
         return isPrebuilt;
     }
 
-
     /**
      * Gets the cost of each of the components in the PC and returns the total.
-     *
      * @return totalCost
      */
     public float getCost() {
         float totalCost = 0.00F;
-        Component[] components = {cpu, cpuCooler, gpu, motherboard, ram, storage, psu};
+        Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu };
         for (Component component : components) {
             if (component != null) {
                 totalCost += component.getPrice();
@@ -98,15 +92,16 @@ public class PC {
         String componentString = "";
         componentString += (buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + '\n');
         componentString += ("Components:" + '\n');
-        String[] componentNames = {"CPU        ", "CPU Cooler ", "GPU        ", "Motherboard", "RAM        ", "Storage    ", "PSU        "};
-        Component[] components = {cpu, cpuCooler, gpu, motherboard, ram, storage, psu};
+        String[] componentNames = { "CPU        ", "CPU Cooler ", "GPU        ", "Motherboard", "RAM        ",
+                "Storage    ", "PSU        " };
+        Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu };
         int index = 0;
         for (Component component : components) {
             if (component != null) {
-//                out.println(componentNames[index] + component.getName());
+                //                out.println(componentNames[index] + component.getName());
                 componentString += (componentNames[index] + component.getName() + '\n');
             } else {
-//                out.println(componentNames[index] + ": - Not Selected -");
+                //                out.println(componentNames[index] + ": - Not Selected -");
                 componentString += (componentNames[index] + ": - Not Selected -" + '\n');
             }
             index++;

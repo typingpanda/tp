@@ -3,11 +3,10 @@ package seedu.bigpp.parser;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
+import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
 import seedu.bigpp.ui.UI;
-
-import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 
 public class Parser {
 

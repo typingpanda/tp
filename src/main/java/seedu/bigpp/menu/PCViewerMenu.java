@@ -1,7 +1,8 @@
 package seedu.bigpp.menu;
 
-import static seedu.bigpp.ui.UI.out;
 import seedu.bigpp.pc.PCList;
+
+import static seedu.bigpp.ui.UI.out;
 
 public class PCViewerMenu extends Menu {
 

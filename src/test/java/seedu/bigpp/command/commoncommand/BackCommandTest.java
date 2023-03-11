@@ -1,8 +1,9 @@
 package seedu.bigpp.command.commoncommand;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import seedu.bigpp.ui.UI;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BackCommandTest {
 
@@ -12,7 +13,7 @@ public class BackCommandTest {
         UI.setPCViewerMode();
         String PCViewerBackCommandResult = backCommand.executeCommand();
         assertEquals("Cannot go back from PCViewer", PCViewerBackCommandResult);
-        
+
         UI.setPCBuilderMode(null);
         String PCBuilderBackCommandResult = backCommand.executeCommand();
         assertEquals("returned to PCViewer", PCBuilderBackCommandResult);
