@@ -1,13 +1,11 @@
 package seedu.bigpp.datastorage;
 
-import static seedu.bigpp.ui.UI.out;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Map;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 
 import seedu.bigpp.component.chassis.Chassis;
 import seedu.bigpp.component.chassis.ChassisList;
@@ -27,17 +25,16 @@ import seedu.bigpp.component.storage.Storage;
 import seedu.bigpp.component.storage.StorageList;
 
 public abstract class DataStorage {
-    private static final String CHASSIS_PATH = "./appdata/chassis/chassis.json";
-    private static final String CPU_PATH = "./appdata/cpu/cpu.json";
-    private static final String CPU_COOLER_PATH = "./appdata/cpucooler/cpucooler.json";
-    private static final String GPU_PATH = "./appdata/gpu/gpu.json";
-    private static final String MOTHERBOARD_PATH = "./appdata/motherboard/motherboard.json";
-    private static final String PSU_PATH = "./appdata/psu/psu.json";
-    private static final String RAM_PATH = "./appdata/ram/ram.json";
-    private static final String STORAGE_PATH = "./appdata/storage/storage.json";
+    private static final String CHASSIS_PATH = "chassis.json";
+    private static final String CPU_PATH = "cpu.json";
+    private static final String CPU_COOLER_PATH = "cpucooler.json";
+    private static final String GPU_PATH = "gpu.json";
+    private static final String MOTHERBOARD_PATH = "motherboard.json";
+    private static final String PSU_PATH = "psu.json";
+    private static final String RAM_PATH = "ram.json";
+    private static final String STORAGE_PATH = "storage.json";
 
-    private static final String PREBUILT_PATH = "./appdata/prebuilt/prebuilt.json";
-    private static final String USER_PATH = "./appdata/user/user.json";
+    private static final String PREBUILT_PATH = "prebuilt.json";
 
     private static final Gson GSON = new Gson();
 
@@ -59,167 +56,160 @@ public abstract class DataStorage {
      * Loads all the chassis from the json file into ChassisList.
      */
     public static void loadChassis() {
-        try {
-            String json = Files.readString(Paths.get(CHASSIS_PATH));
+        ClassLoader classLoader = DataStorage.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(CHASSIS_PATH);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            Map<String, Chassis> chassisMap = GSON.fromJson(json, new TypeToken<Map<String, Chassis>>() {
-            }.getType());
+        // read entire file into string
+        String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-            chassisMap.forEach((name, chassis) -> chassisMap.get(name).setName(name));
+        Map<String, Chassis> chassisMap = GSON.fromJson(json, new TypeToken<Map<String, Chassis>>() {
+        }.getType());
 
-            // Add each chassis to the chassis list
-            chassisMap.forEach((name, chassis) -> ChassisList.addChassis(chassis));
+        chassisMap.forEach((name, chassis) -> chassisMap.get(name).setName(name));
 
-        } catch (IOException e) {
-            out.println(CHASSIS_PATH + " not found");
-            System.exit(1);
-        }
+        // Add each chassis to the chassis list
+        chassisMap.forEach((name, chassis) -> ChassisList.addChassis(chassis));
     }
 
     /**
-     * Loads all the CPU from the json file into CPUList.
+     * Loads all the CPUs from the json file into CPUList.
      */
     public static void loadCPU() {
-        try {
-            String json = Files.readString(Paths.get(CPU_PATH));
+        ClassLoader classLoader = DataStorage.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(CPU_PATH);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            Map<String, CPU> cpuMap = GSON.fromJson(json, new TypeToken<Map<String, CPU>>() {
-            }.getType());
+        // read entire file into string
+        String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-            cpuMap.forEach((name, cpu) -> cpuMap.get(name).setName(name));
+        Map<String, CPU> cpuMap = GSON.fromJson(json, new TypeToken<Map<String, CPU>>() {
+        }.getType());
 
-            // Add each CPU to the CPU list
-            cpuMap.forEach((name, cpu) -> CPUList.addCPU(cpu));
+        cpuMap.forEach((name, cpu) -> cpuMap.get(name).setName(name));
 
-        } catch (IOException e) {
-            out.println(CPU_PATH + " not found");
-            System.exit(1);
-        }
+        // Add each cpu to the cpu list
+        cpuMap.forEach((name, cpu) -> CPUList.addCPU(cpu));
     }
 
     /**
-     * Loads all the CPU Cooler from the json file into CPUCoolerList.
+     * Loads all the CPU coolers from the json file into CPUCoolerList.
      */
     public static void loadCPUCooler() {
-        try {
-            String json = Files.readString(Paths.get(CPU_COOLER_PATH));
+        ClassLoader classLoader = DataStorage.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(CPU_COOLER_PATH);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            Map<String, CPUCooler> cpuCoolerMap = GSON.fromJson(json, new TypeToken<Map<String, CPUCooler>>() {
-            }.getType());
+        // read entire file into string
+        String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-            cpuCoolerMap.forEach((name, cpuCooler) -> cpuCoolerMap.get(name).setName(name));
+        Map<String, CPUCooler> cpuCoolerMap = GSON.fromJson(json, new TypeToken<Map<String, CPUCooler>>() {
+        }.getType());
 
-            // Add each CPU Cooler to the CPU Cooler list
-            cpuCoolerMap.forEach((name, cpuCooler) -> CPUCoolerList.addCPUCooler(cpuCooler));
+        cpuCoolerMap.forEach((name, cpuCooler) -> cpuCoolerMap.get(name).setName(name));
 
-        } catch (IOException e) {
-            out.println(CPU_COOLER_PATH + " not found");
-            System.exit(1);
-        }
+        // Add each cpu cooler to the cpu cooler list
+        cpuCoolerMap.forEach((name, cpuCooler) -> CPUCoolerList.addCPUCooler(cpuCooler));
     }
 
     /**
-     * Loads all the GPU from the json file into GPUList.
+     * Loads all the GPUs from the json file into GPUList.
      */
     public static void loadGPU() {
-        try {
-            String json = Files.readString(Paths.get(GPU_PATH));
+        ClassLoader classLoader = DataStorage.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(GPU_PATH);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            Map<String, GPU> gpuMap = GSON.fromJson(json, new TypeToken<Map<String, GPU>>() {
-            }.getType());
+        // read entire file into string
+        String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-            gpuMap.forEach((name, gpu) -> gpuMap.get(name).setName(name));
+        Map<String, GPU> gpuMap = GSON.fromJson(json, new TypeToken<Map<String, GPU>>() {
+        }.getType());
 
-            // Add each GPU to the GPU list
-            gpuMap.forEach((name, gpu) -> GPUList.addGPU(gpu));
+        gpuMap.forEach((name, gpu) -> gpuMap.get(name).setName(name));
 
-        } catch (IOException e) {
-            out.println(GPU_PATH + " not found");
-            System.exit(1);
-        }
+        // Add each gpu to the gpu list
+        gpuMap.forEach((name, gpu) -> GPUList.addGPU(gpu));
     }
 
     /**
-     * Loads all the Motherboard from the json file into MotherboardList.
+     * Loads all the motherboards from the json file into MotherboardList.
      */
     public static void loadMotherboard() {
-        try {
-            String json = Files.readString(Paths.get(MOTHERBOARD_PATH));
+        ClassLoader classLoader = DataStorage.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(MOTHERBOARD_PATH);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            Map<String, Motherboard> motherboardMap = GSON.fromJson(json, new TypeToken<Map<String, Motherboard>>() {
-            }.getType());
+        // read entire file into string
+        String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-            motherboardMap.forEach((name, motherboard) -> motherboardMap.get(name).setName(name));
+        Map<String, Motherboard> motherboardMap = GSON.fromJson(json, new TypeToken<Map<String, Motherboard>>() {
+        }.getType());
 
-            // Add each Motherboard to the Motherboard list
-            motherboardMap.forEach((name, motherboard) -> MotherboardList.addMotherboard(motherboard));
+        motherboardMap.forEach((name, motherboard) -> motherboardMap.get(name).setName(name));
 
-        } catch (IOException e) {
-            out.println(MOTHERBOARD_PATH + " not found");
-            System.exit(1);
-        }
+        // Add each motherboard to the motherboard list
+        motherboardMap.forEach((name, motherboard) -> MotherboardList.addMotherboard(motherboard));
     }
 
     /**
-     * Loads all the PSU from the json file into PSUList.
+     * Loads all the PSUs from the json file into PSUList.
      */
     public static void loadPSU() {
-        try {
-            String json = Files.readString(Paths.get(PSU_PATH));
+        ClassLoader classLoader = DataStorage.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(PSU_PATH);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            Map<String, PSU> psuMap = GSON.fromJson(json, new TypeToken<Map<String, PSU>>() {
-            }.getType());
+        // read entire file into string
+        String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-            psuMap.forEach((name, psu) -> psuMap.get(name).setName(name));
+        Map<String, PSU> psuMap = GSON.fromJson(json, new TypeToken<Map<String, PSU>>() {
+        }.getType());
 
-            // Add each PSU to the PSU list
-            psuMap.forEach((name, psu) -> PSUList.addPSU(psu));
+        psuMap.forEach((name, psu) -> psuMap.get(name).setName(name));
 
-        } catch (IOException e) {
-            out.println(PSU_PATH + " not found");
-            System.exit(1);
-        }
+        // Add each psu to the psu list
+        psuMap.forEach((name, psu) -> PSUList.addPSU(psu));
     }
 
     /**
-     * Loads all the RAM from the json file into RAMList.
+     * Loads all the RAMs from the json file into RAMList.
      */
     public static void loadRAM() {
-        try {
-            String json = Files.readString(Paths.get(RAM_PATH));
+        ClassLoader classLoader = DataStorage.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(RAM_PATH);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            Map<String, RAM> ramMap = GSON.fromJson(json, new TypeToken<Map<String, RAM>>() {
-            }.getType());
+        // read entire file into string
+        String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-            ramMap.forEach((name, ram) -> ramMap.get(name).setName(name));
+        Map<String, RAM> ramMap = GSON.fromJson(json, new TypeToken<Map<String, RAM>>() {
+        }.getType());
 
-            // Add each RAM to the RAM list
-            ramMap.forEach((name, ram) -> RAMList.addRAM(ram));
+        ramMap.forEach((name, ram) -> ramMap.get(name).setName(name));
 
-        } catch (IOException e) {
-            out.println(RAM_PATH + " not found");
-            System.exit(1);
-        }
+        // Add each ram to the ram list
+        ramMap.forEach((name, ram) -> RAMList.addRAM(ram));
     }
 
     /**
-     * Loads all the Storage from the json file into StorageList.
+     * Loads all the storage devices from the json file into StorageList.
      */
     public static void loadStorage() {
-        try {
-            String json = Files.readString(Paths.get(STORAGE_PATH));
+        ClassLoader classLoader = DataStorage.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(STORAGE_PATH);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            Map<String, Storage> storageMap = GSON.fromJson(json, new TypeToken<Map<String, Storage>>() {
-            }.getType());
+        // read entire file into string
+        String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-            storageMap.forEach((name, storage) -> storageMap.get(name).setName(name));
+        Map<String, Storage> storageMap = GSON.fromJson(json, new TypeToken<Map<String, Storage>>() {
+        }.getType());
 
-            // Add each Storage to the Storage list
-            storageMap.forEach((name, storage) -> StorageList.addStorage(storage));
+        storageMap.forEach((name, storage) -> storageMap.get(name).setName(name));
 
-        } catch (IOException e) {
-            out.println(STORAGE_PATH + " not found");
-            System.exit(1);
-        }
+        // Add each ram to the ram list
+        storageMap.forEach((name, storage) -> StorageList.addStorage(storage));
     }
+
 }

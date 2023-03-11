@@ -45,3 +45,23 @@ checkstyle {
 run{
     standardInput = System.in
 }
+
+jar {
+    manifest {
+        attributes "Main-Class": "seedu.bigpp.BigPP"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            resources {
+                srcDir "src/main/java/seedu/bigpp/resources"
+            }    
+        }
+    }
+}
