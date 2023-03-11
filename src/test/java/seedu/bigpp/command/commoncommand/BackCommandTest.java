@@ -13,7 +13,8 @@ public class BackCommandTest {
         String PCViewerBackCommandResult = backCommand.executeCommand();
         assertEquals("Cannot go back from PCViewer", PCViewerBackCommandResult);
         
-        UI.setPCBuilderMode(null);
+        //edits first pc in pclist
+        UI.setPCBuilderMode(0);
         String PCBuilderBackCommandResult = backCommand.executeCommand();
         assertEquals("returned to PCViewer", PCBuilderBackCommandResult);
     }

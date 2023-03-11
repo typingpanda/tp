@@ -14,9 +14,9 @@ public abstract class UI {
     private static UIState uiState = UIState.PCVIEWER;
 
     private static PCViewerMenu viewerMenu = new PCViewerMenu();
-    private static PCBuilderMenu builderMenu = null;
-
+    
     private static Scanner in = new Scanner(System.in);
+    public static PCBuilderMenu builderMenu = null;
     public static PrintStream out = System.out;
 
     public static UIState getUiState() {
@@ -65,8 +65,8 @@ public abstract class UI {
         builderMenu = null;
     }
 
-    public static void setPCBuilderMode(PC pc) {
+    public static void setPCBuilderMode(int pcIndex) {
         uiState = UIState.PCBUILDER;
-        builderMenu = new PCBuilderMenu(pc);
+        builderMenu = new PCBuilderMenu(pcIndex);
     }
 }

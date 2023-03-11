@@ -10,6 +10,8 @@ public class PC {
 
     private CPU cpu = null;
 
+    private int budget;
+
     public PC(String name, Boolean isPrebuilt) {
         this.name = name;
         // this.cpu = new CPU();
@@ -26,6 +28,14 @@ public class PC {
 
     public boolean getIsPreBuilt() {
         return isPrebuilt;
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
     }
 
     public void setCPU(CPU cpu) {

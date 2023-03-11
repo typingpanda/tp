@@ -1,8 +1,8 @@
 package seedu.bigpp.command.buildercommand;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.builder.Builder;
-import seedu.bigpp.builder.CurrentBuilder;
+import seedu.bigpp.pc.PCList;
+import seedu.bigpp.ui.UI;;
 
 public class BuilderEditNameCommand extends Command {
 
@@ -13,8 +13,8 @@ public class BuilderEditNameCommand extends Command {
     @Override
     public String executeCommand() {
         String name = super.getArguments();
-        Builder currentBuilder = CurrentBuilder.getBuilder();
-        currentBuilder.setName(name);
+        int pcIndex = UI.builderMenu.getPCIndex();
+        PCList.getPC(pcIndex).setName(name);
         return "Current build name is now: " + name;
     }
 }
