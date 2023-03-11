@@ -7,10 +7,10 @@ public class CPU extends Component {
     private int threads;
     private float baseClock;
     private float boostClock;
-    private int power;
+    private float power;
     private String socket;
 
-    public CPU(String name, float price, int cores, int threads, float baseClock, float boostClock, int power,
+    public CPU(String name, float price, int cores, int threads, float baseClock, float boostClock, float power,
             String brand, String socket) {
         super.setName(name);
         super.setBrand(brand);
@@ -39,7 +39,7 @@ public class CPU extends Component {
         return this.boostClock;
     }
 
-    public int getPower() {
+    public float getPower() {
         return this.power;
     }
 
@@ -63,7 +63,7 @@ public class CPU extends Component {
         this.boostClock = boostClock;
     }
 
-    public void setPower(int power) {
+    public void setPower(float power) {
         this.power = power;
     }
 

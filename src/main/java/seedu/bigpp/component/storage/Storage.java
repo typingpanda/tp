@@ -5,9 +5,9 @@ import seedu.bigpp.component.Component;
 public class Storage extends Component {
     private String type;
     private int size; // in GB
-    private int power;
+    private float power;
 
-    public Storage(String name, String brand, float price, String type, int size, int power) {
+    public Storage(String name, String brand, float price, String type, int size, float power) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
@@ -33,11 +33,11 @@ public class Storage extends Component {
         this.size = size;
     }
 
-    public int getPower() {
+    public float getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(float power) {
         this.power = power;
     }
 

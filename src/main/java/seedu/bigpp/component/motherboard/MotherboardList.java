@@ -3,5 +3,9 @@ package seedu.bigpp.component.motherboard;
 import java.util.ArrayList;
 
 public abstract class MotherboardList {
-    private ArrayList<Motherboard> motherboardList = new ArrayList<>();
+    private static ArrayList<Motherboard> motherboardList = new ArrayList<>();
+
+    public static void addMotherboard(Motherboard motherboard) {
+        motherboardList.add(motherboard);
+    }
 }

@@ -5,9 +5,9 @@ import seedu.bigpp.component.Component;
 public class Motherboard extends Component {
     private String formFactor;
     private String socket;
-    private int power;
+    private float power;
 
-    public Motherboard(String name, String brand, float price, String formFactor, String socket, int power) {
+    public Motherboard(String name, String brand, float price, String formFactor, String socket, float power) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
@@ -32,11 +32,11 @@ public class Motherboard extends Component {
         this.socket = socket;
     }
 
-    public int getPower() {
+    public float getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(float power) {
         this.power = power;
     }
 

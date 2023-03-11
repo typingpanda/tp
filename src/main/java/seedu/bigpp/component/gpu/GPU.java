@@ -3,10 +3,10 @@ package seedu.bigpp.component.gpu;
 import seedu.bigpp.component.Component;
 
 public class GPU extends Component {
-    private int power;
+    private float power;
     private String size;
 
-    public GPU(String name, String brand, float price, int power, String size) {
+    public GPU(String name, String brand, float price, float power, String size) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
@@ -14,7 +14,7 @@ public class GPU extends Component {
         this.size = size;
     }
 
-    public int getPower() {
+    public float getPower() {
         return power;
     }
 
@@ -22,7 +22,7 @@ public class GPU extends Component {
         return size;
     }
 
-    public void setPower(int power) {
+    public void setPower(float power) {
         this.power = power;
     }
 

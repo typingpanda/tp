@@ -5,9 +5,9 @@ import seedu.bigpp.component.Component;
 public class CPUCooler extends Component {
     private int rpm;
     private float noise;
-    private int power;
+    private float power;
 
-    public CPUCooler(String name, String brand, float price, int rpm, float noise, int power) {
+    public CPUCooler(String name, String brand, float price, int rpm, float noise, float power) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
@@ -24,7 +24,7 @@ public class CPUCooler extends Component {
         return noise;
     }
 
-    public int getPower() {
+    public float getPower() {
         return power;
     }
 
@@ -36,7 +36,7 @@ public class CPUCooler extends Component {
         this.noise = noise;
     }
 
-    public void setPower(int power) {
+    public void setPower(float power) {
         this.power = power;
     }
 

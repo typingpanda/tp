@@ -4,6 +4,7 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.parser.Parser;
 import seedu.bigpp.ui.UI;
+import seedu.bigpp.datastorage.DataStorage;
 
 public class BigPP {
 
@@ -15,7 +16,9 @@ public class BigPP {
     }
 
     public void run() {
-        UI.updateUI();
+        DataStorage.loadAll();
+        UI.showWelcome();
+        UI.updateUI(true);
         runLoopUntilExit();
     }
 
@@ -28,7 +31,7 @@ public class BigPP {
             String userInput = UI.getInput();
             command = new Parser().parseCommand(userInput);
             String result = command.executeCommand();
-            UI.updateUI();
+            UI.updateUI(false);
             UI.showResult(result);
         } while (!(command instanceof ByeCommand));
     }

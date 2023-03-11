@@ -6,9 +6,9 @@ public class RAM extends Component {
     private int memory;
     private int sticks;
     private int speed;
-    private int power;
+    private float power;
 
-    public RAM(String name, String brand, float price, int memory, int sticks, int speed, int power) {
+    public RAM(String name, String brand, float price, int memory, int sticks, int speed, float power) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
@@ -42,11 +42,11 @@ public class RAM extends Component {
         this.speed = speed;
     }
 
-    public int getPower() {
+    public float getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(float power) {
         this.power = power;
     }
 

@@ -32,8 +32,10 @@ public abstract class UI {
         out.println("Welcome to BigPP!");
     }
 
-    public static void updateUI() {
-        clearTerminal();
+    public static void updateUI(boolean isInitial) {
+        if (!isInitial) {
+            clearTerminal();
+        }
         out.println(DIVIDER);
 
         switch (uiState) {

@@ -5,9 +5,9 @@ import seedu.bigpp.component.Component;
 public class PSU extends Component {
     private String efficiency;
     private String formFactor;
-    private int power;
+    private float power;
 
-    public PSU(String name, float price, String brand, String efficiency, String formFactor, int power) {
+    public PSU(String name, float price, String brand, String efficiency, String formFactor, float power) {
         super.setName(name);
         super.setPrice(price);
         super.setBrand(brand);
@@ -32,11 +32,11 @@ public class PSU extends Component {
         this.formFactor = formFactor;
     }
 
-    public int getPower() {
+    public float getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(float power) {
         this.power = power;
     }
 
