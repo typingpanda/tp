@@ -6,6 +6,7 @@ import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
+import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.ui.UI;
 
 import seedu.bigpp.command.viewercommand.ViewerAddCommand;
@@ -61,8 +62,10 @@ public class Parser {
         commandWord = commandWord.toLowerCase();
 
         switch (commandWord) {
-        case "editname":
+        case "name":
             return new BuilderEditNameCommand(arguments);
+        case "budget":
+            return new BuilderEditBudgetCommand(arguments);
         default:
             return null;
         }
