@@ -2,11 +2,8 @@ package seedu.bigpp.component.cpu;
 
 import java.util.ArrayList;
 
-public class CPUList {
+public abstract class CPUList {
 
-    private ArrayList<CPU> cpuList;
+    private ArrayList<CPU> cpuList = new ArrayList<>();
 
-    public CPUList() {
-        this.cpuList = new ArrayList<>();
-    }
 }

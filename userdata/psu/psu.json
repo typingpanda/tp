@@ -1,11 +1,9 @@
 {
-	"PSUS": {
-		"SeaSonic FOCUS PLUS 850 Gold": {
-			"brand": "SeaSonic",
-			"efficiency": "Gold",
-			"form_factor": "atx",
-			"power": 850,
-			"price": 159.94
-		}
+	"SeaSonic FOCUS PLUS 850 Gold": {
+		"brand": "SeaSonic",
+		"efficiency": "Gold",
+		"form_factor": "atx",
+		"power": 850,
+		"price": 159.94
 	}
 }

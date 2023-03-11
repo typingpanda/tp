@@ -1,124 +1,122 @@
 {
-	"CPUS": {
-		"Intel Core i3-10100": {
-			"Price": 99.5,
-			"Cores": 4,
-			"Threads": 8,
-			"Base Clock": 3.6,
-			"Boost Clock": 4.3,
-			"TDP": 65,
-			"Brand": "Intel",
-			"Socket": "LGA1200"
-		},
-		"Intel Core i5-10600K": {
-			"Price": 182.47,
-			"Cores": 6,
-			"Threads": 12,
-			"Base Clock": 4.1,
-			"Boost Clock": 4.8,
-			"TDP": 125,
-			"Brand": "Intel",
-			"Socket": "LGA1200"
-		},
-		"Intel Core i7-10700K": {
-			"Price": 269.95,
-			"Cores": 8,
-			"Threads": 16,
-			"Base Clock": 3.8,
-			"Boost Clock": 5.1,
-			"TDP": 125,
-			"Brand": "Intel",
-			"Socket": "LGA1200"
-		},
-		"Intel Core i3-12100F": {
-			"Price": 106.93,
-			"Cores": 4,
-			"Threads": 8,
-			"Base Clock": 3.3,
-			"Boost Clock": 4.3,
-			"TDP": 58,
-			"Brand": "Intel",
-			"Socket": "LGA1700"
-		},
-		"Intel Core i5-12600K": {
-			"Price": 213.82,
-			"Cores": 10,
-			"Threads": 20,
-			"Base Clock": 3.7,
-			"Boost Clock": 4.9,
-			"TDP": 125,
-			"Brand": "Intel",
-			"Socket": "LGA1700"
-		},
-		"Intel Core i7-12700K": {
-			"Price": 312.88,
-			"Cores": 12,
-			"Threads": 24,
-			"Base Clock": 3.6,
-			"Boost Clock": 5.0,
-			"TDP": 125,
-			"Brand": "Intel",
-			"Socket": "LGA1700"
-		},
-		"AMD Ryzen 3 3200G": {
-			"Price": 97.5,
-			"Cores": 4,
-			"Threads": 4,
-			"Base Clock": 3.6,
-			"Boost Clock": 4.0,
-			"TDP": 65,
-			"Brand": "AMD",
-			"Socket": "AM4"
-		},
-		"AMD Ryzen 5 5600X": {
-			"Price": 156.64,
-			"Cores": 6,
-			"Threads": 12,
-			"Base Clock": 3.7,
-			"Boost Clock": 4.6,
-			"TDP": 65,
-			"Brand": "AMD",
-			"Socket": "AM4"
-		},
-		"AMD Ryzen 7 5800X": {
-			"Price": 211.33,
-			"Cores": 8,
-			"Threads": 16,
-			"Base Clock": 3.8,
-			"Boost Clock": 4.7,
-			"TDP": 105,
-			"Brand": "AMD",
-			"Socket": "AM4"
-		},
-		"AMD Ryzen 5 7600X": {
-			"Price": 240.86,
-			"Cores": 6,
-			"Threads": 12,
-			"Base Clock": 4.7,
-			"Boost Clock": 5.3,
-			"TDP": 105,
-			"Brand": "AMD",
-			"Socket": "AM5"
-		},
-		"AMD Ryzen 7 7700X": {
-			"Price": 341.29,
-			"Cores": 8,
-			"Threads": 16,
-			"Base Clock": 4.5,
-			"Boost Clock": 5.4,
-			"TDP": 105,
-			"Brand": "AMD",
-			"Socket": "AM5"
-		},
-		"AMD Ryzen 9 7950X": {
-			"Price": 589.0,
-			"Cores": 16,
-			"Threads": 32,
-			"Base Clock": 4.5,
-			"Boost Clock": 5.7,
-			"TDP": 170,
-			"Brand": "AMD",
-			"Socket": "AM5"
-		}
+	"Intel core i3-10100": {
+		"price": 99.5,
+		"cores": 4,
+		"threads": 8,
+		"base clock": 3.6,
+		"boost clock": 4.3,
+		"power": 65,
+		"brand": "Intel",
+		"socket": "LGA1200"
+	},
+	"Intel core i5-10600k": {
+		"price": 182.47,
+		"cores": 6,
+		"threads": 12,
+		"base clock": 4.1,
+		"boost clock": 4.8,
+		"power": 125,
+		"brand": "Intel",
+		"socket": "LGA1200"
+	},
+	"Intel core i7-10700k": {
+		"price": 269.95,
+		"cores": 8,
+		"threads": 16,
+		"base clock": 3.8,
+		"boost clock": 5.1,
+		"power": 125,
+		"brand": "Intel",
+		"socket": "LGA1200"
+	},
+	"Intel core i3-12100f": {
+		"price": 106.93,
+		"cores": 4,
+		"threads": 8,
+		"base clock": 3.3,
+		"boost clock": 4.3,
+		"power": 58,
+		"brand": "Intel",
+		"socket": "LGA1700"
+	},
+	"Intel core i5-12600k": {
+		"price": 213.82,
+		"cores": 10,
+		"threads": 20,
+		"base clock": 3.7,
+		"boost clock": 4.9,
+		"power": 125,
+		"brand": "Intel",
+		"socket": "LGA1700"
+	},
+	"Intel core i7-12700k": {
+		"price": 312.88,
+		"cores": 12,
+		"threads": 24,
+		"base clock": 3.6,
+		"boost clock": 5.0,
+		"power": 125,
+		"brand": "Intel",
+		"socket": "LGA1700"
+	},
+	"AMD Ryzen 3 3200G": {
+		"price": 97.5,
+		"cores": 4,
+		"threads": 4,
+		"base clock": 3.6,
+		"boost clock": 4.0,
+		"power": 65,
+		"brand": "AMD",
+		"socket": "AM4"
+	},
+	"AMD Ryzen 5 5600X": {
+		"price": 156.64,
+		"cores": 6,
+		"threads": 12,
+		"base clock": 3.7,
+		"boost clock": 4.6,
+		"power": 65,
+		"brand": "AMD",
+		"socket": "AM4"
+	},
+	"AMD Ryzen 7 5800X": {
+		"price": 211.33,
+		"cores": 8,
+		"threads": 16,
+		"base clock": 3.8,
+		"boost clock": 4.7,
+		"power": 105,
+		"brand": "AMD",
+		"socket": "AM4"
+	},
+	"AMD Ryzen 5 7600X": {
+		"price": 240.86,
+		"cores": 6,
+		"threads": 12,
+		"base clock": 4.7,
+		"boost clock": 5.3,
+		"power": 105,
+		"brand": "AMD",
+		"socket": "AM5"
+	},
+	"AMD Ryzen 7 7700X": {
+		"price": 341.29,
+		"cores": 8,
+		"threads": 16,
+		"base clock": 4.5,
+		"boost clock": 5.4,
+		"power": 105,
+		"brand": "AMD",
+		"socket": "AM5"
+	},
+	"AMD Ryzen 9 7950X": {
+		"price": 589.0,
+		"cores": 16,
+		"threads": 32,
+		"base clock": 4.5,
+		"boost clock": 5.7,
+		"power": 170,
+		"brand": "AMD",
+		"socket": "AM5"
 	}
 }
