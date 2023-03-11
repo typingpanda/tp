@@ -6,16 +6,16 @@ import seedu.bigpp.ui.UI;
 
 public class BackCommandTest {
 
-        @Test
-        public void executeCommand_backCommand_success() {
-                BackCommand backCommand = new BackCommand();
-                UI.setPCViewerMode();
-                String pcViewerBackCommandResult = backCommand.executeCommand();
-                assertEquals("Cannot go back from PCViewer", pcViewerBackCommandResult);
+    @Test
+    public void executeCommand_backCommand_success() {
+        BackCommand backCommand = new BackCommand();
+        UI.setPCViewerMode();
+        String pcViewerBackCommandResult = backCommand.executeCommand();
+        assertEquals("Cannot go back from PCViewer", pcViewerBackCommandResult);
 
-                //edits first pc in pclist
-                UI.setPCBuilderMode(0);
-                String pcBuilderBackCommandResult = backCommand.executeCommand();
-                assertEquals("returned to PCViewer", pcBuilderBackCommandResult);
-        }
+        //edits first pc in pclist
+        UI.setPCBuilderMode(0);
+        String pcBuilderBackCommandResult = backCommand.executeCommand();
+        assertEquals("returned to PCViewer", pcBuilderBackCommandResult);
+    }
 }
