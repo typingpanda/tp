@@ -11,8 +11,7 @@ public class ViewerViewCommand extends Command {
     }
 
     /**
-     *Display all the components of the PC of a given index
-     *
+     * Display all the components of the PC of a given index
      * @return the components of the PC of that index
      */
     @Override
