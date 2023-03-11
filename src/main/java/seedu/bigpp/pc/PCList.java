@@ -36,4 +36,8 @@ public abstract class PCList {
             out.println("List currently empty!");
         }
     }
+
+    public static PC getPC(int index) {
+        return pcList.get(index);
+    }
 }
