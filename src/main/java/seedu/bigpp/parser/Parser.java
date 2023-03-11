@@ -60,13 +60,14 @@ public class Parser {
 
         String commandWord = userInput.split(" ")[0];
         String arguments = userInput.split(" ")[1];
+        commandWord = commandWord.toLowerCase();
 
         switch (commandWord) {
         case "editname":
             return new BuilderEditNameCommand(arguments);
+        default:
+            return null;
         }
 
-        commandWord = commandWord.toLowerCase();
-        return null;
     }
 }
