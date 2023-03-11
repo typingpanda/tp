@@ -10,6 +10,11 @@ public class BuilderEditNameCommand extends Command {
         super.setArguments(arguments);
     }
 
+    /*
+     * Change the name of the current PC that the builder is working on
+     * 
+     * @return the new name of the PC
+     */
     @Override
     public String executeCommand() {
         String name = super.getArguments();
