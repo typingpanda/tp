@@ -4,15 +4,39 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
 import seedu.bigpp.command.buildercommand.BuilderListComponentCommand;
+import seedu.bigpp.command.commoncommand.BackCommand;
+import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
+import seedu.bigpp.ui.UI;
 
 public class Parser {
 
     public Command parseCommand(String userInput) {
-        return parseBuilderCommand(userInput);
+
+        // try common commands first
+        if (userInput.equals("back")) {
+            return new BackCommand();
+        }
+
+        if (userInput.equals("bye")) {
+            return new ByeCommand();
+        }
+
+        // once common commands are tried, try menu specific commands
+        switch (UI.getUiState()) {
+
+        case PCVIEWER:
+            return parseViewerCommand(userInput);
+
+        case PCBUILDER:
+            return parseBuilderCommand(userInput);
+
+        default:
+            return null;
+        }
     }
 
     private Command parseViewerCommand(String userInput) {
@@ -50,6 +74,5 @@ public class Parser {
         default:
             return null;
         }
-
     }
 }
