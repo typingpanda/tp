@@ -1,16 +1,7 @@
 package seedu.bigpp.component.cpu;
 
-import java.util.ArrayList;
+import seedu.bigpp.component.ComponentList;
 
-public abstract class CPUList {
 
-    private static ArrayList<CPU> cpuList = new ArrayList<>();
-
-    public static void addCPU(CPU cpu) {
-        cpuList.add(cpu);
-    }
-
-    public static ArrayList<CPU> getCpuList() {
-        return cpuList;
-    }
+public class CPUList extends ComponentList<CPU> {
 }

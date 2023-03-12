@@ -1,15 +1,6 @@
 package seedu.bigpp.component.psu;
 
-import java.util.ArrayList;
+import seedu.bigpp.component.ComponentList;
 
-public abstract class PSUList {
-    private static ArrayList<PSU> psuList = new ArrayList<>();
-
-    public static void addPSU(PSU psu) {
-        psuList.add(psu);
-    }
-
-    public static ArrayList<PSU> getPsuList() {
-        return psuList;
-    }
+public class PSUList extends ComponentList<PSU> {
 }

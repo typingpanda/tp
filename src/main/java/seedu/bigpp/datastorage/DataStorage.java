@@ -11,13 +11,21 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
 import seedu.bigpp.component.chassis.Chassis;
+import seedu.bigpp.component.chassis.ChassisList;
 import seedu.bigpp.component.cpu.CPU;
+import seedu.bigpp.component.cpu.CPUList;
 import seedu.bigpp.component.cpucooler.CPUCooler;
+import seedu.bigpp.component.cpucooler.CPUCoolerList;
 import seedu.bigpp.component.gpu.GPU;
+import seedu.bigpp.component.gpu.GPUList;
 import seedu.bigpp.component.motherboard.Motherboard;
+import seedu.bigpp.component.motherboard.MotherboardList;
 import seedu.bigpp.component.psu.PSU;
+import seedu.bigpp.component.psu.PSUList;
 import seedu.bigpp.component.ram.RAM;
+import seedu.bigpp.component.ram.RAMList;
 import seedu.bigpp.component.storage.Storage;
+import seedu.bigpp.component.storage.StorageList;
 
 public abstract class DataStorage {
     public static Map<String, ArrayList> stringToComponentListMap = new HashMap<String, ArrayList>();
@@ -50,14 +58,14 @@ public abstract class DataStorage {
     }
 
     public static void initStringToComponentListMap() {
-        stringToComponentListMap.put("cpu", new ArrayList<CPU>());
-        stringToComponentListMap.put("gpu", new ArrayList<GPU>());
-        stringToComponentListMap.put("chassis", new ArrayList<Chassis>());
-        stringToComponentListMap.put("cpu-cooler", new ArrayList<CPUCooler>());
-        stringToComponentListMap.put("psu", new ArrayList<PSU>());
-        stringToComponentListMap.put("ram", new ArrayList<RAM>());
-        stringToComponentListMap.put("storage", new ArrayList<Storage>());
-        stringToComponentListMap.put("motherboard", new ArrayList<Motherboard>());
+        stringToComponentListMap.put("cpu", new CPUList());
+        stringToComponentListMap.put("gpu", new GPUList());
+        stringToComponentListMap.put("chassis", new ChassisList());
+        stringToComponentListMap.put("cpu-cooler", new CPUCoolerList());
+        stringToComponentListMap.put("psu", new PSUList());
+        stringToComponentListMap.put("ram", new RAMList());
+        stringToComponentListMap.put("storage", new StorageList());
+        stringToComponentListMap.put("motherboard", new MotherboardList());
     }
 
     /**
