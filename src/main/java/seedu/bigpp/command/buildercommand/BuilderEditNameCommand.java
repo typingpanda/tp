@@ -18,6 +18,9 @@ public class BuilderEditNameCommand extends Command {
     @Override
     public String executeCommand() {
         String name = super.getArguments();
+        if (name.equals("")) {
+            return "Please enter a name for your PC";
+        }
         int pcIndex = UI.builderMenu.getPCIndex();
         PCList.getPC(pcIndex).setName(name);
         return "Current build name is now: " + name;

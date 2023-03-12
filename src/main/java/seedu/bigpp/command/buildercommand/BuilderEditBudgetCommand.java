@@ -17,7 +17,15 @@ public class BuilderEditBudgetCommand extends Command {
      */
     @Override
     public String executeCommand() {
+        try {
+            Integer.parseInt(super.getArguments());
+        } catch (NumberFormatException e) {
+            return "Please enter a valid budget as an integer";
+        }
         int budget = Integer.parseInt(super.getArguments());
+        if (budget <= 0) {
+            return "Please enter a valid budget that is greater than 0";
+        }
         int pcIndex = UI.builderMenu.getPCIndex();
         PCList.getPC(pcIndex).setBudget(budget);
         return "Current build budget is now: " + budget;
