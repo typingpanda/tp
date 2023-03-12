@@ -3,14 +3,9 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.component.Component;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.pc.PCList;
-import seedu.bigpp.ui.UI;
-
-import javax.xml.crypto.Data;
-import java.util.Map;
 import java.util.ArrayList;
 
-public class BuilderListComponentCommand<T> extends Command {
+public class BuilderListComponentCommand extends Command {
 
     public BuilderListComponentCommand(String arguments) {
         setArguments(arguments);
@@ -24,7 +19,7 @@ public class BuilderListComponentCommand<T> extends Command {
     @Override
     public String executeCommand() {
         String componentTypeString = getArguments();
-        String outputString = "Here are all available components of type \'" + componentTypeString + "\': \n";
+        String outputString = "Here are all available components of type '" + componentTypeString + "': \n";
         ArrayList<Component> componentList = DataStorage.stringToComponentListMap.get(componentTypeString);
         int componentNumber = 1;
         for (Component component : componentList) {
