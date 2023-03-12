@@ -43,13 +43,11 @@ public class CPUCooler extends Component {
 
     @Override
     public String toString() {
-        return "CPUCooler{\n" +
-                "\nname='" + super.getName() + '\'' +
-                ",\n brand='" + super.getBrand() + '\'' +
-                ",\n price=" + super.getPrice() +
-                ",\n rpm=" + rpm +
-                ",\n noise=" + noise +
-                ",\n power=" + power +
-                "\n}\n";
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nRPM: " + rpm +
+                "\nNOISE: " + noise +
+                "\nPOWER: " + power;
     }
 }

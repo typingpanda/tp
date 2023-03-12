@@ -43,14 +43,12 @@ public class Motherboard extends Component {
 
     @Override
     public String toString() {
-        return "Motherboard{\n" +
-                "\nname='" + super.getName() + '\'' +
-                ",\n brand='" + super.getBrand() + '\'' +
-                ",\n price=" + super.getPrice() +
-                ",\n formFactor='" + formFactor + '\'' +
-                ",\n socket='" + socket + '\'' +
-                ",\n power=" + power +
-                "\n}\n";
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nFORMFACTOR: " + formFactor +
+                "\nSOCKET: " + socket +
+                "\nPOWER: " + power;
     }
 
 }

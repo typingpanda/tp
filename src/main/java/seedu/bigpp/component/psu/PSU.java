@@ -43,13 +43,11 @@ public class PSU extends Component {
 
     @Override
     public String toString() {
-        return "PSU{" +
-                "name='" + super.getName() + '\'' +
-                ", brand='" + super.getBrand() + '\'' +
-                ", price=" + super.getPrice() +
-                ", efficiency='" + efficiency + '\'' +
-                ", formFactor='" + formFactor + '\'' +
-                ", power=" + power +
-                '}';
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nEFFICIENCY: " + efficiency +
+                "\nFORMFACTOR: " + formFactor +
+                "\nPOWER: " + power;
     }
 }

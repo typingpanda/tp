@@ -74,16 +74,14 @@ public class CPU extends Component {
 
     @Override
     public String toString() {
-        return "CPU{" +
-                "\nname='" + super.getName() + "\' " +
-                ",\n brand='" + super.getBrand() + "\' " +
-                ",\n price=" + super.getPrice() +
-                ",\n cores=" + cores +
-                ",\n threads=" + threads +
-                ",\n baseClock=" + baseClock +
-                ",\n boostClock=" + boostClock +
-                ",\n power=" + power +
-                ",\n socket='" + socket + '\'' +
-                "\n}\n";
+        return  "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nCORES: " + cores +
+                "\nTHREADS: " + threads +
+                "\nBASECLOCK: " + baseClock +
+                "\nBOOSTCLOCK: " + boostClock +
+                "\nPOWER: " + power +
+                "\nSOCKET: " + socket;
     }
 }

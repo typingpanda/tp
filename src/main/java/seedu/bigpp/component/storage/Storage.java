@@ -44,13 +44,11 @@ public class Storage extends Component {
 
     @Override
     public String toString() {
-        return "Storage{" +
-                "name='" + super.getName() + '\'' +
-                ", brand='" + super.getBrand() + '\'' +
-                ", price=" + super.getPrice() +
-                ", type='" + type + '\'' +
-                ", size=" + size +
-                ", power=" + power +
-                '}';
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nTYPE: " + type + '\'' +
+                "\nSIZE: " + size +
+                "\nPOWER: " + power;
     }
 }

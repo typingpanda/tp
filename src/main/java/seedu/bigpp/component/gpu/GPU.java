@@ -33,12 +33,10 @@ public class GPU extends Component {
 
     @Override
     public String toString() {
-        return "GPU{" +
-                "\nname='" + super.getName() + '\'' +
-                ",\n brand='" + super.getBrand() + '\'' +
-                ",\n price=" + super.getPrice() +
-                ",\n power=" + power +
-                ",\n size='" + size + '\'' +
-                "\n}\n";
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nPOWER: " + power +
+                "\nSIZE: " + size;
     }
 }

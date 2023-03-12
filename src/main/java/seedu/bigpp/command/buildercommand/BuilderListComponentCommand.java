@@ -24,11 +24,12 @@ public class BuilderListComponentCommand<T> extends Command {
     @Override
     public String executeCommand() {
         String componentTypeString = getArguments();
-        String outputString = "Here are all available " + componentTypeString;
+        String outputString = "Here are all available components of type \'" + componentTypeString + "\': \n";
         ArrayList<Component> componentList = DataStorage.stringToComponentListMap.get(componentTypeString);
-
+        int componentNumber = 1;
         for (Component component : componentList) {
-            outputString += component.toString();
+            outputString += componentNumber + "." + "\n" + component.toString() + "\n" + "================\n";
+            componentNumber += 1;
         }
         return outputString;
     }
