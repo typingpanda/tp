@@ -3,6 +3,7 @@ package seedu.bigpp.component.cpucooler;
 import seedu.bigpp.component.Component;
 
 public class CPUCooler extends Component {
+    public static final String COMPONENT_STRING = "cpu-cooler";
     private int rpm;
     private float noise;
     private float power;
@@ -42,13 +43,13 @@ public class CPUCooler extends Component {
 
     @Override
     public String toString() {
-        return "CPUCooler{" +
-                "name='" + super.getName() + '\'' +
-                ", brand='" + super.getBrand() + '\'' +
-                ", price=" + super.getPrice() +
-                ", rpm=" + rpm +
-                ", noise=" + noise +
-                ", power=" + power +
-                '}';
+        return "CPUCooler{\n" +
+                "\nname='" + super.getName() + '\'' +
+                ",\n brand='" + super.getBrand() + '\'' +
+                ",\n price=" + super.getPrice() +
+                ",\n rpm=" + rpm +
+                ",\n noise=" + noise +
+                ",\n power=" + power +
+                "\n}\n";
     }
 }

@@ -3,6 +3,7 @@ package seedu.bigpp.component.storage;
 import seedu.bigpp.component.Component;
 
 public class Storage extends Component {
+    public static final String COMPONENT_STRING = "storage";
     private String type;
     private int size; // in GB
     private float power;

@@ -2,6 +2,9 @@ package seedu.bigpp.datastorage;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -25,6 +28,7 @@ import seedu.bigpp.component.storage.Storage;
 import seedu.bigpp.component.storage.StorageList;
 
 public abstract class DataStorage {
+    public static Map<String, ArrayList> stringToComponentListMap = new HashMap<String, ArrayList>();
     private static final String CHASSIS_PATH = "chassis.json";
     private static final String CPU_PATH = "cpu.json";
     private static final String CPU_COOLER_PATH = "cpucooler.json";
@@ -42,6 +46,7 @@ public abstract class DataStorage {
      * Loads all the components from the json files.
      */
     public static void loadAll() {
+        initStringToComponentListMap();
         loadChassis();
         loadCPU();
         loadCPUCooler();
@@ -50,6 +55,17 @@ public abstract class DataStorage {
         loadPSU();
         loadRAM();
         loadStorage();
+    }
+
+    public static void initStringToComponentListMap() {
+        stringToComponentListMap.put("cpu", new ArrayList<CPU>());
+        stringToComponentListMap.put("gpu", new ArrayList<GPU>());
+        stringToComponentListMap.put("chassis", new ArrayList<Chassis>());
+        stringToComponentListMap.put("cpu-cooler", new ArrayList<CPUCooler>());
+        stringToComponentListMap.put("psu", new ArrayList<PSU>());
+        stringToComponentListMap.put("ram", new ArrayList<RAM>());
+        stringToComponentListMap.put("storage", new ArrayList<Storage>());
+        stringToComponentListMap.put("motherboard", new ArrayList<Motherboard>());
     }
 
     /**
@@ -69,7 +85,7 @@ public abstract class DataStorage {
         chassisMap.forEach((name, chassis) -> chassisMap.get(name).setName(name));
 
         // Add each chassis to the chassis list
-        chassisMap.forEach((name, chassis) -> ChassisList.addChassis(chassis));
+        chassisMap.forEach((name, chassis) -> stringToComponentListMap.get("chassis").add(chassis));
     }
 
     /**
@@ -89,7 +105,7 @@ public abstract class DataStorage {
         cpuMap.forEach((name, cpu) -> cpuMap.get(name).setName(name));
 
         // Add each cpu to the cpu list
-        cpuMap.forEach((name, cpu) -> CPUList.addCPU(cpu));
+        cpuMap.forEach((name, cpu) -> stringToComponentListMap.get("cpu").add(cpu));
     }
 
     /**
@@ -109,7 +125,7 @@ public abstract class DataStorage {
         cpuCoolerMap.forEach((name, cpuCooler) -> cpuCoolerMap.get(name).setName(name));
 
         // Add each cpu cooler to the cpu cooler list
-        cpuCoolerMap.forEach((name, cpuCooler) -> CPUCoolerList.addCPUCooler(cpuCooler));
+        cpuCoolerMap.forEach((name, cpuCooler) -> stringToComponentListMap.get("cpu-cooler").add(cpuCooler));
     }
 
     /**
@@ -129,7 +145,7 @@ public abstract class DataStorage {
         gpuMap.forEach((name, gpu) -> gpuMap.get(name).setName(name));
 
         // Add each gpu to the gpu list
-        gpuMap.forEach((name, gpu) -> GPUList.addGPU(gpu));
+        gpuMap.forEach((name, gpu) -> stringToComponentListMap.get("gpu").add(gpu));
     }
 
     /**
@@ -149,7 +165,7 @@ public abstract class DataStorage {
         motherboardMap.forEach((name, motherboard) -> motherboardMap.get(name).setName(name));
 
         // Add each motherboard to the motherboard list
-        motherboardMap.forEach((name, motherboard) -> MotherboardList.addMotherboard(motherboard));
+        motherboardMap.forEach((name, motherboard) -> stringToComponentListMap.get("motherboard").add(motherboard));
     }
 
     /**
@@ -169,7 +185,7 @@ public abstract class DataStorage {
         psuMap.forEach((name, psu) -> psuMap.get(name).setName(name));
 
         // Add each psu to the psu list
-        psuMap.forEach((name, psu) -> PSUList.addPSU(psu));
+        psuMap.forEach((name, psu) -> stringToComponentListMap.get("psu").add(psu));
     }
 
     /**
@@ -189,7 +205,7 @@ public abstract class DataStorage {
         ramMap.forEach((name, ram) -> ramMap.get(name).setName(name));
 
         // Add each ram to the ram list
-        ramMap.forEach((name, ram) -> RAMList.addRAM(ram));
+        ramMap.forEach((name, ram) -> stringToComponentListMap.get("ram").add(ram));
     }
 
     /**
@@ -209,7 +225,7 @@ public abstract class DataStorage {
         storageMap.forEach((name, storage) -> storageMap.get(name).setName(name));
 
         // Add each ram to the ram list
-        storageMap.forEach((name, storage) -> StorageList.addStorage(storage));
+        storageMap.forEach((name, storage) -> stringToComponentListMap.get("storage").add(storage));
     }
 
 }

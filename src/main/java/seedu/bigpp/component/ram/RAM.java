@@ -3,6 +3,7 @@ package seedu.bigpp.component.ram;
 import seedu.bigpp.component.Component;
 
 public class RAM extends Component {
+    public static final String COMPONENT_STRING = "ram";
     private int memory;
     private int sticks;
     private int speed;
