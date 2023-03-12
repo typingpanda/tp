@@ -9,11 +9,12 @@ import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
+import seedu.bigpp.exceptions.UnrecognizedCommandException;
 import seedu.bigpp.ui.UI;
 
 public class Parser {
 
-    public Command parseCommand(String userInput) {
+    public Command parseCommand(String userInput) throws UnrecognizedCommandException {
 
         // try common commands first
         if (userInput.equals("back")) {
@@ -34,7 +35,7 @@ public class Parser {
             return parseBuilderCommand(userInput);
 
         default:
-            return null;
+            throw new UnrecognizedCommandException();
         }
     }
 

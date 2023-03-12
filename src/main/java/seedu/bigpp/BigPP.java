@@ -2,6 +2,7 @@ package seedu.bigpp;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.commoncommand.ByeCommand;
+import seedu.bigpp.command.commoncommand.DoNothingCommand;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.parser.Parser;
 import seedu.bigpp.ui.UI;
@@ -26,10 +27,15 @@ public class BigPP {
      * Runs the program until the user issues the exit command.
      */
     private void runLoopUntilExit() {
-        Command command;
+        Command command = new DoNothingCommand();
         do {
             String userInput = UI.getInput();
-            command = new Parser().parseCommand(userInput);
+            try {
+                command = new Parser().parseCommand(userInput);
+            } catch (Exception e) {
+                UI.showResult(e.getMessage());
+                continue;
+            }
             String result = command.executeCommand();
             UI.updateUI(false);
             UI.showResult(result);
