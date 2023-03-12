@@ -11,21 +11,13 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
 import seedu.bigpp.component.chassis.Chassis;
-import seedu.bigpp.component.chassis.ChassisList;
 import seedu.bigpp.component.cpu.CPU;
-import seedu.bigpp.component.cpu.CPUList;
 import seedu.bigpp.component.cpucooler.CPUCooler;
-import seedu.bigpp.component.cpucooler.CPUCoolerList;
 import seedu.bigpp.component.gpu.GPU;
-import seedu.bigpp.component.gpu.GPUList;
 import seedu.bigpp.component.motherboard.Motherboard;
-import seedu.bigpp.component.motherboard.MotherboardList;
 import seedu.bigpp.component.psu.PSU;
-import seedu.bigpp.component.psu.PSUList;
 import seedu.bigpp.component.ram.RAM;
-import seedu.bigpp.component.ram.RAMList;
 import seedu.bigpp.component.storage.Storage;
-import seedu.bigpp.component.storage.StorageList;
 
 public abstract class DataStorage {
     public static Map<String, ArrayList> stringToComponentListMap = new HashMap<String, ArrayList>();
@@ -38,7 +30,7 @@ public abstract class DataStorage {
     private static final String RAM_PATH = "ram.json";
     private static final String STORAGE_PATH = "storage.json";
 
-    private static final String PREBUILT_PATH = "prebuilt.json";
+    //private static final String PREBUILT_PATH = "prebuilt.json";
 
     private static final Gson GSON = new Gson();
 
