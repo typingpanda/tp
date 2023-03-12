@@ -6,6 +6,7 @@ import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
+import seedu.bigpp.exceptions.UnrecognizedCommandException;
 import seedu.bigpp.ui.UI;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ParserTest {
     @Test
-    void parseCommand_backCommand_success() {
+    void parseCommand_backCommand_success() throws UnrecognizedCommandException {
         Parser parser = new Parser();
         UI.setPCViewerMode();
 
@@ -23,7 +24,7 @@ public class ParserTest {
     }
 
     @Test
-    void parseCommand_byeCommand_success() {
+    void parseCommand_byeCommand_success() throws UnrecognizedCommandException {
         Parser parser = new Parser();
         Command command = parser.parseCommand("bye");
         assertNotNull(command);
@@ -31,7 +32,7 @@ public class ParserTest {
     }
 
     @Test
-    void parseCommand_viewerAddCommand_success() {
+    void parseCommand_viewerAddCommand_success() throws UnrecognizedCommandException {
         Parser parser = new Parser();
         UI.setPCViewerMode();
 
@@ -41,7 +42,7 @@ public class ParserTest {
     }
 
     @Test
-    void parseCommand_viewerDeleteCommand_success() {
+    void parseCommand_viewerDeleteCommand_success() throws UnrecognizedCommandException {
         Parser parser = new Parser();
         UI.setPCViewerMode();
 

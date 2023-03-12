@@ -17,24 +17,28 @@ public class Parser {
     public Command parseCommand(String userInput) throws UnrecognizedCommandException {
 
         // try common commands first
-        if (userInput.equals("back")) {
-            return new BackCommand();
-        }
+        try {
+            if (userInput.equals("back")) {
+                return new BackCommand();
+            }
 
-        if (userInput.equals("bye")) {
-            return new ByeCommand();
-        }
+            if (userInput.equals("bye")) {
+                return new ByeCommand();
+            }
 
-        // once common commands are tried, try menu specific commands
-        switch (UI.getUiState()) {
+            // once common commands are tried, try menu specific commands
+            switch (UI.getUiState()) {
 
-        case PCVIEWER:
-            return parseViewerCommand(userInput);
+            case PCVIEWER:
+                return parseViewerCommand(userInput);
 
-        case PCBUILDER:
-            return parseBuilderCommand(userInput);
+            case PCBUILDER:
+                return parseBuilderCommand(userInput);
 
-        default:
+            default:
+                return null;
+            }
+        } catch (Exception e) {
             throw new UnrecognizedCommandException();
         }
     }
