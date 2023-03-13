@@ -3,6 +3,7 @@ package seedu.bigpp.parser;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
+import seedu.bigpp.command.buildercommand.BuilderListComponentCommand;
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.commoncommand.UnrecognizedCommand;
@@ -67,6 +68,8 @@ public class Parser {
     private Command parseBuilderCommand(String commandWord, String arguments) {
 
         switch (commandWord) {
+        case "list":
+            return new BuilderListComponentCommand(arguments);
         case "name":
             return new BuilderEditNameCommand(arguments);
         case "budget":
@@ -74,6 +77,5 @@ public class Parser {
         default:
             return new UnrecognizedCommand();
         }
-
     }
 }

@@ -1,15 +1,6 @@
 package seedu.bigpp.component.chassis;
 
-import java.util.ArrayList;
+import seedu.bigpp.component.ComponentList;
 
-public abstract class ChassisList {
-    private static ArrayList<Chassis> chassisList = new ArrayList<>();
-
-    public static void addChassis(Chassis chassis) {
-        chassisList.add(chassis);
-    }
-
-    public static ArrayList<Chassis> getChassisList() {
-        return chassisList;
-    }
+public class ChassisList extends ComponentList<Chassis> {
 }

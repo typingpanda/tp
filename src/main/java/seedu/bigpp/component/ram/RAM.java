@@ -3,6 +3,7 @@ package seedu.bigpp.component.ram;
 import seedu.bigpp.component.Component;
 
 public class RAM extends Component {
+    public static final String COMPONENT_STRING = "ram";
     private int memory;
     private int sticks;
     private int speed;
@@ -52,14 +53,12 @@ public class RAM extends Component {
 
     @Override
     public String toString() {
-        return "RAM{" +
-                "name='" + super.getName() + '\'' +
-                ", brand='" + super.getBrand() + '\'' +
-                ", price=" + super.getPrice() +
-                ", memory=" + memory +
-                ", sticks=" + sticks +
-                ", speed=" + speed +
-                ", power=" + power +
-                '}';
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nMEMORY: " + memory +
+                "\nSTICKS: " + sticks +
+                "\nSPEED: " + speed +
+                "\nPOWER: " + power;
     }
 }

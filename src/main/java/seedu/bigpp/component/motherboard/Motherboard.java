@@ -3,6 +3,7 @@ package seedu.bigpp.component.motherboard;
 import seedu.bigpp.component.Component;
 
 public class Motherboard extends Component {
+    public static final String COMPONENT_STRING = "motherboard";
     private String formFactor;
     private String socket;
     private float power;
@@ -42,14 +43,12 @@ public class Motherboard extends Component {
 
     @Override
     public String toString() {
-        return "Motherboard{" +
-                "name='" + super.getName() + '\'' +
-                ", brand='" + super.getBrand() + '\'' +
-                ", price=" + super.getPrice() +
-                ", formFactor='" + formFactor + '\'' +
-                ", socket='" + socket + '\'' +
-                ", power=" + power +
-                '}';
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nFORMFACTOR: " + formFactor +
+                "\nSOCKET: " + socket +
+                "\nPOWER: " + power;
     }
 
 }

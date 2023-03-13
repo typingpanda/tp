@@ -1,15 +1,6 @@
 package seedu.bigpp.component.gpu;
 
-import java.util.ArrayList;
+import seedu.bigpp.component.ComponentList;
 
-public abstract class GPUList {
-    private static ArrayList<GPU> gpuList = new ArrayList<>();
-
-    public static void addGPU(GPU gpu) {
-        gpuList.add(gpu);
-    }
-
-    public static ArrayList<GPU> getGpuList() {
-        return gpuList;
-    }
+public class GPUList extends ComponentList<GPU> {
 }

@@ -1,15 +1,6 @@
 package seedu.bigpp.component.cpucooler;
 
-import java.util.ArrayList;
+import seedu.bigpp.component.ComponentList;
 
-public abstract class CPUCoolerList {
-    private static ArrayList<CPUCooler> cpuCoolerList = new ArrayList<>();
-
-    public static void addCPUCooler(CPUCooler cpuCooler) {
-        cpuCoolerList.add(cpuCooler);
-    }
-
-    public static ArrayList<CPUCooler> getCPUCoolerList() {
-        return cpuCoolerList;
-    }
+public class CPUCoolerList extends ComponentList<CPUCooler> {
 }

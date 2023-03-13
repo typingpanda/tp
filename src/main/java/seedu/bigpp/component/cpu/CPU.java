@@ -3,6 +3,7 @@ package seedu.bigpp.component.cpu;
 import seedu.bigpp.component.Component;
 
 public class CPU extends Component {
+    public static String COMPONENT_STRING = "cpu";
     private int cores;
     private int threads;
     private float baseClock;
@@ -73,16 +74,14 @@ public class CPU extends Component {
 
     @Override
     public String toString() {
-        return "CPU{" +
-                "name='" + super.getName() + '\'' +
-                ", brand='" + super.getBrand() + '\'' +
-                ", price=" + super.getPrice() +
-                ", cores=" + cores +
-                ", threads=" + threads +
-                ", baseClock=" + baseClock +
-                ", boostClock=" + boostClock +
-                ", power=" + power +
-                ", socket='" + socket + '\'' +
-                '}';
+        return  "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nCORES: " + cores +
+                "\nTHREADS: " + threads +
+                "\nBASECLOCK: " + baseClock +
+                "\nBOOSTCLOCK: " + boostClock +
+                "\nPOWER: " + power +
+                "\nSOCKET: " + socket;
     }
 }

@@ -3,6 +3,7 @@ package seedu.bigpp.component.gpu;
 import seedu.bigpp.component.Component;
 
 public class GPU extends Component {
+    public static final String COMPONENT_STRING = "gpu";
     private float power;
     private String size;
 
@@ -32,12 +33,10 @@ public class GPU extends Component {
 
     @Override
     public String toString() {
-        return "GPU{" +
-                "name='" + super.getName() + '\'' +
-                ", brand='" + super.getBrand() + '\'' +
-                ", price=" + super.getPrice() +
-                ", power=" + power +
-                ", size='" + size + '\'' +
-                '}';
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nPOWER: " + power +
+                "\nSIZE: " + size;
     }
 }
