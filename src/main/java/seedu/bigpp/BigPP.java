@@ -5,6 +5,7 @@ import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.parser.Parser;
 import seedu.bigpp.ui.UI;
+import seedu.bigpp.exceptions.PPException;
 
 public class BigPP {
 
@@ -30,7 +31,12 @@ public class BigPP {
         do {
             String userInput = UI.getInput();
             command = new Parser().parseCommand(userInput);
-            String result = command.executeCommand();
+            String result = "";
+            try {
+                result = command.executeCommand();
+            } catch (PPException e) {
+                result = e.getMessage();
+            }
             UI.updateUI(false);
             UI.showResult(result);
         } while (!(command instanceof ByeCommand));
