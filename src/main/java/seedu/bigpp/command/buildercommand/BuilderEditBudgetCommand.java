@@ -2,6 +2,7 @@ package seedu.bigpp.command.buildercommand;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
+import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidNumberBudgetException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingBudgetException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeBudgetException;
@@ -16,11 +17,10 @@ public class BuilderEditBudgetCommand extends Command {
 
     /**
      * Change the budget of the current PC that the builder is working on
-     * 
      * @return the new budget of the PC
      */
     @Override
-    public String executeCommand() throws PPException {
+    public String executeCommand(DataStorage dataStorage) throws PPException {
         String argument = super.getArguments();
         if (argument.equals("")) {
             throw new BuilderMissingBudgetException();

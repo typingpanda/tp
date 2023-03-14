@@ -15,6 +15,7 @@ import java.util.logging.SimpleFormatter;
 
 public class BigPP {
 
+    public static DataStorage dataStorage;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     /**
@@ -25,7 +26,10 @@ public class BigPP {
     }
 
     public void run() {
-        DataStorage.loadAll();
+        // Initialize the DataStorage
+        dataStorage = new DataStorage();
+
+        dataStorage.loadAll();
         UI.showWelcome();
         UI.updateUI(true);
         runLoopUntilExit();
@@ -35,14 +39,14 @@ public class BigPP {
      * Runs the program until the user issues the exit command.
      */
     private void runLoopUntilExit() {
-        
+
         LOGGER.setLevel(Level.INFO);
         try {
             FileHandler handler = new FileHandler("BigPP.log", true);
             handler.setFormatter(new SimpleFormatter());
             LOGGER.setUseParentHandlers(false);
             LOGGER.addHandler(handler);
-            
+
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "File logger not working.", e);
         }
@@ -52,14 +56,16 @@ public class BigPP {
             LOGGER.info("User input: " + userInput);
             command = new Parser().parseCommand(userInput);
             String result = "";
+
             try {
-                result = command.executeCommand();
+                result = command.executeCommand(dataStorage);
                 LOGGER.info("Command executed: " + command.getClass().getName());
                 LOGGER.info("Result: " + result);
             } catch (PPException e) {
                 result = e.getMessage();
                 LOGGER.warning(e.getMessage());
             }
+
             UI.updateUI(false);
             UI.showResult(result);
         } while (!(command instanceof ByeCommand));

@@ -28,8 +28,11 @@ public class PC {
 
     public PC(String name, Boolean isPrebuilt) {
         this.name = name;
-        // this.cpu = new CPU();
         this.isPrebuilt = isPrebuilt;
+    }
+
+    public void setChassis(Chassis chassis) {
+        this.chassis = chassis;
     }
 
     public void setCPU(CPU cpu) {
@@ -62,24 +65,78 @@ public class PC {
 
     public void setComponent(Component component) {
         if (component instanceof CPU) {
-            this.cpu = (CPU) component;
+            setCPU((CPU) component);
         } else if (component instanceof CPUCooler) {
-            this.cpuCooler = (CPUCooler) component;
+            setCpuCooler((CPUCooler) component);
         } else if (component instanceof GPU) {
-            this.gpu = (GPU) component;
+            setGpu((GPU) component);
         } else if (component instanceof Motherboard) {
-            this.motherboard = (Motherboard) component;
+            setMotherboard((Motherboard) component);
         } else if (component instanceof RAM) {
-            this.ram = (RAM) component;
+            setRam((RAM) component);
         } else if (component instanceof Storage) {
-            this.storage = (Storage) component;
+            setStorage((Storage) component);
         } else if (component instanceof PSU) {
-            this.psu = (PSU) component;
+            setPsu((PSU) component);
         } else if (component instanceof Chassis) {
-            this.chassis = (Chassis) component;
+            setChassis((Chassis) component);
         }
     }
-    
+
+    public CPU getCpu() {
+        return cpu;
+    }
+
+    public CPUCooler getCpuCooler() {
+        return cpuCooler;
+    }
+
+    public GPU getGpu() {
+        return gpu;
+    }
+
+    public Motherboard getMotherboard() {
+        return motherboard;
+    }
+
+    public RAM getRam() {
+        return ram;
+    }
+
+    public Storage getStorage() {
+        return storage;
+    }
+
+    public PSU getPsu() {
+        return psu;
+    }
+
+    public Chassis getChassis() {
+        return chassis;
+    }
+
+    public Component getComponent(String componentName) {
+        if (componentName.equals("cpu")) {
+            return getCpu();
+        } else if (componentName.equals("cpu-cooler")) {
+            return getCpuCooler();
+        } else if (componentName.equals("gpu")) {
+            return getGpu();
+        } else if (componentName.equals("motherboard")) {
+            return getMotherboard();
+        } else if (componentName.equals("ram")) {
+            return getRam();
+        } else if (componentName.equals("storage")) {
+            return getStorage();
+        } else if (componentName.equals("psu")) {
+            return getPsu();
+        } else if (componentName.equals("chassis")) {
+            return getChassis();
+        } else {
+            return null;
+        }
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -95,7 +152,7 @@ public class PC {
     public boolean getIsPreBuilt() {
         return isPrebuilt;
     }
- 
+
     public int getBudget() {
         return budget;
     }
@@ -112,12 +169,11 @@ public class PC {
                 totalCost += component.getPrice();
             }
         }
-        //give price to 2 dp
+        // give price to 2 dp
         DecimalFormat df = new DecimalFormat("#.00");
         totalCost = Float.parseFloat(df.format(totalCost));
         return totalCost;
     }
-    
 
     public String buildType(Boolean isPrebuilt) {
         if (isPrebuilt) {
@@ -132,18 +188,22 @@ public class PC {
      */
     public String viewComponents() {
         String componentString = "";
+
         componentString += (buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + '\n');
         componentString += ("Components:" + '\n');
+
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
             "Storage    :", "PSU        :", "Chassis    :" };
+
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
+
         int index = 0;
         for (Component component : components) {
             if (component != null) {
-                //                out.println(componentNames[index] + component.getName());
+                // out.println(componentNames[index] + component.getName());
                 componentString += (componentNames[index] + " " + component.getName() + '\n');
             } else {
-                //                out.println(componentNames[index] + ": - Not Selected -");
+                // out.println(componentNames[index] + ": - Not Selected -");
                 componentString += (componentNames[index] + " - Not Selected -" + '\n');
             }
             index++;

@@ -3,7 +3,6 @@ package seedu.bigpp.datastorage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.io.InputStream;
@@ -26,9 +25,9 @@ import seedu.bigpp.component.ram.RAM;
 import seedu.bigpp.component.ram.RAMList;
 import seedu.bigpp.component.storage.Storage;
 import seedu.bigpp.component.storage.StorageList;
+import seedu.bigpp.component.ComponentList;
 
-public abstract class DataStorage {
-    public static Map<String, ArrayList> stringToComponentListMap = new HashMap<String, ArrayList>();
+public class DataStorage {
     private static final String CHASSIS_PATH = "chassis.json";
     private static final String CPU_PATH = "cpu.json";
     private static final String CPU_COOLER_PATH = "cpucooler.json";
@@ -38,14 +37,16 @@ public abstract class DataStorage {
     private static final String RAM_PATH = "ram.json";
     private static final String STORAGE_PATH = "storage.json";
 
-    //private static final String PREBUILT_PATH = "prebuilt.json";
+    private static final String PREBUILT_PATH = "prebuilt.json";
 
     private static final Gson GSON = new Gson();
+
+    public Map<String, ComponentList> stringToComponentListMap = new HashMap<String, ComponentList>();
 
     /**
      * Loads all the components from the json files.
      */
-    public static void loadAll() {
+    public void loadAll() {
         initStringToComponentListMap();
         loadChassis();
         loadCPU();
@@ -57,7 +58,7 @@ public abstract class DataStorage {
         loadStorage();
     }
 
-    public static void initStringToComponentListMap() {
+    public void initStringToComponentListMap() {
         stringToComponentListMap.put("cpu", new CPUList());
         stringToComponentListMap.put("gpu", new GPUList());
         stringToComponentListMap.put("chassis", new ChassisList());
@@ -71,7 +72,7 @@ public abstract class DataStorage {
     /**
      * Loads all the chassis from the json file into ChassisList.
      */
-    public static void loadChassis() {
+    public void loadChassis() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(CHASSIS_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -91,7 +92,7 @@ public abstract class DataStorage {
     /**
      * Loads all the CPUs from the json file into CPUList.
      */
-    public static void loadCPU() {
+    public void loadCPU() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(CPU_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -111,7 +112,7 @@ public abstract class DataStorage {
     /**
      * Loads all the CPU coolers from the json file into CPUCoolerList.
      */
-    public static void loadCPUCooler() {
+    public void loadCPUCooler() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(CPU_COOLER_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -131,7 +132,7 @@ public abstract class DataStorage {
     /**
      * Loads all the GPUs from the json file into GPUList.
      */
-    public static void loadGPU() {
+    public void loadGPU() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(GPU_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -151,7 +152,7 @@ public abstract class DataStorage {
     /**
      * Loads all the motherboards from the json file into MotherboardList.
      */
-    public static void loadMotherboard() {
+    public void loadMotherboard() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(MOTHERBOARD_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -171,7 +172,7 @@ public abstract class DataStorage {
     /**
      * Loads all the PSUs from the json file into PSUList.
      */
-    public static void loadPSU() {
+    public void loadPSU() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(PSU_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -191,7 +192,7 @@ public abstract class DataStorage {
     /**
      * Loads all the RAMs from the json file into RAMList.
      */
-    public static void loadRAM() {
+    public void loadRAM() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(RAM_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -211,7 +212,7 @@ public abstract class DataStorage {
     /**
      * Loads all the storage devices from the json file into StorageList.
      */
-    public static void loadStorage() {
+    public void loadStorage() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(STORAGE_PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));

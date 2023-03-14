@@ -1,14 +1,10 @@
 package seedu.bigpp.command.buildercommand;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.component.Component;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.PPException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingListException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
-import static seedu.bigpp.datastorage.DataStorage.stringToComponentListMap;
-
-import java.util.ArrayList;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
 
 public class BuilderListComponentCommand extends Command {
 
@@ -18,29 +14,29 @@ public class BuilderListComponentCommand extends Command {
 
     /**
      * Change the budget of the current PC that the builder is working on
-     *
+     * 
      * @return the new budget of the PC
      */
     @Override
-    public String executeCommand() throws PPException {
+    public String executeCommand(DataStorage dataStorage) throws BuilderMissingListException,
+            BuilderIncorrectComponentException, BuilderMissingComponentException {
         String componentTypeString = getArguments();
         if (componentTypeString.equals("")) {
             throw new BuilderMissingComponentException();
         }
-        if (!stringToComponentListMap.containsKey(componentTypeString)) {
+        if (!dataStorage.stringToComponentListMap.containsKey(componentTypeString)) {
+            throw new BuilderIncorrectComponentException();
+        }
+
+        componentTypeString = componentTypeString.toLowerCase();
+
+        // throw exception if component type is not valid eg. "list jfk"
+        if (!dataStorage.stringToComponentListMap.containsKey(componentTypeString)) {
             throw new BuilderIncorrectComponentException();
         }
 
         String outputString = "Here are all available components of type '" + componentTypeString + "': \n";
-        ArrayList<Component> componentList = DataStorage.stringToComponentListMap.get(componentTypeString);
-        int componentNumber = 1;
-        for (Component component : componentList) {
-            outputString += componentNumber + "." + "\n" + component.toString() + "\n" + "================\n";
-            componentNumber += 1;
-        }
-        return outputString;
+
+        return outputString + dataStorage.stringToComponentListMap.get(componentTypeString).getListString();
     }
 }
-
-
-
