@@ -3,7 +3,7 @@ package seedu.bigpp.component.cpu;
 import seedu.bigpp.component.Component;
 
 public class CPU extends Component {
-    public static String COMPONENT_STRING = "cpu";
+    public static final String COMPONENT_STRING = "cpu";
     private int cores;
     private int threads;
     private float baseClock;

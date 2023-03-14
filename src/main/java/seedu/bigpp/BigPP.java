@@ -3,9 +3,9 @@ package seedu.bigpp;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.datastorage.DataStorage;
+import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.parser.Parser;
 import seedu.bigpp.ui.UI;
-import seedu.bigpp.exceptions.PPException;
 
 public class BigPP {
 

@@ -26,8 +26,6 @@ public class BuilderListComponentCommand extends Command {
             outputString += componentNumber + "." + "\n" + component.toString() + "\n" + "================\n";
             componentNumber += 1;
         }
-        System.out.println(outputString);
-
         return outputString;
     }
 }

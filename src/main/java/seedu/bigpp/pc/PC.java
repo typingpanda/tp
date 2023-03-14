@@ -1,6 +1,7 @@
 package seedu.bigpp.pc;
 
 import seedu.bigpp.component.Component;
+import seedu.bigpp.component.chassis.Chassis;
 import seedu.bigpp.component.cpu.CPU;
 import seedu.bigpp.component.cpucooler.CPUCooler;
 import seedu.bigpp.component.gpu.GPU;
@@ -8,6 +9,8 @@ import seedu.bigpp.component.motherboard.Motherboard;
 import seedu.bigpp.component.psu.PSU;
 import seedu.bigpp.component.ram.RAM;
 import seedu.bigpp.component.storage.Storage;
+
+import java.text.DecimalFormat;
 
 public class PC {
     private String name;
@@ -19,6 +22,7 @@ public class PC {
     private RAM ram = null;
     private Storage storage = null;
     private PSU psu = null;
+    private Chassis chassis = null;
 
     private int budget;
 
@@ -55,6 +59,26 @@ public class PC {
     public void setPsu(PSU psu) {
         this.psu = psu;
     }
+
+    public void setComponent(Component component) {
+        if (component instanceof CPU) {
+            this.cpu = (CPU) component;
+        } else if (component instanceof CPUCooler) {
+            this.cpuCooler = (CPUCooler) component;
+        } else if (component instanceof GPU) {
+            this.gpu = (GPU) component;
+        } else if (component instanceof Motherboard) {
+            this.motherboard = (Motherboard) component;
+        } else if (component instanceof RAM) {
+            this.ram = (RAM) component;
+        } else if (component instanceof Storage) {
+            this.storage = (Storage) component;
+        } else if (component instanceof PSU) {
+            this.psu = (PSU) component;
+        } else if (component instanceof Chassis) {
+            this.chassis = (Chassis) component;
+        }
+    }
     
     public void setName(String name) {
         this.name = name;
@@ -81,13 +105,16 @@ public class PC {
      * @return totalCost
      */
     public float getCost() {
-        float totalCost = 0.00F;
+        float totalCost = 0.00f;
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu };
         for (Component component : components) {
             if (component != null) {
                 totalCost += component.getPrice();
             }
         }
+        //give price to 2 dp
+        DecimalFormat df = new DecimalFormat("#.00");
+        totalCost = Float.parseFloat(df.format(totalCost));
         return totalCost;
     }
     
@@ -107,17 +134,17 @@ public class PC {
         String componentString = "";
         componentString += (buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + '\n');
         componentString += ("Components:" + '\n');
-        String[] componentNames = { "CPU        ", "CPU Cooler ", "GPU        ", "Motherboard", "RAM        ",
-            "Storage    ", "PSU        " };
-        Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu };
+        String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
+            "Storage    :", "PSU        :", "Chassis    :" };
+        Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
         int index = 0;
         for (Component component : components) {
             if (component != null) {
                 //                out.println(componentNames[index] + component.getName());
-                componentString += (componentNames[index] + component.getName() + '\n');
+                componentString += (componentNames[index] + " " + component.getName() + '\n');
             } else {
                 //                out.println(componentNames[index] + ": - Not Selected -");
-                componentString += (componentNames[index] + ": - Not Selected -" + '\n');
+                componentString += (componentNames[index] + " - Not Selected -" + '\n');
             }
             index++;
         }
