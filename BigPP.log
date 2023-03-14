@@ -1,0 +1,14 @@
+Mar 14, 2023 10:45:58 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: hello
+Mar 14, 2023 10:45:58 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 10:45:58 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 10:46:02 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: add pc1
+Mar 14, 2023 10:46:02 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerAddCommand
+Mar 14, 2023 10:46:02 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Custom PC: [ pc1 ] has been created
+Mar 14, 2023 10:46:05 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: delete pc1
