@@ -4,6 +4,7 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.exceptions.PPException;
+import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingNameException;
 
 public class BuilderEditNameCommand extends Command {
@@ -14,11 +15,10 @@ public class BuilderEditNameCommand extends Command {
 
     /**
      * Change the name of the current PC that the builder is working on
-     * 
      * @return the new name of the PC
      */
     @Override
-    public String executeCommand() throws PPException{
+    public String executeCommand(DataStorage dataStorage) throws PPException {
         String name = super.getArguments();
         if (name.equals("")) {
             throw new BuilderMissingNameException();

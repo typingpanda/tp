@@ -9,6 +9,8 @@ import seedu.bigpp.ui.UI;
 
 public class BigPP {
 
+    public static DataStorage dataStorage;
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -17,7 +19,10 @@ public class BigPP {
     }
 
     public void run() {
-        DataStorage.loadAll();
+        // Initialize the DataStorage
+        dataStorage = new DataStorage();
+
+        dataStorage.loadAll();
         UI.showWelcome();
         UI.updateUI(true);
         runLoopUntilExit();
@@ -32,11 +37,13 @@ public class BigPP {
             String userInput = UI.getInput();
             command = new Parser().parseCommand(userInput);
             String result = "";
+
             try {
-                result = command.executeCommand();
+                result = command.executeCommand(dataStorage);
             } catch (PPException e) {
                 result = e.getMessage();
             }
+
             UI.updateUI(false);
             UI.showResult(result);
         } while (!(command instanceof ByeCommand));

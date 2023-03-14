@@ -3,6 +3,7 @@ package seedu.bigpp.command.viewercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
+import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.viewerexceptions.ViewerMissingIndexException;
 import seedu.bigpp.pc.PC;
 import seedu.bigpp.pc.PCList;
@@ -19,7 +20,7 @@ public class ViewerDeleteCommand extends Command {
      *         print the name of the PC deleted
      */
     @Override
-    public String executeCommand() throws PPException {
+    public String executeCommand(DataStorage dataStorage) throws PPException {
         // throw exception if no index is selected
         if (super.getArguments().equals("")) {
             throw new ViewerMissingIndexException();
