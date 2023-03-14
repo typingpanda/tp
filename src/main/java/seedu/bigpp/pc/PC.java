@@ -159,7 +159,6 @@ public class PC {
 
     /**
      * Gets the cost of each of the components in the PC and returns the total.
-     * 
      * @return totalCost
      */
     public float getCost() {
@@ -189,11 +188,15 @@ public class PC {
      */
     public String viewComponents() {
         String componentString = "";
+
         componentString += (buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + '\n');
         componentString += ("Components:" + '\n');
+
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
-                "Storage    :", "PSU        :", "Chassis    :" };
+            "Storage    :", "PSU        :", "Chassis    :" };
+
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
+
         int index = 0;
         for (Component component : components) {
             if (component != null) {

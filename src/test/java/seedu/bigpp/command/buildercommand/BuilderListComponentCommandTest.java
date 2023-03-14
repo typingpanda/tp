@@ -5,7 +5,6 @@ import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingListException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
-import seedu.bigpp.exceptions.PPException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
