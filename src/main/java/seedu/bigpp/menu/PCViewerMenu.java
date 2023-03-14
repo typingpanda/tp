@@ -10,8 +10,10 @@ public class PCViewerMenu extends Menu {
         out.println("PC viewer");
         PCList.printPcList();
         out.println("What would you like to do?");
+        out.println("Add PC");
         out.println("View PC");
-        out.println("Build PC");
+        out.println("Edit PC");
+        out.println("Delete PC");
         out.println("back");
         out.println("exit");
     }

@@ -3,6 +3,11 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.component.Component;
 import seedu.bigpp.datastorage.DataStorage;
+import seedu.bigpp.exceptions.PPException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
+import static seedu.bigpp.datastorage.DataStorage.stringToComponentListMap;
+
 import java.util.ArrayList;
 
 public class BuilderListComponentCommand extends Command {
@@ -17,8 +22,15 @@ public class BuilderListComponentCommand extends Command {
      * @return the new budget of the PC
      */
     @Override
-    public String executeCommand() {
+    public String executeCommand() throws PPException {
         String componentTypeString = getArguments();
+        if (componentTypeString.equals("")) {
+            throw new BuilderMissingComponentException();
+        }
+        if (!stringToComponentListMap.containsKey(componentTypeString)) {
+            throw new BuilderIncorrectComponentException();
+        }
+
         String outputString = "Here are all available components of type '" + componentTypeString + "': \n";
         ArrayList<Component> componentList = DataStorage.stringToComponentListMap.get(componentTypeString);
         int componentNumber = 1;

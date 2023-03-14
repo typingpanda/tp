@@ -2,6 +2,7 @@ package seedu.bigpp.command.buildercommand;
 
 import org.junit.jupiter.api.Test;
 import seedu.bigpp.datastorage.DataStorage;
+import seedu.bigpp.exceptions.PPException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -140,7 +141,7 @@ public class BuilderListComponentCommandTest {
             "SOCKET: AM5\n" +
             "================\n";
     @Test
-    public void executeCommand_listComponentCommand_success() {
+    public void executeCommand_listComponentCommand_success() throws PPException {
         DataStorage.loadAll();
         String listComponentCommandResult = new BuilderListComponentCommand("cpu").executeCommand();
         assertEquals(EXPECTED_OUTPUT, listComponentCommandResult);

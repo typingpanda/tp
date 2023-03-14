@@ -5,6 +5,12 @@ import seedu.bigpp.ui.UI;
 
 public class BackCommand extends Command {
 
+    /*
+     * back command to return to the previous menu. Does nothing if already in 
+     * PCVieer menu
+     * 
+     * @return the message to be displayed to the user
+     */
     @Override
     public String executeCommand() {
         switch (UI.getUiState()) {

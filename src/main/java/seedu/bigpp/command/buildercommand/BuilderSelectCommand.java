@@ -7,6 +7,7 @@ import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingSelectException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
 import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 
@@ -20,7 +21,6 @@ public class BuilderSelectCommand extends Command {
 
     /**
      * Change the Component of the PC that the builder is working on
-     *
      * @return Added Component message
      */
     @Override
@@ -40,12 +40,18 @@ public class BuilderSelectCommand extends Command {
         }
 
         int componentIndex;
-        if (inputArray.length == 2) {
-            componentIndex = Integer.parseInt(inputArray[1]) - 1;
-        } else {
+
+        if (inputArray.length == 1) {
             //throw exception if no index is selected eg. "select cpu"
             throw new BuilderMissingIndexException();
         }
+
+        if (inputArray[1].matches(".*\\D.*")) {
+            throw new BuilderInvalidTypeException();
+        }
+
+        componentIndex = Integer.parseInt(inputArray[1]) - 1;
+
         if (componentIndex < 0 || componentIndex >= stringToComponentListMap.get(inputArray[0]).size()) {
             //throw exception if index is out of bounds eg. "select cpu 100"
             throw new PPIndexOutOfBoundsException();
