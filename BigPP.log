@@ -12,3 +12,600 @@ Mar 14, 2023 10:46:02 PM seedu.bigpp.BigPP runLoopUntilExit
 INFO: Result: Custom PC: [ pc1 ] has been created
 Mar 14, 2023 10:46:05 PM seedu.bigpp.BigPP runLoopUntilExit
 INFO: User input: delete pc1
+Mar 14, 2023 11:38:15 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: add adslkfj
+Mar 14, 2023 11:38:15 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerAddCommand
+Mar 14, 2023 11:38:15 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Custom PC: [ adslkfj ] has been created
+Mar 14, 2023 11:38:16 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: edit q2
+Mar 14, 2023 11:38:16 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please enter an integer
+Mar 14, 2023 11:38:18 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: edit 1
+Mar 14, 2023 11:38:18 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerEditCommand
+Mar 14, 2023 11:38:18 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Currently editing PC: adslkfj
+Mar 14, 2023 11:38:29 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list
+Mar 14, 2023 11:42:42 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: add 1
+Mar 14, 2023 11:42:42 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerAddCommand
+Mar 14, 2023 11:42:42 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Custom PC: [ 1 ] has been created
+Mar 14, 2023 11:42:44 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: edit 1
+Mar 14, 2023 11:42:44 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerEditCommand
+Mar 14, 2023 11:42:44 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Currently editing PC: 1
+Mar 14, 2023 11:42:45 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list
+Mar 14, 2023 11:42:45 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please enter a component
+Mar 14, 2023 11:42:47 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list f
+Mar 14, 2023 11:42:47 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:42:50 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list cpu
+Mar 14, 2023 11:42:50 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.buildercommand.BuilderListComponentCommand
+Mar 14, 2023 11:42:50 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Here are all available components of type 'cpu': 
+1.
+NAME: Intel core i3-10100
+BRAND: Intel
+PRICE: 99.5
+CORES: 4
+THREADS: 8
+BASECLOCK: 3.6
+BOOSTCLOCK: 4.3
+POWER: 65.0
+SOCKET: LGA1200
+================
+2.
+NAME: Intel core i5-10600k
+BRAND: Intel
+PRICE: 182.47
+CORES: 6
+THREADS: 12
+BASECLOCK: 4.1
+BOOSTCLOCK: 4.8
+POWER: 125.0
+SOCKET: LGA1200
+================
+3.
+NAME: Intel core i7-10700k
+BRAND: Intel
+PRICE: 269.95
+CORES: 8
+THREADS: 16
+BASECLOCK: 3.8
+BOOSTCLOCK: 5.1
+POWER: 125.0
+SOCKET: LGA1200
+================
+4.
+NAME: Intel core i3-12100f
+BRAND: Intel
+PRICE: 106.93
+CORES: 4
+THREADS: 8
+BASECLOCK: 3.3
+BOOSTCLOCK: 4.3
+POWER: 58.0
+SOCKET: LGA1700
+================
+5.
+NAME: Intel core i5-12600k
+BRAND: Intel
+PRICE: 213.82
+CORES: 10
+THREADS: 20
+BASECLOCK: 3.7
+BOOSTCLOCK: 4.9
+POWER: 125.0
+SOCKET: LGA1700
+================
+6.
+NAME: Intel core i7-12700k
+BRAND: Intel
+PRICE: 312.88
+CORES: 12
+THREADS: 24
+BASECLOCK: 3.6
+BOOSTCLOCK: 5.0
+POWER: 125.0
+SOCKET: LGA1700
+================
+7.
+NAME: AMD Ryzen 3 3200G
+BRAND: AMD
+PRICE: 97.5
+CORES: 4
+THREADS: 4
+BASECLOCK: 3.6
+BOOSTCLOCK: 4.0
+POWER: 65.0
+SOCKET: AM4
+================
+8.
+NAME: AMD Ryzen 5 5600X
+BRAND: AMD
+PRICE: 156.64
+CORES: 6
+THREADS: 12
+BASECLOCK: 3.7
+BOOSTCLOCK: 4.6
+POWER: 65.0
+SOCKET: AM4
+================
+9.
+NAME: AMD Ryzen 7 5800X
+BRAND: AMD
+PRICE: 211.33
+CORES: 8
+THREADS: 16
+BASECLOCK: 3.8
+BOOSTCLOCK: 4.7
+POWER: 105.0
+SOCKET: AM4
+================
+10.
+NAME: AMD Ryzen 5 7600X
+BRAND: AMD
+PRICE: 240.86
+CORES: 6
+THREADS: 12
+BASECLOCK: 4.7
+BOOSTCLOCK: 5.3
+POWER: 105.0
+SOCKET: AM5
+================
+11.
+NAME: AMD Ryzen 7 7700X
+BRAND: AMD
+PRICE: 341.29
+CORES: 8
+THREADS: 16
+BASECLOCK: 4.5
+BOOSTCLOCK: 5.4
+POWER: 105.0
+SOCKET: AM5
+================
+12.
+NAME: AMD Ryzen 9 7950X
+BRAND: AMD
+PRICE: 589.0
+CORES: 16
+THREADS: 32
+BASECLOCK: 4.5
+BOOSTCLOCK: 5.7
+POWER: 170.0
+SOCKET: AM5
+================
+
+Mar 14, 2023 11:42:52 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list
+Mar 14, 2023 11:42:52 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please enter a component
+Mar 14, 2023 11:42:53 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list a
+Mar 14, 2023 11:42:53 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:42:55 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list 1
+Mar 14, 2023 11:42:55 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:42:57 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list f;lsdiakjf;lkdsj
+Mar 14, 2023 11:42:57 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:43:00 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list cpu
+Mar 14, 2023 11:43:00 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.buildercommand.BuilderListComponentCommand
+Mar 14, 2023 11:43:00 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Here are all available components of type 'cpu': 
+1.
+NAME: Intel core i3-10100
+BRAND: Intel
+PRICE: 99.5
+CORES: 4
+THREADS: 8
+BASECLOCK: 3.6
+BOOSTCLOCK: 4.3
+POWER: 65.0
+SOCKET: LGA1200
+================
+2.
+NAME: Intel core i5-10600k
+BRAND: Intel
+PRICE: 182.47
+CORES: 6
+THREADS: 12
+BASECLOCK: 4.1
+BOOSTCLOCK: 4.8
+POWER: 125.0
+SOCKET: LGA1200
+================
+3.
+NAME: Intel core i7-10700k
+BRAND: Intel
+PRICE: 269.95
+CORES: 8
+THREADS: 16
+BASECLOCK: 3.8
+BOOSTCLOCK: 5.1
+POWER: 125.0
+SOCKET: LGA1200
+================
+4.
+NAME: Intel core i3-12100f
+BRAND: Intel
+PRICE: 106.93
+CORES: 4
+THREADS: 8
+BASECLOCK: 3.3
+BOOSTCLOCK: 4.3
+POWER: 58.0
+SOCKET: LGA1700
+================
+5.
+NAME: Intel core i5-12600k
+BRAND: Intel
+PRICE: 213.82
+CORES: 10
+THREADS: 20
+BASECLOCK: 3.7
+BOOSTCLOCK: 4.9
+POWER: 125.0
+SOCKET: LGA1700
+================
+6.
+NAME: Intel core i7-12700k
+BRAND: Intel
+PRICE: 312.88
+CORES: 12
+THREADS: 24
+BASECLOCK: 3.6
+BOOSTCLOCK: 5.0
+POWER: 125.0
+SOCKET: LGA1700
+================
+7.
+NAME: AMD Ryzen 3 3200G
+BRAND: AMD
+PRICE: 97.5
+CORES: 4
+THREADS: 4
+BASECLOCK: 3.6
+BOOSTCLOCK: 4.0
+POWER: 65.0
+SOCKET: AM4
+================
+8.
+NAME: AMD Ryzen 5 5600X
+BRAND: AMD
+PRICE: 156.64
+CORES: 6
+THREADS: 12
+BASECLOCK: 3.7
+BOOSTCLOCK: 4.6
+POWER: 65.0
+SOCKET: AM4
+================
+9.
+NAME: AMD Ryzen 7 5800X
+BRAND: AMD
+PRICE: 211.33
+CORES: 8
+THREADS: 16
+BASECLOCK: 3.8
+BOOSTCLOCK: 4.7
+POWER: 105.0
+SOCKET: AM4
+================
+10.
+NAME: AMD Ryzen 5 7600X
+BRAND: AMD
+PRICE: 240.86
+CORES: 6
+THREADS: 12
+BASECLOCK: 4.7
+BOOSTCLOCK: 5.3
+POWER: 105.0
+SOCKET: AM5
+================
+11.
+NAME: AMD Ryzen 7 7700X
+BRAND: AMD
+PRICE: 341.29
+CORES: 8
+THREADS: 16
+BASECLOCK: 4.5
+BOOSTCLOCK: 5.4
+POWER: 105.0
+SOCKET: AM5
+================
+12.
+NAME: AMD Ryzen 9 7950X
+BRAND: AMD
+PRICE: 589.0
+CORES: 16
+THREADS: 32
+BASECLOCK: 4.5
+BOOSTCLOCK: 5.7
+POWER: 170.0
+SOCKET: AM5
+================
+
+Mar 14, 2023 11:43:02 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list list
+Mar 14, 2023 11:43:02 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:43:09 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select
+Mar 14, 2023 11:43:09 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a component
+Mar 14, 2023 11:43:12 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select cpu
+Mar 14, 2023 11:44:43 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: jkfh
+Mar 14, 2023 11:44:43 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:44:43 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:44:47 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: add fld;skaj
+Mar 14, 2023 11:44:47 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerAddCommand
+Mar 14, 2023 11:44:47 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Custom PC: [ fld;skaj ] has been created
+Mar 14, 2023 11:44:50 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: edit 1
+Mar 14, 2023 11:44:50 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerEditCommand
+Mar 14, 2023 11:44:50 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Currently editing PC: fld;skaj
+Mar 14, 2023 11:44:51 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list
+Mar 14, 2023 11:44:51 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please enter a component
+Mar 14, 2023 11:44:52 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select
+Mar 14, 2023 11:44:52 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a component
+Mar 14, 2023 11:44:55 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select a
+Mar 14, 2023 11:44:55 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:45:02 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select cpu
+Mar 14, 2023 11:45:02 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please input an index
+Mar 14, 2023 11:45:30 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select f
+Mar 14, 2023 11:45:30 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:45:33 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select
+Mar 14, 2023 11:45:33 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a component
+Mar 14, 2023 11:45:36 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select f 
+Mar 14, 2023 11:45:36 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:45:39 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select cpu
+Mar 14, 2023 11:45:39 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please input an index
+Mar 14, 2023 11:46:33 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select cpu a
+Mar 14, 2023 11:46:33 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please enter an integer
+Mar 14, 2023 11:46:37 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select cpu 1234234
+Mar 14, 2023 11:46:37 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please enter a valid index
+Mar 14, 2023 11:46:44 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list cpu a
+Mar 14, 2023 11:46:44 PM seedu.bigpp.BigPP runLoopUntilExit
+WARNING: Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)
+Mar 14, 2023 11:46:49 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: list cpu
+Mar 14, 2023 11:46:49 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.buildercommand.BuilderListComponentCommand
+Mar 14, 2023 11:46:49 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Here are all available components of type 'cpu': 
+1.
+NAME: Intel core i3-10100
+BRAND: Intel
+PRICE: 99.5
+CORES: 4
+THREADS: 8
+BASECLOCK: 3.6
+BOOSTCLOCK: 4.3
+POWER: 65.0
+SOCKET: LGA1200
+================
+2.
+NAME: Intel core i5-10600k
+BRAND: Intel
+PRICE: 182.47
+CORES: 6
+THREADS: 12
+BASECLOCK: 4.1
+BOOSTCLOCK: 4.8
+POWER: 125.0
+SOCKET: LGA1200
+================
+3.
+NAME: Intel core i7-10700k
+BRAND: Intel
+PRICE: 269.95
+CORES: 8
+THREADS: 16
+BASECLOCK: 3.8
+BOOSTCLOCK: 5.1
+POWER: 125.0
+SOCKET: LGA1200
+================
+4.
+NAME: Intel core i3-12100f
+BRAND: Intel
+PRICE: 106.93
+CORES: 4
+THREADS: 8
+BASECLOCK: 3.3
+BOOSTCLOCK: 4.3
+POWER: 58.0
+SOCKET: LGA1700
+================
+5.
+NAME: Intel core i5-12600k
+BRAND: Intel
+PRICE: 213.82
+CORES: 10
+THREADS: 20
+BASECLOCK: 3.7
+BOOSTCLOCK: 4.9
+POWER: 125.0
+SOCKET: LGA1700
+================
+6.
+NAME: Intel core i7-12700k
+BRAND: Intel
+PRICE: 312.88
+CORES: 12
+THREADS: 24
+BASECLOCK: 3.6
+BOOSTCLOCK: 5.0
+POWER: 125.0
+SOCKET: LGA1700
+================
+7.
+NAME: AMD Ryzen 3 3200G
+BRAND: AMD
+PRICE: 97.5
+CORES: 4
+THREADS: 4
+BASECLOCK: 3.6
+BOOSTCLOCK: 4.0
+POWER: 65.0
+SOCKET: AM4
+================
+8.
+NAME: AMD Ryzen 5 5600X
+BRAND: AMD
+PRICE: 156.64
+CORES: 6
+THREADS: 12
+BASECLOCK: 3.7
+BOOSTCLOCK: 4.6
+POWER: 65.0
+SOCKET: AM4
+================
+9.
+NAME: AMD Ryzen 7 5800X
+BRAND: AMD
+PRICE: 211.33
+CORES: 8
+THREADS: 16
+BASECLOCK: 3.8
+BOOSTCLOCK: 4.7
+POWER: 105.0
+SOCKET: AM4
+================
+10.
+NAME: AMD Ryzen 5 7600X
+BRAND: AMD
+PRICE: 240.86
+CORES: 6
+THREADS: 12
+BASECLOCK: 4.7
+BOOSTCLOCK: 5.3
+POWER: 105.0
+SOCKET: AM5
+================
+11.
+NAME: AMD Ryzen 7 7700X
+BRAND: AMD
+PRICE: 341.29
+CORES: 8
+THREADS: 16
+BASECLOCK: 4.5
+BOOSTCLOCK: 5.4
+POWER: 105.0
+SOCKET: AM5
+================
+12.
+NAME: AMD Ryzen 9 7950X
+BRAND: AMD
+PRICE: 589.0
+CORES: 16
+THREADS: 32
+BASECLOCK: 4.5
+BOOSTCLOCK: 5.7
+POWER: 170.0
+SOCKET: AM5
+================
+
+Mar 14, 2023 11:46:52 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: select cpu 1
+Mar 14, 2023 11:46:52 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.buildercommand.BuilderSelectCommand
+Mar 14, 2023 11:46:52 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Component added!
+Mar 14, 2023 11:47:02 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: bfdasfasd\
+Mar 14, 2023 11:47:02 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:47:02 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: dfasdfdasf
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: sdf
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: asdf
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: asd
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: f
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:47:03 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:47:04 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: asdf
+Mar 14, 2023 11:47:04 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:47:04 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:47:04 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: bye
+Mar 14, 2023 11:47:04 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.ByeCommand
+Mar 14, 2023 11:47:04 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Bye. Hope to see you again soon!
