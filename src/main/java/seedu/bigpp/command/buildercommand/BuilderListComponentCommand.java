@@ -11,7 +11,7 @@ public class BuilderListComponentCommand extends Command {
         setArguments(arguments);
     }
 
-    /*
+    /**
      * Change the budget of the current PC that the builder is working on
      *
      * @return the new budget of the PC

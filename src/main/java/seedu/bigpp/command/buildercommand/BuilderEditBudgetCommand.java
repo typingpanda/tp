@@ -14,7 +14,7 @@ public class BuilderEditBudgetCommand extends Command {
         super.setArguments(arguments);
     }
 
-    /*
+    /**
      * Change the budget of the current PC that the builder is working on
      * 
      * @return the new budget of the PC
