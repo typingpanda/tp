@@ -2,7 +2,7 @@ package seedu.bigpp.command.viewercommand;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
-import seedu.bigpp.exceptions.viewerexceptions.ViewerInvalidIndexException;
+import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
 import seedu.bigpp.exceptions.viewerexceptions.ViewerMissingIndexException;
 import seedu.bigpp.pc.PC;
 import seedu.bigpp.pc.PCList;
@@ -26,7 +26,7 @@ public class ViewerViewCommand extends Command {
         }
         // throw exception if index selected is out of the PCList range
         if (Integer.parseInt(index) < 0 || Integer.parseInt(super.getArguments()) > PCList.getList().size()) {
-            throw new ViewerInvalidIndexException();
+            throw new PPIndexOutOfBoundsException();
         }
         PC pc = (PCList.getList()).get(Integer.parseInt(index) - 1);
         return pc.viewComponents();
