@@ -4,6 +4,7 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
 import seedu.bigpp.exceptions.viewerexceptions.ViewerMissingIndexException;
+import seedu.bigpp.exceptions.viewerexceptions.ViewerInvalidTypeException;
 import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 
@@ -18,13 +19,17 @@ public class ViewerEditCommand extends Command {
      */
     @Override
     public String executeCommand() throws PPException {
+        String argument = super.getArguments();
         // throw exception if no index is selected
-        if (super.getArguments().equals("")) {
+        if (argument.equals("")) {
             throw new ViewerMissingIndexException();
         }
-        int pcIndex = Integer.parseInt(super.getArguments()) - 1;
+        if (argument.matches(".*\\D.*")) {
+            throw new ViewerInvalidTypeException();
+        }
+        int pcIndex = Integer.parseInt(argument) - 1;
         // throw exception if index selected is out of the PCList range
-        if (pcIndex < 0 || Integer.parseInt(super.getArguments()) > PCList.getList().size()) {
+        if (pcIndex < 0 || pcIndex >= PCList.getList().size()) {
             throw new PPIndexOutOfBoundsException();
         }
         UI.setPCBuilderMode(pcIndex);
