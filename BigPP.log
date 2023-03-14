@@ -609,3 +609,21 @@ Mar 14, 2023 11:47:04 PM seedu.bigpp.BigPP runLoopUntilExit
 INFO: Command executed: seedu.bigpp.command.commoncommand.ByeCommand
 Mar 14, 2023 11:47:04 PM seedu.bigpp.BigPP runLoopUntilExit
 INFO: Result: Bye. Hope to see you again soon!
+Mar 14, 2023 11:49:34 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: g
+Mar 14, 2023 11:49:34 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.commoncommand.UnrecognizedCommand
+Mar 14, 2023 11:49:34 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Unrecognised command.
+Mar 14, 2023 11:49:44 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: add abc
+Mar 14, 2023 11:49:44 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerAddCommand
+Mar 14, 2023 11:49:44 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Custom PC: [ abc ] has been created
+Mar 14, 2023 11:49:46 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: User input: edit 1
+Mar 14, 2023 11:49:46 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Command executed: seedu.bigpp.command.viewercommand.ViewerEditCommand
+Mar 14, 2023 11:49:46 PM seedu.bigpp.BigPP runLoopUntilExit
+INFO: Result: Currently editing PC: abc
