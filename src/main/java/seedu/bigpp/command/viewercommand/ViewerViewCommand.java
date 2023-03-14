@@ -5,6 +5,7 @@ import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.viewerexceptions.ViewerMissingIndexException;
+import seedu.bigpp.exceptions.viewerexceptions.ViewerInvalidTypeException;
 import seedu.bigpp.pc.PC;
 import seedu.bigpp.pc.PCList;
 
@@ -16,20 +17,32 @@ public class ViewerViewCommand extends Command {
 
     /**
      * Display all the components of the PC of a given index
+     * 
      * @return the components of the PC of that index
      */
     @Override
-    public String executeCommand(DataStorage dataStorage) throws PPException {
-        String index = super.getArguments();
+    public String executeCommand(DataStorage dataStorage) throws ViewerMissingIndexException,
+            ViewerInvalidTypeException, PPIndexOutOfBoundsException {
+
+        String argument = super.getArguments();
+
         // throw exception if no index is selected
-        if (index.equals("")) {
+        if (argument.equals("")) {
             throw new ViewerMissingIndexException();
         }
+
+        // throw exception if index selected is not an integer
+        if (argument.matches(".*\\D.*")) {
+            throw new ViewerInvalidTypeException();
+        }
+
+        int pcIndex = Integer.parseInt(argument) - 1;
         // throw exception if index selected is out of the PCList range
-        if (Integer.parseInt(index) < 0 || Integer.parseInt(super.getArguments()) > PCList.getList().size()) {
+        if (pcIndex < 0 || pcIndex >= PCList.getList().size()) {
             throw new PPIndexOutOfBoundsException();
         }
-        PC pc = (PCList.getList()).get(Integer.parseInt(index) - 1);
+
+        PC pc = (PCList.getList()).get(pcIndex);
         return pc.viewComponents();
     }
 }

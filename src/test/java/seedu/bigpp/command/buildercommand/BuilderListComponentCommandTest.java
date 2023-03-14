@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingListException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
+import seedu.bigpp.exceptions.PPException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -40,7 +42,8 @@ public class BuilderListComponentCommandTest {
 
     @Test
     public void executeCommand_listComponentCommand_success() throws BuilderMissingListException,
-            BuilderIncorrectComponentException {
+            BuilderIncorrectComponentException,
+            BuilderMissingComponentException {
 
         dataStorage.loadAll();
         String listComponentCommandResult = new BuilderListComponentCommand("cpu").executeCommand(dataStorage);

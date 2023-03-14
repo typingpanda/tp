@@ -6,6 +6,12 @@ import seedu.bigpp.datastorage.DataStorage;
 
 public class BackCommand extends Command {
 
+    /*
+     * back command to return to the previous menu. Does nothing if already in 
+     * PCVieer menu
+     * 
+     * @return the message to be displayed to the user
+     */
     @Override
     public String executeCommand(DataStorage dataStorage) {
         switch (UI.getUiState()) {

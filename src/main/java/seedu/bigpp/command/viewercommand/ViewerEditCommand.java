@@ -1,10 +1,10 @@
 package seedu.bigpp.command.viewercommand;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.viewerexceptions.ViewerMissingIndexException;
+import seedu.bigpp.exceptions.viewerexceptions.ViewerInvalidTypeException;
 import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 
@@ -15,19 +15,31 @@ public class ViewerEditCommand extends Command {
 
     /**
      * Edit a PC of the given index from the PC list
+     * 
      * @return the name of the PC created
      */
     @Override
-    public String executeCommand(DataStorage dataStorage) throws PPException {
+    public String executeCommand(DataStorage dataStorage)
+            throws ViewerMissingIndexException, ViewerInvalidTypeException,
+            PPIndexOutOfBoundsException {
+        String argument = super.getArguments();
+
         // throw exception if no index is selected
-        if (super.getArguments().equals("")) {
+        if (argument.equals("")) {
             throw new ViewerMissingIndexException();
         }
-        int pcIndex = Integer.parseInt(super.getArguments()) - 1;
+
+        if (argument.matches(".*\\D.*")) {
+            throw new ViewerInvalidTypeException();
+        }
+
+        int pcIndex = Integer.parseInt(argument) - 1;
+
         // throw exception if index selected is out of the PCList range
-        if (pcIndex < 0 || Integer.parseInt(super.getArguments()) > PCList.getList().size()) {
+        if (pcIndex < 0 || pcIndex >= PCList.getList().size()) {
             throw new PPIndexOutOfBoundsException();
         }
+
         UI.setPCBuilderMode(pcIndex);
         return "Currently editing PC: " + PCList.getPC(pcIndex).getName();
     }

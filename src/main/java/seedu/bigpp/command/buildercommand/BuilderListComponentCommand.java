@@ -4,6 +4,7 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingListException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
 
 public class BuilderListComponentCommand extends Command {
 
@@ -18,12 +19,13 @@ public class BuilderListComponentCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) throws BuilderMissingListException,
-            BuilderIncorrectComponentException {
+            BuilderIncorrectComponentException, BuilderMissingComponentException {
         String componentTypeString = getArguments();
-
-        // throw exception if no component type is specified eg. "list"
         if (componentTypeString.equals("")) {
-            throw new BuilderMissingListException();
+            throw new BuilderMissingComponentException();
+        }
+        if (!dataStorage.stringToComponentListMap.containsKey(componentTypeString)) {
+            throw new BuilderIncorrectComponentException();
         }
 
         componentTypeString = componentTypeString.toLowerCase();
