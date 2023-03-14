@@ -26,8 +26,10 @@ Welcome to BigPP!
 PC viewer
 List currently empty!
 What would you like to do?
+Add PC
 View PC
-Build PC
+Edit PC
+Delete PC
 back
 exit
 ===================================================
@@ -37,8 +39,10 @@ PC viewer
 Here is the list of PC Builds:
 1.Custom-PC: [newpc1] - $0.0
 What would you like to do?
+Add PC
 View PC
-Build PC
+Edit PC
+Delete PC
 back
 exit
 ===================================================
@@ -50,8 +54,10 @@ Here is the list of PC Builds:
 1.Custom-PC: [newpc1] - $0.0
 2.Custom-PC: [newpc2] - $0.0
 What would you like to do?
+Add PC
 View PC
-Build PC
+Edit PC
+Delete PC
 back
 exit
 ===================================================
@@ -62,8 +68,10 @@ PC viewer
 Here is the list of PC Builds:
 1.Custom-PC: [newpc2] - $0.0
 What would you like to do?
+Add PC
 View PC
-Build PC
+Edit PC
+Delete PC
 back
 exit
 ===================================================
