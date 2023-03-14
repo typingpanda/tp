@@ -3,6 +3,7 @@ package seedu.bigpp.command.viewercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
+import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.viewerexceptions.ViewerMissingIndexException;
 import seedu.bigpp.exceptions.viewerexceptions.ViewerInvalidTypeException;
 import seedu.bigpp.pc.PC;
@@ -19,7 +20,7 @@ public class ViewerViewCommand extends Command {
      * @return the components of the PC of that index
      */
     @Override
-    public String executeCommand() throws PPException {
+    public String executeCommand(DataStorage dataStorage) throws PPException {
         String argument = super.getArguments();
         // throw exception if no index is selected
         if (argument.equals("")) {

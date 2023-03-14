@@ -1,6 +1,7 @@
 package seedu.bigpp.command.commoncommand;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.datastorage.DataStorage;
 
 public class ByeCommand extends Command {
 
@@ -10,7 +11,7 @@ public class ByeCommand extends Command {
      * @return the message displaying the exit message
      */
     @Override
-    public String executeCommand() {
+    public String executeCommand(DataStorage dataStorage) {
         return "Bye. Hope to see you again soon!";
     }
 }
