@@ -18,7 +18,7 @@ public class BuilderSelectCommand extends Command {
         setArguments(arguments);
     }
 
-    /*
+    /**
      * Change the Component of the PC that the builder is working on
      *
      * @return Added Component message
