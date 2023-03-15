@@ -326,7 +326,7 @@ public class DataStorage {
         // read entire file into string
         String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-        pcList = (GSON.fromJson(json, new TypeToken<ArrayList<PC>>() {
+        pcList = (GSON.fromJson(json, new TypeToken<PCList>() {
         }.getType()));
 
         // If there are no prebuilt PCs, ensure that PCList is not null
