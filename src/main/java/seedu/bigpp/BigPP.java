@@ -66,6 +66,10 @@ public class BigPP {
                 LOGGER.warning(e.getMessage());
             }
 
+            assert command != null : "Command should not be null";
+
+            assert command != null : "Command should not be null";
+
             UI.updateUI(false, dataStorage);
             UI.showResult(result);
         } while (!(command instanceof ByeCommand));
