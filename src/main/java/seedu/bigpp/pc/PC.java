@@ -11,8 +11,6 @@ import seedu.bigpp.component.ram.RAM;
 import seedu.bigpp.component.storage.Storage;
 import seedu.bigpp.ui.UI;
 
-import java.text.DecimalFormat;
-
 public class PC {
     private String name;
     private Boolean isPrebuilt;
@@ -217,7 +215,7 @@ public class PC {
         componentString += ("Components:" + '\n');
 
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
-                "Storage    :", "PSU        :", "Chassis    :" };
+            "Storage    :", "PSU        :", "Chassis    :" };
 
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
 

@@ -12,7 +12,7 @@ public abstract class UI {
     public static PrintStream out = System.out;
     public static PCBuilderMenu builderMenu = null;
 
-    public static DecimalFormat moneyDecimalFormat = new DecimalFormat("#.##");
+    public static DecimalFormat moneyDecimalFormat = new DecimalFormat("#.00");
 
     private static final String LOGO1 = "          _____                    _____          "
             + "          _____                            _____      "
