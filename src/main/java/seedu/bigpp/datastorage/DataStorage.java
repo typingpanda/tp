@@ -78,19 +78,19 @@ public class DataStorage {
      */
     public void loadAll() {
         // load prebuilt PCs, then load user PCs
-        loadPrebuiltPcs();
-        loadUserPcs();
+        loadPrebuiltPcs(PREBUILT_PATH);
+        loadUserPcs(USER_PATH);
 
         // load all components
         initStringToComponentListMap();
-        loadChassis();
-        loadCPU();
-        loadCPUCooler();
-        loadGPU();
-        loadMotherboard();
-        loadPSU();
-        loadRAM();
-        loadStorage();
+        loadChassis(CHASSIS_PATH);
+        loadCPU(CPU_PATH);
+        loadCPUCooler(CPU_COOLER_PATH);
+        loadGPU(GPU_PATH);
+        loadMotherboard(MOTHERBOARD_PATH);
+        loadPSU(PSU_PATH);
+        loadRAM(RAM_PATH);
+        loadStorage(STORAGE_PATH);
     }
 
     public void initStringToComponentListMap() {
@@ -107,9 +107,9 @@ public class DataStorage {
     /**
      * Loads all the chassis from the json file into ChassisList.
      */
-    public void loadChassis() {
+    public void loadChassis(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(CHASSIS_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string
@@ -127,9 +127,9 @@ public class DataStorage {
     /**
      * Loads all the CPUs from the json file into CPUList.
      */
-    public void loadCPU() {
+    public void loadCPU(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(CPU_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string
@@ -147,9 +147,9 @@ public class DataStorage {
     /**
      * Loads all the CPU coolers from the json file into CPUCoolerList.
      */
-    public void loadCPUCooler() {
+    public void loadCPUCooler(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(CPU_COOLER_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string
@@ -167,9 +167,9 @@ public class DataStorage {
     /**
      * Loads all the GPUs from the json file into GPUList.
      */
-    public void loadGPU() {
+    public void loadGPU(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(GPU_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string
@@ -187,9 +187,9 @@ public class DataStorage {
     /**
      * Loads all the motherboards from the json file into MotherboardList.
      */
-    public void loadMotherboard() {
+    public void loadMotherboard(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(MOTHERBOARD_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string
@@ -207,9 +207,9 @@ public class DataStorage {
     /**
      * Loads all the PSUs from the json file into PSUList.
      */
-    public void loadPSU() {
+    public void loadPSU(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(PSU_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string
@@ -227,9 +227,9 @@ public class DataStorage {
     /**
      * Loads all the RAMs from the json file into RAMList.
      */
-    public void loadRAM() {
+    public void loadRAM(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(RAM_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string
@@ -247,9 +247,9 @@ public class DataStorage {
     /**
      * Loads all the storage devices from the json file into StorageList.
      */
-    public void loadStorage() {
+    public void loadStorage(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(STORAGE_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string
@@ -260,7 +260,7 @@ public class DataStorage {
 
         storageMap.forEach((name, storage) -> storageMap.get(name).setName(name));
 
-        // Add each ram to the ram list
+        // Add each storage to the storage list
         storageMap.forEach((name, storage) -> stringToComponentListMap.get("storage").add(storage));
     }
 
@@ -268,8 +268,8 @@ public class DataStorage {
      * Loads all the user's PCs from the json file into PCList.
      * This will append all user's PCs to the PCList.
      */
-    public void loadUserPcs() {
-        File userFile = new File(USER_PATH);
+    public void loadUserPcs(String path) {
+        File userFile = new File(path);
 
         // If file does not exist, create user file
         try {
@@ -308,17 +308,19 @@ public class DataStorage {
         }
 
         out.println("User PCs found, loading...");
+
         pcList.addAll(GSON.fromJson(json, new TypeToken<ArrayList<PC>>() {
         }.getType()));
+
     }
 
     /**
      * Loads all the prebuilt PCs from the json file into PCList.
      * Important to call this first as this will overwrite the user's PCs.
      */
-    public void loadPrebuiltPcs() {
+    public void loadPrebuiltPcs(String path) {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(PREBUILT_PATH);
+        InputStream inputStream = classLoader.getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
         // read entire file into string

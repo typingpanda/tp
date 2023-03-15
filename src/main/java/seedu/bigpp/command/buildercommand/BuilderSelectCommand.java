@@ -61,11 +61,12 @@ public class BuilderSelectCommand extends Command {
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
-        Component selectedComponent = (Component) dataStorage.stringToComponentListMap.get(componentTypeString)
-                .get(componentIndex);
 
-        dataStorage.pcList.get(pcIndex).setComponent(selectedComponent);
+        dataStorage.pcList.get(pcIndex)
+                .setComponent((Component) dataStorage.stringToComponentListMap.get(componentTypeString)
+                        .get(componentIndex));
 
-        return componentTypeString + " added! : " + selectedComponent.getName();
+        return componentTypeString + " added! : "
+                + dataStorage.stringToComponentListMap.get(componentTypeString).get(componentIndex).getName();
     }
 }
