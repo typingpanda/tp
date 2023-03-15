@@ -15,8 +15,8 @@ public class BuilderUnselectCommand extends Command {
     }
 
     /**
-     * Change the Component of the PC that the builder is working on
-     * @return Added Component message
+     * Change the Component of the PC to null
+     * @return component removed message
      */
     @Override
     public String executeCommand(DataStorage dataStorage)
