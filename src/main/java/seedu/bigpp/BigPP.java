@@ -15,8 +15,8 @@ import java.util.logging.SimpleFormatter;
 
 public class BigPP {
 
-    public static DataStorage dataStorage;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private static DataStorage dataStorage;
 
     /**
      * Main entry-point for the java.duke.Duke application.
