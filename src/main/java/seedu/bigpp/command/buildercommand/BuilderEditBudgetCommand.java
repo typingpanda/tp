@@ -37,6 +37,6 @@ public class BuilderEditBudgetCommand extends Command {
 
         int pcIndex = UI.builderMenu.getPCIndex();
         PCList.getPC(pcIndex).setBudget(budget);
-        return "Current build budget is now: " + budget;
+        return "Current build budget is now: " + PCList.getPC(pcIndex).getBudgetString();
     }
 }

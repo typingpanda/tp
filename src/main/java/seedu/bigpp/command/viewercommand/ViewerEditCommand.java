@@ -41,6 +41,6 @@ public class ViewerEditCommand extends Command {
         }
 
         UI.setPCBuilderMode(pcIndex);
-        return "Currently editing PC: " + PCList.getPC(pcIndex).getName();
+        return "Currently editing - " + PCList.getPC(pcIndex);
     }
 }

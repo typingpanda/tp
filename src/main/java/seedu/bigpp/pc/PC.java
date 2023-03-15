@@ -24,7 +24,9 @@ public class PC {
     private PSU psu = null;
     private Chassis chassis = null;
 
-    private int budget;
+    private int budget = -1;
+
+    private DecimalFormat moneyDecimalFormat = new DecimalFormat("#.00");
 
     public PC(String name, Boolean isPrebuilt) {
         this.name = name;
@@ -156,6 +158,9 @@ public class PC {
     public int getBudget() {
         return budget;
     }
+    public String getBudgetString() {
+        return (budget == -1) ? "infinite" : "$" +moneyDecimalFormat.format(budget);
+    }
 
     /**
      * Gets the cost of each of the components in the PC and returns the total.
@@ -170,8 +175,7 @@ public class PC {
             }
         }
         // give price to 2 dp
-        DecimalFormat df = new DecimalFormat("#.00");
-        totalCost = Float.parseFloat(df.format(totalCost));
+        totalCost = Float.parseFloat(moneyDecimalFormat.format(totalCost));
         return totalCost;
     }
 
@@ -189,7 +193,7 @@ public class PC {
     public String viewComponents() {
         String componentString = "";
 
-        componentString += (buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + '\n');
+        componentString += this.toString() + "\n";
         componentString += ("Components:" + '\n');
 
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
@@ -213,6 +217,6 @@ public class PC {
 
     @Override
     public String toString() {
-        return buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost();
+        return buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + "/" + getBudgetString();
     }
 }
