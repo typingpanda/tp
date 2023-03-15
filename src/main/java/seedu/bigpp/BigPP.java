@@ -15,8 +15,8 @@ import java.util.logging.SimpleFormatter;
 
 public class BigPP {
 
-    public static DataStorage dataStorage;
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private static DataStorage dataStorage;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -31,7 +31,7 @@ public class BigPP {
 
         dataStorage.loadAll();
         UI.showWelcome();
-        UI.updateUI(true);
+        UI.updateUI(true, dataStorage);
         runLoopUntilExit();
     }
 
@@ -68,7 +68,9 @@ public class BigPP {
 
             assert command != null : "Command should not be null";
 
-            UI.updateUI(false);
+            assert command != null : "Command should not be null";
+
+            UI.updateUI(false, dataStorage);
             UI.showResult(result);
         } while (!(command instanceof ByeCommand));
     }

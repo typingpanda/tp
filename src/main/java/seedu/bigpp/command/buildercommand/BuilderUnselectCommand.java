@@ -5,7 +5,6 @@ import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderNullComponentException;
-import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 
 public class BuilderUnselectCommand extends Command {
@@ -38,13 +37,13 @@ public class BuilderUnselectCommand extends Command {
 
         int pcIndex = UI.builderMenu.getPCIndex();
 
-        if (PCList.getPC(pcIndex).getComponent(componentTypeString) == null) {
+        if (dataStorage.pcList.get(pcIndex).getComponent(componentTypeString) == null) {
             throw new BuilderNullComponentException();
         }
 
-        PCList.getPC(pcIndex).setNullComponent(componentTypeString);
+        dataStorage.pcList.get(pcIndex).setNullComponent(componentTypeString);
 
-        assert PCList.getPC(pcIndex).getComponent(componentTypeString) == null : "Component should be null";
+        assert dataStorage.pcList.get(pcIndex).getComponent(componentTypeString) == null : "Component should be null";
 
         return componentTypeString + " removed!";
     }

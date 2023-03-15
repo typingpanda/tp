@@ -5,7 +5,6 @@ import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderNoInfoException;
-import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 
 public class BuilderInfoCommand extends Command {
@@ -36,12 +35,12 @@ public class BuilderInfoCommand extends Command {
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
-        if (PCList.getPC(pcIndex).getComponent(componentTypeString) == null) {
+        if (dataStorage.pcList.get(pcIndex).getComponent(componentTypeString) == null) {
             throw new BuilderNoInfoException();
         }
 
         String outputString = "Here is the specifications of your selected " + componentTypeString + ": \n";
-        return outputString + PCList.getPC(pcIndex).getComponent(componentTypeString);
+        return outputString + dataStorage.pcList.get(pcIndex).getComponent(componentTypeString);
 
     }
 }

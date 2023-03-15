@@ -8,8 +8,8 @@ import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentExcepti
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingSelectException;
-import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
+import seedu.bigpp.ui.UIState;
 
 public class BuilderSelectCommand extends Command {
 
@@ -25,6 +25,7 @@ public class BuilderSelectCommand extends Command {
     public String executeCommand(DataStorage dataStorage) throws BuilderMissingSelectException,
             BuilderIncorrectComponentException,
             BuilderMissingIndexException, PPIndexOutOfBoundsException, BuilderInvalidTypeException {
+        assert UI.getUiState() == UIState.PCBUILDER : "UI state should be PCBUILDER";
 
         String inputString = getArguments();
         // throw exception if no component is selected eg. "select"
@@ -63,9 +64,12 @@ public class BuilderSelectCommand extends Command {
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
-        PCList.getPC(pcIndex)
-                .setComponent((Component) dataStorage.stringToComponentListMap.get(componentTypeString).get(
-                        componentIndex));
-        return componentTypeString + " added! : " + PCList.getPC(pcIndex).getComponent(componentTypeString);
+
+        dataStorage.pcList.get(pcIndex)
+                .setComponent((Component) dataStorage.stringToComponentListMap.get(componentTypeString)
+                        .get(componentIndex));
+
+        return componentTypeString + " added! : "
+                + dataStorage.stringToComponentListMap.get(componentTypeString).get(componentIndex).getName();
     }
 }
