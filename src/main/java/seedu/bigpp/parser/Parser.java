@@ -19,14 +19,17 @@ public class Parser {
 
     public Command parseCommand(String userInput) {
 
-        String[] inputList = userInput.split(" ", 2);
+        String trimmedInput = userInput.trim();
+        String[] inputList = trimmedInput.split(" ", 2);
         String arguments = "";
 
         if (inputList.length == 2) {
             arguments = inputList[1];
+            arguments = arguments.trim();
         }
         String commandWord = inputList[0];
         commandWord = commandWord.toLowerCase();
+        commandWord = commandWord.trim();
 
         // try common commands first
         if (userInput.equals("back")) {
