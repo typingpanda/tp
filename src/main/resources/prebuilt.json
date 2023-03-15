@@ -67,7 +67,7 @@
 			"brand": "Fractal Design",
 			"price": 124.98
 		},
-		"budget": 0
+		"budget": -1
 	},
 	{
 		"name": "intermediate",
@@ -137,7 +137,7 @@
 			"brand": "Fractal Design",
 			"price": 124.98
 		},
-		"budget": 0
+		"budget": -1
 	},
 	{
 		"name": "advanced",
@@ -207,6 +207,6 @@
 			"brand": "Fractal Design",
 			"price": 124.98
 		},
-		"budget": 0
+		"budget": -1
 	}
 ]

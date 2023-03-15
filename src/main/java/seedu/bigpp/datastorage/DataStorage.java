@@ -65,18 +65,19 @@ public class DataStorage {
             out.println("Error creating user file, data will not be saved.");
         }
 
+        PCList toSaveList = new PCList();
+
         try (FileWriter fileWriter = new FileWriter(file)) {
 
             // remove prebuilt PCs from list, we do not want prebuilts to be saved in the
             // user file
             for (int i = 0; i < pcList.size(); i++) {
-                if (pcList.get(i).getIsPreBuilt()) {
-                    pcList.remove(i);
-                    i--;
+                if (!pcList.get(i).getIsPreBuilt()) {
+                    toSaveList.add(pcList.get(i));
                 }
             }
 
-            fileWriter.write(GSON.toJson(pcList));
+            fileWriter.write(GSON.toJson(toSaveList));
 
         } catch (IOException e) {
             out.println("Error writing to user file, data will not be saved.");

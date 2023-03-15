@@ -68,8 +68,6 @@ public class BigPP {
 
             assert command != null : "Command should not be null";
 
-            assert command != null : "Command should not be null";
-
             UI.updateUI(false, dataStorage);
             UI.showResult(result);
         } while (!(command instanceof ByeCommand));
