@@ -5,6 +5,7 @@ import seedu.bigpp.ui.UI;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingNameException;
+import seedu.bigpp.ui.UIState;
 
 public class BuilderEditNameCommand extends Command {
 
@@ -18,10 +19,13 @@ public class BuilderEditNameCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
+        assert UI.getUiState() == UIState.PCBUILDER : "UI state should be PCBUILDER";
+
         String name = super.getArguments();
         if (name.equals("")) {
             throw new BuilderMissingNameException();
         }
+
         int pcIndex = UI.builderMenu.getPCIndex();
         dataStorage.pcList.get(pcIndex).setName(name);
         return "Current build name is now: " + name;

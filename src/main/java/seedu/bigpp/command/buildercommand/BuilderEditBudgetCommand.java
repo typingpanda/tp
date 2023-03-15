@@ -7,6 +7,7 @@ import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidNumberBudgetExcept
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingBudgetException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeBudgetException;
 import seedu.bigpp.ui.UI;
+import seedu.bigpp.ui.UIState;
 
 public class BuilderEditBudgetCommand extends Command {
 
@@ -20,6 +21,8 @@ public class BuilderEditBudgetCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
+        assert UI.getUiState() == UIState.PCBUILDER : "UI state should be PCBUILDER";
+
         String argument = super.getArguments();
         if (argument.equals("")) {
             throw new BuilderMissingBudgetException();
