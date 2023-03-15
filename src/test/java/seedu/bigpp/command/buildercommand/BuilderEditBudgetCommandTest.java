@@ -19,6 +19,6 @@ public class BuilderEditBudgetCommandTest {
         PCList.addPC(pc);
         UI.setPCBuilderMode(0);
         String editBudgetCommandResult = new BuilderEditBudgetCommand("1000").executeCommand(dataStorage);
-        assertEquals("Current build budget is now: 1000", editBudgetCommandResult);
+        assertEquals("Current build budget is now: $1000.00", editBudgetCommandResult);
     }
 }
