@@ -31,7 +31,7 @@ public class BigPP {
 
         dataStorage.loadAll();
         UI.showWelcome();
-        UI.updateUI(true);
+        UI.updateUI(true, dataStorage);
         runLoopUntilExit();
     }
 
@@ -66,7 +66,7 @@ public class BigPP {
                 LOGGER.warning(e.getMessage());
             }
 
-            UI.updateUI(false);
+            UI.updateUI(false, dataStorage);
             UI.showResult(result);
         } while (!(command instanceof ByeCommand));
     }

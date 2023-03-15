@@ -1,7 +1,6 @@
 package seedu.bigpp.command.buildercommand;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
@@ -24,7 +23,7 @@ public class BuilderEditNameCommand extends Command {
             throw new BuilderMissingNameException();
         }
         int pcIndex = UI.builderMenu.getPCIndex();
-        PCList.getPC(pcIndex).setName(name);
+        dataStorage.pcList.get(pcIndex).setName(name);
         return "Current build name is now: " + name;
     }
 }

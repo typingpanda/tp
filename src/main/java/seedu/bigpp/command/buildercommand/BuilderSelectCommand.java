@@ -8,7 +8,6 @@ import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentExcepti
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingSelectException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
-import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 
 public class BuilderSelectCommand extends Command {
@@ -19,7 +18,6 @@ public class BuilderSelectCommand extends Command {
 
     /**
      * Change the Component of the PC that the builder is working on
-     * 
      * @return Added Component message
      */
     @Override
@@ -61,9 +59,11 @@ public class BuilderSelectCommand extends Command {
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
-        PCList.getPC(pcIndex)
-                .setComponent((Component) dataStorage.stringToComponentListMap.get(componentTypeString).get(
-                        componentIndex));
-        return componentTypeString + " added! : " + PCList.getPC(pcIndex).getComponent(componentTypeString);
+        Component selectedComponent = (Component) dataStorage.stringToComponentListMap.get(componentTypeString)
+                .get(componentIndex);
+
+        dataStorage.pcList.get(pcIndex).setComponent(selectedComponent);
+
+        return componentTypeString + " added! : " + selectedComponent.getName();
     }
 }

@@ -8,12 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.System.Logger;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -53,7 +50,8 @@ public class DataStorage {
 
     private static final Gson GSON = new Gson();
 
-    public Map<String, ComponentList> stringToComponentListMap = new HashMap<String, ComponentList>();
+    public Map<String, ComponentList<?>> stringToComponentListMap = new HashMap<String, ComponentList<?>>();
+    public PCList pcList = new PCList();
 
     /**
      * Saves all the user's PCs to a json file.
@@ -68,7 +66,7 @@ public class DataStorage {
         }
 
         try (FileWriter fileWriter = new FileWriter(file)) {
-            fileWriter.write(GSON.toJson(PCList.getList()));
+            fileWriter.write(GSON.toJson(pcList));
         } catch (IOException e) {
             out.println("Error writing to user file, data will not be saved.");
         }
@@ -269,7 +267,6 @@ public class DataStorage {
     /**
      * Loads all the user's PCs from the json file into PCList.
      * This will append all user's PCs to the PCList.
-     * 
      */
     public void loadUserPcs() {
         File userFile = new File(USER_PATH);
@@ -311,14 +308,13 @@ public class DataStorage {
         }
 
         out.println("User PCs found, loading...");
-        PCList.appendList(GSON.fromJson(json, new TypeToken<ArrayList<PC>>() {
+        pcList.addAll(GSON.fromJson(json, new TypeToken<ArrayList<PC>>() {
         }.getType()));
     }
 
     /**
      * Loads all the prebuilt PCs from the json file into PCList.
      * Important to call this first as this will overwrite the user's PCs.
-     * 
      */
     public void loadPrebuiltPcs() {
         ClassLoader classLoader = DataStorage.class.getClassLoader();
@@ -328,12 +324,12 @@ public class DataStorage {
         // read entire file into string
         String json = reader.lines().reduce("", (accumulator, actual) -> accumulator + actual);
 
-        PCList.setList(GSON.fromJson(json, new TypeToken<ArrayList<PC>>() {
+        pcList = (GSON.fromJson(json, new TypeToken<ArrayList<PC>>() {
         }.getType()));
 
         // If there are no prebuilt PCs, ensure that PCList is not null
-        if (PCList.getList() == null) {
-            PCList.setList(new ArrayList<>());
+        if (pcList == null) {
+            pcList = new PCList();
         }
     }
 

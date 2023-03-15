@@ -6,7 +6,6 @@ import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidNumberBudgetException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingBudgetException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeBudgetException;
-import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 
 public class BuilderEditBudgetCommand extends Command {
@@ -36,7 +35,7 @@ public class BuilderEditBudgetCommand extends Command {
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
-        PCList.getPC(pcIndex).setBudget(budget);
+        dataStorage.pcList.get(pcIndex).setBudget(budget);
         return "Current build budget is now: " + budget;
     }
 }
