@@ -27,13 +27,13 @@ public class BuilderEditBudgetCommand extends Command {
         if (argument.equals("")) {
             throw new BuilderMissingBudgetException();
         }
-        if (argument.matches(".*\\D.*")) {
+        if (argument.matches(".*\\D.*") && !argument.matches("-1")) {
             throw new BuilderInvalidTypeBudgetException();
         }
 
         int budget = Integer.parseInt(super.getArguments());
 
-        if (budget <= 0) {
+        if (budget <= 0 && budget != -1) {
             throw new BuilderInvalidNumberBudgetException();
         }
 

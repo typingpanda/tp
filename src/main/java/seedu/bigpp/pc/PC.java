@@ -9,6 +9,7 @@ import seedu.bigpp.component.motherboard.Motherboard;
 import seedu.bigpp.component.psu.PSU;
 import seedu.bigpp.component.ram.RAM;
 import seedu.bigpp.component.storage.Storage;
+import seedu.bigpp.ui.UI;
 
 import java.text.DecimalFormat;
 
@@ -25,8 +26,6 @@ public class PC {
     private Chassis chassis = null;
 
     private int budget = -1;
-
-    private DecimalFormat moneyDecimalFormat = new DecimalFormat("#.00");
 
     public PC(String name, Boolean isPrebuilt) {
         this.name = name;
@@ -84,7 +83,8 @@ public class PC {
             setChassis((Chassis) component);
         }
     }
-    public void setNullComponent(String componentType){
+
+    public void setNullComponent(String componentType) {
         if (componentType.equals("cpu")) {
             setCPU(null);
         } else if (componentType.equals("cpu-cooler")) {
@@ -177,8 +177,9 @@ public class PC {
     public int getBudget() {
         return budget;
     }
+
     public String getBudgetString() {
-        return (budget == -1) ? "infinite" : "$" +moneyDecimalFormat.format(budget);
+        return (budget == -1) ? "infinite" : "$" + UI.moneyDecimalFormat.format(budget);
     }
 
     /**
@@ -194,7 +195,7 @@ public class PC {
             }
         }
         // give price to 2 dp
-        totalCost = Float.parseFloat(moneyDecimalFormat.format(totalCost));
+        totalCost = Float.parseFloat(UI.moneyDecimalFormat.format(totalCost));
         return totalCost;
     }
 
@@ -216,7 +217,7 @@ public class PC {
         componentString += ("Components:" + '\n');
 
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
-            "Storage    :", "PSU        :", "Chassis    :" };
+                "Storage    :", "PSU        :", "Chassis    :" };
 
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
 

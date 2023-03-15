@@ -5,11 +5,14 @@ import seedu.bigpp.menu.PCBuilderMenu;
 import seedu.bigpp.menu.PCViewerMenu;
 
 import java.io.PrintStream;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public abstract class UI {
     public static PrintStream out = System.out;
     public static PCBuilderMenu builderMenu = null;
+
+    public static DecimalFormat moneyDecimalFormat = new DecimalFormat("#.##");
 
     private static final String LOGO1 = "          _____                    _____          "
             + "          _____                            _____      "
