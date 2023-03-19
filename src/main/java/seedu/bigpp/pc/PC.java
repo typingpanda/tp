@@ -206,6 +206,19 @@ public class PC {
     }
 
     /**
+     * Method to check if the PC is complete.
+     * @return true if all components are not null, false otherwise.
+     */
+    public boolean isComplete() {
+        if (cpu == null || gpu == null || motherboard == null || ram == null || storage == null || psu == null
+                || chassis == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Method to print all the components of the PC.
      */
     public String viewComponents() {
@@ -215,7 +228,7 @@ public class PC {
         componentString += ("Components:" + '\n');
 
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
-            "Storage    :", "PSU        :", "Chassis    :" };
+                "Storage    :", "PSU        :", "Chassis    :" };
 
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
 
@@ -233,8 +246,12 @@ public class PC {
         return componentString;
     }
 
+    /**
+     * Method to print the PC's name and cost and build status.
+     */
     @Override
     public String toString() {
-        return buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + "/" + getBudgetString();
+        return buildType(isPrebuilt) + " [" + name + "]" + " - $" + getCost() + "/" + getBudgetString() + " - "
+                + (isComplete() ? "Complete" : "Incomplete");
     }
 }
