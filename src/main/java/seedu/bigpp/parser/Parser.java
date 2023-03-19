@@ -129,7 +129,8 @@ public class Parser {
             // return new UnrecognizedCommand();
         default:
             return new UnrecognizedCommand(
-                    "Invalid component type!, valid types are (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
+                    "Invalid component type!, valid types are "
+                            + "(cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
         }
     }
 }
