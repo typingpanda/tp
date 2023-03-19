@@ -33,17 +33,25 @@ import seedu.bigpp.component.storage.StorageList;
 import seedu.bigpp.pc.PC;
 import seedu.bigpp.pc.PCList;
 import seedu.bigpp.component.ComponentList;
+import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
+import static seedu.bigpp.component.ComponentType.GPU_TYPE;
+import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
+import static seedu.bigpp.component.ComponentType.PSU_TYPE;
+import static seedu.bigpp.component.ComponentType.RAM_TYPE;
+import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
 import static seedu.bigpp.ui.UI.out;
 
 public class DataStorage {
-    private static final String CHASSIS_PATH = "chassis.json";
-    private static final String CPU_PATH = "cpu.json";
-    private static final String CPU_COOLER_PATH = "cpucooler.json";
-    private static final String GPU_PATH = "gpu.json";
-    private static final String MOTHERBOARD_PATH = "motherboard.json";
-    private static final String PSU_PATH = "psu.json";
-    private static final String RAM_PATH = "ram.json";
-    private static final String STORAGE_PATH = "storage.json";
+    private static final String CHASSIS_PATH = CHASSIS_TYPE + ".json";
+    private static final String CPU_PATH = CPU_TYPE + ".json";
+    private static final String CPU_COOLER_PATH = CPU_COOLER_TYPE + ".json";
+    private static final String GPU_PATH = GPU_TYPE + ".json";
+    private static final String MOTHERBOARD_PATH = MOTHERBOARD_TYPE + ".json";
+    private static final String PSU_PATH = PSU_TYPE + ".json";
+    private static final String RAM_PATH = RAM_TYPE + ".json";
+    private static final String STORAGE_PATH = STORAGE_TYPE + ".json";
 
     private static final String PREBUILT_PATH = "prebuilt.json";
     private static final String USER_PATH = "./user.json";
@@ -106,14 +114,14 @@ public class DataStorage {
     }
 
     public void initStringToComponentListMap() {
-        stringToComponentListMap.put("cpu", new CPUList());
-        stringToComponentListMap.put("gpu", new GPUList());
-        stringToComponentListMap.put("chassis", new ChassisList());
-        stringToComponentListMap.put("cpu-cooler", new CPUCoolerList());
-        stringToComponentListMap.put("psu", new PSUList());
-        stringToComponentListMap.put("ram", new RAMList());
-        stringToComponentListMap.put("storage", new StorageList());
-        stringToComponentListMap.put("motherboard", new MotherboardList());
+        stringToComponentListMap.put(CPU_TYPE, new CPUList());
+        stringToComponentListMap.put(GPU_TYPE, new GPUList());
+        stringToComponentListMap.put(CHASSIS_TYPE, new ChassisList());
+        stringToComponentListMap.put(CPU_COOLER_TYPE, new CPUCoolerList());
+        stringToComponentListMap.put(PSU_TYPE, new PSUList());
+        stringToComponentListMap.put(RAM_TYPE, new RAMList());
+        stringToComponentListMap.put(STORAGE_TYPE, new StorageList());
+        stringToComponentListMap.put(MOTHERBOARD_TYPE, new MotherboardList());
     }
 
     /**
@@ -133,7 +141,7 @@ public class DataStorage {
         chassisMap.forEach((name, chassis) -> chassisMap.get(name).setName(name));
 
         // Add each chassis to the chassis list
-        chassisMap.forEach((name, chassis) -> stringToComponentListMap.get("chassis").add(chassis));
+        chassisMap.forEach((name, chassis) -> stringToComponentListMap.get(CHASSIS_TYPE).add(chassis));
     }
 
     /**
@@ -153,7 +161,7 @@ public class DataStorage {
         cpuMap.forEach((name, cpu) -> cpuMap.get(name).setName(name));
 
         // Add each cpu to the cpu list
-        cpuMap.forEach((name, cpu) -> stringToComponentListMap.get("cpu").add(cpu));
+        cpuMap.forEach((name, cpu) -> stringToComponentListMap.get(CPU_TYPE).add(cpu));
     }
 
     /**
@@ -173,7 +181,7 @@ public class DataStorage {
         cpuCoolerMap.forEach((name, cpuCooler) -> cpuCoolerMap.get(name).setName(name));
 
         // Add each cpu cooler to the cpu cooler list
-        cpuCoolerMap.forEach((name, cpuCooler) -> stringToComponentListMap.get("cpu-cooler").add(cpuCooler));
+        cpuCoolerMap.forEach((name, cpuCooler) -> stringToComponentListMap.get(CPU_COOLER_TYPE).add(cpuCooler));
     }
 
     /**
@@ -193,7 +201,7 @@ public class DataStorage {
         gpuMap.forEach((name, gpu) -> gpuMap.get(name).setName(name));
 
         // Add each gpu to the gpu list
-        gpuMap.forEach((name, gpu) -> stringToComponentListMap.get("gpu").add(gpu));
+        gpuMap.forEach((name, gpu) -> stringToComponentListMap.get(GPU_TYPE).add(gpu));
     }
 
     /**
@@ -213,7 +221,7 @@ public class DataStorage {
         motherboardMap.forEach((name, motherboard) -> motherboardMap.get(name).setName(name));
 
         // Add each motherboard to the motherboard list
-        motherboardMap.forEach((name, motherboard) -> stringToComponentListMap.get("motherboard").add(motherboard));
+        motherboardMap.forEach((name, motherboard) -> stringToComponentListMap.get(MOTHERBOARD_TYPE).add(motherboard));
     }
 
     /**
@@ -233,7 +241,7 @@ public class DataStorage {
         psuMap.forEach((name, psu) -> psuMap.get(name).setName(name));
 
         // Add each psu to the psu list
-        psuMap.forEach((name, psu) -> stringToComponentListMap.get("psu").add(psu));
+        psuMap.forEach((name, psu) -> stringToComponentListMap.get(PSU_TYPE).add(psu));
     }
 
     /**
@@ -253,7 +261,7 @@ public class DataStorage {
         ramMap.forEach((name, ram) -> ramMap.get(name).setName(name));
 
         // Add each ram to the ram list
-        ramMap.forEach((name, ram) -> stringToComponentListMap.get("ram").add(ram));
+        ramMap.forEach((name, ram) -> stringToComponentListMap.get(RAM_TYPE).add(ram));
     }
 
     /**
@@ -273,7 +281,7 @@ public class DataStorage {
         storageMap.forEach((name, storage) -> storageMap.get(name).setName(name));
 
         // Add each storage to the storage list
-        storageMap.forEach((name, storage) -> stringToComponentListMap.get("storage").add(storage));
+        storageMap.forEach((name, storage) -> stringToComponentListMap.get(STORAGE_TYPE).add(storage));
     }
 
     /**

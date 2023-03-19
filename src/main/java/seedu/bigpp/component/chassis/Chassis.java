@@ -1,9 +1,10 @@
 package seedu.bigpp.component.chassis;
 
 import seedu.bigpp.component.Component;
+import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
 
 public class Chassis extends Component {
-    public static final String COMPONENT_STRING = "chassis";
+    public static final String COMPONENT_STRING = CHASSIS_TYPE;
 
     private String size;
 

@@ -1,9 +1,10 @@
 package seedu.bigpp.component.motherboard;
 
 import seedu.bigpp.component.Component;
+import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
 
 public class Motherboard extends Component {
-    public static final String COMPONENT_STRING = "motherboard";
+    public static final String COMPONENT_STRING = MOTHERBOARD_TYPE;
     private String formFactor;
     private String socket;
     private float power;

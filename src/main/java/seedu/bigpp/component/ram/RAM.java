@@ -1,9 +1,10 @@
 package seedu.bigpp.component.ram;
 
 import seedu.bigpp.component.Component;
+import static seedu.bigpp.component.ComponentType.RAM_TYPE;
 
 public class RAM extends Component {
-    public static final String COMPONENT_STRING = "ram";
+    public static final String COMPONENT_STRING = RAM_TYPE;
     private int memory;
     private int sticks;
     private int speed;

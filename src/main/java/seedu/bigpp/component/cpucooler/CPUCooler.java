@@ -1,9 +1,10 @@
 package seedu.bigpp.component.cpucooler;
 
 import seedu.bigpp.component.Component;
+import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
 
 public class CPUCooler extends Component {
-    public static final String COMPONENT_STRING = "cpu-cooler";
+    public static final String COMPONENT_STRING = CPU_COOLER_TYPE;
     private int rpm;
     private float noise;
     private float power;
