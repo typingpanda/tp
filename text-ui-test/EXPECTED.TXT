@@ -27,9 +27,9 @@ Welcome to BigPP!
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $813.29/infinite
-2.Prebuilt-PC: [intermediate] - $1499.36/infinite
-3.Prebuilt-PC: [advanced] - $2149.75/infinite
+1.Prebuilt-PC: [beginner] - $813.29/infinite - Complete
+2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
 What would you like to do?
 Add PC
 View PC
@@ -42,10 +42,10 @@ exit
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $813.29/infinite
-2.Prebuilt-PC: [intermediate] - $1499.36/infinite
-3.Prebuilt-PC: [advanced] - $2149.75/infinite
-4.Custom-PC: [newpc1] - $0.0/infinite
+1.Prebuilt-PC: [beginner] - $813.29/infinite - Complete
+2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
+4.Custom-PC: [newpc1] - $0.0/infinite - Incomplete
 What would you like to do?
 Add PC
 View PC
@@ -59,11 +59,11 @@ Custom PC: [ newpc1 ] has been created
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $813.29/infinite
-2.Prebuilt-PC: [intermediate] - $1499.36/infinite
-3.Prebuilt-PC: [advanced] - $2149.75/infinite
-4.Custom-PC: [newpc1] - $0.0/infinite
-5.Custom-PC: [newpc2] - $0.0/infinite
+1.Prebuilt-PC: [beginner] - $813.29/infinite - Complete
+2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
+4.Custom-PC: [newpc1] - $0.0/infinite - Incomplete
+5.Custom-PC: [newpc2] - $0.0/infinite - Incomplete
 What would you like to do?
 Add PC
 View PC
@@ -77,11 +77,11 @@ Custom PC: [ newpc2 ] has been created
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $813.29/infinite
-2.Prebuilt-PC: [intermediate] - $1499.36/infinite
-3.Prebuilt-PC: [advanced] - $2149.75/infinite
-4.Custom-PC: [newpc1] - $0.0/infinite
-5.Custom-PC: [newpc2] - $0.0/infinite
+1.Prebuilt-PC: [beginner] - $813.29/infinite - Complete
+2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
+4.Custom-PC: [newpc1] - $0.0/infinite - Incomplete
+5.Custom-PC: [newpc2] - $0.0/infinite - Incomplete
 What would you like to do?
 Add PC
 View PC
