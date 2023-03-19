@@ -1,6 +1,7 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
 import seedu.bigpp.command.buildercommand.BuilderInfoCommand;
@@ -15,9 +16,23 @@ import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
 import seedu.bigpp.ui.UI;
+import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
+import static seedu.bigpp.component.ComponentType.GPU_TYPE;
+import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
+import static seedu.bigpp.component.ComponentType.PSU_TYPE;
+import static seedu.bigpp.component.ComponentType.RAM_TYPE;
+import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
 
 public class Parser {
 
+    /**
+     * Parses user input into command for execution, separates viewer and builder
+     * commands.
+     * @param userInput full user input string
+     * @return the command
+     */
     public Command parseCommand(String userInput) {
 
         String trimmedInput = userInput.trim();
@@ -51,10 +66,16 @@ public class Parser {
             return parseBuilderCommand(commandWord, arguments);
 
         default:
-            return new UnrecognizedCommand();
+            return new UnrecognizedCommand("");
         }
     }
 
+    /**
+     * Parses user input for viewer commands.
+     * @param commandWord the command word
+     * @param arguments the arguments
+     * @return the command
+     */
     private Command parseViewerCommand(String commandWord, String arguments) {
 
         switch (commandWord) {
@@ -67,10 +88,16 @@ public class Parser {
         case "edit":
             return new ViewerEditCommand(arguments);
         default:
-            return new UnrecognizedCommand();
+            return new UnrecognizedCommand("");
         }
     }
 
+    /**
+     * Parses user input for builder commands.
+     * @param commandWord the command word
+     * @param arguments the arguments
+     * @return the command
+     */
     private Command parseBuilderCommand(String commandWord, String arguments) {
 
         switch (commandWord) {
@@ -86,8 +113,47 @@ public class Parser {
             return new BuilderInfoCommand(arguments);
         case "unselect":
             return new BuilderUnselectCommand(arguments);
+        case "custom":
+            return parseCustomCommand(arguments);
         default:
-            return new UnrecognizedCommand();
+            return new UnrecognizedCommand("");
+        }
+    }
+
+    /**
+     * Parses user input for custom component commands.
+     * @param arguments the arguments
+     * @return the command
+     */
+    private Command parseCustomCommand(String arguments) {
+        String[] inputList = arguments.split(" ", 2);
+        String componentType = inputList[0];
+        String attributes = "";
+        if (inputList.length == 2) {
+            attributes = inputList[1];
+        }
+
+        switch (componentType) {
+        case CPU_TYPE:
+            return new BuilderCustomCpuCommand(attributes);
+        case GPU_TYPE:
+            // return new UnrecognizedCommand();
+        case RAM_TYPE:
+            // return new UnrecognizedCommand();
+        case STORAGE_TYPE:
+            // return new UnrecognizedCommand();
+        case PSU_TYPE:
+            // return new UnrecognizedCommand();
+        case MOTHERBOARD_TYPE:
+            // return new UnrecognizedCommand();
+        case CHASSIS_TYPE:
+            // return new UnrecognizedCommand();
+        case CPU_COOLER_TYPE:
+            // return new UnrecognizedCommand();
+        default:
+            return new UnrecognizedCommand(
+                    "Invalid component type!, valid types are "
+                            + "(cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
         }
     }
 }

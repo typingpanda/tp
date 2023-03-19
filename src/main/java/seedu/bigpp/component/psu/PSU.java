@@ -1,9 +1,10 @@
 package seedu.bigpp.component.psu;
 
 import seedu.bigpp.component.Component;
+import static seedu.bigpp.component.ComponentType.PSU_TYPE;
 
 public class PSU extends Component {
-    public static final String COMPONENT_STRING = "psu";
+    public static final String COMPONENT_STRING = PSU_TYPE;
     private String efficiency;
     private String formFactor;
     private float power;

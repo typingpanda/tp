@@ -1,9 +1,10 @@
 package seedu.bigpp.component.cpu;
 
 import seedu.bigpp.component.Component;
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
 
 public class CPU extends Component {
-    public static final String COMPONENT_STRING = "cpu";
+    public static final String COMPONENT_STRING = CPU_TYPE;
     private int cores;
     private int threads;
     private float baseClock;
@@ -11,8 +12,8 @@ public class CPU extends Component {
     private float power;
     private String socket;
 
-    public CPU(String name, float price, int cores, int threads, float baseClock, float boostClock, float power,
-            String brand, String socket) {
+    public CPU(String name, String brand, float price, int cores, int threads, float baseClock, float boostClock,
+            float power, String socket) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
@@ -74,7 +75,7 @@ public class CPU extends Component {
 
     @Override
     public String toString() {
-        return  "NAME: " + super.getName() +
+        return "NAME: " + super.getName() +
                 "\nBRAND: " + super.getBrand() +
                 "\nPRICE: " + super.getPrice() +
                 "\nCORES: " + cores +
