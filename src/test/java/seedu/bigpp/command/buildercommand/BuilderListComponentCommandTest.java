@@ -6,6 +6,7 @@ import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentExcepti
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingListException;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -50,7 +51,7 @@ public class BuilderListComponentCommandTest {
 
         UI.setPCBuilderMode(0);
 
-        String listComponentCommandResult = new BuilderListComponentCommand("cpu").executeCommand(dataStorage);
+        String listComponentCommandResult = new BuilderListComponentCommand(CPU_TYPE).executeCommand(dataStorage);
         assertEquals(EXPECTED_OUTPUT, listComponentCommandResult);
     }
 }

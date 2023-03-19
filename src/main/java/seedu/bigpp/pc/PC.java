@@ -10,6 +10,14 @@ import seedu.bigpp.component.psu.PSU;
 import seedu.bigpp.component.ram.RAM;
 import seedu.bigpp.component.storage.Storage;
 import seedu.bigpp.ui.UI;
+import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
+import static seedu.bigpp.component.ComponentType.GPU_TYPE;
+import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
+import static seedu.bigpp.component.ComponentType.PSU_TYPE;
+import static seedu.bigpp.component.ComponentType.RAM_TYPE;
+import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
 
 public class PC {
     private String name;
@@ -34,7 +42,7 @@ public class PC {
         this.chassis = chassis;
     }
 
-    public void setCPU(CPU cpu) {
+    public void setCpu(CPU cpu) {
         this.cpu = cpu;
     }
 
@@ -64,7 +72,7 @@ public class PC {
 
     public void setComponent(Component component) {
         if (component instanceof CPU) {
-            setCPU((CPU) component);
+            setCpu((CPU) component);
         } else if (component instanceof CPUCooler) {
             setCpuCooler((CPUCooler) component);
         } else if (component instanceof GPU) {
@@ -83,21 +91,21 @@ public class PC {
     }
 
     public void setNullComponent(String componentType) {
-        if (componentType.equals("cpu")) {
-            setCPU(null);
-        } else if (componentType.equals("cpu-cooler")) {
+        if (componentType.equals(CPU_TYPE)) {
+            setCpu(null);
+        } else if (componentType.equals(CPU_COOLER_TYPE)) {
             setCpuCooler(null);
-        } else if (componentType.equals("gpu")) {
+        } else if (componentType.equals(GPU_TYPE)) {
             setGpu(null);
-        } else if (componentType.equals("motherboard")) {
+        } else if (componentType.equals(MOTHERBOARD_TYPE)) {
             setMotherboard(null);
-        } else if (componentType.equals("ram")) {
+        } else if (componentType.equals(RAM_TYPE)) {
             setRam(null);
-        } else if (componentType.equals("storage")) {
+        } else if (componentType.equals(STORAGE_TYPE)) {
             setStorage(null);
-        } else if (componentType.equals("psu")) {
+        } else if (componentType.equals(PSU_TYPE)) {
             setPsu(null);
-        } else if (componentType.equals("chassis")) {
+        } else if (componentType.equals(CHASSIS_TYPE)) {
             setChassis(null);
         }
     }
@@ -135,21 +143,21 @@ public class PC {
     }
 
     public Component getComponent(String componentName) {
-        if (componentName.equals("cpu")) {
+        if (componentName.equals(CPU_TYPE)) {
             return getCpu();
-        } else if (componentName.equals("cpu-cooler")) {
+        } else if (componentName.equals(CPU_COOLER_TYPE)) {
             return getCpuCooler();
-        } else if (componentName.equals("gpu")) {
+        } else if (componentName.equals(GPU_TYPE)) {
             return getGpu();
-        } else if (componentName.equals("motherboard")) {
+        } else if (componentName.equals(MOTHERBOARD_TYPE)) {
             return getMotherboard();
-        } else if (componentName.equals("ram")) {
+        } else if (componentName.equals(RAM_TYPE)) {
             return getRam();
-        } else if (componentName.equals("storage")) {
+        } else if (componentName.equals(STORAGE_TYPE)) {
             return getStorage();
-        } else if (componentName.equals("psu")) {
+        } else if (componentName.equals(PSU_TYPE)) {
             return getPsu();
-        } else if (componentName.equals("chassis")) {
+        } else if (componentName.equals(CHASSIS_TYPE)) {
             return getChassis();
         } else {
             return null;
@@ -215,7 +223,7 @@ public class PC {
         componentString += ("Components:" + '\n');
 
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
-            "Storage    :", "PSU        :", "Chassis    :" };
+                "Storage    :", "PSU        :", "Chassis    :" };
 
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
 
