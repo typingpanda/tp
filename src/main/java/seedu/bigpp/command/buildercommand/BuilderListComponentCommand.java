@@ -25,14 +25,14 @@ public class BuilderListComponentCommand extends Command {
         assert UI.getUiState() == UIState.PCBUILDER : "UI state should be PCBUILDER";
 
         String componentTypeString = getArguments();
+        componentTypeString = componentTypeString.toLowerCase();
+
         if (componentTypeString.equals("")) {
             throw new BuilderMissingComponentException();
         }
         if (!dataStorage.stringToComponentListMap.containsKey(componentTypeString)) {
             throw new BuilderIncorrectComponentException();
         }
-
-        componentTypeString = componentTypeString.toLowerCase();
 
         // throw exception if component type is not valid eg. "list jfk"
         if (!dataStorage.stringToComponentListMap.containsKey(componentTypeString)) {
