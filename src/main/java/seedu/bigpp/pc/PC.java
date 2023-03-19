@@ -30,11 +30,25 @@ public class PC {
         this.isPrebuilt = isPrebuilt;
     }
 
+    public PC(PC pcCopy) {
+        this.name = pcCopy.getName() + " (copy)";
+        this.isPrebuilt = false;
+        this.cpu = pcCopy.getCpu();
+        this.cpuCooler = pcCopy.getCpuCooler();
+        this.gpu = pcCopy.getGpu();
+        this.motherboard = pcCopy.getMotherboard();
+        this.ram = pcCopy.getRam();
+        this.storage = pcCopy.getStorage();
+        this.psu = pcCopy.getPsu();
+        this.chassis = pcCopy.getChassis();
+        this.budget = pcCopy.getBudget();
+    }
+
     public void setChassis(Chassis chassis) {
         this.chassis = chassis;
     }
 
-    public void setCPU(CPU cpu) {
+    public void setCpu(CPU cpu) {
         this.cpu = cpu;
     }
 
@@ -64,7 +78,7 @@ public class PC {
 
     public void setComponent(Component component) {
         if (component instanceof CPU) {
-            setCPU((CPU) component);
+            setCpu((CPU) component);
         } else if (component instanceof CPUCooler) {
             setCpuCooler((CPUCooler) component);
         } else if (component instanceof GPU) {
@@ -84,7 +98,7 @@ public class PC {
 
     public void setNullComponent(String componentType) {
         if (componentType.equals("cpu")) {
-            setCPU(null);
+            setCpu(null);
         } else if (componentType.equals("cpu-cooler")) {
             setCpuCooler(null);
         } else if (componentType.equals("gpu")) {
