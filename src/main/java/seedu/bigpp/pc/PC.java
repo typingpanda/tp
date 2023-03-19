@@ -228,7 +228,7 @@ public class PC {
         componentString += ("Components:" + '\n');
 
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
-                "Storage    :", "PSU        :", "Chassis    :" };
+            "Storage    :", "PSU        :", "Chassis    :" };
 
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
 
