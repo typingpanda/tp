@@ -38,6 +38,20 @@ public class PC {
         this.isPrebuilt = isPrebuilt;
     }
 
+    public PC(PC pcCopy) {
+        this.name = pcCopy.getName() + " (copy)";
+        this.isPrebuilt = false;
+        this.cpu = pcCopy.getCpu();
+        this.cpuCooler = pcCopy.getCpuCooler();
+        this.gpu = pcCopy.getGpu();
+        this.motherboard = pcCopy.getMotherboard();
+        this.ram = pcCopy.getRam();
+        this.storage = pcCopy.getStorage();
+        this.psu = pcCopy.getPsu();
+        this.chassis = pcCopy.getChassis();
+        this.budget = pcCopy.getBudget();
+    }
+
     public void setChassis(Chassis chassis) {
         this.chassis = chassis;
     }
