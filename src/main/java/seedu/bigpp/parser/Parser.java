@@ -37,7 +37,8 @@ import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
 public class Parser {
 
     /**
-     * Parses user input into command for execution, separates viewer and builder commands.
+     * Parses user input into command for execution, separates viewer and builder
+     * commands.
      * @param userInput full user input string
      * @return the command
      */
@@ -81,7 +82,7 @@ public class Parser {
     /**
      * Parses user input for viewer commands.
      * @param commandWord the command word
-     * @param arguments   the arguments
+     * @param arguments the arguments
      * @return the command
      */
     private Command parseViewerCommand(String commandWord, String arguments) {
@@ -103,7 +104,7 @@ public class Parser {
     /**
      * Parses user input for builder commands.
      * @param commandWord the command word
-     * @param arguments   the arguments
+     * @param arguments the arguments
      * @return the command
      */
     private Command parseBuilderCommand(String commandWord, String arguments) {
@@ -137,7 +138,7 @@ public class Parser {
      */
     private Command parseCustomCommand(String arguments) {
         String[] inputList = arguments.split(" ", 2);
-        String componentType = inputList[0];
+        String componentType = inputList[0].toLowerCase();
         String attributes = "";
         if (inputList.length == 2) {
             attributes = inputList[1];
