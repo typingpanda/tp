@@ -47,7 +47,8 @@ public class BuilderCompareMotherboardCommand extends Command {
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }
-        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(MOTHERBOARD_TYPE)
+        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(
+                        MOTHERBOARD_TYPE)
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }

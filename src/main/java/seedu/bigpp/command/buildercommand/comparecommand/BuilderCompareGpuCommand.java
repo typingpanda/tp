@@ -43,7 +43,8 @@ public class BuilderCompareGpuCommand extends Command {
         }
 
         //check if index is out of bounds
-        if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get(GPU_TYPE).size()) {
+        if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get(GPU_TYPE)
+                .size()) {
             throw new PPIndexOutOfBoundsException();
         }
         if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(GPU_TYPE)

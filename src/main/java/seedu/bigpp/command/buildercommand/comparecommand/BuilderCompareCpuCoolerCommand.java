@@ -47,7 +47,8 @@ public class BuilderCompareCpuCoolerCommand extends Command {
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }
-        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(CPU_COOLER_TYPE)
+        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(
+                        CPU_COOLER_TYPE)
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }
