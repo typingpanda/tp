@@ -55,25 +55,25 @@ public class BuilderCompareCpuCommand extends Command {
         CPU secondComponentObject = (CPU) dataStorage.stringToComponentListMap.get("cpu").get(secondComponentIndex);
 
         //format the comparison table in outputString
-        String outputString = String.format("%56s", "_".repeat(56));
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "NAME", firstComponentObject.getName(),
+        String outputString = String.format("%86s", "_".repeat(86));
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "NAME", firstComponentObject.getName(),
                 secondComponentObject.getName());
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "-".repeat(12), "-".repeat(20), "-".repeat(20));
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "PRICE", "$" + firstComponentObject.getPrice(),
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "-".repeat(12), "-".repeat(35), "-".repeat(35));
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "PRICE", "$" + firstComponentObject.getPrice(),
                 "$" + secondComponentObject.getPrice());
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "SOCKET", firstComponentObject.getSocket(),
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "SOCKET", firstComponentObject.getSocket(),
                 secondComponentObject.getSocket());
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "CORES", firstComponentObject.getCores(),
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "CORES", firstComponentObject.getCores(),
                 secondComponentObject.getCores());
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "THREADS", firstComponentObject.getThreads(),
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "THREADS", firstComponentObject.getThreads(),
                 secondComponentObject.getThreads());
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "BASE CLOCK",
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "BASE CLOCK",
                 firstComponentObject.getBaseClock() + "GHz", secondComponentObject.getBaseClock() + "GHz");
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "BOOST CLOCK",
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "BOOST CLOCK",
                 firstComponentObject.getBoostClock() + "GHz", secondComponentObject.getBoostClock() + "GHz");
-        outputString += String.format("%n|%-12s|%-20s|%-20s|", "POWER", firstComponentObject.getPower() + "W",
+        outputString += String.format("%n|%-12s|%-35s|%-35s|", "POWER", firstComponentObject.getPower() + "W",
                 secondComponentObject.getPower() + "W");
-        outputString += String.format("%n%-56s", "_".repeat(56));
+        outputString += String.format("%n%-86s", "_".repeat(86));
         return outputString;
     }
 }
