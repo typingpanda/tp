@@ -39,7 +39,7 @@ public class BigPP {
      * Runs the program until the user issues the exit command.
      */
     private void runLoopUntilExit() {
-        LOGGER.setLevel(Level.INFO);
+        LOGGER.setLevel(Level.SEVERE);
         try {
             FileHandler handler = new FileHandler("BigPP.log", true);
             handler.setFormatter(new SimpleFormatter());
