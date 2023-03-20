@@ -45,6 +45,12 @@ public class BuilderCustomCpuCommand extends Command {
             baseClock = Float.parseFloat(argumentList[5]);
             boostClock = Float.parseFloat(argumentList[6]);
             power = Float.parseFloat(argumentList[7]);
+            
+            // Check if all the values are positive
+            if (price < 0 || cores < 0 || threads < 0 || baseClock < 0 || boostClock < 0 || power < 0) {
+                return "price, baseClock, boostClock, power, cores and threads should be positive";
+            }
+
         } catch (NumberFormatException e) {
             return "price, baseClock, boostClock and power should be a float, cores and threads should be an integer";
         }
