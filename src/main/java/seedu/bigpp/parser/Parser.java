@@ -3,6 +3,7 @@ package seedu.bigpp.parser;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.buildercommand.BuilderCompareChassisCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareCpuCoolerCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareGpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareMotherboardCommand;
 import seedu.bigpp.command.buildercommand.BuilderComparePsuCommand;
@@ -22,12 +23,11 @@ import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
 import seedu.bigpp.ui.UI;
+
 import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
-import static seedu.bigpp.component.ComponentType.CPU_TYPE;
 import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
 import static seedu.bigpp.component.ComponentType.GPU_TYPE;
 import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
 import static seedu.bigpp.component.ComponentType.PSU_TYPE;
@@ -37,8 +37,7 @@ import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
 public class Parser {
 
     /**
-     * Parses user input into command for execution, separates viewer and builder
-     * commands.
+     * Parses user input into command for execution, separates viewer and builder commands.
      * @param userInput full user input string
      * @return the command
      */
@@ -82,7 +81,7 @@ public class Parser {
     /**
      * Parses user input for viewer commands.
      * @param commandWord the command word
-     * @param arguments the arguments
+     * @param arguments   the arguments
      * @return the command
      */
     private Command parseViewerCommand(String commandWord, String arguments) {
@@ -104,7 +103,7 @@ public class Parser {
     /**
      * Parses user input for builder commands.
      * @param commandWord the command word
-     * @param arguments the arguments
+     * @param arguments   the arguments
      * @return the command
      */
     private Command parseBuilderCommand(String commandWord, String arguments) {
@@ -192,7 +191,7 @@ public class Parser {
         case CHASSIS_TYPE:
             return new BuilderCompareChassisCommand(attributes);
         case CPU_COOLER_TYPE:
-            //return new BuilderCompareCpuCoolerCommand(attributes);
+            return new BuilderCompareCpuCoolerCommand(attributes);
         default:
             return new UnrecognizedCommand(
                     "Invalid component type!, valid types are "

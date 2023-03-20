@@ -57,17 +57,17 @@ public class BuilderCompareChassisCommand extends Command {
                 .get(secondComponentIndex);
 
         //format the comparison table in outputString
-        String outputString = String.format("%86s", "_".repeat(86));
-        outputString += String.format("%n|%-12s|%-35s|%-35s|", "NAME", firstComponentObject.getName(),
+        String outputString = String.format("%96s", "_".repeat(96));
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "NAME", firstComponentObject.getName(),
                 secondComponentObject.getName());
-        outputString += String.format("%n|%-12s|%-35s|%-35s|", "-".repeat(12), "-".repeat(35), "-".repeat(35));
-        outputString += String.format("%n|%-12s|%-35s|%-35s|", "BRAND", firstComponentObject.getBrand(),
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "-".repeat(12), "-".repeat(40), "-".repeat(40));
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "BRAND", firstComponentObject.getBrand(),
                 secondComponentObject.getBrand());
-        outputString += String.format("%n|%-12s|%-35s|%-35s|", "PRICE", "$" + firstComponentObject.getPrice(),
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "PRICE", "$" + firstComponentObject.getPrice(),
                 "$" + secondComponentObject.getPrice());
-        outputString += String.format("%n|%-12s|%-35s|%-35s|", "FORM FACTOR", firstComponentObject.getSize(),
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "FORM FACTOR", firstComponentObject.getSize(),
                 secondComponentObject.getSize());
-        outputString += String.format("%n%86s", "_".repeat(86));
+        outputString += String.format("%n%96s", "_".repeat(96));
         return outputString;
     }
 }
