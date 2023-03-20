@@ -3,6 +3,7 @@ package seedu.bigpp.parser;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareGpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareMotherboardCommand;
 import seedu.bigpp.command.buildercommand.BuilderComparePsuCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareRamCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareStorageCommand;
@@ -186,7 +187,7 @@ public class Parser {
         case PSU_TYPE:
             return new BuilderComparePsuCommand(attributes);
         case MOTHERBOARD_TYPE:
-            //return new BuilderCompareMotherboardCommand(attributes);
+            return new BuilderCompareMotherboardCommand(attributes);
         case CHASSIS_TYPE:
             //return new BuilderCompareChassisCommand(attributes);
         case CPU_COOLER_TYPE:
