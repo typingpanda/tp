@@ -1,6 +1,7 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.buildercommand.BuilderCompareChassisCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareGpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareMotherboardCommand;
@@ -189,7 +190,7 @@ public class Parser {
         case MOTHERBOARD_TYPE:
             return new BuilderCompareMotherboardCommand(attributes);
         case CHASSIS_TYPE:
-            //return new BuilderCompareChassisCommand(attributes);
+            return new BuilderCompareChassisCommand(attributes);
         case CPU_COOLER_TYPE:
             //return new BuilderCompareCpuCoolerCommand(attributes);
         default:
