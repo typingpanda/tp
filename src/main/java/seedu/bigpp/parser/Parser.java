@@ -1,6 +1,14 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.buildercommand.BuilderCompareChassisCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareCpuCoolerCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareGpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareMotherboardCommand;
+import seedu.bigpp.command.buildercommand.BuilderComparePsuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareRamCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareStorageCommand;
 import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
@@ -16,9 +24,10 @@ import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
 import seedu.bigpp.ui.UI;
+
 import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
-import static seedu.bigpp.component.ComponentType.CPU_TYPE;
 import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
 import static seedu.bigpp.component.ComponentType.GPU_TYPE;
 import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
 import static seedu.bigpp.component.ComponentType.PSU_TYPE;
@@ -28,8 +37,7 @@ import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
 public class Parser {
 
     /**
-     * Parses user input into command for execution, separates viewer and builder
-     * commands.
+     * Parses user input into command for execution, separates viewer and builder commands.
      * @param userInput full user input string
      * @return the command
      */
@@ -73,7 +81,7 @@ public class Parser {
     /**
      * Parses user input for viewer commands.
      * @param commandWord the command word
-     * @param arguments the arguments
+     * @param arguments   the arguments
      * @return the command
      */
     private Command parseViewerCommand(String commandWord, String arguments) {
@@ -95,7 +103,7 @@ public class Parser {
     /**
      * Parses user input for builder commands.
      * @param commandWord the command word
-     * @param arguments the arguments
+     * @param arguments   the arguments
      * @return the command
      */
     private Command parseBuilderCommand(String commandWord, String arguments) {
@@ -115,6 +123,8 @@ public class Parser {
             return new BuilderUnselectCommand(arguments);
         case "custom":
             return parseCustomCommand(arguments);
+        case "compare":
+            return parseCompareCommand(arguments);
         default:
             return new UnrecognizedCommand("");
         }
@@ -150,6 +160,38 @@ public class Parser {
             // return new UnrecognizedCommand();
         case CPU_COOLER_TYPE:
             // return new UnrecognizedCommand();
+        default:
+            return new UnrecognizedCommand(
+                    "Invalid component type!, valid types are "
+                            + "(cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
+        }
+    }
+
+    private Command parseCompareCommand(String arguments) {
+        String[] inputList = arguments.split(" ", 2);
+        String componentType = inputList[0].trim();
+        String attributes = "";
+        if (inputList.length == 2) {
+            attributes = inputList[1].trim();
+        }
+
+        switch (componentType) {
+        case CPU_TYPE:
+            return new BuilderCompareCpuCommand(attributes);
+        case GPU_TYPE:
+            return new BuilderCompareGpuCommand(attributes);
+        case RAM_TYPE:
+            return new BuilderCompareRamCommand(attributes);
+        case STORAGE_TYPE:
+            return new BuilderCompareStorageCommand(attributes);
+        case PSU_TYPE:
+            return new BuilderComparePsuCommand(attributes);
+        case MOTHERBOARD_TYPE:
+            return new BuilderCompareMotherboardCommand(attributes);
+        case CHASSIS_TYPE:
+            return new BuilderCompareChassisCommand(attributes);
+        case CPU_COOLER_TYPE:
+            return new BuilderCompareCpuCoolerCommand(attributes);
         default:
             return new UnrecognizedCommand(
                     "Invalid component type!, valid types are "
