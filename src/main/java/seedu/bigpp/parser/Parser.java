@@ -3,6 +3,7 @@ package seedu.bigpp.parser;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderCompareGpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareRamCommand;
 import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
@@ -177,7 +178,7 @@ public class Parser {
         case GPU_TYPE:
             return new BuilderCompareGpuCommand(attributes);
         case RAM_TYPE:
-            //return new BuilderCompareRamCommand(attributes);
+            return new BuilderCompareRamCommand(attributes);
         case STORAGE_TYPE:
             //return new BuilderCompareStorageCommand(attributes);
         case PSU_TYPE:

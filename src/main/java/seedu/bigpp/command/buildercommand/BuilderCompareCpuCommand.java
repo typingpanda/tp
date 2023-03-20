@@ -29,19 +29,17 @@ public class BuilderCompareCpuCommand extends Command {
 
         String[] componentIndexes = inputString.split("&", 2);
         String firstComponent = componentIndexes[0].trim();
-
-        //check if firstComponent is a number
-        if (firstComponent.matches(".*\\D.*")) {
-            throw new BuilderInvalidTypeException();
-        }
-        int firstComponentIndex = Integer.parseInt(firstComponent) - 1;
-
-        //check if secondComponent is a number
         String secondComponent = componentIndexes[1].trim();
-        if (secondComponent.matches(".*\\D.*")) {
+
+        //check if firstComponent and secondComponent is a number
+        int firstComponentIndex;
+        int secondComponentIndex;
+        try {
+            firstComponentIndex = Integer.parseInt(firstComponent) - 1;
+            secondComponentIndex = Integer.parseInt(secondComponent) - 1;
+        } catch (NumberFormatException e) {
             throw new BuilderInvalidTypeException();
         }
-        int secondComponentIndex = Integer.parseInt(secondComponent) - 1;
 
         //check if index is out of bounds
         if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get("cpu").size()) {
