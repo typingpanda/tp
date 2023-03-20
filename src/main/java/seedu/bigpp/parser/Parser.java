@@ -1,14 +1,14 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.command.buildercommand.BuilderCompareChassisCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareCpuCoolerCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareGpuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareMotherboardCommand;
-import seedu.bigpp.command.buildercommand.BuilderComparePsuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareRamCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareStorageCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareChassisCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareCpuCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareCpuCoolerCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareGpuCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareMotherboardCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderComparePsuCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareRamCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareStorageCommand;
 import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
