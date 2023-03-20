@@ -1,6 +1,7 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
@@ -15,6 +16,8 @@ import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
+import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
 import seedu.bigpp.ui.UI;
 import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
 import static seedu.bigpp.component.ComponentType.CPU_TYPE;
@@ -115,6 +118,8 @@ public class Parser {
             return new BuilderUnselectCommand(arguments);
         case "custom":
             return parseCustomCommand(arguments);
+        case "compare":
+            return parseCompareCommand(arguments);
         default:
             return new UnrecognizedCommand("");
         }
@@ -150,6 +155,38 @@ public class Parser {
             // return new UnrecognizedCommand();
         case CPU_COOLER_TYPE:
             // return new UnrecognizedCommand();
+        default:
+            return new UnrecognizedCommand(
+                    "Invalid component type!, valid types are "
+                            + "(cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
+        }
+    }
+
+    private Command parseCompareCommand(String arguments) {
+        String[] inputList = arguments.split(" ", 2);
+        String componentType = inputList[0].trim();
+        String attributes = "";
+        if (inputList.length == 2) {
+            attributes = inputList[1].trim();
+        }
+
+        switch (componentType) {
+        case CPU_TYPE:
+            return new BuilderCompareCpuCommand(attributes);
+        case GPU_TYPE:
+            return new BuilderCompareGpuCommand(attributes);
+        case RAM_TYPE:
+            return new BuilderCompareRamCommand(attributes);
+        case STORAGE_TYPE:
+            return new BuilderCompareStorageCommand(attributes);
+        case PSU_TYPE:
+            return new BuilderComparePsuCommand(attributes);
+        case MOTHERBOARD_TYPE:
+            return new BuilderCompareMotherboardCommand(attributes);
+        case CHASSIS_TYPE:
+            return new BuilderCompareChassisCommand(attributes);
+        case CPU_COOLER_TYPE:
+            return new BuilderCompareCpuCoolerCommand(attributes);
         default:
             return new UnrecognizedCommand(
                     "Invalid component type!, valid types are "
