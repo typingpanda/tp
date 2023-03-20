@@ -21,7 +21,7 @@ public class BuilderCompareGpuCommand extends Command {
             throws BuilderMissingIndexException, BuilderInvalidTypeException, PPIndexOutOfBoundsException {
         String inputString = getArguments();
 
-        // throw exception if command does not contain & eg. "compare cpu 1"
+        // throw exception if command does not contain "&"
         if (!inputString.contains("&")) {
             throw new BuilderMissingIndexException();
         }
