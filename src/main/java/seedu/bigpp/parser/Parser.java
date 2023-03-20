@@ -2,6 +2,7 @@ package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCompareGpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
@@ -176,17 +177,17 @@ public class Parser {
         case GPU_TYPE:
             return new BuilderCompareGpuCommand(attributes);
         case RAM_TYPE:
-            return new BuilderCompareRamCommand(attributes);
+            //return new BuilderCompareRamCommand(attributes);
         case STORAGE_TYPE:
-            return new BuilderCompareStorageCommand(attributes);
+            //return new BuilderCompareStorageCommand(attributes);
         case PSU_TYPE:
-            return new BuilderComparePsuCommand(attributes);
+            //return new BuilderComparePsuCommand(attributes);
         case MOTHERBOARD_TYPE:
-            return new BuilderCompareMotherboardCommand(attributes);
+            //return new BuilderCompareMotherboardCommand(attributes);
         case CHASSIS_TYPE:
-            return new BuilderCompareChassisCommand(attributes);
+            //return new BuilderCompareChassisCommand(attributes);
         case CPU_COOLER_TYPE:
-            return new BuilderCompareCpuCoolerCommand(attributes);
+            //return new BuilderCompareCpuCoolerCommand(attributes);
         default:
             return new UnrecognizedCommand(
                     "Invalid component type!, valid types are "
