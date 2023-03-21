@@ -73,6 +73,7 @@ public class BuilderListComponentCommand extends Command {
                     }
                     componentList = ComponentList.filterByName(componentList, flagArgument);
                     flagDescriptionArray.add("name: " + flagArgument);
+                    i++;
                 } catch (ArrayIndexOutOfBoundsException e) {
                     throw new BuilderInvalidFlagArgument();
                 }
@@ -88,6 +89,7 @@ public class BuilderListComponentCommand extends Command {
                     }
                     componentList = ComponentList.filterByBrand(componentList, flagArgument);
                     flagDescriptionArray.add("brand: " + flagArgument);
+                    i++;
                 } catch (ArrayIndexOutOfBoundsException e) {
                     throw new BuilderInvalidFlagArgument();
                 }
@@ -116,6 +118,7 @@ public class BuilderListComponentCommand extends Command {
                     }
                     componentList = ComponentList.filterByPrice(componentList, priceFrom, priceTo);
                     flagDescriptionArray.add("price: from " + priceFrom + " to " + priceTo);
+                    i += 4;
                 } catch (ArrayIndexOutOfBoundsException e) {
                     throw new BuilderInvalidFlagArgument();
                 }
