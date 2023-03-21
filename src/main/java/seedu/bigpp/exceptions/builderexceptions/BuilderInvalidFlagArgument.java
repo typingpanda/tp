@@ -2,10 +2,10 @@ package seedu.bigpp.exceptions.builderexceptions;
 
 import seedu.bigpp.exceptions.PPException;
 
-public class BuilderInvalidNumberFlags extends PPException{
+public class BuilderInvalidFlagArgument extends PPException{
     @Override
     public String getMessage() {
-        return "Please enter a valid number of flags";
+        return "Please enter valid arguments for the flags";
     }
     
 }

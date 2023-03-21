@@ -8,16 +8,17 @@ import seedu.bigpp.exceptions.builderexceptions.BuilderPriceFlagException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderPriceLogicException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderPriceMissingArguments;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidNumberFlags;
+import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidFlagArgument;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidPriceType;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingBrandException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidPriceNumber;
 
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
-import seedu.bigpp.component.Component;
 import seedu.bigpp.component.ComponentList;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BuilderListComponentCommand extends Command {
 
@@ -35,9 +36,10 @@ public class BuilderListComponentCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) throws BuilderMissingListException,
-            BuilderIncorrectComponentException, BuilderMissingComponentException, BuilderInvalidNumberFlags,
+            BuilderIncorrectComponentException, BuilderMissingComponentException, BuilderInvalidFlagArgument,
             BuilderInvalidPriceType, BuilderInvalidPriceNumber, BuilderPriceLogicException,
-            BuilderPriceMissingArguments, BuilderMissingNameException, BuilderPriceFlagException {
+            BuilderPriceMissingArguments, BuilderMissingNameException, BuilderPriceFlagException,
+            BuilderMissingBrandException {
 
         assert UI.getUiState() == UIState.PCBUILDER : "UI state should be PCBUILDER";
 
@@ -66,23 +68,35 @@ public class BuilderListComponentCommand extends Command {
                         throw new BuilderMissingNameException();
                     }
                     String flagArgument = userInputStringArray[i + 1].trim();
-                    componentList = filterByName(componentList, flagArgument);
+                    if (isFlag(flagArgument)) {
+                        throw new BuilderInvalidFlagArgument();
+                    }
+                    componentList = ComponentList.filterByName(componentList, flagArgument);
                     flagDescriptionArray.add("name: " + flagArgument);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new BuilderInvalidNumberFlags();
+                    throw new BuilderInvalidFlagArgument();
                 }
                 break;
             case BRAND_FLAG:
                 try {
+                    if (userInputStringArray.length < i + 2) {
+                        throw new BuilderMissingBrandException();
+                    }
                     String flagArgument = userInputStringArray[i + 1].trim();
-                    componentList = filterByBrand(componentList, flagArgument);
+                    if (isFlag(flagArgument)) {
+                        throw new BuilderInvalidFlagArgument();
+                    }
+                    componentList = ComponentList.filterByBrand(componentList, flagArgument);
                     flagDescriptionArray.add("brand: " + flagArgument);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new BuilderInvalidNumberFlags();
+                    throw new BuilderInvalidFlagArgument();
                 }
                 break;
             case PRICE_FLAG:
                 try {
+                    if (hasFlag(Arrays.copyOfRange(userInputStringArray, i + 1, i + 4))) {
+                        throw new BuilderInvalidFlagArgument();
+                    }
                     if (userInputStringArray.length < i + 4) {
                         throw new BuilderPriceMissingArguments();
                     }
@@ -100,10 +114,10 @@ public class BuilderListComponentCommand extends Command {
                     if (Float.parseFloat(priceFrom) <= 0 || Float.parseFloat(priceTo) <= 0) {
                         throw new BuilderInvalidPriceNumber();
                     }
-                    componentList = filterByPrice(componentList, priceFrom, priceTo);
+                    componentList = ComponentList.filterByPrice(componentList, priceFrom, priceTo);
                     flagDescriptionArray.add("price: from " + priceFrom + " to " + priceTo);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new BuilderInvalidNumberFlags();
+                    throw new BuilderInvalidFlagArgument();
                 }
                 break;
             default:
@@ -128,34 +142,15 @@ public class BuilderListComponentCommand extends Command {
         return outputString + componentList.getListString();
     }
 
-    private ComponentList<?> filterByName(ComponentList<?> componentList, String name) {
-        ComponentList<?> filteredComponentList = new ComponentList<>();
-        for (Component component : componentList) {
-            if (component.getName().toLowerCase().contains(name)) {
-                filteredComponentList.add(component);
-            }
-        }
-        return filteredComponentList;
+    private static boolean isFlag(String flag) {
+        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BRAND_FLAG);
     }
-
-    private ComponentList<?> filterByBrand(ComponentList<?> componentList, String brand) {
-        ComponentList<?> filteredComponentList = new ComponentList<>();
-        for (Component component : componentList) {
-            if (component.getBrand().toLowerCase().contains(brand)) {
-                filteredComponentList.add(component);
+    private static boolean hasFlag(String[] userInputStringArray) {
+        for (String flag : userInputStringArray) {
+            if (isFlag(flag)) {
+                return true;
             }
         }
-        return filteredComponentList;
-    }
-
-    private ComponentList<?> filterByPrice(ComponentList<?> componentList, String priceFrom, String priceTo) {
-        ComponentList<?> filteredComponentList = new ComponentList<>();
-        for (Component component : componentList) {
-            if (component.getPrice() >= Float.parseFloat(priceFrom) && component.getPrice() <= Float.parseFloat(
-                    priceTo)) {
-                filteredComponentList.add(component);
-            }
-        }
-        return filteredComponentList;
+        return false;
     }
 }
