@@ -3,6 +3,7 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMinBudgetException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidNumberBudgetException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingBudgetException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeBudgetException;
@@ -38,6 +39,12 @@ public class BuilderEditBudgetCommand extends Command {
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
+        float currentCost = dataStorage.pcList.get(pcIndex).getCost();
+
+        if (budget < currentCost) {
+            throw new BuilderMinBudgetException();
+        }
+        
         dataStorage.pcList.get(pcIndex).setBudget(budget);
         return "Current build budget is now: " + dataStorage.pcList.get(pcIndex).getBudgetString();
     }
