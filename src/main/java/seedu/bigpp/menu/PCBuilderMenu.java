@@ -20,10 +20,5 @@ public class PCBuilderMenu extends Menu {
         out.println("PC builder");
         out.println(dataStorage.pcList.get(pcIndex).viewComponents());
         out.println("What would you like to do?");
-        out.println("Edit name");
-        out.println("Set budget");
-        out.println("List components");
-        out.println("Select components");
-        out.println("back");
     }
 }

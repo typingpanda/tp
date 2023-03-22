@@ -3,7 +3,6 @@ package seedu.bigpp.command.viewercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.viewerexceptions.ViewerMissingNameException;
 import seedu.bigpp.pc.PC;
 
 public class ViewerAddCommand extends Command {
@@ -21,7 +20,7 @@ public class ViewerAddCommand extends Command {
         String name = super.getArguments();
         // throw exception if no name is provided
         if (name.equals("")) {
-            throw new ViewerMissingNameException();
+            throw new PPException("Please enter a name");
         }
         PC pc = new PC(name, false);
         dataStorage.pcList.add(pc);

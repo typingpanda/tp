@@ -3,10 +3,6 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMinBudgetException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidNumberBudgetException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingBudgetException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeBudgetException;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
 
@@ -26,25 +22,27 @@ public class BuilderEditBudgetCommand extends Command {
 
         String argument = super.getArguments();
         if (argument.equals("")) {
-            throw new BuilderMissingBudgetException();
+            throw new PPException("Please enter a budget");
         }
         if (argument.matches(".*\\D.*") && !argument.matches("-1")) {
-            throw new BuilderInvalidTypeBudgetException();
+            throw new PPException("Please enter a budget that is an integer");
         }
 
         int budget = Integer.parseInt(super.getArguments());
 
         if (budget <= 0 && budget != -1) {
-            throw new BuilderInvalidNumberBudgetException();
+            throw new PPException("Please enter a budget that is greater than 0");
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
         float currentCost = dataStorage.pcList.get(pcIndex).getCost();
 
         if (budget < currentCost) {
-            throw new BuilderMinBudgetException();
+            throw new PPException(
+                    "You have set a budget that is lower than the"
+                            + "current cost of the build, please set a higher budget.");
         }
-        
+
         dataStorage.pcList.get(pcIndex).setBudget(budget);
         return "Current build budget is now: " + dataStorage.pcList.get(pcIndex).getBudgetString();
     }

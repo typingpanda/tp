@@ -2,9 +2,7 @@ package seedu.bigpp.command.buildercommand;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderNullComponentException;
+import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.ui.UI;
 
 public class BuilderUnselectCommand extends Command {
@@ -19,12 +17,12 @@ public class BuilderUnselectCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage)
-            throws BuilderIncorrectComponentException, BuilderMissingComponentException, BuilderNullComponentException {
+            throws PPException {
 
         String componentTypeString = getArguments();
         // throw exception if no component is selected .eg. "Unselect"
         if (componentTypeString.equals("")) {
-            throw new BuilderMissingComponentException();
+            throw new PPException("Please enter a component");
         }
 
         componentTypeString = componentTypeString.toLowerCase();
@@ -32,13 +30,14 @@ public class BuilderUnselectCommand extends Command {
 
         // throw exception if component type is not valid .eg. "unselect jfk"
         if (!dataStorage.stringToComponentListMap.containsKey(componentTypeString)) {
-            throw new BuilderIncorrectComponentException();
+            throw new PPException(
+                    "Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
 
         if (dataStorage.pcList.get(pcIndex).getComponent(componentTypeString) == null) {
-            throw new BuilderNullComponentException();
+            throw new PPException("Component is already unselected!");
         }
 
         dataStorage.pcList.get(pcIndex).setNullComponent(componentTypeString);

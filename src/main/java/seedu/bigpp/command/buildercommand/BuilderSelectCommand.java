@@ -3,12 +3,7 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.component.Component;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingSelectException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderExceedBudgetException;
+import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
 
@@ -23,16 +18,13 @@ public class BuilderSelectCommand extends Command {
      * @return Added Component message
      */
     @Override
-    public String executeCommand(DataStorage dataStorage) throws BuilderMissingSelectException,
-            BuilderIncorrectComponentException,
-            BuilderMissingIndexException, PPIndexOutOfBoundsException, BuilderInvalidTypeException,
-            BuilderExceedBudgetException {
+    public String executeCommand(DataStorage dataStorage) throws PPException {
         assert UI.getUiState() == UIState.PCBUILDER : "UI state should be PCBUILDER";
 
         String inputString = getArguments();
         // throw exception if no component is selected eg. "select"
         if (inputString.equals("")) {
-            throw new BuilderMissingSelectException();
+            throw new PPException("Please select a component");
         }
 
         String[] inputArray = inputString.split(" ", 2);
@@ -42,27 +34,27 @@ public class BuilderSelectCommand extends Command {
 
         // throw exception if component type is not valid eg. "select jfk"
         if (!dataStorage.stringToComponentListMap.containsKey(componentTypeString)) {
-            throw new BuilderIncorrectComponentException();
+            throw new PPException(
+                    "Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
         }
 
         // throw exception if no index is selected eg. "select cpu"
         if (inputArray.length == 1) {
-
-            throw new BuilderMissingIndexException();
+            throw new PPException("Please input an index after selecting a component");
         }
 
         String indexString = inputArray[1].trim();
 
         // throw exception if index is not a number eg. "select cpu a"
         if (indexString.matches(".*\\D.*")) {
-            throw new BuilderInvalidTypeException();
+            throw new PPException("Please enter an integer");
         }
 
         int componentIndex = Integer.parseInt(indexString) - 1;
 
         // throw exception if index is out of bounds eg. "select cpu 100"
         if (componentIndex < 0 || componentIndex >= dataStorage.stringToComponentListMap.get(inputArray[0]).size()) {
-            throw new PPIndexOutOfBoundsException();
+            throw new PPException("Please enter a valid index");
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
@@ -73,7 +65,7 @@ public class BuilderSelectCommand extends Command {
                 .getPrice();
 
         if (pcBudget != -1 && componentPrice + currentCost > pcBudget) {
-            throw new BuilderExceedBudgetException();
+            throw new PPException("You have exceeded your budget, component not added.");
         }
 
         dataStorage.pcList.get(pcIndex)

@@ -4,7 +4,6 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingNameException;
 import seedu.bigpp.ui.UIState;
 
 public class BuilderEditNameCommand extends Command {
@@ -23,7 +22,7 @@ public class BuilderEditNameCommand extends Command {
 
         String name = super.getArguments();
         if (name.equals("")) {
-            throw new BuilderMissingNameException();
+            throw new PPException("Please enter a name");
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();

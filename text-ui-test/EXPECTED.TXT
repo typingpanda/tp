@@ -31,12 +31,6 @@ Here is the list of PC Builds:
 2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
 3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
 What would you like to do?
-Add PC
-View PC
-Edit PC
-Delete PC
-back
-exit
 ===================================================
 [H[2J
 ===================================================
@@ -47,12 +41,6 @@ Here is the list of PC Builds:
 3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
 4.Custom-PC: [newpc1] - $0.0/infinite - Incomplete
 What would you like to do?
-Add PC
-View PC
-Edit PC
-Delete PC
-back
-exit
 ===================================================
 Custom PC: [ newpc1 ] has been created
 [H[2J
@@ -65,12 +53,6 @@ Here is the list of PC Builds:
 4.Custom-PC: [newpc1] - $0.0/infinite - Incomplete
 5.Custom-PC: [newpc2] - $0.0/infinite - Incomplete
 What would you like to do?
-Add PC
-View PC
-Edit PC
-Delete PC
-back
-exit
 ===================================================
 Custom PC: [ newpc2 ] has been created
 [H[2J
@@ -83,11 +65,5 @@ Here is the list of PC Builds:
 4.Custom-PC: [newpc1] - $0.0/infinite - Incomplete
 5.Custom-PC: [newpc2] - $0.0/infinite - Incomplete
 What would you like to do?
-Add PC
-View PC
-Edit PC
-Delete PC
-back
-exit
 ===================================================
 Unable to delete Prebuilt PC
