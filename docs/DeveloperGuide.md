@@ -1,8 +1,7 @@
 <!-- omit in toc -->
 # Developer Guide
 
-### Table of contents
-
+## Table of contents
 
 - [General Overview](#general-overview)
 - [Design \& implementation](#design--implementation)
@@ -18,9 +17,12 @@
   - [Glossary](#glossary)
   - [Instructions for manual testing](#instructions-for-manual-testing)
 
+
 ## General Overview
 below is the overall architecture diagram for how BigPP works.
+
 ![Architecture Diagram](uml-pictures/ArchitectureDiagram.png)
+
 The program will first load the `UserJson` and files in the `Resources` folder to populate its internal memory of `PCLists` and `ComponentLists`. This will be stored in its `DataStorage`. The `User`'s interaction with the `UI` will be `parsed` into a `command` which would update the `DataStorage` and eventually update the `Menu` which is displayed back to the `User`. This would continue until the `User` exits the program, which would result in the data stored in `DataStorage` being saved into the `UserJson`.
 
 ## Design & implementation
