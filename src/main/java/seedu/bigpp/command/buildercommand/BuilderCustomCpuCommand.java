@@ -3,7 +3,7 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.component.cpu.CPU;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidCustomArgumentLengthException;
+import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.ui.UI;
 
 public class BuilderCustomCpuCommand extends Command {
@@ -13,22 +13,22 @@ public class BuilderCustomCpuCommand extends Command {
     }
 
     @Override
-    public String executeCommand(DataStorage dataStorage) throws BuilderInvalidCustomArgumentLengthException {
+    public String executeCommand(DataStorage dataStorage) throws PPException {
         String arguments = super.getArguments();
         String[] argumentList = arguments.split("\\|");
 
         if (argumentList.length != 9) {
-            throw new BuilderInvalidCustomArgumentLengthException();
+            throw new PPException("Please enter a valid number of arguments for the custom component");
         }
 
         String name = argumentList[0].trim();
         if (name.equals("")) {
-            return "Please enter a valid name for the custom component";
+            throw new PPException("Please enter a valid name for the custom component");
         }
 
         String brand = argumentList[1].trim();
         if (brand.equals("")) {
-            return "Please enter a valid brand for the custom component";
+            throw new PPException("Please enter a valid brand for the custom component");
         }
 
         float price = 0;
@@ -45,19 +45,20 @@ public class BuilderCustomCpuCommand extends Command {
             baseClock = Float.parseFloat(argumentList[5]);
             boostClock = Float.parseFloat(argumentList[6]);
             power = Float.parseFloat(argumentList[7]);
-            
+
             // Check if all the values are positive
             if (price < 0 || cores < 0 || threads < 0 || baseClock < 0 || boostClock < 0 || power < 0) {
-                return "price, baseClock, boostClock, power, cores and threads should be positive";
+                throw new PPException("price, baseClock, boostClock, power, cores and threads should be positive");
             }
 
         } catch (NumberFormatException e) {
-            return "price, baseClock, boostClock and power should be a float, cores and threads should be an integer";
+            throw new PPException(
+                    "price, baseClock, boostClock and power should be a float, cores and threads should be an integer");
         }
 
         String socket = argumentList[8].trim();
         if (socket.equals("")) {
-            return "Please enter a valid socket for the custom component";
+            throw new PPException("Please enter a valid socket for the custom component");
         }
 
         CPU cpu = new CPU(name, brand, price, cores, threads, baseClock, boostClock, power, socket);

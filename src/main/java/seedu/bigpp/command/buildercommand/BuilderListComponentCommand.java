@@ -2,17 +2,7 @@ package seedu.bigpp.command.buildercommand;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingListException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingNameException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderPriceFlagException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderPriceLogicException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderPriceMissingArguments;
-import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidFlagArgument;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidPriceType;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingBrandException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidPriceNumber;
+import seedu.bigpp.exceptions.PPException;
 
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
@@ -35,11 +25,7 @@ public class BuilderListComponentCommand extends Command {
      * @return the new budget of the PC
      */
     @Override
-    public String executeCommand(DataStorage dataStorage) throws BuilderMissingListException,
-            BuilderIncorrectComponentException, BuilderMissingComponentException, BuilderInvalidFlagArgument,
-            BuilderInvalidPriceType, BuilderInvalidPriceNumber, BuilderPriceLogicException,
-            BuilderPriceMissingArguments, BuilderMissingNameException, BuilderPriceFlagException,
-            BuilderMissingBrandException {
+    public String executeCommand(DataStorage dataStorage) throws PPException {
 
         assert UI.getUiState() == UIState.PCBUILDER : "UI state should be PCBUILDER";
 
@@ -50,10 +36,11 @@ public class BuilderListComponentCommand extends Command {
         String componentType = userInputStringArray[0];
 
         if (userInputString.equals("")) {
-            throw new BuilderMissingComponentException();
+            throw new PPException("Please enter a component");
         }
         if (!dataStorage.stringToComponentListMap.containsKey(componentType)) {
-            throw new BuilderIncorrectComponentException();
+            throw new PPException(
+                    "Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
         }
 
         ComponentList<?> componentList = dataStorage.stringToComponentListMap.get(componentType);
@@ -65,62 +52,62 @@ public class BuilderListComponentCommand extends Command {
             case NAME_FLAG:
                 try {
                     if (userInputStringArray.length < i + 2) {
-                        throw new BuilderMissingNameException();
+                        throw new PPException("Please enter a name");
                     }
                     String flagArgument = userInputStringArray[i + 1].trim();
                     if (isFlag(flagArgument)) {
-                        throw new BuilderInvalidFlagArgument();
+                        throw new PPException("Please enter valid arguments for the flags");
                     }
                     componentList = ComponentList.filterByName(componentList, flagArgument);
                     flagDescriptionArray.add("name: " + flagArgument);
                     i++;
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new BuilderInvalidFlagArgument();
+                    throw new PPException("Please enter valid arguments for the flags");
                 }
                 break;
             case BRAND_FLAG:
                 try {
                     if (userInputStringArray.length < i + 2) {
-                        throw new BuilderMissingBrandException();
+                        throw new PPException("Please enter a brand");
                     }
                     String flagArgument = userInputStringArray[i + 1].trim();
                     if (isFlag(flagArgument)) {
-                        throw new BuilderInvalidFlagArgument();
+                        throw new PPException("Please enter valid arguments for the flags");
                     }
                     componentList = ComponentList.filterByBrand(componentList, flagArgument);
                     flagDescriptionArray.add("brand: " + flagArgument);
                     i++;
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new BuilderInvalidFlagArgument();
+                    throw new PPException("Please enter valid arguments for the flags");
                 }
                 break;
             case PRICE_FLAG:
                 try {
                     if (hasFlag(Arrays.copyOfRange(userInputStringArray, i + 1, i + 4))) {
-                        throw new BuilderInvalidFlagArgument();
+                        throw new PPException("Please enter valid arguments for the flags");
                     }
                     if (userInputStringArray.length < i + 4) {
-                        throw new BuilderPriceMissingArguments();
+                        throw new PPException("Please enter description for price from and price to");
                     }
                     if (!(userInputStringArray[i + 1].equals("/from") && userInputStringArray[i + 3].equals("/to"))) {
-                        throw new BuilderPriceFlagException();
+                        throw new PPException("Please use /from and /to to specify the price range.");
                     }
                     String priceFrom = userInputStringArray[i + 2];
                     String priceTo = userInputStringArray[i + 4];
                     if (priceFrom.matches(".*d.*") || priceTo.matches(".*d.*")) {
-                        throw new BuilderInvalidPriceType();
+                        throw new PPException("Price must be an integer");
                     }
                     if (Float.parseFloat(priceFrom) > Float.parseFloat(priceTo)) {
-                        throw new BuilderPriceLogicException();
+                        throw new PPException("Price to must be greater than price from");
                     }
                     if (Float.parseFloat(priceFrom) <= 0 || Float.parseFloat(priceTo) <= 0) {
-                        throw new BuilderInvalidPriceNumber();
+                        throw new PPException("Price must be a positive integer");
                     }
                     componentList = ComponentList.filterByPrice(componentList, priceFrom, priceTo);
                     flagDescriptionArray.add("price: from " + priceFrom + " to " + priceTo);
                     i += 4;
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new BuilderInvalidFlagArgument();
+                    throw new PPException("Please enter valid arguments for the flags");
                 }
                 break;
             default:
@@ -148,6 +135,7 @@ public class BuilderListComponentCommand extends Command {
     private static boolean isFlag(String flag) {
         return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BRAND_FLAG);
     }
+
     private static boolean hasFlag(String[] userInputStringArray) {
         for (String flag : userInputStringArray) {
             if (isFlag(flag)) {

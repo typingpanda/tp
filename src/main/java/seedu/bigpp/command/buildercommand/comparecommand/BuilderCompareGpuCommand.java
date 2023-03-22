@@ -3,10 +3,7 @@ package seedu.bigpp.command.buildercommand.comparecommand;
 import seedu.bigpp.command.Command;
 import seedu.bigpp.component.gpu.GPU;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
-import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
-
+import seedu.bigpp.exceptions.PPException;
 import static seedu.bigpp.component.ComponentType.GPU_TYPE;
 
 public class BuilderCompareGpuCommand extends Command {
@@ -20,43 +17,43 @@ public class BuilderCompareGpuCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage)
-            throws BuilderMissingIndexException, BuilderInvalidTypeException, PPIndexOutOfBoundsException {
+            throws PPException {
         String inputString = getArguments();
 
         // throw exception if command does not contain "&"
         if (!inputString.contains("&")) {
-            throw new BuilderMissingIndexException();
+            throw new PPException("Please input an index after selecting a component");
         }
 
         String[] componentIndexes = inputString.split("&", 2);
         String firstComponent = componentIndexes[0].trim();
         String secondComponent = componentIndexes[1].trim();
 
-        //check if firstComponent and secondComponent is a number
+        // check if firstComponent and secondComponent is a number
         int firstComponentIndex;
         int secondComponentIndex;
         try {
             firstComponentIndex = Integer.parseInt(firstComponent) - 1;
             secondComponentIndex = Integer.parseInt(secondComponent) - 1;
         } catch (NumberFormatException e) {
-            throw new BuilderInvalidTypeException();
+            throw new PPException("Please enter an integer");
         }
 
-        //check if index is out of bounds
+        // check if index is out of bounds
         if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get(GPU_TYPE)
                 .size()) {
-            throw new PPIndexOutOfBoundsException();
+            throw new PPException("Please enter a valid index");
         }
         if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(GPU_TYPE)
                 .size()) {
-            throw new PPIndexOutOfBoundsException();
+            throw new PPException("Please enter a valid index");
         }
 
-        //get the 2 components
+        // get the 2 components
         GPU firstComponentObject = (GPU) dataStorage.stringToComponentListMap.get(GPU_TYPE).get(firstComponentIndex);
         GPU secondComponentObject = (GPU) dataStorage.stringToComponentListMap.get(GPU_TYPE).get(secondComponentIndex);
 
-        //format the comparison table in outputString
+        // format the comparison table in outputString
         String outputString = String.format("%96s", "_".repeat(96));
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "NAME", firstComponentObject.getName(),
                 secondComponentObject.getName());

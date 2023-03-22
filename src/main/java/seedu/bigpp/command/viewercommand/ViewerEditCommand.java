@@ -1,11 +1,9 @@
 package seedu.bigpp.command.viewercommand;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
+import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.exceptions.viewerexceptions.ViewerMissingIndexException;
 import seedu.bigpp.pc.PC;
-import seedu.bigpp.exceptions.viewerexceptions.ViewerInvalidTypeException;
 import seedu.bigpp.ui.UI;
 
 public class ViewerEditCommand extends Command {
@@ -19,24 +17,23 @@ public class ViewerEditCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage)
-            throws ViewerMissingIndexException, ViewerInvalidTypeException,
-            PPIndexOutOfBoundsException {
+            throws PPException {
         String argument = super.getArguments();
 
         // throw exception if no index is selected
         if (argument.equals("")) {
-            throw new ViewerMissingIndexException();
+            throw new PPException("Please input an index");
         }
 
         if (argument.matches(".*\\D.*")) {
-            throw new ViewerInvalidTypeException();
+            throw new PPException("Please enter an integer");
         }
 
         int pcIndex = Integer.parseInt(argument) - 1;
 
         // throw exception if index selected is out of the PCList range
         if (pcIndex < 0 || pcIndex >= dataStorage.pcList.size()) {
-            throw new PPIndexOutOfBoundsException();
+            throw new PPException("Please enter a valid index");
         }
 
         // if the PC is pre-built, create a copy of the PC to edit
