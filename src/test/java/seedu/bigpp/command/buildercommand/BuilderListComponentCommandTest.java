@@ -4,8 +4,18 @@ import org.junit.jupiter.api.Test;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingListException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingNameException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderPriceFlagException;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingComponentException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidCustomArgumentLengthException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderMissingBrandException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidFlagArgument;
+import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidPriceNumber;
+import seedu.bigpp.exceptions.builderexceptions.BuilderPriceLogicException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderPriceMissingArguments;
+import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidPriceType;
 import static seedu.bigpp.component.ComponentType.CPU_TYPE;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,7 +54,10 @@ public class BuilderListComponentCommandTest {
     @Test
     public void executeCommand_listComponentCommand_success() throws BuilderMissingListException,
             BuilderIncorrectComponentException,
-            BuilderMissingComponentException {
+            BuilderMissingComponentException, BuilderInvalidCustomArgumentLengthException, BuilderInvalidTypeException,
+            BuilderInvalidFlagArgument, BuilderInvalidPriceNumber, BuilderPriceLogicException,
+            BuilderPriceMissingArguments, BuilderInvalidPriceType, BuilderMissingNameException, 
+            BuilderPriceFlagException, BuilderMissingBrandException {
 
         dataStorage.initStringToComponentListMap();
         dataStorage.loadAll();

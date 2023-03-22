@@ -1,14 +1,14 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.command.buildercommand.BuilderCompareChassisCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareCpuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareCpuCoolerCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareGpuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareMotherboardCommand;
-import seedu.bigpp.command.buildercommand.BuilderComparePsuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareRamCommand;
-import seedu.bigpp.command.buildercommand.BuilderCompareStorageCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareChassisCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareCpuCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareCpuCoolerCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareGpuCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareMotherboardCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderComparePsuCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareRamCommand;
+import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareStorageCommand;
 import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
@@ -37,7 +37,8 @@ import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
 public class Parser {
 
     /**
-     * Parses user input into command for execution, separates viewer and builder commands.
+     * Parses user input into command for execution, separates viewer and builder
+     * commands.
      * @param userInput full user input string
      * @return the command
      */
@@ -81,7 +82,7 @@ public class Parser {
     /**
      * Parses user input for viewer commands.
      * @param commandWord the command word
-     * @param arguments   the arguments
+     * @param arguments the arguments
      * @return the command
      */
     private Command parseViewerCommand(String commandWord, String arguments) {
@@ -103,7 +104,7 @@ public class Parser {
     /**
      * Parses user input for builder commands.
      * @param commandWord the command word
-     * @param arguments   the arguments
+     * @param arguments the arguments
      * @return the command
      */
     private Command parseBuilderCommand(String commandWord, String arguments) {
@@ -137,7 +138,7 @@ public class Parser {
      */
     private Command parseCustomCommand(String arguments) {
         String[] inputList = arguments.split(" ", 2);
-        String componentType = inputList[0];
+        String componentType = inputList[0].toLowerCase();
         String attributes = "";
         if (inputList.length == 2) {
             attributes = inputList[1];

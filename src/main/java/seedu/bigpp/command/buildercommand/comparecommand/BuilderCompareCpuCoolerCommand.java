@@ -1,19 +1,21 @@
-package seedu.bigpp.command.buildercommand;
+package seedu.bigpp.command.buildercommand.comparecommand;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.component.storage.Storage;
+import seedu.bigpp.component.cpucooler.CPUCooler;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
 
-public class BuilderCompareStorageCommand extends Command {
-    public BuilderCompareStorageCommand(String arguments) {
+import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
+
+public class BuilderCompareCpuCoolerCommand extends Command {
+    public BuilderCompareCpuCoolerCommand(String arguments) {
         setArguments(arguments);
     }
 
     /**
-     * Compare all the specifications between 2 selected storage components
+     * Compare all the specifications between 2 selected cpu coolers
      * @return the comparison table of the 2 components
      */
     @Override
@@ -41,19 +43,20 @@ public class BuilderCompareStorageCommand extends Command {
         }
 
         //check if index is out of bounds
-        if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get("storage")
+        if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get(CPU_COOLER_TYPE)
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }
-        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get("storage")
+        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(
+                        CPU_COOLER_TYPE)
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }
 
         //get the 2 components
-        Storage firstComponentObject = (Storage) dataStorage.stringToComponentListMap.get("storage")
+        CPUCooler firstComponentObject = (CPUCooler) dataStorage.stringToComponentListMap.get(CPU_COOLER_TYPE)
                 .get(firstComponentIndex);
-        Storage secondComponentObject = (Storage) dataStorage.stringToComponentListMap.get("storage")
+        CPUCooler secondComponentObject = (CPUCooler) dataStorage.stringToComponentListMap.get(CPU_COOLER_TYPE)
                 .get(secondComponentIndex);
 
         //format the comparison table in outputString
@@ -63,10 +66,10 @@ public class BuilderCompareStorageCommand extends Command {
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "-".repeat(12), "-".repeat(40), "-".repeat(40));
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "PRICE", "$" + firstComponentObject.getPrice(),
                 "$" + secondComponentObject.getPrice());
-        outputString += String.format("%n|%-12s|%-40s|%-40s|", "TYPE", firstComponentObject.getType(),
-                secondComponentObject.getType());
-        outputString += String.format("%n|%-12s|%-40s|%-40s|", "SIZE", firstComponentObject.getSize() + "GB",
-                secondComponentObject.getSize() + "GB");
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "RPM", firstComponentObject.getRpm() + "RPM",
+                secondComponentObject.getRpm() + "RPM");
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "NOISE", firstComponentObject.getNoise() + "dB",
+                secondComponentObject.getNoise() + "dB");
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "POWER", firstComponentObject.getPower() + "W",
                 secondComponentObject.getPower() + "W");
         outputString += String.format("%n%96s", "_".repeat(96));
