@@ -59,11 +59,20 @@ public class BuilderSelectCommand extends Command {
 
         int pcIndex = UI.builderMenu.getPCIndex();
 
+        float currentCost = dataStorage.pcList.get(pcIndex).getCost();
+        int pcBudget = dataStorage.pcList.get(pcIndex).getBudget();
+        float componentPrice = dataStorage.stringToComponentListMap.get(componentTypeString).get(componentIndex)
+                .getPrice();
+
+        if (pcBudget != -1 && componentPrice + currentCost > pcBudget) {
+            throw new PPException("You have exceeded your budget, component not added.");
+        }
+
         dataStorage.pcList.get(pcIndex)
                 .setComponent((Component) dataStorage.stringToComponentListMap.get(componentTypeString)
                         .get(componentIndex));
 
-        return componentTypeString + " added! : "
-                + dataStorage.stringToComponentListMap.get(componentTypeString).get(componentIndex).getName();
+        return componentTypeString + " added! : " + dataStorage.stringToComponentListMap.get(componentTypeString).get(
+                componentIndex).getName();
     }
 }

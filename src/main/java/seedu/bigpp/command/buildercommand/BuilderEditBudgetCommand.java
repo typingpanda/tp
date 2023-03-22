@@ -35,6 +35,14 @@ public class BuilderEditBudgetCommand extends Command {
         }
 
         int pcIndex = UI.builderMenu.getPCIndex();
+        float currentCost = dataStorage.pcList.get(pcIndex).getCost();
+
+        if (budget < currentCost) {
+            throw new PPException(
+                    "You have set a budget that is lower than the"
+                            + "current cost of the build, please set a higher budget.");
+        }
+
         dataStorage.pcList.get(pcIndex).setBudget(budget);
         return "Current build budget is now: " + dataStorage.pcList.get(pcIndex).getBudgetString();
     }
