@@ -1,4 +1,4 @@
-package seedu.bigpp.command.buildercommand;
+package seedu.bigpp.command.buildercommand.comparecommand;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.component.ram.RAM;
@@ -6,6 +6,8 @@ import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
+
+import static seedu.bigpp.component.ComponentType.RAM_TYPE;
 
 public class BuilderCompareRamCommand extends Command {
     public BuilderCompareRamCommand(String arguments) {
@@ -41,17 +43,18 @@ public class BuilderCompareRamCommand extends Command {
         }
 
         //check if index is out of bounds
-        if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get("ram").size()) {
+        if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get(RAM_TYPE)
+                .size()) {
             throw new PPIndexOutOfBoundsException();
         }
-        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get("ram")
+        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(RAM_TYPE)
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }
 
         //get the 2 components
-        RAM firstComponentObject = (RAM) dataStorage.stringToComponentListMap.get("ram").get(firstComponentIndex);
-        RAM secondComponentObject = (RAM) dataStorage.stringToComponentListMap.get("ram").get(secondComponentIndex);
+        RAM firstComponentObject = (RAM) dataStorage.stringToComponentListMap.get(RAM_TYPE).get(firstComponentIndex);
+        RAM secondComponentObject = (RAM) dataStorage.stringToComponentListMap.get(RAM_TYPE).get(secondComponentIndex);
 
         //format the comparison table in outputString
         String outputString = String.format("%96s", "_".repeat(96));

@@ -1,19 +1,21 @@
-package seedu.bigpp.command.buildercommand;
+package seedu.bigpp.command.buildercommand.comparecommand;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.component.motherboard.Motherboard;
+import seedu.bigpp.component.storage.Storage;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPIndexOutOfBoundsException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
 
-public class BuilderCompareMotherboardCommand extends Command {
-    public BuilderCompareMotherboardCommand(String arguments) {
+import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
+
+public class BuilderCompareStorageCommand extends Command {
+    public BuilderCompareStorageCommand(String arguments) {
         setArguments(arguments);
     }
 
     /**
-     * Compare all the specifications between 2 selected motherboard components
+     * Compare all the specifications between 2 selected storage components
      * @return the comparison table of the 2 components
      */
     @Override
@@ -41,19 +43,19 @@ public class BuilderCompareMotherboardCommand extends Command {
         }
 
         //check if index is out of bounds
-        if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get("motherboard")
+        if (firstComponentIndex < 0 || firstComponentIndex >= dataStorage.stringToComponentListMap.get(STORAGE_TYPE)
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }
-        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get("motherboard")
+        if (secondComponentIndex < 0 || secondComponentIndex >= dataStorage.stringToComponentListMap.get(STORAGE_TYPE)
                 .size()) {
             throw new PPIndexOutOfBoundsException();
         }
 
         //get the 2 components
-        Motherboard firstComponentObject = (Motherboard) dataStorage.stringToComponentListMap.get("motherboard")
+        Storage firstComponentObject = (Storage) dataStorage.stringToComponentListMap.get(STORAGE_TYPE)
                 .get(firstComponentIndex);
-        Motherboard secondComponentObject = (Motherboard) dataStorage.stringToComponentListMap.get("motherboard")
+        Storage secondComponentObject = (Storage) dataStorage.stringToComponentListMap.get(STORAGE_TYPE)
                 .get(secondComponentIndex);
 
         //format the comparison table in outputString
@@ -63,10 +65,10 @@ public class BuilderCompareMotherboardCommand extends Command {
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "-".repeat(12), "-".repeat(40), "-".repeat(40));
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "PRICE", "$" + firstComponentObject.getPrice(),
                 "$" + secondComponentObject.getPrice());
-        outputString += String.format("%n|%-12s|%-40s|%-40s|", "SOCKET", firstComponentObject.getSocket(),
-                secondComponentObject.getSocket());
-        outputString += String.format("%n|%-12s|%-40s|%-40s|", "FORM FACTOR", firstComponentObject.getFormFactor(),
-                secondComponentObject.getFormFactor());
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "TYPE", firstComponentObject.getType(),
+                secondComponentObject.getType());
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "SIZE", firstComponentObject.getSize() + "GB",
+                secondComponentObject.getSize() + "GB");
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "POWER", firstComponentObject.getPower() + "W",
                 secondComponentObject.getPower() + "W");
         outputString += String.format("%n%96s", "_".repeat(96));
