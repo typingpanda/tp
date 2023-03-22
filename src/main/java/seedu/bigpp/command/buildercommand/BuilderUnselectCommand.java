@@ -34,7 +34,7 @@ public class BuilderUnselectCommand extends Command {
                     "Please select a valid component (cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
         }
 
-        int pcIndex = UI.builderMenu.getPCIndex();
+        int pcIndex = UI.pcBuilderMenu.getPCIndex();
 
         if (dataStorage.pcList.get(pcIndex).getComponent(componentTypeString) == null) {
             throw new PPException("Component is already unselected!");

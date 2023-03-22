@@ -34,13 +34,12 @@ public class BuilderEditBudgetCommand extends Command {
             throw new PPException("Please enter a budget that is greater than 0");
         }
 
-        int pcIndex = UI.builderMenu.getPCIndex();
+        int pcIndex = UI.pcBuilderMenu.getPCIndex();
         float currentCost = dataStorage.pcList.get(pcIndex).getCost();
 
         if (budget < currentCost) {
             throw new PPException(
-                    "You have set a budget that is lower than the"
-                            + "current cost of the build, please set a higher budget.");
+                    "You have set a budget that is lower than the" + "current cost of the build, please set a higher budget.");
         }
 
         dataStorage.pcList.get(pcIndex).setBudget(budget);
