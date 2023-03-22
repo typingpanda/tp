@@ -72,7 +72,7 @@ public class BuilderSelectCommand extends Command {
         float componentPrice = dataStorage.stringToComponentListMap.get(componentTypeString).get(componentIndex)
                 .getPrice();
 
-        if (componentPrice + currentCost > pcBudget) {
+        if (pcBudget != -1 && componentPrice + currentCost > pcBudget) {
             throw new BuilderExceedBudgetException();
         }
 
