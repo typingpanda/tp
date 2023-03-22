@@ -8,6 +8,7 @@ import seedu.bigpp.exceptions.builderexceptions.BuilderIncorrectComponentExcepti
 import seedu.bigpp.exceptions.builderexceptions.BuilderInvalidTypeException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingIndexException;
 import seedu.bigpp.exceptions.builderexceptions.BuilderMissingSelectException;
+import seedu.bigpp.exceptions.builderexceptions.BuilderExceedBudgetException;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
 
@@ -24,7 +25,8 @@ public class BuilderSelectCommand extends Command {
     @Override
     public String executeCommand(DataStorage dataStorage) throws BuilderMissingSelectException,
             BuilderIncorrectComponentException,
-            BuilderMissingIndexException, PPIndexOutOfBoundsException, BuilderInvalidTypeException {
+            BuilderMissingIndexException, PPIndexOutOfBoundsException, BuilderInvalidTypeException,
+            BuilderExceedBudgetException {
         assert UI.getUiState() == UIState.PCBUILDER : "UI state should be PCBUILDER";
 
         String inputString = getArguments();
@@ -65,11 +67,20 @@ public class BuilderSelectCommand extends Command {
 
         int pcIndex = UI.builderMenu.getPCIndex();
 
+        float currentCost = dataStorage.pcList.get(pcIndex).getCost();
+        int pcBudget = dataStorage.pcList.get(pcIndex).getBudget();
+        float componentPrice = dataStorage.stringToComponentListMap.get(componentTypeString).get(componentIndex)
+                .getPrice();
+
+        if (pcBudget != -1 && componentPrice + currentCost > pcBudget) {
+            throw new BuilderExceedBudgetException();
+        }
+
         dataStorage.pcList.get(pcIndex)
                 .setComponent((Component) dataStorage.stringToComponentListMap.get(componentTypeString)
                         .get(componentIndex));
 
-        return componentTypeString + " added! : "
-                + dataStorage.stringToComponentListMap.get(componentTypeString).get(componentIndex).getName();
+        return componentTypeString + " added! : " + dataStorage.stringToComponentListMap.get(componentTypeString).get(
+                componentIndex).getName();
     }
 }
