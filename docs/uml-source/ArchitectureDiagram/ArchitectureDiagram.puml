@@ -1,0 +1,22 @@
+@startuml
+
+node "BigPP" {
+    [UI]
+    [Parser]
+    [Command]
+    [DataStorage]
+    [Menu]
+}
+
+[User] -> [UI]
+[UI] -> [Parser]
+[Parser] --> [Command]
+[Command] --> [Menu]
+[Menu] -left-> [User]
+[Command] --> [DataStorage]
+[DataStorage] -left-> [Menu]
+[Resources] -right-> [DataStorage]
+[UserJson] <--> [DataStorage]
+
+
+@enduml
