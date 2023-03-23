@@ -72,6 +72,7 @@ class CPU {
 class Chassis {
     -size: String
 
+    +COMPONENT_STRING: String = "CHASSIS_TYPE"
     +Chassis(name: String, brand: String, 
     price: float, size: String)
     +getSize(): String
@@ -83,8 +84,7 @@ class CPUCooler {
     -noise: float
     -power: float
 
-    {static} COMPONENT_STRING: String
-
+    +COMPONENT_STRING: String = "CPU_COOLER_TYPE"
     +CPUCooler(name: String, brand: String, 
     price: float, rpm: int, noise: float, power: float)
     +getRpm(): int
@@ -99,6 +99,7 @@ class GPU {
     - power: float
     - size: String
     
+    +COMPONENT_STRING: String = "GPU_TYPE"
     + GPU(name: String, brand: String, 
     price: float, power: float, size: String)
     + getPower(): float
@@ -112,6 +113,7 @@ class Motherboard {
     - formFactor: String
     - socket: String
     - power: float
+    +COMPONENT_STRING: String = "MOTHERBOARD_TYPE"
     + Motherboard(name: String, brand: String, 
     price: float, formFactor: String, socket: String, power: float)
     + getFormFactor(): String
@@ -127,6 +129,7 @@ class RAM {
   - sticks: int
   - speed: int
   - power: float
+  +COMPONENT_STRING: String = "RAM_TYPE"
   + RAM(name: String, brand: String, 
   price: float, memory: int, sticks: int, speed: int, power: float)
   + getMemory(): int
@@ -143,6 +146,7 @@ class Storage {
   - size: int
   - type: String
   - power: float
+  +COMPONENT_STRING: String = "STORAGE_TYPE"
   + Storage(name: String, brand: String, 
   price: float, size: int, type: String, power: float)
   + getSize(): int
@@ -156,6 +160,7 @@ class Storage {
 class PSU {
   - power: float
   - size: String
+  +COMPONENT_STRING: String = "PSU_TYPE"
   + PSU(name: String, brand: String, 
   price: float, power: float, size: String)
   + getPower(): float
@@ -163,15 +168,6 @@ class PSU {
   + getSize(): String
   + setSize(size: String): void
   + toString(): String
-}
-
-class Chassis {
-    - size: String
-    + Chassis(name: String, brand: String, 
-    price: float, size: String)
-    + getSize(): String
-    + setSize(size: String): void
-    + toString(): String
 }
 
 PC --> CPU
