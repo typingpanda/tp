@@ -25,7 +25,7 @@ public class BuilderEditNameCommand extends Command {
             throw new PPException("Please enter a name");
         }
 
-        int pcIndex = UI.builderMenu.getPCIndex();
+        int pcIndex = UI.pcBuilderMenu.getPCIndex();
         dataStorage.pcList.get(pcIndex).setName(name);
         return "Current build name is now: " + name;
     }

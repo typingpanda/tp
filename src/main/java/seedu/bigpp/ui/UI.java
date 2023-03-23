@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public abstract class UI {
     public static PrintStream out = System.out;
-    public static PCBuilderMenu builderMenu = null;
+    public static PCBuilderMenu pcBuilderMenu = null;
 
     public static DecimalFormat moneyDecimalFormat = new DecimalFormat("#.00");
 
@@ -63,7 +63,7 @@ public abstract class UI {
 
     private static UIState uiState = UIState.PCVIEWER;
 
-    private static PCViewerMenu viewerMenu = new PCViewerMenu();
+    private static PCViewerMenu pcViewerMenu = new PCViewerMenu();
     private static Scanner in = new Scanner(System.in);
 
     public static UIState getUiState() {
@@ -95,10 +95,10 @@ public abstract class UI {
 
         switch (uiState) {
         case PCVIEWER:
-            viewerMenu.printMenu(dataStorage);
+            pcViewerMenu.printMenu(dataStorage);
             break;
         case PCBUILDER:
-            builderMenu.printMenu(dataStorage);
+            pcBuilderMenu.printMenu(dataStorage);
             break;
         default:
             break;
@@ -117,11 +117,11 @@ public abstract class UI {
 
     public static void setPCViewerMode() {
         uiState = UIState.PCVIEWER;
-        builderMenu = null;
+        pcBuilderMenu = null;
     }
 
     public static void setPCBuilderMode(int pcIndex) {
         uiState = UIState.PCBUILDER;
-        builderMenu = new PCBuilderMenu(pcIndex);
+        pcBuilderMenu = new PCBuilderMenu(pcIndex);
     }
 }
