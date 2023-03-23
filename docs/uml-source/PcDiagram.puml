@@ -1,0 +1,202 @@
+@startuml
+
+
+class PC {
+    - name: String
+    - isPrebuilt: Boolean
+    - cpu: CPU
+    - cpuCooler: CPUCooler
+    - gpu: GPU
+    - motherboard: Motherboard
+    - ram: RAM
+    - storage: Storage
+    - psu: PSU
+    - chassis: Chassis
+    - budget: int
+    + PC(name: String, isPrebuilt: Boolean)
+    + PC(pcCopy: PC)
+    + setChassis(chassis: Chassis): void
+    + setCpu(cpu: CPU): void
+    + setCpuCooler(cpuCooler: CPUCooler): void
+    + setGpu(gpu: GPU): void
+    + setMotherboard(motherboard: Motherboard): void
+    + setRam(ram: RAM): void
+    + setStorage(storage: Storage): void
+    + setPsu(psu: PSU): void
+    + setComponent(component: Component): void
+    + setNullComponent(componentType: String): void
+    + getCpu(): CPU
+    + getCpuCooler(): CPUCooler
+    + getGpu(): GPU
+    + getMotherboard(): Motherboard
+    + getRam(): RAM
+    + getStorage(): Storage
+    + getPsu(): PSU
+    + getChassis(): Chassis
+    + getComponent(componentName: String): Component
+    + setName(name: String): void
+    + setBudget(budget: int): void
+    + getName(): String
+    + getIsPreBuilt(): boolean
+    + getBudget(): int
+    + getBudgetString(): String
+}
+
+class Component {
+    -name: String
+    -brand: String
+    -price: float
+    +getName(): String
+    +getBrand(): String
+    +getPrice(): float
+    +setName(name: String): void
+    +setBrand(brand: String): void
+    +setPrice(price: float): void
+    +toString(): String
+}
+
+class CPU {
+    -cores: int
+    -threads: int
+    -baseClock: float
+    -boostClock: float
+    -power: float
+    -socket: String
+    +COMPONENT_STRING: String = "CPU_TYPE"
+    +getCores(): int
+    +getThreads(): int
+    +getBaseClock(): float
+    +getBoostClock(): float
+    +getPower(): float
+    +getSocket(): String
+    +setCores(cores: int): void
+    +setThreads(threads: int): void
+    +setBaseClock(baseClock: float): void
+    +setBoostClock(boostClock: float): void
+    +setPower(power: float): void
+    +setSocket(socket: String): void
+    +toString(): String
+}
+class Chassis {
+    -size: String
+
+    +Chassis(name: String, brand: String, 
+    price: float, size: String)
+    +getSize(): String
+    +setSize(size: String): void
+    +toString(): String
+}
+class CPUCooler {
+    -rpm: int
+    -noise: float
+    -power: float
+
+    {static} COMPONENT_STRING: String
+
+    +CPUCooler(name: String, brand: String, 
+    price: float, rpm: int, noise: float, power: float)
+    +getRpm(): int
+    +getNoise(): float
+    +getPower(): float
+    +setRpm(rpm: int): void
+    +setNoise(noise: float): void
+    +setPower(power: float): void
+    +toString(): String
+}
+class GPU {
+    - power: float
+    - size: String
+    
+    + GPU(name: String, brand: String, 
+    price: float, power: float, size: String)
+    + getPower(): float
+    + getSize(): String
+    + setPower(power: float): void
+    + setSize(size: String): void
+    + toString(): String
+}
+
+class Motherboard {
+    - formFactor: String
+    - socket: String
+    - power: float
+    + Motherboard(name: String, brand: String, 
+    price: float, formFactor: String, socket: String, power: float)
+    + getFormFactor(): String
+    + setFormFactor(formFactor: String): void
+    + getSocket(): String
+    + setSocket(socket: String): void
+    + getPower(): float
+    + setPower(power: float): void
+    + toString(): String
+}
+class RAM {
+  - memory: int
+  - sticks: int
+  - speed: int
+  - power: float
+  + RAM(name: String, brand: String, 
+  price: float, memory: int, sticks: int, speed: int, power: float)
+  + getMemory(): int
+  + setMemory(memory: int): void
+  + getSticks(): int
+  + setSticks(sticks: int): void
+  + getSpeed(): int
+  + setSpeed(speed: int): void
+  + getPower(): float
+  + setPower(power: float): void
+  + toString(): String
+}
+class Storage {
+  - size: int
+  - type: String
+  - power: float
+  + Storage(name: String, brand: String, 
+  price: float, size: int, type: String, power: float)
+  + getSize(): int
+  + setSize(size: int): void
+  + getType(): String
+  + setType(type: String): void
+  + getPower(): float
+  + setPower(power: float): void
+  + toString(): String
+}
+class PSU {
+  - power: float
+  - size: String
+  + PSU(name: String, brand: String, 
+  price: float, power: float, size: String)
+  + getPower(): float
+  + setPower(power: float): void
+  + getSize(): String
+  + setSize(size: String): void
+  + toString(): String
+}
+
+class Chassis {
+    - size: String
+    + Chassis(name: String, brand: String, 
+    price: float, size: String)
+    + getSize(): String
+    + setSize(size: String): void
+    + toString(): String
+}
+
+PC --> CPU
+PC --> CPUCooler
+PC --> GPU
+PC --> Motherboard
+PC --> RAM
+PC --> Storage
+PC --> PSU
+PC --> Chassis
+Component <|-up- CPU
+Component <|-up- RAM
+Component <|-up- Motherboard
+Component <|-up- CPUCooler
+Component <|-up- GPU
+Component <|-up- Storage
+Component <|-up- PSU
+Component <|-up- Chassis
+
+@enduml

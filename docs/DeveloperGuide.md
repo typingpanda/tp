@@ -3,9 +3,10 @@
 
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [General Overview](#general-overview)
 - [Design \& implementation](#design--implementation)
-  - [Placeholder 1](#placeholder-1)
+  - [PC Class Architecture](#pc-class-architecture)
   - [Placeholder 2](#placeholder-2)
 - [Appendix: Requirements](#appendix-requirements)
   - [Product scope](#product-scope)
@@ -29,7 +30,22 @@ The program will first load the `UserJson` and files in the `Resources` folder t
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
-### Placeholder 1
+
+
+### PC Class Architecture
+
+![PC Class Diagram](uml-pictures/PcDiagram.png)
+
+This UML class diagram shows the classes and their relationships in a computer system, which is represented by the PC class. The PC class has several attributes, including name, isPrebuilt, cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis, and budget.
+
+The CPU, CPUCooler, GPU, Motherboard, RAM, Chassis, PSU and Storage classes are components that can be used to build a PC object. Each component class has its own attributes and methods specific to that component.
+
+The Component class is an abstract class that represents a generic computer component. It has attributes such as name, brand, and price, as well as methods to get and set those attributes.
+
+The PC class has methods to set and get the components of a PC object, as well as methods to set and get the name, isPrebuilt, and budget attributes.
+
+Overall, this class diagram provides a high-level overview of the components that make up a computer system and their relationships to each other.
+
 
 ### Placeholder 2
 
