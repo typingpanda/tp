@@ -3,6 +3,7 @@
 
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [General Overview](#general-overview)
 - [Design \& implementation](#design--implementation)
   - [Placeholder 1](#placeholder-1)
@@ -26,6 +27,12 @@ below is the overall architecture diagram for how BigPP works.
 The program will first load the `UserJson` and files in the `Resources` folder to populate its internal memory of `PCLists` and `ComponentLists`. This will be stored in its `DataStorage`. The `User`'s interaction with the `UI` will be `parsed` into a `command` which would update the `DataStorage` and eventually update the `Menu` which is displayed back to the `User`. This would continue until the `User` exits the program, which would result in the data stored in `DataStorage` being saved into the `UserJson`.
 
 ## Design & implementation
+Below is the Class diagram for the UI class
+
+![UI Class Diagram](uml-pictures/UIClassDiagram.png)
+
+The class will first initialize its `UIState` to `PCVIEWER`. It will also initialize the `PCViewerMenu` class. `showWelcome` will print out the logos and welcome message. `updateUI` will call `printMenu` on `PCViewerMenu`  or `PCBuilderMenu` depending on the `UIState`. `setPCViewerMode` will update `UIState` to `PCVIEWER` and set `pcBuilderMenu` to null. `setPCBuilderMode` will update the `UIState` to `PCBuilder` and create a new instance of `PCBuilderMenu`. 
+
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 

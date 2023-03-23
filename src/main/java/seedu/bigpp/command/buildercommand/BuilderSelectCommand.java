@@ -57,7 +57,7 @@ public class BuilderSelectCommand extends Command {
             throw new PPException("Please enter a valid index");
         }
 
-        int pcIndex = UI.builderMenu.getPCIndex();
+        int pcIndex = UI.pcBuilderMenu.getPCIndex();
 
         float currentCost = dataStorage.pcList.get(pcIndex).getCost();
         int pcBudget = dataStorage.pcList.get(pcIndex).getBudget();

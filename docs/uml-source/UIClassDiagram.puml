@@ -1,0 +1,37 @@
+@startuml
+
+class UI {
+    -uiState: UIState
+    -LOGO: String
+    -DIVIDER: String
+    +pcViewerMenu: PCViewerMenu
+    +pcBuilderMenu: PCBuilderMenu
+
+    +getUIState(): UIState
+    +getInput(): String
+    +showWelcome(): void
+    +updateUI(): void
+    +clearTerminal(): void
+    +showResult(): void
+    +setPCViewerMode(): void
+    +setPCBuilderMode(): void
+}
+
+class PCBuilderMenu {
+    -pcIndex: int
+    +getPCIndex(): int
+    +printMenu(): void
+}
+
+class PCViewerMenu {
+    +printMenu(): void
+}
+
+enum UIState {
+    PCViewer
+    PCBuilder
+}
+
+UI --> "1" PCBuilderMenu
+UI --> "1" PCViewerMenu 
+UI --> UIState

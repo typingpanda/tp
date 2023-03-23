@@ -63,7 +63,7 @@ public class BuilderCustomCpuCommand extends Command {
 
         CPU cpu = new CPU(name, brand, price, cores, threads, baseClock, boostClock, power, socket);
 
-        dataStorage.pcList.get(UI.builderMenu.getPCIndex()).setCpu(cpu);
+        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setCpu(cpu);
 
         return "CPU added: " + cpu.getName();
     }
