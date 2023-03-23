@@ -1,13 +1,13 @@
 <!-- omit in toc -->
 # Developer Guide
-
+<!-- omit in toc -->
 ## Table of contents
 
-- [Table of contents](#table-of-contents)
 - [General Overview](#general-overview)
 - [Design \& implementation](#design--implementation)
   - [UI class](#ui-class)
-  - [Parser class](#command-class)
+  - [Parser class](#parser-class)
+  - [PC Class Architecture](#pc-class-architecture)
   - [Command class](#command-class)
     - [`list [COMPONENT]` Command (builder mode)](#list-component-command-builder-mode)
 - [Appendix: Requirements](#appendix-requirements)
@@ -47,6 +47,19 @@ From the diagram, Command class has a private attribute named arguments which st
 contains methods that help to set and retrieve the private attribute in the class. 
 Overall, this class diagram provides an overview of the purpose of the Parser class.
 
+### PC Class Architecture
+
+![PC Class Diagram](uml-pictures/PcDiagram.png)
+
+This UML class diagram shows the classes and their relationships in a computer system, which is represented by the `PC` class. The PC class has several attributes, including name, isPrebuilt, cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis, and budget.
+
+The `CPU`, `CPUCooler`, `GPU`, `Motherboard`, `RAM`, `Chassis`, `PSU` and `Storage` classes are components that can be used to build a `PC` object. Each component class has its own attributes and methods specific to that component.
+
+The `Component` class is an abstract class that represents a generic computer component. It has attributes such as name, brand, and price, as well as methods to get and set those attributes.
+
+The `PC` class has methods to set and get the components of a `PC` object, as well as methods to set and get the name, isPrebuilt, and budget attributes.
+
+Overall, this class diagram provides a high-level overview of the components that make up a computer system and their relationships to each other.
 
 ### Command class
 #### `list [COMPONENT]` Command (builder mode)
