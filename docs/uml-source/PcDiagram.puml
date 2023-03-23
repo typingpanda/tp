@@ -4,14 +4,6 @@
 class PC {
     - name: String
     - isPrebuilt: Boolean
-    - cpu: CPU
-    - cpuCooler: CPUCooler
-    - gpu: GPU
-    - motherboard: Motherboard
-    - ram: RAM
-    - storage: Storage
-    - psu: PSU
-    - chassis: Chassis
     - budget: int
     + PC(name: String, isPrebuilt: Boolean)
     + PC(pcCopy: PC)
