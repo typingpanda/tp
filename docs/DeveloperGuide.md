@@ -6,8 +6,9 @@
 - [Table of contents](#table-of-contents)
 - [General Overview](#general-overview)
 - [Design \& implementation](#design--implementation)
-  - [Placeholder 1](#placeholder-1)
-  - [Placeholder 2](#placeholder-2)
+  - [UI class](#ui-class)
+  - [Command class](#command-class)
+    - [`list [COMPONENT]` Command (builder mode)](#list-component-command-builder-mode)
 - [Appendix: Requirements](#appendix-requirements)
   - [Product scope](#product-scope)
     - [Target user profile](#target-user-profile)
@@ -27,16 +28,16 @@ below is the overall architecture diagram for how BigPP works.
 The program will first load the `UserJson` and files in the `Resources` folder to populate its internal memory of `PCLists` and `ComponentLists`. This will be stored in its `DataStorage`. The `User`'s interaction with the `UI` will be `parsed` into a `command` which would update the `DataStorage` and eventually update the `Menu` which is displayed back to the `User`. This would continue until the `User` exits the program, which would result in the data stored in `DataStorage` being saved into the `UserJson`.
 
 ## Design & implementation
+
+### UI class
 Below is the Class diagram for the UI class
 
 ![UI Class Diagram](uml-pictures/UIClassDiagram.png)
 
 The class will first initialize its `UIState` to `PCVIEWER`. It will also initialize the `PCViewerMenu` class. `showWelcome` will print out the logos and welcome message. `updateUI` will call `printMenu` on `PCViewerMenu`  or `PCBuilderMenu` depending on the `UIState`. `setPCViewerMode` will update `UIState` to `PCVIEWER` and set `pcBuilderMenu` to null. `setPCBuilderMode` will update the `UIState` to `PCBuilder` and create a new instance of `PCBuilderMenu`. 
 
-
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
-
-### `list [COMPONENT]` command (builder mode)
+### Command class
+#### `list [COMPONENT]` Command (builder mode)
 The `list [COMPONENT]` command prints out a formatted list of all available components of type `[COMPONENT]`.
 
 When the user inputs a command of the form `list [COMPONENT]` in builder mode,
@@ -73,10 +74,8 @@ of the desired type, which it then outputs to the user.
 A UML sequence diagram showing the interactions between the different objects involved in handling this command can be
 found below:
 
-![Image could not be found](./uml-pictures/listComponentCommand.png)
-### Placeholder 1
+![List Component Command](./uml-pictures/listComponentCommand.png)
 
-### Placeholder 2
 
 ## Appendix: Requirements
 ### Product scope
