@@ -1,12 +1,12 @@
 <!-- omit in toc -->
 # Developer Guide
-
+<!-- omit in toc -->
 ## Table of contents
 
-- [Table of contents](#table-of-contents)
 - [General Overview](#general-overview)
 - [Design \& implementation](#design--implementation)
   - [UI class](#ui-class)
+  - [PC Class Architecture](#pc-class-architecture)
   - [Command class](#command-class)
     - [`list [COMPONENT]` Command (builder mode)](#list-component-command-builder-mode)
 - [Appendix: Requirements](#appendix-requirements)
@@ -35,6 +35,20 @@ Below is the Class diagram for the UI class
 ![UI Class Diagram](uml-pictures/UIClassDiagram.png)
 
 The class will first initialize its `UIState` to `PCVIEWER`. It will also initialize the `PCViewerMenu` class. `showWelcome` will print out the logos and welcome message. `updateUI` will call `printMenu` on `PCViewerMenu`  or `PCBuilderMenu` depending on the `UIState`. `setPCViewerMode` will update `UIState` to `PCVIEWER` and set `pcBuilderMenu` to null. `setPCBuilderMode` will update the `UIState` to `PCBuilder` and create a new instance of `PCBuilderMenu`. 
+
+### PC Class Architecture
+
+![PC Class Diagram](uml-pictures/PcDiagram.png)
+
+This UML class diagram shows the classes and their relationships in a computer system, which is represented by the `PC` class. The PC class has several attributes, including name, isPrebuilt, cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis, and budget.
+
+The `CPU`, `CPUCooler`, `GPU`, `Motherboard`, `RAM`, `Chassis`, `PSU` and `Storage` classes are components that can be used to build a `PC` object. Each component class has its own attributes and methods specific to that component.
+
+The `Component` class is an abstract class that represents a generic computer component. It has attributes such as name, brand, and price, as well as methods to get and set those attributes.
+
+The `PC` class has methods to set and get the components of a `PC` object, as well as methods to set and get the name, isPrebuilt, and budget attributes.
+
+Overall, this class diagram provides a high-level overview of the components that make up a computer system and their relationships to each other.
 
 ### Command class
 #### `list [COMPONENT]` Command (builder mode)

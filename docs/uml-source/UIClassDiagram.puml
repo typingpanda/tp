@@ -35,3 +35,5 @@ enum UIState {
 UI --> "1" PCBuilderMenu
 UI --> "1" PCViewerMenu 
 UI --> UIState
+
+@enduml
