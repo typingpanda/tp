@@ -8,6 +8,10 @@ node "BigPP" {
     [Menu]
 }
 
+actor User
+database Resources
+file UserJson
+
 [User] -> [UI]
 [UI] -> [Parser]
 [Parser] --> [Command]
