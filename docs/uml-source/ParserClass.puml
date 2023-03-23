@@ -1,0 +1,23 @@
+@startuml
+
+class Parser {
+    -parseViewerCommand(commandWord: String, arguments: String): Command
+    -parseBuilderCommand(commandWord: String, arguments: String): Command
+    -parseCustomCommand(arguments: String): Command
+    -parseCompareCommand(arguments: String): Command
+    +parseCommand(userInput: String): Command
+}
+
+abstract class Command {
+    - arguments: String
+    {abstract} + executeCommand(dataStorage: DataStorage): String
+    + setArguments(arguments: String): void
+    + getArguments(): String
+}
+
+
+Parser --> Command
+
+
+
+@enduml

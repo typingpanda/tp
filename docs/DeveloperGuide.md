@@ -6,6 +6,7 @@
 - [General Overview](#general-overview)
 - [Design \& implementation](#design--implementation)
   - [UI class](#ui-class)
+  - [Parser class](#parser-class)
   - [PC Class Architecture](#pc-class-architecture)
   - [Command class](#command-class)
     - [`list [COMPONENT]` Command (builder mode)](#list-component-command-builder-mode)
@@ -35,6 +36,16 @@ Below is the Class diagram for the UI class
 ![UI Class Diagram](uml-pictures/UIClassDiagram.png)
 
 The class will first initialize its `UIState` to `PCVIEWER`. It will also initialize the `PCViewerMenu` class. `showWelcome` will print out the logos and welcome message. `updateUI` will call `printMenu` on `PCViewerMenu`  or `PCBuilderMenu` depending on the `UIState`. `setPCViewerMode` will update `UIState` to `PCVIEWER` and set `pcBuilderMenu` to null. `setPCBuilderMode` will update the `UIState` to `PCBuilder` and create a new instance of `PCBuilderMenu`. 
+
+### Parser class
+The UML class diagram shows the features of the Parser class:
+![Parser Class Diagram](uml-pictures/ParserClass.png)
+The purpose of the Parser class is to parse the user input into commands for execution. With reference to the diagram,
+the Parser class does not have any attributes and only contains public methods for parsing of the user input.
+The methods in the Parser class creates a subclass which inherits from the abstract superclass Command class. 
+From the diagram, Command class has a private attribute named arguments which stores the user inputs as a String. The Command class
+contains methods that help to set and retrieve the private attribute in the class. 
+Overall, this class diagram provides an overview of the purpose of the Parser class.
 
 ### PC Class Architecture
 
