@@ -36,6 +36,44 @@ The class will first initialize its `UIState` to `PCVIEWER`. It will also initia
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
+### `list [COMPONENT]` command (builder mode)
+The `list [COMPONENT]` command prints out a formatted list of all available components of type `[COMPONENT]`.
+
+When the user inputs a command of the form `list [COMPONENT]` in builder mode,
+it is parsed by the `Parser.parseBuilderCommand` method which recognizes the first word as
+`list` and creates a new `BuilderListComponentCommand` object while passing as argument the component
+which was part of the command.
+
+The `BuilderListComponentCommand.executeCommand()` method is then executed as part of the loop
+inside `BigPP.runLoopUntilExit()`.
+
+It first verifies:
+- That the component argument is not empty. If it is then it throws a `BuilderMissingComponentException()`
+- That the component given by the user exists in the database. If it doesn't then it throws a
+  `BuilderMissingComponentException()`
+
+It then uses the `stringToComponentListMap` HashMap from data storage to get the ComponentList associated
+with the component string input by the user (e.g. `cpu`). The `stringToComponentListMap` HashMap is initialized and
+filled when the program is first run using `DataStorage.initStringToComponentListMap()` and maps component names
+(e.g. `cpu`) to their corresponding `ComponentList` object (e.g. an object of type `CPUList`).
+
+The `ComponentList` class inherits from `ArrayList` but additionally implements the `getListString()` method which
+returns a formatted list of all the components in the `ComponentList` object.
+
+The `ComponentList` objects for each component are instantiated and populated in the `DataStorage.loadAll` method
+by loading the data in `resources/COMPONENT_NAME.json` using the `GSON` library.
+
+The program then checks if the user provided any flags to filter the output of the component command (e.g. by name,
+brand, price, etc.). If they did, then the program filters out the components not meeting the provided flags and
+creates a `ComponentList` containing all the components which do meet the provided flags.
+
+The program then uses the `ComponentList.getListString()` method to get a formatted list of the components
+of the desired type, which it then outputs to the user.
+
+A UML sequence diagram showing the interactions between the different objects involved in handling this command can be
+found below:
+
+![Image could not be found](./uml-pictures/listComponentCommand.png)
 ### Placeholder 1
 
 ### Placeholder 2
