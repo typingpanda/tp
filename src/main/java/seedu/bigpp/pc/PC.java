@@ -227,6 +227,32 @@ public class PC {
         }
     }
 
+    public float getPowerConsumption() {
+        float totalPowerConsumption = 0.00f;
+        if (cpu != null) {
+            totalPowerConsumption += cpu.getPower();
+        }
+        if (gpu != null) {
+            totalPowerConsumption += gpu.getPower();
+        }
+        if (ram != null) {
+            totalPowerConsumption += ram.getPower();
+        }
+        if (storage != null) {
+            totalPowerConsumption += storage.getPower();
+        }
+        if (motherboard != null) {
+            totalPowerConsumption += motherboard.getPower();
+        }
+        if (cpuCooler != null) {
+            totalPowerConsumption += cpuCooler.getPower();
+        }
+
+        // give power consumption to 2 dp
+        totalPowerConsumption = Float.parseFloat(UI.moneyDecimalFormat.format(totalPowerConsumption));
+        return totalPowerConsumption;
+    }
+
     /**
      * Method to check if the PC is complete.
      * @return true if all components are not null, false otherwise.
@@ -250,7 +276,7 @@ public class PC {
         componentString += ("Components:" + '\n');
 
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",
-            "Storage    :", "PSU        :", "Chassis    :" };
+                "Storage    :", "PSU        :", "Chassis    :" };
 
         Component[] components = { cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis };
 

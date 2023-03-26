@@ -25,11 +25,9 @@ public class Chassis extends Component {
 
     @Override
     public String toString() {
-        return "Chassis{" +
-                "\nname='" + super.getName() + '\'' +
-                ",\n brand='" + super.getBrand() + '\'' +
-                ",\n price=" + super.getPrice() +
-                ",\n size='" + size + '\'' +
-                "\n}";
+        return "NAME: " + super.getName() +
+                "\nBRAND: " + super.getBrand() +
+                "\nPRICE: " + super.getPrice() +
+                "\nSIZE: " + size;
     }
 }

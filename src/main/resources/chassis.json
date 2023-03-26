@@ -2,12 +2,12 @@
 	"Fractal Design Pop XL Air": {
 		"brand": "Fractal Design",
 		"price": 124.98,
-		"size": "full"
+		"size": "atx"
 	},
 	"Corsair iCUE 4000X RGB": {
 		"brand": "Corsair",
 		"price": 144.99,
-		"size": "mid"
+		"size": "atx"
 	},
 	"Cooler Master MasterBox MB311L ARGB": {
 		"brand": "Cooler Master",

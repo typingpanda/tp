@@ -110,14 +110,14 @@ class GPU {
 }
 
 class Motherboard {
-    - formFactor: String
+    - size: String
     - socket: String
     - power: float
     +COMPONENT_STRING: String = "MOTHERBOARD_TYPE"
     + Motherboard(name: String, brand: String, 
-    price: float, formFactor: String, socket: String, power: float)
+    price: float, size: String, socket: String, power: float)
     + getFormFactor(): String
-    + setFormFactor(formFactor: String): void
+    + setFormFactor(size: String): void
     + getSocket(): String
     + setSocket(socket: String): void
     + getPower(): float

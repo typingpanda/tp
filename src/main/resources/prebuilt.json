@@ -29,7 +29,7 @@
 			"price": 309.99
 		},
 		"motherboard": {
-			"formFactor": "ATX",
+			"size": "atx",
 			"socket": "LGA1200",
 			"power": 45.0,
 			"name": "Asus Prime Z590-P WiFi",
@@ -55,14 +55,14 @@
 		},
 		"psu": {
 			"efficiency": "Gold",
-			"formFactor": "atx",
+			"size": "atx",
 			"power": 850.0,
 			"name": "SeaSonic FOCUS PLUS 850 Gold",
 			"brand": "SeaSonic",
 			"price": 159.94
 		},
 		"chassis": {
-			"size": "full",
+			"size": "atx",
 			"name": "Fractal Design Pop XL Air",
 			"brand": "Fractal Design",
 			"price": 124.98
@@ -99,7 +99,7 @@
 			"price": 786.99
 		},
 		"motherboard": {
-			"formFactor": "ATX",
+			"size": "atx",
 			"socket": "AM4",
 			"power": 48.0,
 			"name": "Asus TUF GAMING X570-PLUS (WI-FI)",
@@ -125,14 +125,14 @@
 		},
 		"psu": {
 			"efficiency": "Gold",
-			"formFactor": "atx",
+			"size": "atx",
 			"power": 850.0,
 			"name": "SeaSonic FOCUS PLUS 850 Gold",
 			"brand": "SeaSonic",
 			"price": 159.94
 		},
 		"chassis": {
-			"size": "full",
+			"size": "atx",
 			"name": "Fractal Design Pop XL Air",
 			"brand": "Fractal Design",
 			"price": 124.98
@@ -169,7 +169,7 @@
 			"price": 934.06
 		},
 		"motherboard": {
-			"formFactor": "Mini",
+			"size": "mini",
 			"socket": "AM5",
 			"power": 49.0,
 			"name": "Gigabyte B650I AORUS ULTRA",
@@ -195,14 +195,14 @@
 		},
 		"psu": {
 			"efficiency": "Gold",
-			"formFactor": "atx",
+			"size": "atx",
 			"power": 850.0,
 			"name": "SeaSonic FOCUS PLUS 850 Gold",
 			"brand": "SeaSonic",
 			"price": 159.94
 		},
 		"chassis": {
-			"size": "full",
+			"size": "atx",
 			"name": "Fractal Design Pop XL Air",
 			"brand": "Fractal Design",
 			"price": 124.98
