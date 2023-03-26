@@ -1,0 +1,78 @@
+@startuml
+
+
+class ComponentList<T> {
+    + getListString(componentIndexes: ArrayList<Integer>): String
+    + filterByName(componentList: ComponentList<?>, name: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
+    + filterByBrand(componentList: ComponentList<?>, brand: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
+    + filterByPrice(componentList: ComponentList<?>, priceFrom: String, priceTo: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
+}
+
+
+
+class ChassisList
+class CPUList
+class CPUCoolerList
+class GPUList
+class MotherboardList
+class PSUList
+class RAMList
+class StorageList
+
+ChassisList --|> ComponentList
+CPUList --|> ComponentList
+CPUCoolerList --|> ComponentList
+GPUList --|> ComponentList
+MotherboardList --|> ComponentList
+PSUList --|> ComponentList
+RAMList --|> ComponentList
+StorageList --|> ComponentList
+
+
+class PCList {
+    + printPcList(): void
+}
+
+
+
+class DataStorage {
+    - CHASSIS_PATH: String
+    - CPU_PATH: String
+    - CPU_COOLER_PATH: String
+    - GPU_PATH: String
+    - MOTHERBOARD_PATH: String
+    - PSU_PATH: String
+    - RAM_PATH: String
+    - STORAGE_PATH: String
+    - PREBUILT_PATH: String
+    - USER_PATH: String
+    - GSON: Gson
+    - stringToComponentListMap: Map<String, ComponentList<?>>
+    - pcList: PCList
+    + saveUserPcs(): void
+    + loadAll(): void
+    + initStringToComponentListMap(): void
+    + loadChassis(path: String): void
+    + loadCPU(path: String): void
+    + loadCPUCooler(path: String): void
+    + loadGPU(path: String): void
+    + loadMotherboard(path: String): void
+    + loadPSU(path: String): void
+    + loadRAM(path: String): void
+    + loadStorage(path: String): void
+    + loadUserPcs(path: String): void
+    + loadPrebuiltPcs(path: String): void
+}
+
+
+DataStorage --> ChassisList
+DataStorage --> CPUList
+DataStorage --> CPUCoolerList
+DataStorage --> GPUList
+DataStorage --> MotherboardList
+DataStorage --> PSUList
+DataStorage --> RAMList
+DataStorage --> StorageList
+DataStorage --> PCList
+
+@enduml

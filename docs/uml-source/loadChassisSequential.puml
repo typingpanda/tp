@@ -1,0 +1,31 @@
+@startuml
+":DataStorage" -> ":DataStorage" : loadAll()
+activate ":DataStorage"
+":DataStorage" -> ":DataStorage" : loadChassis(String path)
+
+":DataStorage" -> "GSON" : fromJson(String json, Type type)
+activate "GSON"
+"GSON" --> ":DataStorage" : Map<String, Chassis>
+deactivate "GSON"
+
+loop for each entry in chassisMap
+  ":DataStorage" -> "Chassis" : setName(String name)
+  activate "Chassis"
+  "Chassis" --> ":DataStorage"
+  deactivate "Chassis"
+end
+
+loop for each entry in chassisMap
+  ":DataStorage" -> "DataStorage.stringToComponentListMap" : get(String componentType)
+  activate "DataStorage.stringToComponentListMap"
+  "DataStorage.stringToComponentListMap" --> ":DataStorage" : ChassisList
+  deactivate "DataStorage.stringToComponentListMap"
+  
+  ":DataStorage" -> "ChassisList" : add(Chassis chassis)
+  activate "ChassisList"
+  "ChassisList" --> ":DataStorage"
+  deactivate "ChassisList"
+end
+
+deactivate ":DataStorage"
+@enduml
