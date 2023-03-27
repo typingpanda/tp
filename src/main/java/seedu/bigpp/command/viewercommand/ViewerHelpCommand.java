@@ -16,6 +16,10 @@ public class ViewerHelpCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) {
-        return this.HELP;
+        return getHelp();
+    }
+
+    private static String getHelp() {
+        return HELP;
     }
 }
