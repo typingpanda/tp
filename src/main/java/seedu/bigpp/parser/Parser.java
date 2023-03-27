@@ -22,6 +22,7 @@ import seedu.bigpp.command.commoncommand.UnrecognizedCommand;
 import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
+import seedu.bigpp.command.viewercommand.ViewerHelpCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
 import seedu.bigpp.ui.UI;
 
@@ -96,6 +97,8 @@ public class Parser {
             return new ViewerViewCommand(arguments);
         case "edit":
             return new ViewerEditCommand(arguments);
+        case "help":
+            return new ViewerHelpCommand();
         default:
             return new UnrecognizedCommand("");
         }
