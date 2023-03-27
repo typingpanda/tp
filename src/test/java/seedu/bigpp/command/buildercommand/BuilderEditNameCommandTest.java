@@ -7,6 +7,7 @@ import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.pc.PC;
 import seedu.bigpp.ui.UI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BuilderEditNameCommandTest {
 
@@ -20,4 +21,15 @@ public class BuilderEditNameCommandTest {
         String editNameCommandResult = new BuilderEditNameCommand("PC2").executeCommand(dataStorage);
         assertEquals("Current build name is now: PC2", editNameCommandResult);
     }
+
+    @Test
+    public void executeCommand_editNameCommandMissingArgument_exceptionThrown() {
+        PC pc = new PC("PC1", true);
+        dataStorage.pcList.add(pc);
+        UI.setPCBuilderMode(0);
+        Exception exception = assertThrows(PPException.class, () -> new BuilderEditNameCommand("")
+                .executeCommand(dataStorage));
+        assertEquals("Please enter a name", exception.getMessage());
+    }
+
 }
