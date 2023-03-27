@@ -36,7 +36,21 @@ Below is the Class diagram for the UI class
 
 ![UI Class Diagram](uml-pictures/UIClassDiagram.png)
 
-The class will first initialize its `UIState` to `PCVIEWER`. It will also initialize the `PCViewerMenu` class. `showWelcome` will print out the logos and welcome message. `updateUI` will call `printMenu` on `PCViewerMenu`  or `PCBuilderMenu` depending on the `UIState`. `setPCViewerMode` will update `UIState` to `PCVIEWER` and set `pcBuilderMenu` to null. `setPCBuilderMode` will update the `UIState` to `PCBuilder` and create a new instance of `PCBuilderMenu`. 
+The `UI` Class serves as the interface between the user and BigPP. It is responsible for the following key actions
+
+1. **Initialization**: Upon start up of BigPP, the instance of `DataStorage` is parsed into the `updateUI` method of `UI` to give it the ability to access resources for BigPP. `UIState` is set to be `PCViewer`.
+   
+2. **Functionality**
+  - Shows welcome message to the user
+  - Gets input from the user
+  - Sets the `UIState` of BigPP depending on user command
+  - Updates the user interface to show the menu depending on the `UIState`
+  - Clears the terminal after every user command
+  - Shows feedback to the user after every user command
+
+3. **Behavior**: The `UI` Class acts as the intermediary between the user and BigPP. `UIState` of `UI` can change between `PCViewer` and `PCBuilder` which would result in different commands available to the user. This makes the possible commands that can be given clear to the user.
+
+In summary, UI gives crucial feedback to the user such as the menu of possible commands based on the current menu and results of a given command.
 
 ### DataStorage class
 Below is the Class diagram for the DataStorage class:

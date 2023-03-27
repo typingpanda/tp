@@ -1,6 +1,6 @@
 @startuml
 
-class UI {
+abstract class UI {
     -uiState: UIState
     -LOGO: String
     -DIVIDER: String
