@@ -30,6 +30,20 @@ public class ComponentList<T> extends ArrayList<Component> {
         return outputString;
     }
 
+    //filter cpu by socket, compare string
+    public static ComponentList<?> filterBySocket(ComponentList<?> componentList, String socket, ArrayList<Integer>
+            componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            CPU cpu = (CPU) componentList.get(i);
+            if (cpu.getSocket().toLowerCase().equals(socket)) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+    
     //filter by power with from and to range that are integers
     public static ComponentList<?> filterByPower(ComponentList<?> componentList, int from, int to, ArrayList<Integer>
             componentIndexes) {

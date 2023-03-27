@@ -47,7 +47,7 @@ public class BuilderListComponentCommand extends Command {
         String userInputString = getArguments();
         userInputString = userInputString.toLowerCase();
 
-        String[] userInputStringArray = userInputString.split(" ");
+        String[] userInputStringArray = userInputString.split("\\s+");
         String componentType = userInputStringArray[0];
 
         if (userInputString.equals("")) {
@@ -107,6 +107,10 @@ public class BuilderListComponentCommand extends Command {
                         componentList = handlePowerFlag(userInputString, componentList, flagsArray,
                                 flagAndDescriptionArray, componentIndexes);
                     }
+                    if (containsFlag(flagAndDescriptionArray, SOCKET_FLAG)) {
+                        componentList = handleSocketFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
 
                 case "cpucooler":
                     //handle rpm, noise and power flag
@@ -146,6 +150,32 @@ public class BuilderListComponentCommand extends Command {
         return outputString + componentList.getListString(componentIndexes);
     }
 
+    //handle socket flag that can be either AM4, AM5, LGA1200 or LGA1700
+    private ComponentList<?> handleSocketFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int socketFlagIndex = indexOfFlag(flagAndDescriptionArray, SOCKET_FLAG);
+        if (socketFlagIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String socket = userInputString.split(SOCKET_FLAG)[1].trim().toLowerCase();
+
+        if (isFlag(socket)) {
+            throw new PPException("Flag detected in socket description. Please enter a valid socket");
+        }
+
+        if (!socket.equals("am4") && !socket.equals("am5") && !socket.equals("lga1200") && !socket.equals("lga1700")) {
+            throw new PPException("Please enter a valid socket (am4, am5, lga1200, lga1700))");
+        }
+
+        flagsArray.add("Socket: " + socket);
+
+        componentList = ComponentList.filterBySocket(componentList, socket, componentIndexes);
+
+        return componentList;
+    }
+
     //handle power flag with int from and int to range
     private ComponentList<?> handlePowerFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
@@ -156,7 +186,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String powerDescription = userInputString.split(POWER_FLAG)[1].trim().toLowerCase();
-        if (powerDescription.split(" ").length < 4) {
+        if (powerDescription.split("\\s+").length < 4) {
             throw new PPException("Please enter a full power description");
         }
 
@@ -221,7 +251,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a full boost clock description");
         }
 
-        String[] boostClockDescriptionArray = Arrays.copyOfRange(boostClockDescription.split(" "), 0, 4);
+        String[] boostClockDescriptionArray = Arrays.copyOfRange(boostClockDescription.split("\\s+"), 0, 4);
         if (hasFlag(boostClockDescriptionArray)) {
             throw new PPException(
                     "Flag detected in boost clock description. Please enter a valid boost clock description");
@@ -280,7 +310,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String baseClockDescription = userInputString.split(BASE_CLOCK_FLAG)[1].trim().toLowerCase();
-        if (baseClockDescription.split(" ").length < 4) {
+        if (baseClockDescription.split("\\s+").length < 4) {
             throw new PPException("Please enter a full base clock description");
         }
 
@@ -415,11 +445,11 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a price description after the flag");
         }
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
-        if (flagPriceDescription.split(" ").length < 4) {
+        if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
                     "Please enter the full price description after the flag containing the start " + "and end price range");
         }
-        String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split(" "), 0, 4);
+        String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
                     "Flag detected in price description. Please enter a different price description after the flag");
