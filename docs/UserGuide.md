@@ -14,6 +14,8 @@
   - [In PCBuilder Mode](#in-pcbuilder-mode)
     - [`list COMPONENT_TYPE`](#list-component_type)
     - [`select COMPONENT_TYPE INDEX`](#select-component_type-index)
+    - [`unselect COMPONENT_TYPE`](#unselect-component_type)
+    - [`compare COMPONENT_TYPE INDEX_1 & INDEX_2`](#compare-component_type-index_1--index_2)
     - [`budget INTEGER`](#budget-integer)
     - [`name NEW_NAME`](#name-new_name)
     - [`back`](#back)
@@ -107,6 +109,90 @@ What would you like to do?
 
 #### `select COMPONENT_TYPE INDEX`
 **Functionality:** Adds the component of type `COMPONENT_TYPE` with index `INDEX` to the current PC Build
+
+**Example:** add component of type `GPU` with index `4` to the current PC Build.
+```
+input: select gpu 4
+
+output:
+
+===================================================
+PC builder
+Custom-PC: [pc] - $934.06/infinite - Incomplete
+Components:
+CPU        : - Not Selected -
+CPU Cooler : - Not Selected -
+GPU        : MSI GAMING Z TRIO RTX3080
+Motherboard: - Not Selected -
+RAM        : - Not Selected -
+Storage    : - Not Selected -
+PSU        : - Not Selected -
+Chassis    : - Not Selected -
+
+```
+
+#### `unselect COMPONENT_TYPE`
+**Functionality:** Removes the component of type `COMPONENT_TYPE` from your PC Build.
+
+**Example:** remove compoennt of type `GPU` from the current PC Build.
+```
+Previous PC compoenent list:
+===================================================
+PC builder
+Custom-PC: [pc] - $934.06/infinite - Incomplete
+Components:
+CPU        : - Not Selected -
+CPU Cooler : - Not Selected -
+GPU        : MSI GAMING Z TRIO RTX3080
+Motherboard: - Not Selected -
+RAM        : - Not Selected -
+Storage    : - Not Selected -
+PSU        : - Not Selected -
+Chassis    : - Not Selected -
+```
+```
+input: unselect gpu
+
+output:
+
+===================================================
+PC builder
+Custom-PC: [pc] - $0.0/infinite - Incomplete
+Components:
+CPU        : - Not Selected -
+CPU Cooler : - Not Selected -
+GPU        : - Not Selected -
+Motherboard: - Not Selected -
+RAM        : - Not Selected -
+Storage    : - Not Selected -
+PSU        : - Not Selected -
+Chassis    : - Not Selected -
+
+```
+
+#### `compare COMPONENT_TYPE INDEX_1 & INDEX_2`
+**Functionality:** Compares 2 components,`INDEX_1` and `INDEX_2` of type `COMPONENT_TYPE` with one another. Compares each specification in a table format
+
+**Example:** Compare 2 components of type `CPU`. Comparison between indexes `1` and `2`.
+```
+input: compare cpu 1 & 2
+
+output:
+________________________________________________________________________________________________
+|NAME        |Intel core i3-10100                     |Intel core i5-10600k                    |
+|------------|----------------------------------------|----------------------------------------|
+|PRICE       |$99.5                                   |$182.47                                 |
+|SOCKET      |LGA1200                                 |LGA1200                                 |
+|CORES       |4                                       |6                                       |
+|THREADS     |8                                       |12                                      |
+|BASE CLOCK  |3.6GHz                                  |4.1GHz                                  |
+|BOOST CLOCK |4.3GHz                                  |4.8GHz                                  |
+|POWER       |65.0W                                   |125.0W                                  |
+________________________________________________________________________________________________
+
+```
+
+
 
 #### `budget INTEGER`
 **Functionality:** Sets the budget of the current PC build to `INTEGER`
