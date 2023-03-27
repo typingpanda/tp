@@ -102,27 +102,27 @@ public class BuilderListComponentCommand extends Command {
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {
-            throw new PPException("Please use /from to specify the start price range.");
+            throw new PPException("Please use /from to specify the start price range");
         }
         String priceFrom = flagPriceDescriptionArray[1].trim();
         if (priceFrom.matches(".*\\D.*")) {
-            throw new PPException("Start price must be an integer");
+            throw new PPException("Start price must be a positive integer");
         }
         String toFlag = flagPriceDescriptionArray[2].trim();
         if (!toFlag.equals("/to")) {
-            throw new PPException("Please use /to to specify the end price range.");
+            throw new PPException("Please use /to to specify the end price range");
         }
         String priceTo = flagPriceDescriptionArray[3].trim();
 
         if (priceTo.matches(".*\\D.*")) {
-            throw new PPException("End price must be an integer");
+            throw new PPException("End price must be a positive integer");
         }
 
         int priceFromInt = Integer.parseInt(priceFrom);
         int priceToInt = Integer.parseInt(priceTo);
 
         if (priceFromInt > priceToInt) {
-            throw new PPException("Price from must be smaller than price to");
+            throw new PPException("Start price must be less than end price");
         }
         if (priceFromInt < 0 || priceToInt < 0) {
             throw new PPException("Price must be greater than 0");
