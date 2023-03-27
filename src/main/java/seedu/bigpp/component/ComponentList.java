@@ -2,7 +2,8 @@ package seedu.bigpp.component;
 
 import seedu.bigpp.component.chassis.Chassis;
 import seedu.bigpp.component.cpu.CPU;
-// import seedu.bigpp.component.gpu.GPU;
+import seedu.bigpp.component.cpucooler.CPUCooler;
+import seedu.bigpp.component.gpu.GPU;
 // import seedu.bigpp.component.motherboard.Motherboard;
 // import seedu.bigpp.component.psu.PSU;
 // import seedu.bigpp.component.ram.RAM;
@@ -36,6 +37,60 @@ public class ComponentList<T> extends ArrayList<Component> {
         return outputString;
     }
 
+    public static ComponentList<?> filterByPowerGpu(ComponentList<?> componentList, int from, int to,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            GPU gpu = (GPU) componentList.get(i);
+            if (gpu.getPower() >= from && gpu.getPower() <= to) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    public static ComponentList<?> filterByPowerCpuCooler(ComponentList<?> componentList, int from, int to,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            CPUCooler cpuCooler = (CPUCooler) componentList.get(i);
+            if (cpuCooler.getPower() >= from && cpuCooler.getPower() <= to) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    //filter cpucooler by noise from to range int
+    public static ComponentList<?> filterByNoise(ComponentList<?> componentList, float from, float to,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            CPUCooler cpuCooler = (CPUCooler) componentList.get(i);
+            if (cpuCooler.getNoise() >= from && cpuCooler.getNoise() <= to) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    //filter cpucooler by rpm from and to range int
+    public static ComponentList<?> filterByRpm(ComponentList<?> componentList, int from, int to,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            CPUCooler cpuCooler = (CPUCooler) componentList.get(i);
+            if (cpuCooler.getRpm() >= from && cpuCooler.getRpm() <= to) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
     public static ComponentList<?> filterBySocket(ComponentList<?> componentList, String socket,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
@@ -49,7 +104,7 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterByPower(ComponentList<?> componentList, int from, int to,
+    public static ComponentList<?> filterByPowerCpu(ComponentList<?> componentList, int from, int to,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {

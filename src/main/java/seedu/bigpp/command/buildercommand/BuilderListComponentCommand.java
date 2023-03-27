@@ -39,7 +39,6 @@ public class BuilderListComponentCommand extends Command {
      * Lists all components of a given component type including optional flags
      * that would filter the list of components. Such as filtering for name, price
      * and brand.
-     * 
      * @return a string containing all components of a given component type
      */
     @Override
@@ -84,7 +83,7 @@ public class BuilderListComponentCommand extends Command {
                 switch (componentType) {
                 case "chassis":
                     if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
-                        componentList = handleSizeFlag(componentList, flagsArray, flagAndDescriptionArray,
+                        componentList = handleCpuSizeFlag(componentList, flagsArray, flagAndDescriptionArray,
                                 componentIndexes);
                     }
                     break;
@@ -108,7 +107,7 @@ public class BuilderListComponentCommand extends Command {
                                 flagAndDescriptionArray, componentIndexes);
                     }
                     if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
-                        componentList = handlePowerFlag(userInputString, componentList, flagsArray,
+                        componentList = handlePowerFlagCpu(userInputString, componentList, flagsArray,
                                 flagAndDescriptionArray, componentIndexes);
                     }
                     if (containsFlag(flagAndDescriptionArray, SOCKET_FLAG)) {
@@ -119,16 +118,43 @@ public class BuilderListComponentCommand extends Command {
 
                 case "cpucooler":
                     //handle rpm, noise and power flag
+                    if (containsFlag(flagAndDescriptionArray, RPM_FLAG)) {
+                        componentList = handleRpmFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray,
+                                componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, NOISE_FLAG)) {
+                        componentList = handleNoiseFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
+                        componentList = handlePowerFlagCpuCooler(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
+                    break;
                 case "gpu":
                     //handle power and size flag
+                    if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
+                        componentList = handleSizeFlagGpu(componentList, flagsArray, flagAndDescriptionArray,
+                                componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
+                        componentList = handlePowerFlagGpu(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
+                    break;
                 case "motherboard":
                     //handle formfactor, socket and power flag
+                    break;
                 case "psu":
                     //handle efficiency, formfactor and power flag
+                    break;
                 case "ram":
                     //handle memory, sticks, speed and power flag
+                    break;
                 case "storage":
                     //handle type, size and power flag
+                    break;
                 default:
                     break;
                 }
@@ -157,34 +183,7 @@ public class BuilderListComponentCommand extends Command {
         return outputString + componentList.getListString(componentIndexes);
     }
 
-    //handle socket flag that can be either AM4, AM5, LGA1200 or LGA1700
-    private ComponentList<?> handleSocketFlag(String userInputString, ComponentList<?> componentList,
-            ArrayList<String> flagsArray,
-            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
-        int socketFlagIndex = indexOfFlag(flagAndDescriptionArray, SOCKET_FLAG);
-        if (socketFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
-        }
-
-        String socket = userInputString.split(SOCKET_FLAG)[1].trim().toLowerCase();
-
-        if (isFlag(socket)) {
-            throw new PPException("Flag detected in socket description. Please enter a valid socket");
-        }
-
-        if (!socket.equals("am4") && !socket.equals("am5") && !socket.equals("lga1200") && !socket.equals("lga1700")) {
-            throw new PPException("Please enter a valid socket (am4, am5, lga1200, lga1700))");
-        }
-
-        flagsArray.add("Socket: " + socket);
-
-        componentList = ComponentList.filterBySocket(componentList, socket, componentIndexes);
-
-        return componentList;
-    }
-
-    //handle power flag with int from and int to range
-    private ComponentList<?> handlePowerFlag(String userInputString, ComponentList<?> componentList,
+    private ComponentList<?> handlePowerFlagGpu(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int powerFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
@@ -237,10 +236,298 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Power must be less than 10000W");
         }
 
-        componentList = ComponentList.filterByPower(componentList, powerFromInt, powerToInt, componentIndexes);
+        componentList = ComponentList.filterByPowerGpu(componentList, powerFromInt, powerToInt, componentIndexes);
 
         flagsArray.add("Power: " + powerFrom + "W to " + powerTo + "W");
 
+        return componentList;
+    }
+
+    private ComponentList<?> handlePowerFlagCpuCooler(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int powerFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
+        if (powerFlagIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String powerDescription = userInputString.split(POWER_FLAG)[1].trim().toLowerCase();
+        if (powerDescription.split("\\s+").length < 4) {
+            throw new PPException("Please enter a full power description");
+        }
+
+        String[] powerDescriptionArray = Arrays.copyOfRange(powerDescription.split(" "), 0, 4);
+        if (hasFlag(powerDescriptionArray)) {
+            throw new PPException("Flag detected in power description. Please enter a valid power range");
+        }
+
+        String fromFlag = powerDescriptionArray[0];
+        if (!fromFlag.equals("/from")) {
+            throw new PPException("Please enter '/from' before the power range");
+        }
+
+        String powerFrom = powerDescriptionArray[1];
+        if (powerFrom.matches(".*\\D.*")) {
+            throw new PPException("Power start range must be an integer");
+        }
+
+        String toFlag = powerDescriptionArray[2];
+        if (!toFlag.equals("/to")) {
+            throw new PPException("Please enter '/to' before the power range");
+        }
+
+        String powerTo = powerDescriptionArray[3];
+        if (powerTo.matches(".*\\D.*")) {
+            throw new PPException("Power end range must be an integer");
+        }
+
+        int powerFromInt = Integer.parseInt(powerFrom);
+        int powerToInt = Integer.parseInt(powerTo);
+
+        if (powerFromInt > powerToInt) {
+            throw new PPException("Power start range must be smaller than power end range");
+        }
+
+        if (powerFromInt < 0 || powerToInt < 0) {
+            throw new PPException("Power must be a positive integer");
+        }
+
+        if (powerFromInt > 10000 || powerToInt > 10000) {
+            throw new PPException("Power must be less than 10000W");
+        }
+
+        componentList = ComponentList.filterByPowerCpuCooler(componentList, powerFromInt, powerToInt, componentIndexes);
+
+        flagsArray.add("Power: " + powerFrom + "W to " + powerTo + "W");
+
+        return componentList;
+    }
+
+    private ComponentList<?> handleNoiseFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int rpmNoiseIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
+        if (rpmNoiseIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String noiseDescription = userInputString.split(POWER_FLAG)[1].trim().toLowerCase();
+        if (noiseDescription.split("\\s+").length < 4) {
+            throw new PPException("Please enter a full noise description");
+        }
+
+        String[] noiseDescriptionArray = Arrays.copyOfRange(noiseDescription.split(" "), 0, 4);
+        if (hasFlag(noiseDescriptionArray)) {
+            throw new PPException("Flag detected in noise description. Please enter a valid noise range");
+        }
+
+        String fromFlag = noiseDescriptionArray[0];
+        if (!fromFlag.equals("/from")) {
+            throw new PPException("Please enter '/from' before the noise range");
+        }
+
+        String noiseFrom = noiseDescriptionArray[1];
+        if (noiseFrom.matches(".*\\D.*")) {
+            throw new PPException("Noise start range must be an integer");
+        }
+
+        String toFlag = noiseDescriptionArray[2];
+        if (!toFlag.equals("/to")) {
+            throw new PPException("Please enter '/to' before the noise range");
+        }
+
+        String noiseTo = noiseDescriptionArray[3];
+        if (noiseTo.matches(".*\\D.*")) {
+            throw new PPException("Noise end range must be an integer");
+        }
+
+        int noiseFromInt = Integer.parseInt(noiseFrom);
+        int noiseToInt = Integer.parseInt(noiseTo);
+
+        if (noiseFromInt > noiseToInt) {
+            throw new PPException("Noise start range must be smaller than noise end range");
+        }
+
+        if (noiseFromInt < 0 || noiseToInt < 0) {
+            throw new PPException("Noise must be a positive integer");
+        }
+
+        if (noiseFromInt > 10000 || noiseToInt > 10000) {
+            throw new PPException("Noise must be less than 10000");
+        }
+
+        componentList = ComponentList.filterByNoise(componentList, noiseFromInt, noiseToInt, componentIndexes);
+
+        flagsArray.add("Noise: " + noiseFrom + " to " + noiseTo);
+
+        return componentList;
+    }
+
+    private ComponentList<?> handleRpmFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int rpmFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
+        if (rpmFlagIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String rpmDescription = userInputString.split(POWER_FLAG)[1].trim().toLowerCase();
+        if (rpmDescription.split("\\s+").length < 4) {
+            throw new PPException("Please enter a full rpm description");
+        }
+
+        String[] rpmDescriptionArray = Arrays.copyOfRange(rpmDescription.split(" "), 0, 4);
+        if (hasFlag(rpmDescriptionArray)) {
+            throw new PPException("Flag detected in rpm description. Please enter a valid rpm range");
+        }
+
+        String fromFlag = rpmDescriptionArray[0];
+        if (!fromFlag.equals("/from")) {
+            throw new PPException("Please enter '/from' before the rpm range");
+        }
+
+        String powerFrom = rpmDescriptionArray[1];
+        if (powerFrom.matches(".*\\D.*")) {
+            throw new PPException("Rpm start range must be an integer");
+        }
+
+        String toFlag = rpmDescriptionArray[2];
+        if (!toFlag.equals("/to")) {
+            throw new PPException("Please enter '/to' before the rpm range");
+        }
+
+        String powerTo = rpmDescriptionArray[3];
+        if (powerTo.matches(".*\\D.*")) {
+            throw new PPException("Rpm end range must be an integer");
+        }
+
+        int rpmFromInt = Integer.parseInt(powerFrom);
+        int rpmToInt = Integer.parseInt(powerTo);
+
+        if (rpmFromInt > rpmToInt) {
+            throw new PPException("Rpm start range must be smaller than power end range");
+        }
+
+        if (rpmFromInt < 0 || rpmToInt < 0) {
+            throw new PPException("Rpm must be a positive integer");
+        }
+
+        if (rpmFromInt > 10000 || rpmToInt > 10000) {
+            throw new PPException("Rpm must be less than 10000");
+        }
+
+        componentList = ComponentList.filterByRpm(componentList, rpmFromInt, rpmToInt, componentIndexes);
+
+        flagsArray.add("Rpm: " + powerFrom + " to " + powerTo);
+
+        return componentList;
+    }
+
+    //handle socket flag that can be either AM4, AM5, LGA1200 or LGA1700
+    private ComponentList<?> handleSocketFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int socketFlagIndex = indexOfFlag(flagAndDescriptionArray, SOCKET_FLAG);
+        if (socketFlagIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String socket = userInputString.split(SOCKET_FLAG)[1].trim().toLowerCase();
+
+        if (isFlag(socket)) {
+            throw new PPException("Flag detected in socket description. Please enter a valid socket");
+        }
+
+        if (!socket.equals("am4") && !socket.equals("am5") && !socket.equals("lga1200") && !socket.equals("lga1700")) {
+            throw new PPException("Please enter a valid socket (am4, am5, lga1200, lga1700))");
+        }
+
+        flagsArray.add("Socket: " + socket);
+
+        componentList = ComponentList.filterBySocket(componentList, socket, componentIndexes);
+
+        return componentList;
+    }
+
+    //handle power flag with int from and int to range
+    private ComponentList<?> handlePowerFlagCpu(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int powerFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
+        if (powerFlagIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String powerDescription = userInputString.split(POWER_FLAG)[1].trim().toLowerCase();
+        if (powerDescription.split("\\s+").length < 4) {
+            throw new PPException("Please enter a full power description");
+        }
+
+        String[] powerDescriptionArray = Arrays.copyOfRange(powerDescription.split(" "), 0, 4);
+        if (hasFlag(powerDescriptionArray)) {
+            throw new PPException("Flag detected in power description. Please enter a valid power range");
+        }
+
+        String fromFlag = powerDescriptionArray[0];
+        if (!fromFlag.equals("/from")) {
+            throw new PPException("Please enter '/from' before the power range");
+        }
+
+        String powerFrom = powerDescriptionArray[1];
+        if (powerFrom.matches(".*\\D.*")) {
+            throw new PPException("Power start range must be an integer");
+        }
+
+        String toFlag = powerDescriptionArray[2];
+        if (!toFlag.equals("/to")) {
+            throw new PPException("Please enter '/to' before the power range");
+        }
+
+        String powerTo = powerDescriptionArray[3];
+        if (powerTo.matches(".*\\D.*")) {
+            throw new PPException("Power end range must be an integer");
+        }
+
+        int powerFromInt = Integer.parseInt(powerFrom);
+        int powerToInt = Integer.parseInt(powerTo);
+
+        if (powerFromInt > powerToInt) {
+            throw new PPException("Power start range must be smaller than power end range");
+        }
+
+        if (powerFromInt < 0 || powerToInt < 0) {
+            throw new PPException("Power must be a positive integer");
+        }
+
+        if (powerFromInt > 10000 || powerToInt > 10000) {
+            throw new PPException("Power must be less than 10000W");
+        }
+
+        componentList = ComponentList.filterByPowerCpu(componentList, powerFromInt, powerToInt, componentIndexes);
+
+        flagsArray.add("Power: " + powerFrom + "W to " + powerTo + "W");
+
+        return componentList;
+    }
+
+    private ComponentList<?> handleSizeFlagGpu(ComponentList<?> componentList, ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int sizeFlagIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
+        if (sizeFlagIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a size after the flag");
+        }
+
+        String size = flagAndDescriptionArray[sizeFlagIndex + 1].trim().toLowerCase();
+
+        if (isFlag(size)) {
+            throw new PPException("Flag detected in size description. Please enter a valid size");
+        }
+
+        if (!size.equals("micro") && !size.equals("mini") && !size.equals("atx")) {
+            throw new PPException("Please enter a valid size (atx, mini or micro)");
+        }
+        flagsArray.add("size: " + size);
+        componentList = ComponentList.filterBySize(componentList, size, componentIndexes);
         return componentList;
     }
 
@@ -423,7 +710,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    private ComponentList<?> handleSizeFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
+    private ComponentList<?> handleCpuSizeFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int sizeFlagIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
         if (sizeFlagIndex == flagAndDescriptionArray.length - 1) {
@@ -455,13 +742,13 @@ public class BuilderListComponentCommand extends Command {
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
                     "Please enter the full price description after the flag containing the start " +
-                    "and end price range");
+                     "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
-                    "Flag detected in price description. Please enter a different price" + 
-                    " description after the flag");
+                    "Flag detected in price description. Please enter a different price" +
+                     " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {
