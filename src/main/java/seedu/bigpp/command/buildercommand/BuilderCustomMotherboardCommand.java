@@ -12,7 +12,7 @@ public class BuilderCustomMotherboardCommand extends BuilderCustomComponentComma
     }
 
     public int getExpectedArgumentLength() {
-        return 8;
+        return 6;
     }
     public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
             throws PPException {
