@@ -27,7 +27,11 @@ public class BuilderHelpCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) {
-        return this.HELP;
+        return getHelp();
+    }
+
+    public static String getHelp() {
+        return HELP;
     }
 }
 

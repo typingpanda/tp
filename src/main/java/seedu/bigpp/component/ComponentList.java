@@ -12,6 +12,12 @@ import java.util.ArrayList;
 
 public class ComponentList<T> extends ArrayList<Component> {
 
+    /*
+     * Lists all components in the list. If the list is filtered, the indexes of the
+     * components in the original list will be shown.
+     * 
+     * @return a string containing all the components in the list
+     */
     public String getListString(ArrayList<Integer> componentIndexes) {
         String outputString = "";
 
@@ -30,7 +36,6 @@ public class ComponentList<T> extends ArrayList<Component> {
         return outputString;
     }
 
-    //filter cpu by socket, compare string
     public static ComponentList<?> filterBySocket(ComponentList<?> componentList, String socket,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
@@ -44,7 +49,6 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    //filter by power with from and to range that are integers
     public static ComponentList<?> filterByPower(ComponentList<?> componentList, int from, int to,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
@@ -58,7 +62,6 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    //filter by boostclock with from and to range
     public static ComponentList<?> filterByBoostClock(ComponentList<?> componentList, Float from, Float to,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
@@ -124,6 +127,12 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
+    /*
+     * Filters the list of components by name. Adds the index of the component in
+     * the original list to the componentIndexes list.
+     * 
+     * @param componentList the list of components to be filtered
+     */
     public static ComponentList<?> filterByName(ComponentList<?> componentList, String name,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
@@ -136,6 +145,12 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
+    /*
+     * Filters the list of components by brand. Adds the index of the component in
+     * the original list to the componentIndexes list.
+     * 
+     * @return componentList the list of components to be filtered
+     */
     public static ComponentList<?> filterByBrand(ComponentList<?> componentList, String brand,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
@@ -148,6 +163,12 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
+    /*
+     * Filters the list of components by price. Adds the index of the component in
+     * the original list to the componentIndexes list.
+     * 
+     * @return componentList the list of components to be filtered
+     */
     public static ComponentList<?> filterByPrice(ComponentList<?> componentList, String priceFrom, String priceTo,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();

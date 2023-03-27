@@ -14,7 +14,8 @@ public class BuilderSelectCommand extends Command {
     }
 
     /**
-     * Change the Component of the PC that the builder is working on
+     * Selects a component to be added to the PC that the builder is working on
+     * 
      * @return Added Component message
      */
     @Override
