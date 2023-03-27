@@ -1,6 +1,7 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.buildercommand.*;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareChassisCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareCpuCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareCpuCoolerCommand;
@@ -9,13 +10,6 @@ import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareMotherboa
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderComparePsuCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareRamCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareStorageCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
-import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
-import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
-import seedu.bigpp.command.buildercommand.BuilderInfoCommand;
-import seedu.bigpp.command.buildercommand.BuilderListComponentCommand;
-import seedu.bigpp.command.buildercommand.BuilderSelectCommand;
-import seedu.bigpp.command.buildercommand.BuilderUnselectCommand;
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.commoncommand.UnrecognizedCommand;
@@ -148,7 +142,7 @@ public class Parser {
         case CPU_TYPE:
             return new BuilderCustomCpuCommand(attributes);
         case GPU_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomGpuCommand(attributes);
         case RAM_TYPE:
             // return new UnrecognizedCommand();
         case STORAGE_TYPE:
@@ -156,7 +150,7 @@ public class Parser {
         case PSU_TYPE:
             // return new UnrecognizedCommand();
         case MOTHERBOARD_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomMotherboardCommand(attributes);
         case CHASSIS_TYPE:
             // return new UnrecognizedCommand();
         case CPU_COOLER_TYPE:
