@@ -2,7 +2,6 @@ package seedu.bigpp.command.viewercommand;
 
 import seedu.bigpp.command.Command;
 import seedu.bigpp.datastorage.DataStorage;
-import seedu.bigpp.ui.UI;
 
 public class ViewerHelpCommand extends Command {
     private static final String HELP = "Here are the list of valid commands: \n"
