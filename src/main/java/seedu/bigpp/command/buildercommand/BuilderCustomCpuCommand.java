@@ -7,7 +7,6 @@ import seedu.bigpp.ui.UI;
 
 public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
 
-    private static final int EXPECTED_ARGUMENT_LENGTH = 9;
     public BuilderCustomCpuCommand(String arguments) {
         super(arguments);
     }

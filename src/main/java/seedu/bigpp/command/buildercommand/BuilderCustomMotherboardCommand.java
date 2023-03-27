@@ -1,6 +1,5 @@
 package seedu.bigpp.command.buildercommand;
 
-import seedu.bigpp.component.cpu.CPU;
 import seedu.bigpp.component.motherboard.Motherboard;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;

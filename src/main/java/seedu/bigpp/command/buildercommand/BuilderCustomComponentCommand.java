@@ -1,14 +1,10 @@
 package seedu.bigpp.command.buildercommand;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.component.cpu.CPU;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
-import seedu.bigpp.ui.UI;
 
 public abstract class BuilderCustomComponentCommand extends Command {
-
-    public int EXPECTED_ARGUMENT_LENGTH;
 
     public BuilderCustomComponentCommand(String arguments) {
         super.setArguments(arguments);
