@@ -10,12 +10,13 @@ public class BuilderHelpCommand extends Command {
             + "budget <new_budget> - Change the budget of the PC currently being edited to <new_budget> \n"
             + "select <component_type> <index> -  Add the component of type <component_type> with index <index> "
             + "to the PC currently being edited \n"
-            + "info <component_type> - View all the specifications of the component of type <component_type> currently "
-            + "selected for the build\n"
+            + "info <component_type> - View all the specifications of the component of type "
+            + "<component_type> currently selected for the build\n"
             + "unselect <component_type> - Remove the component of type <component_type> from the PC currently being"
             + "edited\n"
-            + "custom <component_type> <component_specifications...> - Creates a custom component of type <component_type>"
-            + "with all the <component_specifications> and adds it to the list of components of that type\n"
+            + "custom <component_type> <component_specifications...> - Creates a custom component of type "
+            + "<component_type> with all the <component_specifications> and adds it to the list of components"
+            + " of that type\n"
             + "compare <component_type> <index_1>&<index_2> Compares all the specifications between the components of"
             + "type <component_type> with indices <index_1> and <index_2>\n";
 
