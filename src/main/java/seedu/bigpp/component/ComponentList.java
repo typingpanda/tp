@@ -2,11 +2,11 @@ package seedu.bigpp.component;
 
 import seedu.bigpp.component.chassis.Chassis;
 import seedu.bigpp.component.cpu.CPU;
-import seedu.bigpp.component.gpu.GPU;
-import seedu.bigpp.component.motherboard.Motherboard;
-import seedu.bigpp.component.psu.PSU;
-import seedu.bigpp.component.ram.RAM;
-import seedu.bigpp.component.storage.Storage;
+// import seedu.bigpp.component.gpu.GPU;
+// import seedu.bigpp.component.motherboard.Motherboard;
+// import seedu.bigpp.component.psu.PSU;
+// import seedu.bigpp.component.ram.RAM;
+// import seedu.bigpp.component.storage.Storage;
 
 import java.util.ArrayList;
 
@@ -31,8 +31,8 @@ public class ComponentList<T> extends ArrayList<Component> {
     }
 
     //filter cpu by socket, compare string
-    public static ComponentList<?> filterBySocket(ComponentList<?> componentList, String socket, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterBySocket(ComponentList<?> componentList, String socket,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             CPU cpu = (CPU) componentList.get(i);
@@ -43,10 +43,10 @@ public class ComponentList<T> extends ArrayList<Component> {
         }
         return filteredComponentList;
     }
-    
+
     //filter by power with from and to range that are integers
-    public static ComponentList<?> filterByPower(ComponentList<?> componentList, int from, int to, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterByPower(ComponentList<?> componentList, int from, int to,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             CPU cpu = (CPU) componentList.get(i);
@@ -58,10 +58,9 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-
     //filter by boostclock with from and to range
-    public static ComponentList<?> filterByBoostClock(ComponentList<?> componentList, Float from, Float to, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterByBoostClock(ComponentList<?> componentList, Float from, Float to,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             CPU cpu = (CPU) componentList.get(i);
@@ -73,8 +72,8 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterByBaseClock(ComponentList<?> componentList, Float from, Float to, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterByBaseClock(ComponentList<?> componentList, Float from, Float to,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             CPU cpu = (CPU) componentList.get(i);
@@ -86,9 +85,8 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-
-    public static ComponentList<?> filterByThread(ComponentList<?> componentList, int thread, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterByThread(ComponentList<?> componentList, int thread,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             CPU cpu = (CPU) componentList.get(i);
@@ -100,8 +98,8 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterByCore(ComponentList<?> componentList, int core, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterByCore(ComponentList<?> componentList, int core,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             CPU cpu = (CPU) componentList.get(i);
@@ -113,8 +111,8 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterBySize(ComponentList<?> componentList, String size, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterBySize(ComponentList<?> componentList, String size,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             Chassis chassis = (Chassis) componentList.get(i);
@@ -126,8 +124,8 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterByName(ComponentList<?> componentList, String name, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterByName(ComponentList<?> componentList, String name,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             if (componentList.get(i).getName().toLowerCase().contains(name)) {
@@ -138,8 +136,8 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterByBrand(ComponentList<?> componentList, String brand, ArrayList<Integer>
-            componentIndexes) {
+    public static ComponentList<?> filterByBrand(ComponentList<?> componentList, String brand,
+            ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             if (componentList.get(i).getBrand().toLowerCase().contains(brand)) {

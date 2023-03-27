@@ -84,6 +84,7 @@ public class BuilderListComponentCommand extends Command {
                         componentList = handleSizeFlag(componentList, flagsArray, flagAndDescriptionArray,
                                 componentIndexes);
                     }
+                    break;
                 case "cpu":
                     // handle core, thread, baseclock, boostclock, power and socket flag
                     if (containsFlag(flagAndDescriptionArray, CORE_FLAG)) {
@@ -111,6 +112,7 @@ public class BuilderListComponentCommand extends Command {
                         componentList = handleSocketFlag(userInputString, componentList, flagsArray,
                                 flagAndDescriptionArray, componentIndexes);
                     }
+                    break;
 
                 case "cpucooler":
                     //handle rpm, noise and power flag
@@ -124,6 +126,8 @@ public class BuilderListComponentCommand extends Command {
                     //handle memory, sticks, speed and power flag
                 case "storage":
                     //handle type, size and power flag
+                default:
+                    break;
                 }
 
             } else {
@@ -447,12 +451,14 @@ public class BuilderListComponentCommand extends Command {
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
-                    "Please enter the full price description after the flag containing the start " + "and end price range");
+                    "Please enter the full price description after the flag containing the start " +
+                    "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
-                    "Flag detected in price description. Please enter a different price description after the flag");
+                    "Flag detected in price description. Please enter a different price" + 
+                    " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {
