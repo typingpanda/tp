@@ -13,6 +13,7 @@ import seedu.bigpp.command.buildercommand.BuilderListComponentCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderSelectCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
+import seedu.bigpp.command.buildercommand.BuilderHelpCommand;
 import seedu.bigpp.command.buildercommand.BuilderUnselectCommand;
 import seedu.bigpp.command.buildercommand.BuilderInfoCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareChassisCommand;
@@ -136,6 +137,8 @@ public class Parser {
             return parseCustomCommand(arguments);
         case "compare":
             return parseCompareCommand(arguments);
+        case "help":
+            return new BuilderHelpCommand();
         default:
             return new UnrecognizedCommand("");
         }
