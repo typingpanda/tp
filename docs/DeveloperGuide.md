@@ -71,7 +71,10 @@ Next, the method iterates over the `chassisMap` and sets the name attribute of e
 
 Finally, the method iterates over the `chassisMap` again, adding each `Chassis` object to the `ChassisList` stored in the `stringToComponentListMap` HashMap.
 
+A UML sequence diagram showing the interactions between the different objects involved in handling this method can be
+found below:
 
+![load Chassis Sequential Diagram](uml-pictures/loadChassisSequential.png)
 
 ### Parser class
 The UML class diagram shows the features of the Parser class:
