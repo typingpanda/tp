@@ -144,17 +144,17 @@ public class Parser {
         case GPU_TYPE:
             return new BuilderCustomGpuCommand(attributes);
         case RAM_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomRamCommand(attributes);
         case STORAGE_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomStorageCommand(attributes);
         case PSU_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomPsuCommand(attributes);
         case MOTHERBOARD_TYPE:
             return new BuilderCustomMotherboardCommand(attributes);
         case CHASSIS_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomChassisCommand(attributes);
         case CPU_COOLER_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomCpuCoolerCommand(attributes);
         default:
             return new UnrecognizedCommand(
                     "Invalid component type!, valid types are "

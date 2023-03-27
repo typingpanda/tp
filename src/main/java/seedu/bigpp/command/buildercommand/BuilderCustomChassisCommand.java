@@ -1,13 +1,13 @@
 package seedu.bigpp.command.buildercommand;
 
-import seedu.bigpp.component.gpu.GPU;
+import seedu.bigpp.component.chassis.Chassis;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.ui.UI;
 
-public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
+public class BuilderCustomChassisCommand extends BuilderCustomComponentCommand {
 
-    public BuilderCustomGpuCommand(String arguments) {
+    public BuilderCustomChassisCommand(String arguments) {
         super(arguments);
     }
 
@@ -18,30 +18,28 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
     public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
             throws PPException {
         float price = 0;
-        float power = 0;
 
         try {
             price = Float.parseFloat(argumentList[2]);
-            power = Float.parseFloat(argumentList[3]);
 
             // Check if all the values are positive
-            if (price < 0 ||  power < 0) {
-                throw new PPException("price and power should be positive");
+            if (price < 0) {
+                throw new PPException("price should be positive");
             }
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price and power should be floats");
+                    "price should be a float");
         }
 
-        String size = argumentList[4].trim();
+        String size = argumentList[3].trim();
         if (size.equals("")) {
             throw new PPException("Please enter a valid size for the custom component");
         }
-        GPU gpu = new GPU(name, brand, price, power, size);
+        Chassis chassis = new Chassis(name, brand, price, size);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setGpu(gpu);
+        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setChassis(chassis);
 
-        return "GPU added: " + gpu.getName();
+        return "Chassis added:" + chassis.getName();
     }
 }

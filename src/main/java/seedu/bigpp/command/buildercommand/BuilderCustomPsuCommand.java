@@ -1,18 +1,18 @@
 package seedu.bigpp.command.buildercommand;
 
-import seedu.bigpp.component.gpu.GPU;
+import seedu.bigpp.component.psu.PSU;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.ui.UI;
 
-public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
+public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
 
-    public BuilderCustomGpuCommand(String arguments) {
+    public BuilderCustomPsuCommand(String arguments) {
         super(arguments);
     }
 
     public int getExpectedArgumentLength() {
-        return 5;
+        return 6;
     }
 
     public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
@@ -21,8 +21,8 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
         float power = 0;
 
         try {
-            price = Float.parseFloat(argumentList[2]);
-            power = Float.parseFloat(argumentList[3]);
+            price = Float.parseFloat(argumentList[5]);
+            power = Float.parseFloat(argumentList[4]);
 
             // Check if all the values are positive
             if (price < 0 ||  power < 0) {
@@ -34,14 +34,15 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
                     "price and power should be floats");
         }
 
-        String size = argumentList[4].trim();
-        if (size.equals("")) {
-            throw new PPException("Please enter a valid size for the custom component");
+        String efficiency = argumentList[2].trim();
+        String formFactor = argumentList[3].trim();
+        if (efficiency.equals("") || formFactor.equals("")) {
+            throw new PPException("Please enter a valid efficiency and form factor for the custom component");
         }
-        GPU gpu = new GPU(name, brand, price, power, size);
+        PSU psu = new PSU(name, price, brand, efficiency, formFactor, power);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setGpu(gpu);
+        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setPsu(psu);
 
-        return "GPU added: " + gpu.getName();
+        return "PSU added: " + psu.getName();
     }
 }
