@@ -8,7 +8,7 @@ public class BackCommand extends Command {
 
     /*
      * back command to return to the previous menu. Does nothing if already in 
-     * PCVieer menu
+     * PCViewer menu
      * 
      * @return the message to be displayed to the user
      */

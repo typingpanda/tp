@@ -21,8 +21,11 @@ public class BuilderListComponentCommand extends Command {
     }
 
     /**
-     * Change the budget of the current PC that the builder is working on
-     * @return the new budget of the PC
+     * Lists all components of a given component type including optional flags
+     * that would filter the list of components. Such as filtering for name, price
+     * and brand.
+     * 
+     * @return a string containing all components of a given component type
      */
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
