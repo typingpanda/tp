@@ -1,36 +1,23 @@
 package seedu.bigpp.command.buildercommand;
 
-import seedu.bigpp.command.Command;
 import seedu.bigpp.component.cpu.CPU;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.ui.UI;
 
-public class BuilderCustomCpuCommand extends Command {
+public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
 
+    private static final int EXPECTED_ARGUMENT_LENGTH = 9;
     public BuilderCustomCpuCommand(String arguments) {
-        super.setArguments(arguments);
+        super(arguments);
     }
 
-    @Override
-    public String executeCommand(DataStorage dataStorage) throws PPException {
-        String arguments = super.getArguments();
-        String[] argumentList = arguments.split("\\|");
+    public int getExpectedArgumentLength() {
+        return 9;
+    }
 
-        if (argumentList.length != 9) {
-            throw new PPException("Please enter a valid number of arguments for the custom component");
-        }
-
-        String name = argumentList[0].trim();
-        if (name.equals("")) {
-            throw new PPException("Please enter a valid name for the custom component");
-        }
-
-        String brand = argumentList[1].trim();
-        if (brand.equals("")) {
-            throw new PPException("Please enter a valid brand for the custom component");
-        }
-
+    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
+            throws PPException {
         float price = 0;
         int cores = 0;
         int threads = 0;
@@ -60,12 +47,10 @@ public class BuilderCustomCpuCommand extends Command {
         if (socket.equals("")) {
             throw new PPException("Please enter a valid socket for the custom component");
         }
-
         CPU cpu = new CPU(name, brand, price, cores, threads, baseClock, boostClock, power, socket);
 
         dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setCpu(cpu);
 
         return "CPU added: " + cpu.getName();
     }
-
 }
