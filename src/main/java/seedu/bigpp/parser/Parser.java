@@ -1,6 +1,20 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
+import seedu.bigpp.command.buildercommand.BuilderCustomChassisCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomMotherboardCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomCpuCoolerCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomGpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomPsuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomRamCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomStorageCommand;
+import seedu.bigpp.command.buildercommand.BuilderListComponentCommand;
+import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
+import seedu.bigpp.command.buildercommand.BuilderSelectCommand;
+import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
+import seedu.bigpp.command.buildercommand.BuilderUnselectCommand;
+import seedu.bigpp.command.buildercommand.BuilderInfoCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareChassisCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareCpuCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareCpuCoolerCommand;
@@ -9,19 +23,13 @@ import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareMotherboa
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderComparePsuCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareRamCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareStorageCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
-import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
-import seedu.bigpp.command.buildercommand.BuilderEditNameCommand;
-import seedu.bigpp.command.buildercommand.BuilderInfoCommand;
-import seedu.bigpp.command.buildercommand.BuilderListComponentCommand;
-import seedu.bigpp.command.buildercommand.BuilderSelectCommand;
-import seedu.bigpp.command.buildercommand.BuilderUnselectCommand;
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.commoncommand.UnrecognizedCommand;
 import seedu.bigpp.command.viewercommand.ViewerAddCommand;
 import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
 import seedu.bigpp.command.viewercommand.ViewerEditCommand;
+import seedu.bigpp.command.viewercommand.ViewerHelpCommand;
 import seedu.bigpp.command.viewercommand.ViewerViewCommand;
 import seedu.bigpp.ui.UI;
 
@@ -45,7 +53,7 @@ public class Parser {
     public Command parseCommand(String userInput) {
 
         String trimmedInput = userInput.trim();
-        String[] inputList = trimmedInput.split(" ", 2);
+        String[] inputList = trimmedInput.split("\\s+", 2);
         String arguments = "";
 
         if (inputList.length == 2) {
@@ -96,6 +104,8 @@ public class Parser {
             return new ViewerViewCommand(arguments);
         case "edit":
             return new ViewerEditCommand(arguments);
+        case "help":
+            return new ViewerHelpCommand();
         default:
             return new UnrecognizedCommand("");
         }
@@ -137,7 +147,7 @@ public class Parser {
      * @return the command
      */
     private Command parseCustomCommand(String arguments) {
-        String[] inputList = arguments.split(" ", 2);
+        String[] inputList = arguments.split("\\s+", 2);
         String componentType = inputList[0].toLowerCase();
         String attributes = "";
         if (inputList.length == 2) {
@@ -148,19 +158,19 @@ public class Parser {
         case CPU_TYPE:
             return new BuilderCustomCpuCommand(attributes);
         case GPU_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomGpuCommand(attributes);
         case RAM_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomRamCommand(attributes);
         case STORAGE_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomStorageCommand(attributes);
         case PSU_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomPsuCommand(attributes);
         case MOTHERBOARD_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomMotherboardCommand(attributes);
         case CHASSIS_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomChassisCommand(attributes);
         case CPU_COOLER_TYPE:
-            // return new UnrecognizedCommand();
+            return new BuilderCustomCpuCoolerCommand(attributes);
         default:
             return new UnrecognizedCommand(
                     "Invalid component type!, valid types are "
@@ -169,7 +179,7 @@ public class Parser {
     }
 
     private Command parseCompareCommand(String arguments) {
-        String[] inputList = arguments.split(" ", 2);
+        String[] inputList = arguments.split("\\s+", 2);
         String componentType = inputList[0].trim();
         String attributes = "";
         if (inputList.length == 2) {

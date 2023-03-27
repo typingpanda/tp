@@ -22,7 +22,7 @@ public class BuilderEditBudgetCommand extends Command {
 
         String argument = super.getArguments();
         if (argument.equals("")) {
-            throw new PPException("Please enter a budget");
+            throw new PPException("Please enter a budget after the command");
         }
         if (argument.matches(".*\\D.*") && !argument.matches("-1")) {
             throw new PPException("Please enter a budget that is an integer");
