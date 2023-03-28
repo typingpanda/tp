@@ -7,6 +7,14 @@ import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
 import seedu.bigpp.component.ComponentList;
+
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
+import static seedu.bigpp.component.ComponentType.GPU_TYPE;
+import static seedu.bigpp.component.ComponentType.RAM_TYPE;
+import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
+import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
+import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -39,7 +47,6 @@ public class BuilderListComponentCommand extends Command {
      * Lists all components of a given component type including optional flags
      * that would filter the list of components. Such as filtering for name, price
      * and brand.
-     * 
      * @return a string containing all components of a given component type
      */
     @Override
@@ -82,13 +89,13 @@ public class BuilderListComponentCommand extends Command {
                 }
 
                 switch (componentType) {
-                case "chassis":
+                case CHASSIS_TYPE:
                     if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
-                        componentList = handleSizeFlag(componentList, flagsArray, flagAndDescriptionArray,
+                        componentList = handleCpuSizeFlag(componentList, flagsArray, flagAndDescriptionArray,
                                 componentIndexes);
                     }
                     break;
-                case "cpu":
+                case CPU_TYPE:
                     // handle core, thread, baseclock, boostclock, power and socket flag
                     if (containsFlag(flagAndDescriptionArray, CORE_FLAG)) {
                         componentList = handleCoreFlag(componentList, flagsArray, flagAndDescriptionArray,
@@ -109,26 +116,91 @@ public class BuilderListComponentCommand extends Command {
                     }
                     if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
                         componentList = handlePowerFlag(userInputString, componentList, flagsArray,
-                                flagAndDescriptionArray, componentIndexes);
+                                flagAndDescriptionArray, componentIndexes, componentType);
                     }
                     if (containsFlag(flagAndDescriptionArray, SOCKET_FLAG)) {
                         componentList = handleSocketFlag(userInputString, componentList, flagsArray,
-                                flagAndDescriptionArray, componentIndexes);
+                                flagAndDescriptionArray, componentIndexes, componentType);
                     }
                     break;
 
-                case "cpucooler":
+                case CPU_COOLER_TYPE:
                     //handle rpm, noise and power flag
-                case "gpu":
+                    if (containsFlag(flagAndDescriptionArray, RPM_FLAG)) {
+                        componentList = handleRpmFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray,
+                                componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, NOISE_FLAG)) {
+                        componentList = handleNoiseFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
+                        componentList = handlePowerFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes, componentType);
+                    }
+                    break;
+                case GPU_TYPE:
                     //handle power and size flag
-                case "motherboard":
+                    if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
+                        componentList = handleSizeFlagGpu(componentList, flagsArray, flagAndDescriptionArray,
+                                componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
+                        componentList = handlePowerFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes, componentType);
+                    }
+                    break;
+                case MOTHERBOARD_TYPE:
                     //handle formfactor, socket and power flag
-                case "psu":
-                    //handle efficiency, formfactor and power flag
-                case "ram":
+                    if (containsFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG)) {
+                        componentList = handleFormFactorFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray,
+                                componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, SOCKET_FLAG)) {
+                        componentList = handleSocketFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes, componentType);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
+                        componentList = handlePowerFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes, componentType);
+                    }
+                    break;
+                case RAM_TYPE:
                     //handle memory, sticks, speed and power flag
-                case "storage":
+                    if (containsFlag(flagAndDescriptionArray, MEMORY_FLAG)) {
+                        componentList = handleMemoryFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, STICKS_FLAG)) {
+                        componentList = handleSticksFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, SPEED_FLAG)) {
+                        componentList = handleSpeedFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
+                        componentList = handlePowerFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes, componentType);
+                    }
+                    break;
+                case STORAGE_TYPE:
                     //handle type, size and power flag
+                    if (containsFlag(flagAndDescriptionArray, TYPE_FLAG)) {
+                        componentList = handleTypeFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
+                        componentList = handleSizeFlag(componentList, flagsArray, flagAndDescriptionArray,
+                                componentIndexes);
+                    }
+                    if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
+                        componentList = handlePowerFlag(userInputString, componentList, flagsArray,
+                                flagAndDescriptionArray, componentIndexes, componentType);
+                    }
+                    break;
                 default:
                     break;
                 }
@@ -157,10 +229,312 @@ public class BuilderListComponentCommand extends Command {
         return outputString + componentList.getListString(componentIndexes);
     }
 
+    //handle size flag, size can be 512, 1024, 2048, 4096
+    private ComponentList<?> handleSizeFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int sizeIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
+        if (sizeIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String sizeDescription = flagAndDescriptionArray[sizeIndex + 1].trim().toLowerCase();
+        if (sizeDescription.split("\\s+").length < 1) {
+            throw new PPException("Please enter size description");
+        }
+
+        String[] sizeDescriptionArray = Arrays.copyOfRange(sizeDescription.split(" "), 0, 1);
+        if (hasFlag(sizeDescriptionArray)) {
+            throw new PPException("Flag detected in size description");
+        }
+
+        String size = sizeDescriptionArray[0];
+        if (!size.equals("512") && !size.equals("1024") && !size.equals("2048") && !size.equals("4096")) {
+            throw new PPException("Please enter a valid size (512, 1024, 2048, 4096)");
+        }
+
+        flagsArray.add("Size: " + size + "GB");
+        componentList = ComponentList.filterBySizeStorage(componentList, Integer.parseInt(size), componentIndexes);
+        return componentList;
+    }
+
+    //handle type flag, type can be M.2 SSD, HDD, or SATA SSD
+    private ComponentList<?> handleTypeFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int typeIndex = indexOfFlag(flagAndDescriptionArray, TYPE_FLAG);
+        if (typeIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String typeDescription = userInputString.split(TYPE_FLAG)[1].trim().toLowerCase();
+        if (typeDescription.split("\\s+").length < 1) {
+            throw new PPException("Please enter type description");
+        }
+
+        String[] typeDescriptionArray = Arrays.copyOfRange(typeDescription.split(" "), 0, 1);
+        if (hasFlag(typeDescriptionArray)) {
+            throw new PPException("Flag detected in type description");
+        }
+
+        String type = typeDescriptionArray[0];
+        if (!type.equals("hdd") && !type.equals("ssd")) {
+            throw new PPException("Please enter a valid type description (hdd or ssd))");
+        }
+
+        flagsArray.add("Type: " + type);
+        componentList = ComponentList.filterByTypeStorage(componentList, type, componentIndexes);
+
+        return componentList;
+    }
+
+    //handle speed flag, speed can be 1600 or 3200
+    private ComponentList<?> handleSpeedFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int speedIndex = indexOfFlag(flagAndDescriptionArray, SPEED_FLAG);
+        if (speedIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String speedDescription = userInputString.split(SPEED_FLAG)[1].trim().toLowerCase();
+        if (speedDescription.split("\\s+").length < 1) {
+            throw new PPException("Please enter speed description");
+        }
+
+        String[] speedDescriptionArray = Arrays.copyOfRange(speedDescription.split(" "), 0, 1);
+        if (hasFlag(speedDescriptionArray)) {
+            throw new PPException("Flag detected in speed description");
+        }
+
+        int speed = Integer.parseInt(speedDescriptionArray[0]);
+        if (speed != 1600 && speed != 3200) {
+            throw new PPException("Please enter a valid speed (1600 or 3200))");
+        }
+
+        flagsArray.add("speed: " + speed);
+        componentList = ComponentList.filterBySpeed(componentList, speed, componentIndexes);
+
+        return componentList;
+    }
+
+    //handle sticks flag, sticks could be int 1 or 2
+    private ComponentList<?> handleSticksFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int sticksIndex = indexOfFlag(flagAndDescriptionArray, STICKS_FLAG);
+        if (sticksIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String sticksDescription = userInputString.split(STICKS_FLAG)[1].trim().toLowerCase();
+        if (sticksDescription.split("\\s+").length < 1) {
+            throw new PPException("Please enter sticks description");
+        }
+
+        String[] sticksDescriptionArray = Arrays.copyOfRange(sticksDescription.split(" "), 0, 1);
+        if (hasFlag(sticksDescriptionArray)) {
+            throw new PPException("Flag detected in sticks description");
+        }
+
+        int sticks = Integer.parseInt(sticksDescriptionArray[0]);
+        if (sticks != 1 && sticks != 2) {
+            throw new PPException("Please enter a valid sticks description (1 or 2))");
+        }
+
+        flagsArray.add("Sticks: " + sticks);
+        componentList = ComponentList.filterBySticks(componentList, sticks, componentIndexes);
+
+        return componentList;
+    }
+
+    //handle memory flag, memory could be int 8, 16, 32
+    private ComponentList<?> handleMemoryFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int memoryIndex = indexOfFlag(flagAndDescriptionArray, MEMORY_FLAG);
+        if (memoryIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String memoryDescription = userInputString.split(MEMORY_FLAG)[1].trim().toLowerCase();
+        if (memoryDescription.split("\\s+").length < 1) {
+            throw new PPException("Please enter a full memory description");
+        }
+
+        String[] memoryDescriptionArray = Arrays.copyOfRange(memoryDescription.split(" "), 0, 1);
+        if (hasFlag(memoryDescriptionArray)) {
+            throw new PPException("Flag detected in memory description");
+        }
+
+        int memory = Integer.parseInt(memoryDescriptionArray[0]);
+        if (memory != 8 && memory != 16 && memory != 32) {
+            throw new PPException("Please enter a valid memory description (8, 16 or 32)");
+        }
+
+        flagsArray.add("Memory: " + memory + "GB");
+        componentList = ComponentList.filterByMemory(componentList, memory, componentIndexes);
+
+        return componentList;
+    }
+
+    //handle formfactor flag, formfactor could be string ATX, Micro or Mini
+    private ComponentList<?> handleFormFactorFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int formFactorIndex = indexOfFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG);
+        if (formFactorIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String formFactorDescription = userInputString.split(FORM_FACTOR_FLAG)[1].trim().toLowerCase();
+        if (formFactorDescription.split("\\s+").length < 1) {
+            throw new PPException("Please enter a full form factor description");
+        }
+
+        String[] formFactorDescriptionArray = Arrays.copyOfRange(formFactorDescription.split(" "), 0, 1);
+        if (hasFlag(formFactorDescriptionArray)) {
+            throw new PPException("Flag detected in form factor description. Please enter a valid form factor");
+        }
+
+        String formFactor = formFactorDescriptionArray[0];
+        if (!formFactor.equals("ATX") && !formFactor.equals("Micro") && !formFactor.equals("Mini")) {
+            throw new PPException("Please enter a valid form factor (ATX, Micro or Mini)");
+        }
+
+        flagsArray.add("Form Factor: " + formFactor);
+
+        componentList = ComponentList.filterByFormFactor(componentList, formFactor, componentIndexes);
+
+        return componentList;
+    }
+
+    private ComponentList<?> handleNoiseFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int rpmNoiseIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
+        if (rpmNoiseIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String noiseDescription = userInputString.split(NOISE_FLAG)[1].trim().toLowerCase();
+        if (noiseDescription.split("\\s+").length < 4) {
+            throw new PPException("Please enter a full noise description");
+        }
+
+        String[] noiseDescriptionArray = Arrays.copyOfRange(noiseDescription.split(" "), 0, 4);
+        if (hasFlag(noiseDescriptionArray)) {
+            throw new PPException("Flag detected in noise description. Please enter a valid noise range");
+        }
+
+        String fromFlag = noiseDescriptionArray[0];
+        if (!fromFlag.equals("/from")) {
+            throw new PPException("Please enter '/from' before the noise range");
+        }
+
+        String noiseFrom = noiseDescriptionArray[1];
+        if (noiseFrom.matches(".*\\D.*")) {
+            throw new PPException("Noise start range must be an integer");
+        }
+
+        String toFlag = noiseDescriptionArray[2];
+        if (!toFlag.equals("/to")) {
+            throw new PPException("Please enter '/to' before the noise range");
+        }
+
+        String noiseTo = noiseDescriptionArray[3];
+        if (noiseTo.matches(".*\\D.*")) {
+            throw new PPException("Noise end range must be an integer");
+        }
+
+        int noiseFromInt = Integer.parseInt(noiseFrom);
+        int noiseToInt = Integer.parseInt(noiseTo);
+
+        if (noiseFromInt > noiseToInt) {
+            throw new PPException("Noise start range must be smaller than noise end range");
+        }
+
+        if (noiseFromInt < 0 || noiseToInt < 0) {
+            throw new PPException("Noise must be a positive integer");
+        }
+
+        if (noiseFromInt > 10000 || noiseToInt > 10000) {
+            throw new PPException("Noise must be less than 10000");
+        }
+
+        componentList = ComponentList.filterByNoise(componentList, noiseFromInt, noiseToInt, componentIndexes);
+
+        flagsArray.add("Noise: " + noiseFrom + " to " + noiseTo);
+
+        return componentList;
+    }
+
+    private ComponentList<?> handleRpmFlag(String userInputString, ComponentList<?> componentList,
+            ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int rpmFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
+
+        if (rpmFlagIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a description after the flag");
+        }
+
+        String rpmDescription = userInputString.split(RPM_FLAG)[1].trim().toLowerCase();
+
+        if (rpmDescription.split("\\s+").length < 4) {
+            throw new PPException("Please enter a full rpm description");
+        }
+
+        String[] rpmDescriptionArray = Arrays.copyOfRange(rpmDescription.split(" "), 0, 4);
+        if (hasFlag(rpmDescriptionArray)) {
+            throw new PPException("Flag detected in rpm description. Please enter a valid rpm range");
+        }
+
+        String fromFlag = rpmDescriptionArray[0];
+        if (!fromFlag.equals("/from")) {
+            throw new PPException("Please enter '/from' before the rpm range");
+        }
+
+        String powerFrom = rpmDescriptionArray[1];
+        if (powerFrom.matches(".*\\D.*")) {
+            throw new PPException("Rpm start range must be an integer");
+        }
+
+        String toFlag = rpmDescriptionArray[2];
+        if (!toFlag.equals("/to")) {
+            throw new PPException("Please enter '/to' before the rpm range");
+        }
+
+        String powerTo = rpmDescriptionArray[3];
+        if (powerTo.matches(".*\\D.*")) {
+            throw new PPException("Rpm end range must be an integer");
+        }
+
+        int rpmFromInt = Integer.parseInt(powerFrom);
+        int rpmToInt = Integer.parseInt(powerTo);
+
+        if (rpmFromInt > rpmToInt) {
+            throw new PPException("Rpm start range must be smaller than power end range");
+        }
+
+        if (rpmFromInt < 0 || rpmToInt < 0) {
+            throw new PPException("Rpm must be a positive integer");
+        }
+
+        if (rpmFromInt > 100000 || rpmToInt > 100000) {
+            throw new PPException("Rpm must be less than 100000");
+        }
+
+        componentList = ComponentList.filterByRpm(componentList, rpmFromInt, rpmToInt, componentIndexes);
+
+        flagsArray.add("Rpm: " + powerFrom + " to " + powerTo);
+
+        return componentList;
+    }
+
     //handle socket flag that can be either AM4, AM5, LGA1200 or LGA1700
     private ComponentList<?> handleSocketFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
-            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes, String componentType)
+            throws PPException {
         int socketFlagIndex = indexOfFlag(flagAndDescriptionArray, SOCKET_FLAG);
         if (socketFlagIndex == flagAndDescriptionArray.length - 1) {
             throw new PPException("Please enter a description after the flag");
@@ -178,15 +552,24 @@ public class BuilderListComponentCommand extends Command {
 
         flagsArray.add("Socket: " + socket);
 
-        componentList = ComponentList.filterBySocket(componentList, socket, componentIndexes);
-
+        switch (componentType) {
+        case CPU_TYPE:
+            componentList = ComponentList.filterBySocketCpu(componentList, socket, componentIndexes);
+            break;
+        case MOTHERBOARD_TYPE:
+            componentList = ComponentList.filterBySocketMotherboard(componentList, socket, componentIndexes);
+            break;
+        default:
+            throw new PPException("Invalid component type");
+        }
         return componentList;
     }
 
     //handle power flag with int from and int to range
     private ComponentList<?> handlePowerFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
-            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes, String componentType)
+            throws PPException {
         int powerFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
         if (powerFlagIndex == flagAndDescriptionArray.length - 1) {
             throw new PPException("Please enter a description after the flag");
@@ -237,10 +620,56 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Power must be less than 10000W");
         }
 
-        componentList = ComponentList.filterByPower(componentList, powerFromInt, powerToInt, componentIndexes);
+        switch (componentType) {
+        case CPU_TYPE:
+            componentList = ComponentList.filterByPowerCpu(componentList, powerFromInt, powerToInt, componentIndexes);
+            break;
+        case CPU_COOLER_TYPE:
+            componentList = ComponentList.filterByPowerCpuCooler(componentList, powerFromInt, powerToInt,
+                    componentIndexes);
+            break;
+        case GPU_TYPE:
+            componentList = ComponentList.filterByPowerGpu(componentList, powerFromInt, powerToInt, componentIndexes);
+            break;
+        case MOTHERBOARD_TYPE:
+            componentList = ComponentList.filterByPowerMotherboard(componentList, powerFromInt, powerToInt,
+                    componentIndexes);
+            break;
+        case RAM_TYPE:
+            componentList = ComponentList.filterByPowerRam(componentList, powerFromInt, powerToInt,
+                    componentIndexes);
+            break;
+        case STORAGE_TYPE:
+            componentList = ComponentList.filterByPowerStorage(componentList, powerFromInt, powerToInt,
+                    componentIndexes);
+            break;
+        default:
+            throw new PPException("Invalid component type");
+        }
 
         flagsArray.add("Power: " + powerFrom + "W to " + powerTo + "W");
 
+        return componentList;
+    }
+
+    private ComponentList<?> handleSizeFlagGpu(ComponentList<?> componentList, ArrayList<String> flagsArray,
+            String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
+        int sizeFlagIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
+        if (sizeFlagIndex == flagAndDescriptionArray.length - 1) {
+            throw new PPException("Please enter a size after the flag");
+        }
+
+        String size = flagAndDescriptionArray[sizeFlagIndex + 1].trim().toLowerCase();
+
+        if (isFlag(size)) {
+            throw new PPException("Flag detected in size description. Please enter a valid size");
+        }
+
+        if (!size.equals("micro") && !size.equals("mini") && !size.equals("atx")) {
+            throw new PPException("Please enter a valid size (atx, mini or micro)");
+        }
+        flagsArray.add("size: " + size);
+        componentList = ComponentList.filterBySizeChassis(componentList, size, componentIndexes);
         return componentList;
     }
 
@@ -254,7 +683,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String boostClockDescription = userInputString.split(BOOST_CLOCK_FLAG)[1].trim().toLowerCase();
-        if (boostClockDescription.split(" ").length < 4) {
+        if (boostClockDescription.split("\\s+").length < 4) {
             throw new PPException("Please enter a full boost clock description");
         }
 
@@ -423,7 +852,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    private ComponentList<?> handleSizeFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
+    private ComponentList<?> handleCpuSizeFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int sizeFlagIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
         if (sizeFlagIndex == flagAndDescriptionArray.length - 1) {
@@ -440,7 +869,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a valid size (micro, mini, mid or full)");
         }
         flagsArray.add("size: " + size);
-        componentList = ComponentList.filterBySize(componentList, size, componentIndexes);
+        componentList = ComponentList.filterBySizeChassis(componentList, size, componentIndexes);
         return componentList;
     }
 
@@ -455,12 +884,12 @@ public class BuilderListComponentCommand extends Command {
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
                     "Please enter the full price description after the flag containing the start " +
-                    "and end price range");
+                     "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
-                    "Flag detected in price description. Please enter a different price" + 
+                    "Flag detected in price description. Please enter a different price" +
                     " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();

@@ -1,6 +1,6 @@
 package seedu.bigpp.component;
 
-public class ComponentType {
+public abstract class ComponentType {
     public static final String CPU_TYPE = "cpu";
     public static final String GPU_TYPE = "gpu";
     public static final String RAM_TYPE = "ram";
