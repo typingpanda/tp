@@ -245,7 +245,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         flagsArray.add("Size: " + size + "GB");
-        componentList = ComponentList.filterBySize(componentList, Integer.parseInt(size), componentIndexes);
+        componentList = ComponentList.filterBySizeStorage(componentList, Integer.parseInt(size), componentIndexes);
         return componentList;
     }
 
@@ -274,7 +274,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         flagsArray.add("Type: " + type);
-        componentList = ComponentList.filterByType(componentList, type, componentIndexes);
+        componentList = ComponentList.filterByTypeStorage(componentList, type, componentIndexes);
 
         return componentList;
     }
@@ -551,7 +551,8 @@ public class BuilderListComponentCommand extends Command {
         case "motherboard":
             componentList = ComponentList.filterBySocketMotherboard(componentList, socket, componentIndexes);
             break;
-
+        default:
+            throw new PPException("Invalid component type");
         }
         return componentList;
     }
@@ -629,9 +630,11 @@ public class BuilderListComponentCommand extends Command {
         case "ram":
             componentList = ComponentList.filterByPowerRam(componentList, powerFromInt, powerToInt,
                     componentIndexes);
+            break;
         case "storage":
             componentList = ComponentList.filterByPowerStorage(componentList, powerFromInt, powerToInt,
                     componentIndexes);
+            break;
         default:
             throw new PPException("Invalid component type");
         }
@@ -658,7 +661,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a valid size (atx, mini or micro)");
         }
         flagsArray.add("size: " + size);
-        componentList = ComponentList.filterBySize(componentList, size, componentIndexes);
+        componentList = ComponentList.filterBySizeChassis(componentList, size, componentIndexes);
         return componentList;
     }
 
@@ -858,7 +861,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a valid size (micro, mini, mid or full)");
         }
         flagsArray.add("size: " + size);
-        componentList = ComponentList.filterBySize(componentList, size, componentIndexes);
+        componentList = ComponentList.filterBySizeChassis(componentList, size, componentIndexes);
         return componentList;
     }
 
@@ -872,12 +875,14 @@ public class BuilderListComponentCommand extends Command {
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
-                    "Please enter the full price description after the flag containing the start " + "and end price range");
+                    "Please enter the full price description after the flag containing the start " +
+                     "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
-                    "Flag detected in price description. Please enter a different price" + " description after the flag");
+                    "Flag detected in price description. Please enter a different price" +
+                    " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {

@@ -50,7 +50,7 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterBySize(ComponentList<?> componentList, int size,
+    public static ComponentList<?> filterBySizeStorage(ComponentList<?> componentList, int size,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
@@ -63,7 +63,7 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterByType(ComponentList<?> componentList, String type,
+    public static ComponentList<?> filterByTypeStorage(ComponentList<?> componentList, String type,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
@@ -303,7 +303,7 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterBySize(ComponentList<?> componentList, String size,
+    public static ComponentList<?> filterBySizeChassis(ComponentList<?> componentList, String size,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
