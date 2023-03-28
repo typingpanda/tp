@@ -17,7 +17,6 @@ public abstract class BuilderCustomComponentCommand extends Command {
     public String executeCommand(DataStorage dataStorage) throws PPException {
         String arguments = super.getArguments();
         String[] argumentList = arguments.split("\\|");
-
         if (argumentList.length != getExpectedArgumentLength()) {
             throw new PPException("Please enter a valid number of arguments for the custom component");
         }

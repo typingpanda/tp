@@ -200,6 +200,31 @@ ________________________________________________________________________________
 #### `name NEW_NAME`
 **Functionality:** Sets the name of the current PC build to `NEW_NAME`
 
+#### `custom COMPONENT_TYPE SPEC_1,SPEC_2, ...`
+**Functionality:** Adds a custom component of type COMPONENT_TYPE with the specs SPEC_1, SPEC_2, ... to the
+current PC build
+```
+input: custom cpu Intel-new-cpu|Intel|99.5|4|8|3.5|4.6|122|LGA1200
+
+output:
+===================================================
+PC builder
+Custom-PC: [pc-1] - $99.5/infinite - Incomplete
+Components:
+CPU        : Intel-new-cpu
+CPU Cooler : - Not Selected -
+GPU        : - Not Selected -
+Motherboard: - Not Selected -
+RAM        : - Not Selected -
+Storage    : - Not Selected -
+PSU        : - Not Selected -
+Chassis    : - Not Selected -
+
+What would you like to do?
+===================================================
+CPU added: Intel-new-cpu
+```
+
 #### `back`
 **Functionality:** Goes back to PCViewer menu
 
