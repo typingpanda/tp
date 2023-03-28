@@ -14,7 +14,8 @@ public class BuilderSelectCommand extends Command {
     }
 
     /**
-     * Change the Component of the PC that the builder is working on
+     * Selects a component to be added to the PC that the builder is working on
+     * 
      * @return Added Component message
      */
     @Override
@@ -27,7 +28,7 @@ public class BuilderSelectCommand extends Command {
             throw new PPException("Please select a component");
         }
 
-        String[] inputArray = inputString.split(" ", 2);
+        String[] inputArray = inputString.split("\\s+", 2);
         String componentTypeString = inputArray[0];
         componentTypeString = componentTypeString.toLowerCase();
         componentTypeString = componentTypeString.trim();
