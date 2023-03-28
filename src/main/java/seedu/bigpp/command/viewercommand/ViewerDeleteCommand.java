@@ -4,6 +4,7 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.pc.PC;
+import seedu.bigpp.pc.PCList;
 
 public class ViewerDeleteCommand extends Command {
 
@@ -20,6 +21,9 @@ public class ViewerDeleteCommand extends Command {
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
         // throw exception if no index is selected
+        if (PCList.getIsFilter()){
+            return "Please clear filter before deleting a pc";
+        }
         String argument = super.getArguments();
         if (argument.equals("")) {
             throw new PPException("Please input an index");

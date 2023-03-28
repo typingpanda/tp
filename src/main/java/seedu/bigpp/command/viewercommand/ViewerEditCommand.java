@@ -4,6 +4,7 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.pc.PC;
+import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 
 public class ViewerEditCommand extends Command {
@@ -18,6 +19,9 @@ public class ViewerEditCommand extends Command {
     @Override
     public String executeCommand(DataStorage dataStorage)
             throws PPException {
+        if (PCList.getIsFilter()){
+            return "Please clear filter before editing a pc";
+        }
         String argument = super.getArguments();
 
         // throw exception if no index is selected
