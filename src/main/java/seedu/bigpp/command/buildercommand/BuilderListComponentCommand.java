@@ -7,6 +7,14 @@ import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
 import seedu.bigpp.component.ComponentList;
+
+import static seedu.bigpp.component.ComponentType.CPU_TYPE;
+import static seedu.bigpp.component.ComponentType.GPU_TYPE;
+import static seedu.bigpp.component.ComponentType.RAM_TYPE;
+import static seedu.bigpp.component.ComponentType.STORAGE_TYPE;
+import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
+import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
+import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -81,13 +89,13 @@ public class BuilderListComponentCommand extends Command {
                 }
 
                 switch (componentType) {
-                case "chassis":
+                case CHASSIS_TYPE:
                     if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
                         componentList = handleCpuSizeFlag(componentList, flagsArray, flagAndDescriptionArray,
                                 componentIndexes);
                     }
                     break;
-                case "cpu":
+                case CPU_TYPE:
                     // handle core, thread, baseclock, boostclock, power and socket flag
                     if (containsFlag(flagAndDescriptionArray, CORE_FLAG)) {
                         componentList = handleCoreFlag(componentList, flagsArray, flagAndDescriptionArray,
@@ -116,7 +124,7 @@ public class BuilderListComponentCommand extends Command {
                     }
                     break;
 
-                case "cpu-cooler":
+                case CPU_COOLER_TYPE:
                     //handle rpm, noise and power flag
                     if (containsFlag(flagAndDescriptionArray, RPM_FLAG)) {
                         componentList = handleRpmFlag(userInputString, componentList, flagsArray,
@@ -132,7 +140,7 @@ public class BuilderListComponentCommand extends Command {
                                 flagAndDescriptionArray, componentIndexes, componentType);
                     }
                     break;
-                case "gpu":
+                case GPU_TYPE:
                     //handle power and size flag
                     if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
                         componentList = handleSizeFlagGpu(componentList, flagsArray, flagAndDescriptionArray,
@@ -143,7 +151,7 @@ public class BuilderListComponentCommand extends Command {
                                 flagAndDescriptionArray, componentIndexes, componentType);
                     }
                     break;
-                case "motherboard":
+                case MOTHERBOARD_TYPE:
                     //handle formfactor, socket and power flag
                     if (containsFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG)) {
                         componentList = handleFormFactorFlag(userInputString, componentList, flagsArray,
@@ -159,7 +167,7 @@ public class BuilderListComponentCommand extends Command {
                                 flagAndDescriptionArray, componentIndexes, componentType);
                     }
                     break;
-                case "ram":
+                case RAM_TYPE:
                     //handle memory, sticks, speed and power flag
                     if (containsFlag(flagAndDescriptionArray, MEMORY_FLAG)) {
                         componentList = handleMemoryFlag(userInputString, componentList, flagsArray,
@@ -178,7 +186,7 @@ public class BuilderListComponentCommand extends Command {
                                 flagAndDescriptionArray, componentIndexes, componentType);
                     }
                     break;
-                case "storage":
+                case STORAGE_TYPE:
                     //handle type, size and power flag
                     if (containsFlag(flagAndDescriptionArray, TYPE_FLAG)) {
                         componentList = handleTypeFlag(userInputString, componentList, flagsArray,
@@ -545,10 +553,10 @@ public class BuilderListComponentCommand extends Command {
         flagsArray.add("Socket: " + socket);
 
         switch (componentType) {
-        case "cpu":
+        case CPU_TYPE:
             componentList = ComponentList.filterBySocketCpu(componentList, socket, componentIndexes);
             break;
-        case "motherboard":
+        case MOTHERBOARD_TYPE:
             componentList = ComponentList.filterBySocketMotherboard(componentList, socket, componentIndexes);
             break;
         default:
@@ -613,25 +621,25 @@ public class BuilderListComponentCommand extends Command {
         }
 
         switch (componentType) {
-        case "cpu":
+        case CPU_TYPE:
             componentList = ComponentList.filterByPowerCpu(componentList, powerFromInt, powerToInt, componentIndexes);
             break;
-        case "cpucooler":
+        case CPU_COOLER_TYPE:
             componentList = ComponentList.filterByPowerCpuCooler(componentList, powerFromInt, powerToInt,
                     componentIndexes);
             break;
-        case "gpu":
+        case GPU_TYPE:
             componentList = ComponentList.filterByPowerGpu(componentList, powerFromInt, powerToInt, componentIndexes);
             break;
-        case "motherboard":
+        case MOTHERBOARD_TYPE:
             componentList = ComponentList.filterByPowerMotherboard(componentList, powerFromInt, powerToInt,
                     componentIndexes);
             break;
-        case "ram":
+        case RAM_TYPE:
             componentList = ComponentList.filterByPowerRam(componentList, powerFromInt, powerToInt,
                     componentIndexes);
             break;
-        case "storage":
+        case STORAGE_TYPE:
             componentList = ComponentList.filterByPowerStorage(componentList, powerFromInt, powerToInt,
                     componentIndexes);
             break;
