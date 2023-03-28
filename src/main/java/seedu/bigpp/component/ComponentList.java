@@ -4,10 +4,9 @@ import seedu.bigpp.component.chassis.Chassis;
 import seedu.bigpp.component.cpu.CPU;
 import seedu.bigpp.component.cpucooler.CPUCooler;
 import seedu.bigpp.component.gpu.GPU;
-// import seedu.bigpp.component.motherboard.Motherboard;
-// import seedu.bigpp.component.psu.PSU;
-// import seedu.bigpp.component.ram.RAM;
-// import seedu.bigpp.component.storage.Storage;
+import seedu.bigpp.component.motherboard.Motherboard;
+import seedu.bigpp.component.ram.RAM;
+import seedu.bigpp.component.storage.Storage;
 
 import java.util.ArrayList;
 
@@ -35,6 +34,141 @@ public class ComponentList<T> extends ArrayList<Component> {
         }
 
         return outputString;
+    }
+
+    //filter storage by power
+    public static ComponentList<?> filterByPowerStorage(ComponentList<?> componentList, int from, int to,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            Storage storage = (Storage) componentList.get(i);
+            if (storage.getPower() >= from && storage.getPower() <= to) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    public static ComponentList<?> filterBySize(ComponentList<?> componentList, int size,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            Storage storage = (Storage) componentList.get(i);
+            if (storage.getSize() == size) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    public static ComponentList<?> filterByType(ComponentList<?> componentList, String type,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            Storage storage = (Storage) componentList.get(i);
+            if (storage.getType().toLowerCase().contains(type)) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    public static ComponentList<?> filterByPowerRam(ComponentList<?> componentList, int from, int to,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            RAM ram = (RAM) componentList.get(i);
+            if (ram.getPower() >= from && ram.getPower() <= to) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    //filter ram by speed, speed could be 1600 or 3200
+    public static ComponentList<?> filterBySpeed(ComponentList<?> componentList, int speed,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            RAM ram = (RAM) componentList.get(i);
+            if (ram.getSpeed() == speed) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    //filter ram by sticks, sticks could be 1 or 2
+    public static ComponentList<?> filterBySticks(ComponentList<?> componentList, int sticks,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            RAM ram = (RAM) componentList.get(i);
+            if (ram.getSticks() == sticks) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    //filter ram by memory, memory could be 8, 16 or 32
+    public static ComponentList<?> filterByMemory(ComponentList<?> componentList, int memory,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            RAM ram = (RAM) componentList.get(i);
+            if (ram.getMemory() == memory) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    public static ComponentList<?> filterByPowerMotherboard(ComponentList<?> componentList, int from, int to,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            Motherboard motherboard = (Motherboard) componentList.get(i);
+            if (motherboard.getPower() >= from && motherboard.getPower() <= to) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    public static ComponentList<?> filterBySocketMotherboard(ComponentList<?> componentList, String socket,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            Motherboard motherboard = (Motherboard) componentList.get(i);
+            if (motherboard.getSocket().toLowerCase().equals(socket)) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    //filter motherboard by formfactor
+    public static ComponentList<?> filterByFormFactor(ComponentList<?> componentList, String formFactor,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            Motherboard motherboard = (Motherboard) componentList.get(i);
+            if (motherboard.getFormFactor().toLowerCase().equals(formFactor)) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
     }
 
     public static ComponentList<?> filterByPowerGpu(ComponentList<?> componentList, int from, int to,
@@ -91,7 +225,7 @@ public class ComponentList<T> extends ArrayList<Component> {
         return filteredComponentList;
     }
 
-    public static ComponentList<?> filterBySocket(ComponentList<?> componentList, String socket,
+    public static ComponentList<?> filterBySocketCpu(ComponentList<?> componentList, String socket,
             ArrayList<Integer> componentIndexes) {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
