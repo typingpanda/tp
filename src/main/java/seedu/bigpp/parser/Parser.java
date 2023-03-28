@@ -223,7 +223,7 @@ public class Parser {
         String filterType = inputList[0].toLowerCase();
         String input = "";
         if (inputList.length == 2) {
-           input = inputList[1];
+            input = inputList[1];
         }
         switch (filterType) {
         case "name":

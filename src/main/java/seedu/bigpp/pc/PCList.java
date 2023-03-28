@@ -63,8 +63,8 @@ public class PCList extends ArrayList<PC> {
                 }
             }
             break;
-        default :
-             break;
+        default:
+            break;
         }
         if (filterList.size() > 0) {
             out.println("Here is the list of PC Builds:");
