@@ -683,7 +683,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String boostClockDescription = userInputString.split(BOOST_CLOCK_FLAG)[1].trim().toLowerCase();
-        if (boostClockDescription.split(" ").length < 4) {
+        if (boostClockDescription.split("\\s+").length < 4) {
             throw new PPException("Please enter a full boost clock description");
         }
 
