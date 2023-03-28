@@ -197,8 +197,55 @@ ________________________________________________________________________________
 #### `budget INTEGER`
 **Functionality:** Sets the budget of the current PC build to `INTEGER`
 
+**Example** Set budget of Prebuilt-PC [Beginner] to be $1000
+```
+input: budget 1000
+
+output: 
+===================================================
+PC builder
+Custom-PC: [beginner (copy)] - $813.29/$1000.00 - Complete
+Components:
+CPU        : Intel core i3-10100
+CPU Cooler : Thermalright AXP90-X36
+GPU        : Gigabyte GAMING OC RTX3050
+Motherboard: Asus Prime Z590-P WiFi
+RAM        : Kingston FURY Beast 16 GB
+Storage    : ADATA XPG SPECTRIX S40G RGB
+PSU        : SeaSonic FOCUS PLUS 850 Gold
+Chassis    : Fractal Design Pop XL Air
+
+What would you like to do?
+===================================================
+Current build budget is now: $1000.00
+
+```
+
 #### `name NEW_NAME`
 **Functionality:** Sets the name of the current PC build to `NEW_NAME`
+
+**Example** Set the name of Prebuilt-PC [Beginner] to be MyPC
+```
+input: name MyPC
+
+output: 
+===================================================
+PC builder
+Custom-PC: [MyPc] - $813.29/$1000.00 - Complete
+Components:
+CPU        : Intel core i3-10100
+CPU Cooler : Thermalright AXP90-X36
+GPU        : Gigabyte GAMING OC RTX3050
+Motherboard: Asus Prime Z590-P WiFi
+RAM        : Kingston FURY Beast 16 GB
+Storage    : ADATA XPG SPECTRIX S40G RGB
+PSU        : SeaSonic FOCUS PLUS 850 Gold
+Chassis    : Fractal Design Pop XL Air
+
+What would you like to do?
+===================================================
+Current build name is now: MyPc
+```
 
 #### `back`
 **Functionality:** Goes back to PCViewer menu
