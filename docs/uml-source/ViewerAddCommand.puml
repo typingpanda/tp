@@ -1,0 +1,29 @@
+@startuml
+title ViewerAddCommand.executeCommand() Sequence Diagram
+
+participant ParseViewerCommand
+participant ViewerAddCommand
+participant PC
+participant DataStorage.pcList
+
+opt "add <name>"
+ParseViewerCommand -> ViewerAddCommand: ViewerAddCommand(String arguments)
+activate ViewerAddCommand
+ViewerAddCommand -> ViewerAddCommand: getArguments()
+alt != ""
+    ViewerAddCommand -> PC: PC(name, false)
+    activate PC
+    PC -> DataStorage.pcList: add(PC)
+    activate DataStorage.pcList
+    DataStorage.pcList --> PC
+    deactivate DataStorage.pcList
+    PC --> ViewerAddCommand
+    deactivate PC
+    ViewerAddCommand --> ParseViewerCommand: return success message
+else
+    ViewerAddCommand --> ParseViewerCommand: throw PPException with error message
+end
+
+deactivate ViewerAddCommand
+end
+@enduml

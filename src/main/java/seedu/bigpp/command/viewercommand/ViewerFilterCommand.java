@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class ViewerFilterCommand extends Command {
 
     private static final String NAME_FLAG = "-name";
-    private static final String COST_FLAG = "-cost";
+    private static final String PRICE_FLAG = "-price";
     private static final String BUILT_FLAG = "-built";
     private static final String CLEAR_FLAG = "-clear";
 
@@ -39,9 +39,9 @@ public class ViewerFilterCommand extends Command {
         if (containsFlag(userInputStringArray, CLEAR_FLAG)) {
             PCList.setFilterFalse();
             PCList.setBuilt("");
-            PCList.setCostFrom("");
+            PCList.setPriceFrom("");
             PCList.setName("");
-            PCList.setCostTo("");
+            PCList.setPriceTo("");
             return "Filter cleared";
         }
         if (userInputStringArray.length > 1) {
@@ -53,52 +53,52 @@ public class ViewerFilterCommand extends Command {
                 if (containsFlag(userInputStringArray, BUILT_FLAG)) {
                     handleBuiltFlag(userInputStringArray);
                 }
-                if (containsFlag(userInputStringArray, COST_FLAG)) {
-                    handleCostFlag(userInputString, userInputStringArray);
+                if (containsFlag(userInputStringArray, PRICE_FLAG)) {
+                    handlePriceFlag(userInputString, userInputStringArray);
                 }
             } else {
-                throw new PPException("Please enter a valid flag after the component type");
+                throw new PPException("Please enter a valid flag");
             }
 
         }
         return "Filter completed";
     }
 
-    private void handleCostFlag(String userInputString, String[] flagAndDescriptionArray) throws PPException {
-        int priceFlagIndex = indexOfFlag(flagAndDescriptionArray, COST_FLAG);
+    private void handlePriceFlag(String userInputString, String[] flagAndDescriptionArray) throws PPException {
+        int priceFlagIndex = indexOfFlag(flagAndDescriptionArray, PRICE_FLAG);
         if (priceFlagIndex == flagAndDescriptionArray.length - 1) {
             throw new PPException("Please enter a price description after the flag");
         }
-        String flagPriceDescription = userInputString.split(COST_FLAG)[1].trim();
+        String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
-                    "Please enter the full cost description after the flag containing the start " +
+                    "Please enter the full price description after the flag containing the start " +
                             "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
-                    "Flag detected in cost description. Please enter a different price" +
+                    "Flag detected in price description. Please enter a different price" +
                             " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {
             throw new PPException("Please use /from to specify the start price range");
         }
-        String costFrom = flagPriceDescriptionArray[1].trim();
-        if (costFrom.matches(".*\\D.*")) {
+        String priceFrom = flagPriceDescriptionArray[1].trim();
+        if (priceFrom.matches(".*\\D.*")) {
             throw new PPException("Start price must be a positive integer");
         }
         String toFlag = flagPriceDescriptionArray[2].trim();
         if (!toFlag.equals("/to")) {
             throw new PPException("Please use /to to specify the end price range");
         }
-        String costTo = flagPriceDescriptionArray[3].trim();
-        if (costTo.matches(".*\\D.*")) {
+        String priceTo = flagPriceDescriptionArray[3].trim();
+        if (priceTo.matches(".*\\D.*")) {
             throw new PPException("End price must be a positive integer");
         }
-        int priceFromInt = Integer.parseInt(costFrom);
-        int priceToInt = Integer.parseInt(costTo);
+        int priceFromInt = Integer.parseInt(priceFrom);
+        int priceToInt = Integer.parseInt(priceTo);
         if (priceFromInt > priceToInt) {
             throw new PPException("Start price must be less than end price");
         }
@@ -106,10 +106,10 @@ public class ViewerFilterCommand extends Command {
             throw new PPException("Price must be greater than 0");
         }
         if (priceFromInt > 1000000 || priceToInt > 1000000) {
-            throw new PPException("Cost must be smaller than 1000000");
+            throw new PPException("price must be smaller than 1000000");
         }
-        PCList.setCostFrom(costFrom);
-        PCList.setCostTo(costTo);
+        PCList.setPriceFrom(priceFrom);
+        PCList.setPriceTo(priceTo);
     }
 
     private void handleBuiltFlag(String[] flagAndDescriptionArray) throws PPException {
@@ -141,7 +141,7 @@ public class ViewerFilterCommand extends Command {
     }
 
     private static boolean isFlag(String flag) {
-        return flag.equals(NAME_FLAG) || flag.equals(COST_FLAG) || flag.equals(BUILT_FLAG);
+        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BUILT_FLAG);
     }
 
     private static boolean hasFlag(String[] userInputStringArray) {
