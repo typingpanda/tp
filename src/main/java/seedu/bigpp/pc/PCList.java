@@ -102,7 +102,7 @@ public class PCList extends ArrayList<PC> {
             return true;
         }
         if (pc.getName().toLowerCase().contains(name)) {
-          return true;
+            return true;
         }
         else {
             return false;
