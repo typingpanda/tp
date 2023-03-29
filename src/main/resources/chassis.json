@@ -2,21 +2,21 @@
 	"Fractal Design Pop XL Air": {
 		"brand": "Fractal Design",
 		"price": 124.98,
-		"size": "full"
+		"formfactor": "atx"
 	},
 	"Corsair iCUE 4000X RGB": {
 		"brand": "Corsair",
 		"price": 144.99,
-		"size": "mid"
+		"formfactor": "atx"
 	},
 	"Cooler Master MasterBox MB311L ARGB": {
 		"brand": "Cooler Master",
 		"price": 74.98,
-		"size": "micro"
+		"formfactor": "micro"
 	},
 	"Silverstone SUGO 14": {
 		"brand": "Silverstone",
 		"price": 139.36,
-		"size": "mini"
+		"formfactor": "mini"
 	}
 }

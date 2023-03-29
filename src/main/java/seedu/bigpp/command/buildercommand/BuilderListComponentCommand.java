@@ -90,8 +90,8 @@ public class BuilderListComponentCommand extends Command {
 
                 switch (componentType) {
                 case CHASSIS_TYPE:
-                    if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
-                        componentList = handleCpuSizeFlag(componentList, flagsArray, flagAndDescriptionArray,
+                    if (containsFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG)) {
+                        componentList = handleFormFactorFlagChassis(componentList, flagsArray, flagAndDescriptionArray,
                                 componentIndexes);
                     }
                     break;
@@ -125,7 +125,7 @@ public class BuilderListComponentCommand extends Command {
                     break;
 
                 case CPU_COOLER_TYPE:
-                    //handle rpm, noise and power flag
+                    // handle rpm, noise and power flag
                     if (containsFlag(flagAndDescriptionArray, RPM_FLAG)) {
                         componentList = handleRpmFlag(userInputString, componentList, flagsArray,
                                 flagAndDescriptionArray,
@@ -141,9 +141,9 @@ public class BuilderListComponentCommand extends Command {
                     }
                     break;
                 case GPU_TYPE:
-                    //handle power and size flag
-                    if (containsFlag(flagAndDescriptionArray, SIZE_FLAG)) {
-                        componentList = handleSizeFlagGpu(componentList, flagsArray, flagAndDescriptionArray,
+                    // handle power and size flag
+                    if (containsFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG)) {
+                        componentList = handleFormFactorFlagGpu(componentList, flagsArray, flagAndDescriptionArray,
                                 componentIndexes);
                     }
                     if (containsFlag(flagAndDescriptionArray, POWER_FLAG)) {
@@ -152,9 +152,9 @@ public class BuilderListComponentCommand extends Command {
                     }
                     break;
                 case MOTHERBOARD_TYPE:
-                    //handle formfactor, socket and power flag
+                    // handle formfactor, socket and power flag
                     if (containsFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG)) {
-                        componentList = handleFormFactorFlag(userInputString, componentList, flagsArray,
+                        componentList = handleFormFactorFlagMotherboard(userInputString, componentList, flagsArray,
                                 flagAndDescriptionArray,
                                 componentIndexes);
                     }
@@ -168,7 +168,7 @@ public class BuilderListComponentCommand extends Command {
                     }
                     break;
                 case RAM_TYPE:
-                    //handle memory, sticks, speed and power flag
+                    // handle memory, sticks, speed and power flag
                     if (containsFlag(flagAndDescriptionArray, MEMORY_FLAG)) {
                         componentList = handleMemoryFlag(userInputString, componentList, flagsArray,
                                 flagAndDescriptionArray, componentIndexes);
@@ -187,7 +187,7 @@ public class BuilderListComponentCommand extends Command {
                     }
                     break;
                 case STORAGE_TYPE:
-                    //handle type, size and power flag
+                    // handle type, size and power flag
                     if (containsFlag(flagAndDescriptionArray, TYPE_FLAG)) {
                         componentList = handleTypeFlag(userInputString, componentList, flagsArray,
                                 flagAndDescriptionArray, componentIndexes);
@@ -229,7 +229,7 @@ public class BuilderListComponentCommand extends Command {
         return outputString + componentList.getListString(componentIndexes);
     }
 
-    //handle size flag, size can be 512, 1024, 2048, 4096
+    // handle size flag, size can be 512, 1024, 2048, 4096
     private ComponentList<?> handleSizeFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int sizeIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
@@ -257,7 +257,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    //handle type flag, type can be M.2 SSD, HDD, or SATA SSD
+    // handle type flag, type can be M.2 SSD, HDD, or SATA SSD
     private ComponentList<?> handleTypeFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -287,7 +287,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    //handle speed flag, speed can be 1600 or 3200
+    // handle speed flag, speed can be 1600 or 3200
     private ComponentList<?> handleSpeedFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -317,7 +317,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    //handle sticks flag, sticks could be int 1 or 2
+    // handle sticks flag, sticks could be int 1 or 2
     private ComponentList<?> handleSticksFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -347,7 +347,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    //handle memory flag, memory could be int 8, 16, 32
+    // handle memory flag, memory could be int 8, 16, 32
     private ComponentList<?> handleMemoryFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -377,8 +377,8 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    //handle formfactor flag, formfactor could be string ATX, Micro or Mini
-    private ComponentList<?> handleFormFactorFlag(String userInputString, ComponentList<?> componentList,
+    // handle formfactor flag, formfactor could be string ATX, Micro or Mini
+    private ComponentList<?> handleFormFactorFlagMotherboard(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int formFactorIndex = indexOfFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG);
@@ -397,13 +397,13 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String formFactor = formFactorDescriptionArray[0];
-        if (!formFactor.equals("ATX") && !formFactor.equals("Micro") && !formFactor.equals("Mini")) {
+        if (!formFactor.equals("atx") && !formFactor.equals("micro") && !formFactor.equals("mini")) {
             throw new PPException("Please enter a valid form factor (ATX, Micro or Mini)");
         }
 
         flagsArray.add("Form Factor: " + formFactor);
 
-        componentList = ComponentList.filterByFormFactor(componentList, formFactor, componentIndexes);
+        componentList = ComponentList.filterByFormFactorMotherboard(componentList, formFactor, componentIndexes);
 
         return componentList;
     }
@@ -530,7 +530,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    //handle socket flag that can be either AM4, AM5, LGA1200 or LGA1700
+    // handle socket flag that can be either AM4, AM5, LGA1200 or LGA1700
     private ComponentList<?> handleSocketFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes, String componentType)
@@ -565,7 +565,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    //handle power flag with int from and int to range
+    // handle power flag with int from and int to range
     private ComponentList<?> handlePowerFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes, String componentType)
@@ -652,24 +652,24 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    private ComponentList<?> handleSizeFlagGpu(ComponentList<?> componentList, ArrayList<String> flagsArray,
+    private ComponentList<?> handleFormFactorFlagGpu(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
-        int sizeFlagIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
-        if (sizeFlagIndex == flagAndDescriptionArray.length - 1) {
+        int formFactorFlagIndex = indexOfFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG);
+        if (formFactorFlagIndex == flagAndDescriptionArray.length - 1) {
             throw new PPException("Please enter a size after the flag");
         }
 
-        String size = flagAndDescriptionArray[sizeFlagIndex + 1].trim().toLowerCase();
+        String formFactor = flagAndDescriptionArray[formFactorFlagIndex + 1].trim().toLowerCase();
 
-        if (isFlag(size)) {
+        if (isFlag(formFactor)) {
             throw new PPException("Flag detected in size description. Please enter a valid size");
         }
 
-        if (!size.equals("micro") && !size.equals("mini") && !size.equals("atx")) {
+        if (!formFactor.equals("micro") && !formFactor.equals("mini") && !formFactor.equals("atx")) {
             throw new PPException("Please enter a valid size (atx, mini or micro)");
         }
-        flagsArray.add("size: " + size);
-        componentList = ComponentList.filterBySizeChassis(componentList, size, componentIndexes);
+        flagsArray.add("size: " + formFactor);
+        componentList = ComponentList.filterByFormFactorGpu(componentList, formFactor, componentIndexes);
         return componentList;
     }
 
@@ -736,7 +736,7 @@ public class BuilderListComponentCommand extends Command {
 
     }
 
-    //handle base clock flag, base clock is a float and has a /from and /to flag
+    // handle base clock flag, base clock is a float and has a /from and /to flag
     private ComponentList<?> handleBaseClockFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -852,24 +852,24 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    private ComponentList<?> handleCpuSizeFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
+    private ComponentList<?> handleFormFactorFlagChassis(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
-        int sizeFlagIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
-        if (sizeFlagIndex == flagAndDescriptionArray.length - 1) {
+        int formFactorFlagIndex = indexOfFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG);
+        if (formFactorFlagIndex == flagAndDescriptionArray.length - 1) {
             throw new PPException("Please enter a size after the flag");
         }
 
-        String size = flagAndDescriptionArray[sizeFlagIndex + 1].trim().toLowerCase();
+        String formFactor = flagAndDescriptionArray[formFactorFlagIndex + 1].trim().toLowerCase();
 
-        if (isFlag(size)) {
+        if (isFlag(formFactor)) {
             throw new PPException("Flag detected in size description. Please enter a valid size");
         }
 
-        if (!size.equals("micro") && !size.equals("mini") && !size.equals("mid") && !size.equals("full")) {
-            throw new PPException("Please enter a valid size (micro, mini, mid or full)");
+        if (!formFactor.equals("micro") && !formFactor.equals("mini") && !formFactor.equals("atx")) {
+            throw new PPException("Please enter a valid size (micro, mini or atx)");
         }
-        flagsArray.add("size: " + size);
-        componentList = ComponentList.filterBySizeChassis(componentList, size, componentIndexes);
+        flagsArray.add("size: " + formFactor);
+        componentList = ComponentList.filterByFormFactorChassis(componentList, formFactor, componentIndexes);
         return componentList;
     }
 
@@ -884,13 +884,13 @@ public class BuilderListComponentCommand extends Command {
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
                     "Please enter the full price description after the flag containing the start " +
-                     "and end price range");
+                            "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
                     "Flag detected in price description. Please enter a different price" +
-                    " description after the flag");
+                            " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {
@@ -958,15 +958,13 @@ public class BuilderListComponentCommand extends Command {
     }
 
     private static boolean isFlag(String flag) {
-        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BRAND_FLAG) || flag.equals(
-                SIZE_FLAG) || flag.equals(CORE_FLAG) || flag.equals(THREAD_FLAG) || flag.equals(BASE_CLOCK_FLAG) || flag
-                        .equals(BOOST_CLOCK_FLAG) || flag
-                                .equals(POWER_FLAG) || flag.equals(SOCKET_FLAG) || flag.equals(RPM_FLAG) || flag.equals(
-                                        NOISE_FLAG) || flag.equals(MEMORY_FLAG) || flag.equals(STICKS_FLAG) || flag
-                                                .equals(
-                                                        SPEED_FLAG) || flag.equals(TYPE_FLAG) || flag.equals(
-                                                                FORM_FACTOR_FLAG) || flag
-                                                                        .equals(EFFICIENCY_FLAG);
+        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BRAND_FLAG) || flag.equals(CORE_FLAG)
+                || flag.equals(THREAD_FLAG) || flag.equals(BASE_CLOCK_FLAG) || flag.equals(SIZE_FLAG)
+                || flag.equals(BOOST_CLOCK_FLAG) || flag.equals(POWER_FLAG)
+                || flag.equals(SOCKET_FLAG) || flag.equals(RPM_FLAG) || flag.equals(NOISE_FLAG)
+                || flag.equals(MEMORY_FLAG) || flag.equals(STICKS_FLAG) || flag.equals(SPEED_FLAG)
+                || flag.equals(TYPE_FLAG) || flag.equals(FORM_FACTOR_FLAG)
+                || flag.equals(EFFICIENCY_FLAG);
     }
 
     private static boolean hasFlag(String[] userInputStringArray) {

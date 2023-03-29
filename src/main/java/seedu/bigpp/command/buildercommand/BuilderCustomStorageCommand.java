@@ -27,7 +27,7 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
             size = Integer.parseInt(argumentList[5]);
 
             // Check if all the values are positive
-            if (price < 0 ||  power < 0 || size < 0) {
+            if (price < 0 || power < 0 || size < 0) {
                 throw new PPException("price, power and size should be positive");
             }
 
@@ -42,8 +42,6 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
         }
         Storage storage = new Storage(name, brand, price, type, size, power);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setStorage(storage);
-
-        return "Storage added: " + storage.getName();
+        return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setStorage(storage);
     }
 }

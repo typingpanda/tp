@@ -6,6 +6,7 @@ import seedu.bigpp.menu.PCViewerMenu;
 
 import java.io.PrintStream;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class UI {
@@ -123,5 +124,14 @@ public abstract class UI {
     public static void setPCBuilderMode(int pcIndex) {
         uiState = UIState.PCBUILDER;
         pcBuilderMenu = new PCBuilderMenu(pcIndex);
+    }
+
+    public static String listToString(ArrayList<String> list) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : list) {
+            sb.append(s);
+            sb.append(", ");
+        }
+        return sb.toString();
     }
 }

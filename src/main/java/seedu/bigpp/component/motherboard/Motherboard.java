@@ -5,25 +5,25 @@ import static seedu.bigpp.component.ComponentType.MOTHERBOARD_TYPE;
 
 public class Motherboard extends Component {
     public static final String COMPONENT_STRING = MOTHERBOARD_TYPE;
-    private String formFactor;
+    private String formfactor;
     private String socket;
     private float power;
 
-    public Motherboard(String name, String brand, float price, String formFactor, String socket, float power) {
+    public Motherboard(String name, String brand, float price, String formfactor, String socket, float power) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
-        this.formFactor = formFactor;
+        this.formfactor = formfactor;
         this.socket = socket;
         this.power = power;
     }
 
     public String getFormFactor() {
-        return formFactor;
+        return formfactor;
     }
 
-    public void setFormFactor(String formFactor) {
-        this.formFactor = formFactor;
+    public void setFormFactor(String formfactor) {
+        this.formfactor = formfactor;
     }
 
     public String getSocket() {
@@ -47,7 +47,7 @@ public class Motherboard extends Component {
         return "NAME: " + super.getName() +
                 "\nBRAND: " + super.getBrand() +
                 "\nPRICE: " + super.getPrice() +
-                "\nFORMFACTOR: " + formFactor +
+                "\nformfactor: " + formfactor +
                 "\nSOCKET: " + socket +
                 "\nPOWER: " + power;
     }

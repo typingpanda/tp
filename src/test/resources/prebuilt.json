@@ -23,13 +23,13 @@
 		},
 		"gpu": {
 			"power": 115.0,
-			"size": "mini",
+			"formfactor": "mini",
 			"name": "Gigabyte GAMING OC RTX3050",
 			"brand": "Gigabyte",
 			"price": 309.99
 		},
 		"motherboard": {
-			"formFactor": "ATX",
+			"formfactor": "atx",
 			"socket": "LGA1200",
 			"power": 45.0,
 			"name": "Asus Prime Z590-P WiFi",
@@ -38,12 +38,12 @@
 		},
 		"ram": {
 			"memory": 8,
-			"sticks": 2,
-			"speed": 3200,
-			"power": 5.0,
-			"name": "Kingston FURY Beast 16 GB",
-			"brand": "Kingston",
-			"price": 43.98
+			"sticks": 1,
+			"speed": 1600,
+			"power": 3.0,
+			"name": "G.Skill Ripjaws X 8 GB",
+			"brand": "G.Skill",
+			"price": 22.99
 		},
 		"storage": {
 			"type": "M.2 SSD",
@@ -55,14 +55,14 @@
 		},
 		"psu": {
 			"efficiency": "Gold",
-			"formFactor": "atx",
+			"formfactor": "atx",
 			"power": 850.0,
 			"name": "SeaSonic FOCUS PLUS 850 Gold",
 			"brand": "SeaSonic",
 			"price": 159.94
 		},
 		"chassis": {
-			"size": "full",
+			"formfactor": "atx",
 			"name": "Fractal Design Pop XL Air",
 			"brand": "Fractal Design",
 			"price": 124.98
@@ -73,47 +73,47 @@
 		"name": "intermediate",
 		"isPrebuilt": true,
 		"cpu": {
-			"cores": 4,
-			"threads": 4,
-			"baseClock": 3.6,
-			"boostClock": 4.0,
-			"power": 65.0,
-			"socket": "AM4",
-			"name": "AMD Ryzen 3 3200G",
-			"brand": "AMD",
-			"price": 97.5
+			"cores": 8,
+			"threads": 16,
+			"baseClock": 3.8,
+			"boostClock": 5.1,
+			"power": 125.0,
+			"socket": "LGA1200",
+			"name": "Intel core i7-10700k",
+			"brand": "Intel",
+			"price": 269.95
 		},
 		"cpuCooler": {
-			"rpm": 2500,
-			"noise": 23.6,
+			"rpm": 1800,
+			"noise": 27.5,
 			"power": 2.0,
-			"name": "Noctua NH-L9i",
-			"brand": "Noctua",
-			"price": 44.95
+			"name": "NZXT T120 RGB",
+			"brand": "NZXT",
+			"price": 59.9
 		},
 		"gpu": {
 			"power": 290.0,
-			"size": "atx",
+			"formfactor": "atx",
 			"name": "Asus TUF GAMING OC RTX3070 Ti",
 			"brand": "Asus",
 			"price": 786.99
 		},
 		"motherboard": {
-			"formFactor": "ATX",
-			"socket": "AM4",
-			"power": 48.0,
-			"name": "Asus TUF GAMING X570-PLUS (WI-FI)",
+			"formfactor": "micro",
+			"socket": "LGA1200",
+			"power": 45.0,
+			"name": "Asus TUF GAMING B560M-PLUS WIFI",
 			"brand": "Asus",
-			"price": 209.99
+			"price": 149.99
 		},
 		"ram": {
-			"memory": 16,
+			"memory": 8,
 			"sticks": 2,
-			"speed": 3600,
-			"power": 8.0,
-			"name": "Corsair Vengeance RGB Pro 32 GB",
-			"brand": "Corsair",
-			"price": 104.99
+			"speed": 3200,
+			"power": 5.0,
+			"name": "Kingston FURY Beast 16 GB",
+			"brand": "Kingston",
+			"price": 43.98
 		},
 		"storage": {
 			"type": "HDD",
@@ -125,22 +125,22 @@
 		},
 		"psu": {
 			"efficiency": "Gold",
-			"formFactor": "atx",
+			"formfactor": "atx",
 			"power": 850.0,
 			"name": "SeaSonic FOCUS PLUS 850 Gold",
 			"brand": "SeaSonic",
 			"price": 159.94
 		},
 		"chassis": {
-			"size": "full",
-			"name": "Fractal Design Pop XL Air",
-			"brand": "Fractal Design",
-			"price": 124.98
+			"formfactor": "atx",
+			"name": "Corsair iCUE 4000X RGB",
+			"brand": "Corsair",
+			"price": 144.99
 		},
 		"budget": -1
 	},
 	{
-		"name": "advanced",
+		"name": "expert",
 		"isPrebuilt": true,
 		"cpu": {
 			"cores": 16,
@@ -163,13 +163,13 @@
 		},
 		"gpu": {
 			"power": 350.0,
-			"size": "atx",
+			"formfactor": "atx",
 			"name": "MSI GAMING Z TRIO RTX3080",
 			"brand": "MSI",
 			"price": 934.06
 		},
 		"motherboard": {
-			"formFactor": "Mini",
+			"formfactor": "mini",
 			"socket": "AM5",
 			"power": 49.0,
 			"name": "Gigabyte B650I AORUS ULTRA",
@@ -177,35 +177,35 @@
 			"price": 159.99
 		},
 		"ram": {
-			"memory": 32,
+			"memory": 16,
 			"sticks": 2,
-			"speed": 3200,
-			"power": 10.0,
-			"name": "G.Skill Trident Z RGB 64 GB",
-			"brand": "G.Skill",
-			"price": 164.99
+			"speed": 3600,
+			"power": 8.0,
+			"name": "Corsair Vengeance RGB Pro 32 GB",
+			"brand": "Corsair",
+			"price": 104.99
 		},
 		"storage": {
 			"type": "M.2 SSD",
-			"size": 512,
-			"power": 4.5,
-			"name": "ADATA XPG SPECTRIX S40G RGB",
-			"brand": "ADATA",
-			"price": 54.99
+			"size": 2048,
+			"power": 5.2,
+			"name": "Samsung 980 Pro",
+			"brand": "Samsung",
+			"price": 159.99
 		},
 		"psu": {
 			"efficiency": "Gold",
-			"formFactor": "atx",
+			"formfactor": "atx",
 			"power": 850.0,
 			"name": "SeaSonic FOCUS PLUS 850 Gold",
 			"brand": "SeaSonic",
 			"price": 159.94
 		},
 		"chassis": {
-			"size": "full",
-			"name": "Fractal Design Pop XL Air",
-			"brand": "Fractal Design",
-			"price": 124.98
+			"formfactor": "atx",
+			"name": "Corsair iCUE 4000X RGB",
+			"brand": "Corsair",
+			"price": 144.99
 		},
 		"budget": -1
 	}

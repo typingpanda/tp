@@ -2,7 +2,7 @@
 	"SeaSonic FOCUS PLUS 850 Gold": {
 		"brand": "SeaSonic",
 		"efficiency": "Gold",
-		"formFactor": "atx",
+		"formfactor": "atx",
 		"power": 850,
 		"price": 159.94
 	}
