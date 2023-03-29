@@ -4,16 +4,16 @@ import static seedu.bigpp.ui.UI.out;
 public class PCList extends ArrayList<PC> {
 
     private static Boolean isFilter;
-    private static String costFrom;
-    private static String costTo;
+    private static String priceFrom;
+    private static String priceTo;
     private static String name;
     private static String built;
 
     public PCList() {
         isFilter = false;
         built = "";
-        costFrom = "";
-        costTo = "";
+        priceFrom = "";
+        priceTo = "";
         name = "";
 
     }
@@ -38,8 +38,8 @@ public class PCList extends ArrayList<PC> {
         if (this.size() > 0) {
             out.println("Here is the list of PC Builds:");
             for (int i = 0; i < this.size(); i++) {
-                if (filterByBuilt(this.get(i), getIsBuilt()) && filterByCost(this.get(i),
-                        getCostFrom(), getCostTo()) && filterByName(this.get(i), getName())) {
+                if (filterByBuilt(this.get(i), getIsBuilt()) && filterByPrice(this.get(i),
+                        getPriceFrom(), getPriceTo()) && filterByName(this.get(i), getName())) {
                     out.println((i + 1) + "." + this.get(i));
                     pcCount += 1;
                 }
@@ -60,11 +60,11 @@ public class PCList extends ArrayList<PC> {
     public static String getName() {
         return name;
     }
-    public static String getCostFrom() {
-        return costFrom;
+    public static String getPriceFrom() {
+        return priceFrom;
     }
-    public static String getCostTo() {
-        return costTo;
+    public static String getPriceTo() {
+        return priceTo;
     }
     public static void setFilterTrue() {
         isFilter = true;
@@ -80,17 +80,17 @@ public class PCList extends ArrayList<PC> {
     public static void setName(String input) {
         name = input;
     }
-    public static void setCostFrom(String input) {
-        costFrom = input;
+    public static void setPriceFrom(String input) {
+        priceFrom = input;
     }
-    public static void setCostTo(String input) {
-        costTo = input;
+    public static void setPriceTo(String input) {
+        priceTo = input;
     }
-    public static Boolean filterByCost(PC pc, String costFrom, String costTo) {
-        if (costFrom == "") {
+    public static Boolean filterByPrice(PC pc, String priceFrom, String priceTo) {
+        if (getPriceFrom() == "") {
             return true;
         }
-        if (pc.getCost() >= Integer.parseInt(costFrom) && pc.getCost() <= Integer.parseInt(costTo)) {
+        if (pc.getCost() >= Integer.parseInt(priceFrom) && pc.getCost() <= Integer.parseInt(priceTo)) {
             return true;
         }
         else {
