@@ -14,6 +14,7 @@ public class BuilderCustomMotherboardCommand extends BuilderCustomComponentComma
     public int getExpectedArgumentLength() {
         return 6;
     }
+
     public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
             throws PPException {
         float price = 0;
@@ -40,8 +41,6 @@ public class BuilderCustomMotherboardCommand extends BuilderCustomComponentComma
         }
         Motherboard motherboard = new Motherboard(name, brand, price, formfactor, socket, power);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setMotherboard(motherboard);
-
-        return "Motherboard added: " + motherboard.getName();
+        return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setMotherboard(motherboard);
     }
 }

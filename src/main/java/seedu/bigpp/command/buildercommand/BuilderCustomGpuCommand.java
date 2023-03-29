@@ -25,7 +25,7 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
             power = Float.parseFloat(argumentList[3]);
 
             // Check if all the values are positive
-            if (price < 0 ||  power < 0) {
+            if (price < 0 || power < 0) {
                 throw new PPException("price and power should be positive");
             }
 
@@ -34,14 +34,12 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
                     "price and power should be floats");
         }
 
-        String size = argumentList[4].trim();
-        if (size.equals("")) {
-            throw new PPException("Please enter a valid size for the custom component");
+        String formfactor = argumentList[4].trim();
+        if (formfactor.equals("")) {
+            throw new PPException("Please enter a valid formfactor for the custom component");
         }
-        GPU gpu = new GPU(name, brand, price, power, size);
+        GPU gpu = new GPU(name, brand, price, power, formfactor);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setGpu(gpu);
-
-        return "GPU added: " + gpu.getName();
+        return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setGpu(gpu);
     }
 }

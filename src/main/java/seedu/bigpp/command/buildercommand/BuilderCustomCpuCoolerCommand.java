@@ -29,7 +29,7 @@ public class BuilderCustomCpuCoolerCommand extends BuilderCustomComponentCommand
             noise = Float.parseFloat(argumentList[2]);
 
             // Check if all the values are positive
-            if (price < 0 ||  power < 0 || rpm < 0 || noise < 0) {
+            if (price < 0 || power < 0 || rpm < 0 || noise < 0) {
                 throw new PPException("price, power, rpm and noise should be positive");
             }
 
@@ -40,8 +40,6 @@ public class BuilderCustomCpuCoolerCommand extends BuilderCustomComponentCommand
 
         CPUCooler cpuCooler = new CPUCooler(name, brand, price, rpm, noise, power);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setCpuCooler(cpuCooler);
-
-        return "CPU Cooler added: " + cpuCooler.getName();
+        return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setCpuCooler(cpuCooler);
     }
 }

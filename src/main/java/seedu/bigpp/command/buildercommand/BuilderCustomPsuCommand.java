@@ -25,7 +25,7 @@ public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
             power = Float.parseFloat(argumentList[4]);
 
             // Check if all the values are positive
-            if (price < 0 ||  power < 0) {
+            if (price < 0 || power < 0) {
                 throw new PPException("price and power should be positive");
             }
 
@@ -41,8 +41,6 @@ public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
         }
         PSU psu = new PSU(name, price, brand, efficiency, formFactor, power);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setPsu(psu);
-
-        return "PSU added: " + psu.getName();
+        return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setPsu(psu);
     }
 }

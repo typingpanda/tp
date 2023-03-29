@@ -65,8 +65,8 @@ public class BuilderCompareChassisCommand extends Command {
                 secondComponentObject.getBrand());
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "PRICE", "$" + firstComponentObject.getPrice(),
                 "$" + secondComponentObject.getPrice());
-        outputString += String.format("%n|%-12s|%-40s|%-40s|", "FORM FACTOR", firstComponentObject.getSize(),
-                secondComponentObject.getSize());
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "FORM FACTOR", firstComponentObject.getFormFactor(),
+                secondComponentObject.getFormFactor());
         outputString += String.format("%n%96s", "_".repeat(96));
         return outputString;
     }

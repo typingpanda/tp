@@ -32,14 +32,12 @@ public class BuilderCustomChassisCommand extends BuilderCustomComponentCommand {
                     "price should be a float");
         }
 
-        String size = argumentList[3].trim();
-        if (size.equals("")) {
-            throw new PPException("Please enter a valid size for the custom component");
+        String formfactor = argumentList[3].trim();
+        if (formfactor.equals("")) {
+            throw new PPException("Please enter a valid formfactor for the custom component");
         }
-        Chassis chassis = new Chassis(name, brand, price, size);
+        Chassis chassis = new Chassis(name, brand, price, formfactor);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setChassis(chassis);
-
-        return "Chassis added:" + chassis.getName();
+        return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setChassis(chassis);
     }
 }

@@ -31,7 +31,7 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
             speed = Integer.parseInt(argumentList[4]);
 
             // Check if all the values are positive
-            if (price < 0 ||  power < 0 || memory < 0 || sticks < 0 || speed < 0) {
+            if (price < 0 || power < 0 || memory < 0 || sticks < 0 || speed < 0) {
                 throw new PPException("price, power, memory, sticks, and speed should be positive");
             }
 
@@ -41,8 +41,6 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
         }
         RAM ram = new RAM(name, brand, price, memory, sticks, speed, power);
 
-        dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setRam(ram);
-
-        return "RAM added: " + ram.getName();
+        return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setRam(ram);
     }
 }

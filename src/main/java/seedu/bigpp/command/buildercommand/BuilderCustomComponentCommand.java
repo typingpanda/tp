@@ -11,8 +11,10 @@ public abstract class BuilderCustomComponentCommand extends Command {
     }
 
     public abstract int getExpectedArgumentLength();
+
     public abstract String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
             throws PPException;
+
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
         String arguments = super.getArguments();
@@ -35,4 +37,3 @@ public abstract class BuilderCustomComponentCommand extends Command {
     }
 
 }
-

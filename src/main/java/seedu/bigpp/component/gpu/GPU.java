@@ -6,30 +6,30 @@ import static seedu.bigpp.component.ComponentType.GPU_TYPE;
 public class GPU extends Component {
     public static final String COMPONENT_STRING = GPU_TYPE;
     private float power;
-    private String size;
+    private String formfactor;
 
-    public GPU(String name, String brand, float price, float power, String size) {
+    public GPU(String name, String brand, float price, float power, String formfactor) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
         this.power = power;
-        this.size = size;
+        this.formfactor = formfactor;
     }
 
     public float getPower() {
         return power;
     }
 
-    public String getSize() {
-        return size;
+    public String getFormFactor() {
+        return formfactor;
     }
 
     public void setPower(float power) {
         this.power = power;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setFormFactor(String formfactor) {
+        this.formfactor = formfactor;
     }
 
     @Override
@@ -38,6 +38,6 @@ public class GPU extends Component {
                 "\nBRAND: " + super.getBrand() +
                 "\nPRICE: " + super.getPrice() +
                 "\nPOWER: " + power +
-                "\nSIZE: " + size;
+                "\nformfactor: " + formfactor;
     }
 }

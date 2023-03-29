@@ -7,6 +7,7 @@ import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
 import java.util.Arrays;
+
 public class ViewerFilterCommand extends Command {
 
     private static final String NAME_FLAG = "-name";
@@ -19,7 +20,8 @@ public class ViewerFilterCommand extends Command {
     }
 
     /**
-     * Checks for the filter flags and applies it to the PC Viewer menu user interface
+     * Checks for the filter flags and applies it to the PC Viewer menu user
+     * interface
      * @return that the filter has been executed successfully
      */
     @Override
@@ -121,8 +123,7 @@ public class ViewerFilterCommand extends Command {
         }
         if (built.equals("complete") || built.equals("incomplete")) {
             PCList.setBuilt(built);
-        }
-        else {
+        } else {
             throw new PPException("built description is incorrect, please enter either complete or incomplete");
         }
     }
@@ -138,9 +139,11 @@ public class ViewerFilterCommand extends Command {
         }
         PCList.setName(name);
     }
+
     private static boolean isFlag(String flag) {
-        return flag.equals(NAME_FLAG) || flag.equals(COST_FLAG) || flag.equals(BUILT_FLAG) ;
+        return flag.equals(NAME_FLAG) || flag.equals(COST_FLAG) || flag.equals(BUILT_FLAG);
     }
+
     private static boolean hasFlag(String[] userInputStringArray) {
         for (String flag : userInputStringArray) {
             if (isFlag(flag)) {
@@ -149,6 +152,7 @@ public class ViewerFilterCommand extends Command {
         }
         return false;
     }
+
     private static boolean containsFlag(String[] flagAndDescriptionArray, String flag) {
         for (String flagAndDescription : flagAndDescriptionArray) {
             if (flagAndDescription.equals(flag)) {

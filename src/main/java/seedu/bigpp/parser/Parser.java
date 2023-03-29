@@ -1,14 +1,6 @@
 package seedu.bigpp.parser;
 
 import seedu.bigpp.command.Command;
-import seedu.bigpp.command.buildercommand.BuilderCustomChassisCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomMotherboardCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomCpuCoolerCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomGpuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomPsuCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomRamCommand;
-import seedu.bigpp.command.buildercommand.BuilderCustomStorageCommand;
 import seedu.bigpp.command.buildercommand.BuilderListComponentCommand;
 import seedu.bigpp.command.buildercommand.BuilderEditBudgetCommand;
 import seedu.bigpp.command.buildercommand.BuilderSelectCommand;
@@ -24,6 +16,14 @@ import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareMotherboa
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderComparePsuCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareRamCommand;
 import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareStorageCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomChassisCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomCpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomCpuCoolerCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomGpuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomMotherboardCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomPsuCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomRamCommand;
+import seedu.bigpp.command.buildercommand.BuilderCustomStorageCommand;
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.commoncommand.UnrecognizedCommand;

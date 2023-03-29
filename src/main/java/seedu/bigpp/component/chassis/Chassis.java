@@ -6,21 +6,21 @@ import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
 public class Chassis extends Component {
     public static final String COMPONENT_STRING = CHASSIS_TYPE;
 
-    private String size;
+    private String formfactor;
 
-    public Chassis(String name, String brand, float price, String size) {
+    public Chassis(String name, String brand, float price, String formfactor) {
         super.setName(name);
         super.setBrand(brand);
         super.setPrice(price);
-        this.size = size;
+        this.formfactor = formfactor;
     }
 
-    public String getSize() {
-        return size;
+    public String getFormFactor() {
+        return formfactor;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setFormFactor(String formfactor) {
+        this.formfactor = formfactor;
     }
 
     @Override
@@ -28,6 +28,6 @@ public class Chassis extends Component {
         return "NAME: " + super.getName() +
                 "\nBRAND: " + super.getBrand() +
                 "\nPRICE: " + super.getPrice() +
-                "\nSIZE: " + size;
+                "\nformfactor: " + formfactor;
     }
 }

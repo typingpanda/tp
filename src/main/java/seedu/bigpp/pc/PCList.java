@@ -1,6 +1,8 @@
 package seedu.bigpp.pc;
+
 import java.util.ArrayList;
 import static seedu.bigpp.ui.UI.out;
+
 public class PCList extends ArrayList<PC> {
 
     private static Boolean isFilter;
@@ -17,22 +19,22 @@ public class PCList extends ArrayList<PC> {
         name = "";
 
     }
+
     public void printPcList() {
         if (isFilter) {
             printAltPcList();
-        }
-        else {
+        } else {
             if (this.size() > 0) {
                 out.println("Here is the list of PC Builds:");
                 for (int i = 0; i < this.size(); i++) {
                     out.println((i + 1) + "." + this.get(i));
                 }
-            }
-            else {
+            } else {
                 out.println("List currently empty!");
             }
         }
     }
+
     public void printAltPcList() {
         int pcCount = 0;
         if (this.size() > 0) {
@@ -51,24 +53,31 @@ public class PCList extends ArrayList<PC> {
             out.println("List currently empty!");
         }
     }
+
     public static Boolean getIsFilter() {
         return isFilter;
     }
+
     public static String getIsBuilt() {
         return built;
     }
+
     public static String getName() {
         return name;
     }
+
     public static String getCostFrom() {
         return costFrom;
     }
+
     public static String getCostTo() {
         return costTo;
     }
+
     public static void setFilterTrue() {
         isFilter = true;
     }
+
     public static void setFilterFalse() {
         isFilter = false;
     }
@@ -80,31 +89,33 @@ public class PCList extends ArrayList<PC> {
     public static void setName(String input) {
         name = input;
     }
+
     public static void setCostFrom(String input) {
         costFrom = input;
     }
+
     public static void setCostTo(String input) {
         costTo = input;
     }
+
     public static Boolean filterByCost(PC pc, String costFrom, String costTo) {
         if (costFrom == "") {
             return true;
         }
         if (pc.getCost() >= Integer.parseInt(costFrom) && pc.getCost() <= Integer.parseInt(costTo)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
+
     public static Boolean filterByName(PC pc, String name) {
         if (name == "") {
             return true;
         }
         if (pc.getName().toLowerCase().contains(name)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -114,7 +125,7 @@ public class PCList extends ArrayList<PC> {
             return true;
         }
         Boolean isBuilt = null;
-        switch(built) {
+        switch (built) {
         case "complete":
             isBuilt = true;
             break;
@@ -126,8 +137,7 @@ public class PCList extends ArrayList<PC> {
         }
         if (pc.isComplete() == isBuilt) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

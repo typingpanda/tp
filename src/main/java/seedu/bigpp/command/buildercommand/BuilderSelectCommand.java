@@ -15,7 +15,6 @@ public class BuilderSelectCommand extends Command {
 
     /**
      * Selects a component to be added to the PC that the builder is working on
-     * 
      * @return Added Component message
      */
     @Override
@@ -54,7 +53,8 @@ public class BuilderSelectCommand extends Command {
         int componentIndex = Integer.parseInt(indexString) - 1;
 
         // throw exception if index is out of bounds eg. "select cpu 100"
-        if (componentIndex < 0 || componentIndex >= dataStorage.stringToComponentListMap.get(inputArray[0]).size()) {
+        if (componentIndex < 0
+                || componentIndex >= dataStorage.stringToComponentListMap.get(inputArray[0]).size()) {
             throw new PPException("Please enter a valid index");
         }
 
