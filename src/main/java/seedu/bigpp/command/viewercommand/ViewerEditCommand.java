@@ -16,8 +16,7 @@ public class ViewerEditCommand extends Command {
      * @return the name of the PC created
      */
     @Override
-    public String executeCommand(DataStorage dataStorage)
-            throws PPException {
+    public String executeCommand(DataStorage dataStorage) throws PPException {
         String argument = super.getArguments();
 
         // throw exception if no index is selected
