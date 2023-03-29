@@ -102,6 +102,14 @@ From the diagram, Command class has a private attribute named arguments which st
 contains methods that help to set and retrieve the private attribute in the class. 
 Overall, this class diagram provides an overview of the purpose of the Parser class.
 
+####  ViewerAddCommand() method
+This Sequential analysis will show how the ViewerAddCommand() method works, this will also serve as an example for the ViewerDeleteCommand and ViewerViewCommand.
+During the ParseCommand, when a add command is detected in the user input, it will call the `ViewerAddCommand` method with 
+a name as its argument. The `ViewerAddCommand` then calls a method to retrieve the argument.The `ViewerAddCommand`
+checks if the argument is empty and throws an `PPException` if it is empty. A `PC` object is created with the argument as
+an input. The `add` method is called by accessing the `dataStorage` and `pcList` classes to add the `PC` object to the list.
+Finally, a message is returned to inform the user that the `ViewerAddCommand` method has been executed successfully.
+
 ### PC Class Architecture
 
 ![PC Class Diagram](uml-pictures/PcDiagram.png)
