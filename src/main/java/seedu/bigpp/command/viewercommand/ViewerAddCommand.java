@@ -4,7 +4,6 @@ import seedu.bigpp.command.Command;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.pc.PC;
-import seedu.bigpp.pc.PCList;
 
 public class ViewerAddCommand extends Command {
 
@@ -18,9 +17,6 @@ public class ViewerAddCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
-        if (PCList.getIsFilter()){
-            return "Please clear filter before adding a new pc";
-        }
         String name = super.getArguments();
         // throw exception if no name is provided
         if (name.equals("")) {

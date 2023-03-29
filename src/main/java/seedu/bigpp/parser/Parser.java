@@ -27,15 +27,7 @@ import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareStorageCo
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.commoncommand.UnrecognizedCommand;
-import seedu.bigpp.command.viewercommand.ViewerAddCommand;
-import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
-import seedu.bigpp.command.viewercommand.ViewerEditCommand;
-import seedu.bigpp.command.viewercommand.ViewerHelpCommand;
-import seedu.bigpp.command.viewercommand.ViewerViewCommand;
-import seedu.bigpp.command.viewercommand.filtercommand.ViewerFilterClearCommand;
-import seedu.bigpp.command.viewercommand.filtercommand.ViewerFilterCostCommand;
-import seedu.bigpp.command.viewercommand.filtercommand.ViewerFilterIsBuiltCommand;
-import seedu.bigpp.command.viewercommand.filtercommand.ViewerFilterNameCommand;
+import seedu.bigpp.command.viewercommand.*;
 import seedu.bigpp.ui.UI;
 import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
 import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
@@ -109,7 +101,7 @@ public class Parser {
         case "edit":
             return new ViewerEditCommand(arguments);
         case "filter":
-            return parseFilterCommand(arguments);
+            return new ViewerFilterCommand(arguments);
         case "help":
             return new ViewerHelpCommand();
         default:
@@ -211,29 +203,6 @@ public class Parser {
             return new BuilderCompareChassisCommand(attributes);
         case CPU_COOLER_TYPE:
             return new BuilderCompareCpuCoolerCommand(attributes);
-        default:
-            return new UnrecognizedCommand(
-                    "Invalid component type!, valid types are "
-                            + "(cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
-        }
-    }
-
-    private Command parseFilterCommand(String arguments) {
-        String[] inputList = arguments.split(" ", 2);
-        String filterType = inputList[0].toLowerCase();
-        String input = "";
-        if (inputList.length == 2) {
-            input = inputList[1];
-        }
-        switch (filterType) {
-        case "name":
-            return new ViewerFilterNameCommand(input);
-        case "cost":
-            return new ViewerFilterCostCommand(input);
-        case "built":
-            return new ViewerFilterIsBuiltCommand(input);
-        case "clear":
-            return new ViewerFilterClearCommand();
         default:
             return new UnrecognizedCommand(
                     "Invalid component type!, valid types are "
