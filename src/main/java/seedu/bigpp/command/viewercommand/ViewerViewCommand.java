@@ -17,7 +17,6 @@ public class ViewerViewCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
-
         String argument = super.getArguments();
 
         // throw exception if no index is selected

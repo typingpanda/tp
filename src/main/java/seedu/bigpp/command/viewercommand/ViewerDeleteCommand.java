@@ -19,7 +19,6 @@ public class ViewerDeleteCommand extends Command {
      */
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
-        // throw exception if no index is selected
         String argument = super.getArguments();
         if (argument.equals("")) {
             throw new PPException("Please input an index");
