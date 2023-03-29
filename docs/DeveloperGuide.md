@@ -110,6 +110,9 @@ checks if the argument is empty and throws an `PPException` if it is empty. A `P
 an input. The `add` method is called by accessing the `dataStorage` and `pcList` classes to add the `PC` object to the list.
 Finally, a message is returned to inform the user that the `ViewerAddCommand` method has been executed successfully.
 
+A UML sequence diagram showing the interactions between the different objects involved in handling this method can be
+found below:
+![Viewer Add Command Sequential Diagram](uml-pictures/ViewerAddCommand.png)
 ### PC Class Architecture
 
 ![PC Class Diagram](uml-pictures/PcDiagram.png)
