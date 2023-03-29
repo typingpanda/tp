@@ -27,7 +27,12 @@ import seedu.bigpp.command.buildercommand.comparecommand.BuilderCompareStorageCo
 import seedu.bigpp.command.commoncommand.BackCommand;
 import seedu.bigpp.command.commoncommand.ByeCommand;
 import seedu.bigpp.command.commoncommand.UnrecognizedCommand;
-import seedu.bigpp.command.viewercommand.*;
+import seedu.bigpp.command.viewercommand.ViewerAddCommand;
+import seedu.bigpp.command.viewercommand.ViewerDeleteCommand;
+import seedu.bigpp.command.viewercommand.ViewerEditCommand;
+import seedu.bigpp.command.viewercommand.ViewerFilterCommand;
+import seedu.bigpp.command.viewercommand.ViewerHelpCommand;
+import seedu.bigpp.command.viewercommand.ViewerViewCommand;
 import seedu.bigpp.ui.UI;
 import static seedu.bigpp.component.ComponentType.CHASSIS_TYPE;
 import static seedu.bigpp.component.ComponentType.CPU_COOLER_TYPE;
