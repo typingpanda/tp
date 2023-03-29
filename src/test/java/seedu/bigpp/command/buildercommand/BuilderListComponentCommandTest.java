@@ -10,6 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BuilderListComponentCommandTest {
 
+    /**
+     *
+     */
+    private static final String MISSING_NAME_EXCEPTION_MESSAGE = "Please enter a name after the flag";
+
     private static final String EXPECTED_OUTPUT = "Here are all available components of type 'cpu': \n" + "1.\n"
         + "NAME: Intel core i3-10100\n" + "BRAND: Intel\n" + "PRICE: 99.5\n" + "CORES: 4\n" + "THREADS: 8\n"
         + "BASECLOCK: 3.6\n" + "BOOSTCLOCK: 4.3\n" + "POWER: 65.0\n" + "SOCKET: LGA1200\n" + "================\n"
@@ -61,7 +66,7 @@ public class BuilderListComponentCommandTest {
 
         Exception exception = assertThrows(PPException.class, () -> new BuilderListComponentCommand("cpu -name")
                 .executeCommand(dataStorage));
-        assertEquals("Please enter a name after the flag", exception.getMessage());
+        assertEquals(MISSING_NAME_EXCEPTION_MESSAGE, exception.getMessage());
     }
 
     @Test
