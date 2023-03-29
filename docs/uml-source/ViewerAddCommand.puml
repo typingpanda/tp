@@ -6,7 +6,7 @@ participant ViewerAddCommand
 participant PC
 participant DataStorage.pcList
 
-alt "add <name>"
+opt "add <name>"
 ParseViewerCommand -> ViewerAddCommand: ViewerAddCommand(String arguments)
 activate ViewerAddCommand
 ViewerAddCommand -> ViewerAddCommand: getArguments()
