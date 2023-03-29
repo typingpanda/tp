@@ -101,6 +101,23 @@ What would you like to do?
 #### `delete PC_INDEX`
 **Functionality:** Deletes the PC with index `PC_INDEX`
 
+#### `filer -name PC_NAME -cost /from PC_START_COST /to PC_END_COST -built PC_isComplete`
+**Functionality:** Filters the PC with the following flags `-name`, `-cost` and `-built`
+
+**Example:** filter the PC List by the name of intermediate, in the range of starting from 1000 to 3000 and is a complete built
+```
+input: filter -cost /from 1000 /to 3000 -built complete
+
+output:
+
+===================================================
+PC viewer
+Here is the list of PC Builds:
+2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+What would you like to do?
+===================================================
+Filter completed
+```
 #### `bye`
 **Functionality:** Exits the application
 
