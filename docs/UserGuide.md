@@ -10,10 +10,9 @@
     - [`view PC_INDEX`](#view-pc_index)
     - [`edit PC_INDEX`](#edit-pc_index)
     - [`delete PC_INDEX`](#delete-pc_index)
-    - [`filter FLAGS`](#filter-flags)
-    - [`bye`](#bye)
+    - [`filter -name PC_NAME -cost /from PC_START_COST /to PC_END_COST -built PC_isComplete`](#filter--name-pc_name--cost-from-pc_start_cost-to-pc_end_cost--built-pc_iscomplete)
   - [In PCBuilder Mode](#in-pcbuilder-mode)
-    - [`list COMPONENT_TYPE`](#list-component_type)
+    - [`list COMPONENT_TYPE [-COMPONENT_FLAG FLAG]`](#list-component_type--component_flag-flag)
     - [`select COMPONENT_TYPE INDEX`](#select-component_type-index)
     - [`unselect COMPONENT_TYPE`](#unselect-component_type)
     - [`compare COMPONENT_TYPE INDEX_1 & INDEX_2`](#compare-component_type-index_1--index_2)
@@ -21,6 +20,7 @@
     - [`name NEW_NAME`](#name-new_name)
     - [`custom COMPONENT_TYPE SPEC_1,SPEC_2, ...`](#custom-component_type-spec_1spec_2-)
     - [`back`](#back)
+    - [`bye`](#bye)
 - [Additional Features](#additional-features)
   - [Compatibility Check](#compatibility-check)
   - [Glossary](#glossary)
@@ -119,12 +119,32 @@ What would you like to do?
 ===================================================
 Filter completed
 ```
-#### `bye`
-**Functionality:** Exits the application
 
 ### In PCBuilder Mode
-#### `list COMPONENT_TYPE`
-**Functionality:** Lists all components of type `COMPONENT_TYPE`
+#### `list COMPONENT_TYPE [-COMPONENT_FLAG FLAG]`
+**Functionality:** Lists all components of type `COMPONENT_TYPE` with optional flags. These are the following common flags `-name`, `-brand` and `-price` for all components. Flags that are unique to each components can be used too, such as `-power`, `-formfactor`, `socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `memory`, `-sticks`, `-speed`, `-type` and `-efficiency`. Noise, power, rpm, price, boostclock and baseclock requires an input range by using /from and /to flags. Multiple flags can be used together.
+
+**Example:**
+```
+input: list cpu -name intel -price /from 1 /to 100
+
+output:
+Here are all available components of type 'cpu':
+meeting the following criteria:
+name: intel
+price: 1 to 100
+1.
+NAME: Intel core i3-10100
+BRAND: Intel
+PRICE: 99.5
+CORES: 4
+THREADS: 8
+BASECLOCK: 3.6
+BOOSTCLOCK: 4.3
+POWER: 65.0
+SOCKET: LGA1200
+================
+```
 
 #### `select COMPONENT_TYPE INDEX`
 **Functionality:** Adds the component of type `COMPONENT_TYPE` with index `INDEX` to the current PC Build
@@ -293,6 +313,9 @@ CPU added: Intel-new-cpu
 
 #### `back`
 **Functionality:** Goes back to PCViewer menu
+
+#### `bye`
+**Functionality:** Exits the application
 
 ## Additional Features
 
