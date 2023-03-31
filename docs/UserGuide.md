@@ -297,7 +297,12 @@ CPU added: Intel-new-cpu
 ## Additional Features
 
 ### Compatibility Check
-`Coming soon`
+BigPP will check if your components that you added are compatible with each other.
+
+If your chassis is mini size but you want to use an atx size gpu, it will result in an incompatibility error and suggest changes to you
+If your total items have power that exceeds 80% of your power supply rated power, it will result in incompatibility errors.
+if your the item you want to add exceeds your total budget, it will not allow you to add the component.
+If your CPU has a different socket than your Motherboard or vice versa, it will not allow you to add it.
 
 
 ### Glossary
