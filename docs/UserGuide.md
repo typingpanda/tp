@@ -10,6 +10,7 @@
     - [`view PC_INDEX`](#view-pc_index)
     - [`edit PC_INDEX`](#edit-pc_index)
     - [`delete PC_INDEX`](#delete-pc_index)
+    - [`filter FLAGS`](#filter-flags)
     - [`bye`](#bye)
   - [In PCBuilder Mode](#in-pcbuilder-mode)
     - [`list COMPONENT_TYPE`](#list-component_type)
@@ -101,7 +102,7 @@ What would you like to do?
 #### `delete PC_INDEX`
 **Functionality:** Deletes the PC with index `PC_INDEX`
 
-#### `filer -name PC_NAME -cost /from PC_START_COST /to PC_END_COST -built PC_isComplete`
+#### `filter -name PC_NAME -cost /from PC_START_COST /to PC_END_COST -built PC_isComplete`
 **Functionality:** Filters the PC with the following flags `-name`, `-cost` and `-built`
 
 **Example:** filter the PC List by the name of intermediate, in the range of starting from 1000 to 3000 and is a complete built
