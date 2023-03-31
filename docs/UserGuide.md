@@ -12,7 +12,7 @@
     - [`delete PC_INDEX`](#delete-pc_index)
     - [`filter -name PC_NAME -cost /from PC_START_COST /to PC_END_COST -built PC_isComplete`](#filter--name-pc_name--cost-from-pc_start_cost-to-pc_end_cost--built-pc_iscomplete)
   - [In PCBuilder Mode](#in-pcbuilder-mode)
-    - [`list COMPONENT_TYPE [-name COMPONENT_NAME] [-brand COMPONENT-BRAND] [-price /from COMPONENT_START_PRICE /to COMPONENT_END_PRICE]`](#list-component_type--name-component_name--brand-component-brand--price-from-component_start_price-to-component_end_price)
+    - [`list COMPONENT_TYPE [-COMPONENT_FLAG FLAG]`](#list-component_type--component_flag-flag)
     - [`select COMPONENT_TYPE INDEX`](#select-component_type-index)
     - [`unselect COMPONENT_TYPE`](#unselect-component_type)
     - [`compare COMPONENT_TYPE INDEX_1 & INDEX_2`](#compare-component_type-index_1--index_2)
@@ -121,8 +121,8 @@ Filter completed
 ```
 
 ### In PCBuilder Mode
-#### `list COMPONENT_TYPE [-name COMPONENT_NAME] [-brand COMPONENT-BRAND] [-price /from COMPONENT_START_PRICE /to COMPONENT_END_PRICE]`
-**Functionality:** Lists all components of type `COMPONENT_TYPE` with optional flags. These are the following common flags `-name`, `-brand` and `-price` for all components. Flags that are unique to each components can be used too, such as `-power`, `-formfactor`, `socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `memory`, `-sticks`, `-speed`, `-type` and `-efficiency`. Noise, power, rpm, price, boostclock and baseclock requires an input range by using /from and /to flags.
+#### `list COMPONENT_TYPE [-COMPONENT_FLAG FLAG]`
+**Functionality:** Lists all components of type `COMPONENT_TYPE` with optional flags. These are the following common flags `-name`, `-brand` and `-price` for all components. Flags that are unique to each components can be used too, such as `-power`, `-formfactor`, `socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `memory`, `-sticks`, `-speed`, `-type` and `-efficiency`. Noise, power, rpm, price, boostclock and baseclock requires an input range by using /from and /to flags. Multiple flags can be used together.
 
 **Example:**
 ```
