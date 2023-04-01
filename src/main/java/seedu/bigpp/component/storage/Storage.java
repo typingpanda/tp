@@ -49,7 +49,7 @@ public class Storage extends Component {
             return "NAME: " + super.getName() +
                     "\nBRAND: " + super.getBrand() +
                     "\nPRICE: " + super.getPrice() +
-                    "\nTYPE: " + type + '\'' +
+                    "\nTYPE: " + type +
                     "\nSIZE: " + size +
                     "\nPOWER: " + power;
         } else {
