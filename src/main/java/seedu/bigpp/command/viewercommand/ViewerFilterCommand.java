@@ -57,7 +57,7 @@ public class ViewerFilterCommand extends Command {
             } else {
                 throw new PPException("Please enter a valid flag");
             }
-        return "Filter completed";
+            return "Filter completed";
         }
         return "";
     }
