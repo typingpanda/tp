@@ -20,8 +20,7 @@ public class ViewerFilterCommand extends Command {
     }
 
     /**
-     * Checks for the filter flags and applies it to the PC Viewer menu user
-     * interface
+     * Checks for the filter flags and applies it to the PC Viewer menu user interface
      * @return that the filter has been executed successfully
      */
     @Override
@@ -37,12 +36,11 @@ public class ViewerFilterCommand extends Command {
             throw new PPException("Please enter a valid filter");
         }
         if (containsFlag(userInputStringArray, CLEAR_FLAG)) {
-            PCList.setFilterFalse();
-            PCList.setBuilt("");
-            PCList.setPriceFrom("");
-            PCList.setName("");
-            PCList.setPriceTo("");
+            handleClearFlag(userInputStringArray);
             return "Filter cleared";
+        }
+        if (userInputStringArray.length <= 1) {
+            throw new PPException("Please enter a valid flag and description");
         }
         if (userInputStringArray.length > 1) {
             if (hasFlag(userInputStringArray)) {
@@ -59,11 +57,19 @@ public class ViewerFilterCommand extends Command {
             } else {
                 throw new PPException("Please enter a valid flag");
             }
-
-        }
         return "Filter completed";
+        }
+        return "";
     }
 
+
+    private void handleClearFlag(String[] flagAndDescriptionArray) throws PPException {
+        PCList.setFilterFalse();
+        PCList.setBuilt("");
+        PCList.setPriceFrom("");
+        PCList.setName("");
+        PCList.setPriceTo("");
+    }
     private void handlePriceFlag(String userInputString, String[] flagAndDescriptionArray) throws PPException {
         int priceFlagIndex = indexOfFlag(flagAndDescriptionArray, PRICE_FLAG);
         if (priceFlagIndex == flagAndDescriptionArray.length - 1) {
@@ -141,7 +147,7 @@ public class ViewerFilterCommand extends Command {
     }
 
     private static boolean isFlag(String flag) {
-        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BUILT_FLAG);
+        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BUILT_FLAG) || flag.equals(CLEAR_FLAG);
     }
 
     private static boolean hasFlag(String[] userInputStringArray) {
