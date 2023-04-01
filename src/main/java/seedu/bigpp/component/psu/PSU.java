@@ -48,7 +48,7 @@ public class PSU extends Component {
                 "\nBRAND: " + super.getBrand() +
                 "\nPRICE: " + super.getPrice() +
                 "\nEFFICIENCY: " + efficiency +
-                "\nformfactor: " + formfactor +
+                "\nFORMFACTOR: " + formfactor +
                 "\nPOWER: " + power;
     }
 }

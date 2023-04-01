@@ -3,6 +3,7 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.component.gpu.GPU;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
+import seedu.bigpp.pc.FormFactorEnum;
 import seedu.bigpp.ui.UI;
 
 public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
@@ -34,9 +35,9 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
                     "price and power should be floats");
         }
 
-        String formfactor = argumentList[4].trim();
-        if (formfactor.equals("")) {
-            throw new PPException("Please enter a valid formfactor for the custom component");
+        String formfactor = argumentList[4].trim().toLowerCase();
+        if (FormFactorEnum.isFormFactor(formfactor) == false) {
+            throw new PPException("Please enter a valid formfactor for the custom component (mini, micro, atx)");
         }
         GPU gpu = new GPU(name, brand, price, power, formfactor);
 

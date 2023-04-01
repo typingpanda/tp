@@ -44,7 +44,7 @@ public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
 
         String socket = argumentList[8].trim();
         if (socket.equals("")) {
-            throw new PPException("Please enter a valid socket for the custom component");
+            throw new PPException("Please enter a socket for the custom component");
         }
         CPU cpu = new CPU(name, brand, price, cores, threads, baseClock, boostClock, power, socket);
 

@@ -47,7 +47,7 @@ public class Motherboard extends Component {
         return "NAME: " + super.getName() +
                 "\nBRAND: " + super.getBrand() +
                 "\nPRICE: " + super.getPrice() +
-                "\nformfactor: " + formfactor +
+                "\nFORMFACTOR: " + formfactor +
                 "\nSOCKET: " + socket +
                 "\nPOWER: " + power;
     }

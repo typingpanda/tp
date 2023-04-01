@@ -38,6 +38,6 @@ public class GPU extends Component {
                 "\nBRAND: " + super.getBrand() +
                 "\nPRICE: " + super.getPrice() +
                 "\nPOWER: " + power +
-                "\nformfactor: " + formfactor;
+                "\nFORMFACTOR: " + formfactor;
     }
 }

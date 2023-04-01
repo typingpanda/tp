@@ -28,6 +28,6 @@ public class Chassis extends Component {
         return "NAME: " + super.getName() +
                 "\nBRAND: " + super.getBrand() +
                 "\nPRICE: " + super.getPrice() +
-                "\nformfactor: " + formfactor;
+                "\nFORMFACTOR: " + formfactor;
     }
 }

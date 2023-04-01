@@ -3,6 +3,7 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.component.chassis.Chassis;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
+import seedu.bigpp.pc.FormFactorEnum;
 import seedu.bigpp.ui.UI;
 
 public class BuilderCustomChassisCommand extends BuilderCustomComponentCommand {
@@ -32,11 +33,11 @@ public class BuilderCustomChassisCommand extends BuilderCustomComponentCommand {
                     "price should be a float");
         }
 
-        String formfactor = argumentList[3].trim();
-        if (formfactor.equals("")) {
-            throw new PPException("Please enter a valid formfactor for the custom component");
+        String formFactor = argumentList[3].trim().toLowerCase();
+        if (FormFactorEnum.isFormFactor(formFactor) == false) {
+            throw new PPException("Please enter a valid formfactor for the custom component (mini, micro, atx)");
         }
-        Chassis chassis = new Chassis(name, brand, price, formfactor);
+        Chassis chassis = new Chassis(name, brand, price, formFactor);
 
         return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setChassis(chassis);
     }

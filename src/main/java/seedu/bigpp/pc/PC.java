@@ -483,6 +483,12 @@ public class PC {
         String componentString = "";
 
         componentString += this.toString() + "\n";
+        if (psu == null) {
+            componentString += ("Power Consumption: " + this.getTotalPowerConsumption() + "W/" + "0W\n");
+        } else {
+            componentString += ("Power Consumption: " + this.getTotalPowerConsumption() + "W/" + psu.getPower()
+                    + "W\n");
+        }
         componentString += ("Components:" + '\n');
 
         String[] componentNames = { "CPU        :", "CPU Cooler :", "GPU        :", "Motherboard:", "RAM        :",

@@ -287,7 +287,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle speed flag, speed can be 1600 or 3200
+    // handle speed flag, speed can be 1600/2000/2666/3000/3200/3600
     private ComponentList<?> handleSpeedFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -307,8 +307,8 @@ public class BuilderListComponentCommand extends Command {
         }
 
         int speed = Integer.parseInt(speedDescriptionArray[0]);
-        if (speed != 1600 && speed != 3200) {
-            throw new PPException("Please enter a valid speed (1600 or 3200))");
+        if (speed != 1600 && speed != 2000 && speed != 2666 && speed != 3000 && speed != 3200 && speed != 3600) {
+            throw new PPException("Please enter a valid speed (1600/2000/2666/3000/3200/3600))");
         }
 
         flagsArray.add("speed: " + speed);
@@ -317,7 +317,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle sticks flag, sticks could be int 1 or 2
+    // handle sticks flag, sticks could be int 1, 2, 3, 4
     private ComponentList<?> handleSticksFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -337,8 +337,8 @@ public class BuilderListComponentCommand extends Command {
         }
 
         int sticks = Integer.parseInt(sticksDescriptionArray[0]);
-        if (sticks != 1 && sticks != 2) {
-            throw new PPException("Please enter a valid sticks description (1 or 2))");
+        if (sticks != 1 && sticks != 2 && sticks != 3 && sticks != 4) {
+            throw new PPException("Please enter a valid sticks description (1, 2, 3 or 4))");
         }
 
         flagsArray.add("Sticks: " + sticks);
@@ -347,7 +347,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle memory flag, memory could be int 8, 16, 32
+    // handle memory flag, memory could be int 8, 16, 32, 64
     private ComponentList<?> handleMemoryFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -367,8 +367,8 @@ public class BuilderListComponentCommand extends Command {
         }
 
         int memory = Integer.parseInt(memoryDescriptionArray[0]);
-        if (memory != 8 && memory != 16 && memory != 32) {
-            throw new PPException("Please enter a valid memory description (8, 16 or 32)");
+        if (memory != 8 && memory != 16 && memory != 32 && memory != 64) {
+            throw new PPException("Please enter a valid memory description (8, 16, 32 or 64)");
         }
 
         flagsArray.add("Memory: " + memory + "GB");
