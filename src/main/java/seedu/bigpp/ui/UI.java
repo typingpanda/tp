@@ -4,6 +4,7 @@ import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.menu.PCBuilderMenu;
 import seedu.bigpp.menu.PCViewerMenu;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -109,7 +110,18 @@ public abstract class UI {
     }
 
     public static void clearTerminal() {
-        out.println("\033[H\033[2J");
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (IOException | InterruptedException ex) {
+            // Handle any exceptions.
+            ex.printStackTrace();
+        }
+
     }
 
     public static void showResult(String result) {
