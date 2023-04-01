@@ -28,12 +28,13 @@ public class BuilderEditBudgetCommand extends Command {
             throw new PPException("Please enter a budget that is an integer");
         }
 
-        if (argument.length() > 6) {
-            throw new PPException("Integer too large, please enter a smaller budget");
+        int budget = 0;
+
+        try {
+            budget = Integer.parseInt(super.getArguments());
+        } catch (NumberFormatException e) {
+            throw new PPException("Budget too large, please enter a smaller budget");
         }
-
-        int budget = Integer.parseInt(super.getArguments());
-
         if (budget <= 0 && budget != -1) {
             throw new PPException("Please enter a budget that is greater than 0");
         }
@@ -43,8 +44,7 @@ public class BuilderEditBudgetCommand extends Command {
 
         if (budget < currentCost) {
             throw new PPException(
-                    "You have set a budget that is lower than the" + 
-                    "current cost of the build, please set a higher budget.");
+                    "You have set a budget that is lower than the" + "current cost of the build, please set a higher budget.");
         }
 
         dataStorage.pcList.get(pcIndex).setBudget(budget);

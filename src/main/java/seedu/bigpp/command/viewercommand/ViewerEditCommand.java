@@ -28,13 +28,14 @@ public class ViewerEditCommand extends Command {
             throw new PPException("Please enter an integer");
         }
 
-        if (argument.length() > 3) {
-            throw new PPException("Integer too large, please enter a smaller index");
+        int pcIndex = 0;
+        
+        try {
+            pcIndex = Integer.parseInt(argument) - 1;
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter an integer");
         }
 
-        int pcIndex = Integer.parseInt(argument) - 1;
-
-        
         // throw exception if index selected is out of the PCList range
         if (pcIndex < 0 || pcIndex >= dataStorage.pcList.size()) {
             throw new PPException("Please enter a valid index");

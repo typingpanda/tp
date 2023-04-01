@@ -50,15 +50,14 @@ public class BuilderSelectCommand extends Command {
             throw new PPException("Please enter an integer");
         }
 
-        if (indexString.length() > 3) {
-            throw new PPException("Integer too large, please enter a smaller index");
+        int componentIndex = 0;
+        try {
+            componentIndex = Integer.parseInt(indexString) - 1;
+        } catch (NumberFormatException e) {
+            throw new PPException("Index too large, please enter a smaller index");
         }
-
-        int componentIndex = Integer.parseInt(indexString) - 1;
-
         // throw exception if index is out of bounds eg. "select cpu 100"
-        if (componentIndex < 0
-                || componentIndex >= dataStorage.stringToComponentListMap.get(inputArray[0]).size()) {
+        if (componentIndex < 0 || componentIndex >= dataStorage.stringToComponentListMap.get(inputArray[0]).size()) {
             throw new PPException("Please enter a valid index");
         }
 
