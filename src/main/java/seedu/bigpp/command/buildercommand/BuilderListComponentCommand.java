@@ -38,6 +38,7 @@ public class BuilderListComponentCommand extends Command {
     private static final String TYPE_FLAG = "-type";
     private static final String FORM_FACTOR_FLAG = "-formfactor";
     private static final String EFFICIENCY_FLAG = "-efficiency";
+    private static final String DETAILS_FLAG = "-details";
 
     public BuilderListComponentCommand(String arguments) {
         setArguments(arguments);
@@ -72,6 +73,8 @@ public class BuilderListComponentCommand extends Command {
         ArrayList<Integer> componentIndexes = new ArrayList<Integer>();
         ArrayList<String> flagsArray = new ArrayList<String>();
 
+        Boolean getDetails = false;
+
         if (userInputStringArray.length > 1) {
             String[] flagAndDescriptionArray = Arrays.copyOfRange(userInputStringArray, 1, userInputStringArray.length);
             if (hasFlag(userInputStringArray)) {
@@ -86,6 +89,9 @@ public class BuilderListComponentCommand extends Command {
                 if (containsFlag(flagAndDescriptionArray, PRICE_FLAG)) {
                     componentList = handlePriceFlag(userInputString, componentList, flagsArray, flagAndDescriptionArray,
                             componentIndexes);
+                }
+                if (containsFlag(flagAndDescriptionArray, DETAILS_FLAG)) {
+                    getDetails = true;
                 }
 
                 switch (componentType) {
@@ -225,8 +231,7 @@ public class BuilderListComponentCommand extends Command {
                 outputString += flagDescription + "\n";
             }
         }
-
-        return outputString + componentList.getListString(componentIndexes);
+        return outputString + componentList.getListString(componentIndexes, getDetails);
     }
 
     // handle size flag, size can be 512, 1024, 2048, 4096
@@ -964,7 +969,7 @@ public class BuilderListComponentCommand extends Command {
                 || flag.equals(SOCKET_FLAG) || flag.equals(RPM_FLAG) || flag.equals(NOISE_FLAG)
                 || flag.equals(MEMORY_FLAG) || flag.equals(STICKS_FLAG) || flag.equals(SPEED_FLAG)
                 || flag.equals(TYPE_FLAG) || flag.equals(FORM_FACTOR_FLAG)
-                || flag.equals(EFFICIENCY_FLAG);
+                || flag.equals(EFFICIENCY_FLAG) || flag.equals(DETAILS_FLAG);
     }
 
     private static boolean hasFlag(String[] userInputStringArray) {

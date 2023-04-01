@@ -33,11 +33,15 @@ public class GPU extends Component {
     }
 
     @Override
-    public String toString() {
-        return "NAME: " + super.getName() +
-                "\nBRAND: " + super.getBrand() +
-                "\nPRICE: " + super.getPrice() +
-                "\nPOWER: " + power +
-                "\nFORMFACTOR: " + formfactor;
+    public String toString(Boolean getDetails) {
+        if (getDetails) {
+            return "NAME: " + super.getName() +
+                    "\nBRAND: " + super.getBrand() +
+                    "\nPRICE: " + super.getPrice() +
+                    "\nPOWER: " + power +
+                    "\nFORMFACTOR: " + formfactor;
+        } else {
+            return super.name;
+        }
     }
 }

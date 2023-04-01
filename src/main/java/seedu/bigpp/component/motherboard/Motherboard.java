@@ -43,13 +43,16 @@ public class Motherboard extends Component {
     }
 
     @Override
-    public String toString() {
-        return "NAME: " + super.getName() +
-                "\nBRAND: " + super.getBrand() +
-                "\nPRICE: " + super.getPrice() +
-                "\nFORMFACTOR: " + formfactor +
-                "\nSOCKET: " + socket +
-                "\nPOWER: " + power;
+    public String toString(Boolean getDetails) {
+        if (getDetails) {
+            return "NAME: " + super.getName() +
+                    "\nBRAND: " + super.getBrand() +
+                    "\nPRICE: " + super.getPrice() +
+                    "\nFORMFACTOR: " + formfactor +
+                    "\nSOCKET: " + socket +
+                    "\nPOWER: " + power;
+        } else {
+            return super.name;
+        }
     }
-
 }

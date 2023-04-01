@@ -17,18 +17,18 @@ public class ComponentList<T> extends ArrayList<Component> {
      * components in the original list will be shown.
      * @return a string containing all the components in the list
      */
-    public String getListString(ArrayList<Integer> componentIndexes) {
+    public String getListString(ArrayList<Integer> componentIndexes, Boolean getDetails) {
         String outputString = "";
 
         if (componentIndexes.size() == 0) {
             for (int i = 0; i < super.size(); i++) {
-                outputString += (i + 1) + "." + "\n" + super.get(i).toString() + "\n" + "================\n";
+                outputString += (i + 1) + "." + "\n" + super.get(i).toString(getDetails) + "\n" + "================\n";
             }
 
         } else {
             for (int i = 0; i < super.size(); i++) {
                 outputString += componentIndexes.get(i).toString() + "." + "\n" + super.get(i)
-                        .toString() + "\n" + "================\n";
+                        .toString(getDetails) + "\n" + "================\n";
             }
         }
 

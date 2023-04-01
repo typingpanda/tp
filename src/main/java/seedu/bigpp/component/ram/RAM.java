@@ -53,13 +53,17 @@ public class RAM extends Component {
     }
 
     @Override
-    public String toString() {
-        return "NAME: " + super.getName() +
-                "\nBRAND: " + super.getBrand() +
-                "\nPRICE: " + super.getPrice() +
-                "\nMEMORY: " + memory +
-                "\nSTICKS: " + sticks +
-                "\nSPEED: " + speed +
-                "\nPOWER: " + power;
+    public String toString(Boolean getDetails) {
+        if (getDetails) {
+            return "NAME: " + super.getName() +
+                    "\nBRAND: " + super.getBrand() +
+                    "\nPRICE: " + super.getPrice() +
+                    "\nMEMORY: " + memory +
+                    "\nSTICKS: " + sticks +
+                    "\nSPEED: " + speed +
+                    "\nPOWER: " + power;
+        } else {
+            return super.name;
+        }
     }
 }
