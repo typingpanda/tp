@@ -72,14 +72,14 @@ public class ViewerFilterCommand extends Command {
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
-                    "Please enter the full price description after the flag containing the start " +
-                            "and end price range");
+                    "Please enter the full price description after the flag containing the start "
+                            + "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
-                    "Flag detected in price description. Please enter a different price" +
-                            " description after the flag");
+                    "Flag detected in price description. Please enter a different price"
+                            + " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {
@@ -97,8 +97,16 @@ public class ViewerFilterCommand extends Command {
         if (priceTo.matches(".*\\D.*")) {
             throw new PPException("End price must be a positive integer");
         }
-        int priceFromInt = Integer.parseInt(priceFrom);
-        int priceToInt = Integer.parseInt(priceTo);
+
+        int priceFromInt = 0;
+        int priceToInt = 0;
+
+        try {
+            priceFromInt = Integer.parseInt(priceFrom);
+            priceToInt = Integer.parseInt(priceTo);
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a postive integer within 16 bits");
+        }
         if (priceFromInt > priceToInt) {
             throw new PPException("Start price must be less than end price");
         }

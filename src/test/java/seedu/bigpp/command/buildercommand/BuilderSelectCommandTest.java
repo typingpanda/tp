@@ -73,7 +73,7 @@ public class BuilderSelectCommandTest {
         Exception exception = assertThrows(PPException.class, () -> new BuilderSelectCommand("cpu a")
                 .executeCommand(
                         dataStorage));
-        assertEquals("Please enter an integer",
+        assertEquals("Please enter a positive integer",
                 exception.getMessage());
     }
 
