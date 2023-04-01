@@ -410,17 +410,17 @@ public class BuilderListComponentCommand extends Command {
 
         String formFactorDescription = userInputString.split(FORM_FACTOR_FLAG)[1].trim().toLowerCase();
         if (formFactorDescription.split("\\s+").length < 1) {
-            throw new PPException("Please enter a full form factor description");
+            throw new PPException("Please enter a full formfactor description");
         }
 
         String[] formFactorDescriptionArray = Arrays.copyOfRange(formFactorDescription.split(" "), 0, 1);
         if (hasFlag(formFactorDescriptionArray)) {
-            throw new PPException("Flag detected in form factor description. Please enter a valid form factor");
+            throw new PPException("Flag detected in formfactor description. Please enter a valid form factor");
         }
 
         String formFactor = formFactorDescriptionArray[0];
         if (!formFactor.equals("atx") && !formFactor.equals("micro") && !formFactor.equals("mini")) {
-            throw new PPException("Please enter a valid form factor (ATX, Micro or Mini)");
+            throw new PPException("Please enter a valid formfactor (ATX, Micro or Mini)");
         }
 
         flagsArray.add("Form Factor: " + formFactor);
@@ -906,7 +906,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         if (!formFactor.equals("micro") && !formFactor.equals("mini") && !formFactor.equals("atx")) {
-            throw new PPException("Please enter a valid size (micro, mini or atx)");
+            throw new PPException("Please enter a valid formfactor (micro, mini or atx)");
         }
         flagsArray.add("size: " + formFactor);
         componentList = ComponentList.filterByFormFactorChassis(componentList, formFactor, componentIndexes);
