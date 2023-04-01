@@ -923,12 +923,14 @@ public class BuilderListComponentCommand extends Command {
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
-                    "Please enter the full price description after the flag containing the start " + "and end price range");
+                    "Please enter the full price description after the flag containing the start "
+                            + "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
-                    "Flag detected in price description. Please enter a different price" + " description after the flag");
+                    "Flag detected in price description. Please enter a different price"
+                            + " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {
@@ -1000,11 +1002,16 @@ public class BuilderListComponentCommand extends Command {
 
     private static boolean isFlag(String flag) {
         return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BRAND_FLAG) || flag.equals(
-                CORE_FLAG) || flag.equals(THREAD_FLAG) || flag.equals(BASE_CLOCK_FLAG) || flag.equals(SIZE_FLAG) || flag
-                        .equals(BOOST_CLOCK_FLAG) || flag.equals(POWER_FLAG) || flag.equals(SOCKET_FLAG) || flag.equals(
-                                RPM_FLAG) || flag.equals(NOISE_FLAG) || flag.equals(MEMORY_FLAG) || flag.equals(
-                                        STICKS_FLAG) || flag.equals(SPEED_FLAG) || flag.equals(TYPE_FLAG) || flag
-                                                .equals(FORM_FACTOR_FLAG) || flag.equals(EFFICIENCY_FLAG);
+                CORE_FLAG) || flag.equals(THREAD_FLAG) || flag.equals(BASE_CLOCK_FLAG) || flag.equals(SIZE_FLAG)
+                || flag
+                        .equals(BOOST_CLOCK_FLAG)
+                || flag.equals(POWER_FLAG) || flag.equals(SOCKET_FLAG) || flag.equals(
+                        RPM_FLAG)
+                || flag.equals(NOISE_FLAG) || flag.equals(MEMORY_FLAG) || flag.equals(
+                        STICKS_FLAG)
+                || flag.equals(SPEED_FLAG) || flag.equals(TYPE_FLAG) || flag
+                        .equals(FORM_FACTOR_FLAG)
+                || flag.equals(EFFICIENCY_FLAG);
     }
 
     private static boolean hasFlag(String[] userInputStringArray) {
