@@ -29,7 +29,7 @@ public class BuilderCustomChassisCommand extends BuilderCustomComponentCommand {
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price should be a float");
+                    "Please enter a float within 32 bits");
         }
 
         String formfactor = argumentList[3].trim();

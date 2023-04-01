@@ -47,14 +47,14 @@ public class BuilderSelectCommand extends Command {
 
         // throw exception if index is not a number eg. "select cpu a"
         if (indexString.matches(".*\\D.*")) {
-            throw new PPException("Please enter an integer");
+            throw new PPException("Please enter a positive integer");
         }
 
         int componentIndex = 0;
         try {
             componentIndex = Integer.parseInt(indexString) - 1;
         } catch (NumberFormatException e) {
-            throw new PPException("Index too large, please enter a smaller index");
+            throw new PPException("Please enter a postive integer within 16 bits");
         }
         // throw exception if index is out of bounds eg. "select cpu 100"
         if (componentIndex < 0 || componentIndex >= dataStorage.stringToComponentListMap.get(inputArray[0]).size()) {

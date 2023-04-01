@@ -98,12 +98,12 @@ public class ViewerFilterCommand extends Command {
 
         int priceFromInt = 0;
         int priceToInt = 0;
-        
+
         try {
             priceFromInt = Integer.parseInt(priceFrom);
             priceToInt = Integer.parseInt(priceTo);
         } catch (NumberFormatException e) {
-            throw new PPException("Price too large, please enter a smaller number");
+            throw new PPException("Please enter a postive integer within 16 bits");
         }
         if (priceFromInt > priceToInt) {
             throw new PPException("Start price must be less than end price");

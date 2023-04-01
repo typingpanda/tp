@@ -33,7 +33,7 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price and power should be floats, size should be an integer");
+                    "Please enter integers and floats within 16 and 32 bits respectively");
         }
 
         String type = argumentList[1].trim();

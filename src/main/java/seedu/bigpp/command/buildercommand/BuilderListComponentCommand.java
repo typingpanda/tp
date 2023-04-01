@@ -475,7 +475,7 @@ public class BuilderListComponentCommand extends Command {
             noiseFromInt = Integer.parseInt(noiseFrom);
             noiseToInt = Integer.parseInt(noiseTo);
         } catch (NumberFormatException e) {
-            throw new PPException("Noise too large, please enter a smaller number");
+            throw new PPException("Please enter a postive integer within 16 bits");
         }
         if (noiseFromInt > noiseToInt) {
             throw new PPException("Noise start range must be smaller than noise end range");
@@ -539,7 +539,7 @@ public class BuilderListComponentCommand extends Command {
             rpmFromInt = Integer.parseInt(powerFrom);
             rpmToInt = Integer.parseInt(powerTo);
         } catch (NumberFormatException e) {
-            throw new PPException("Rpm too large, please enter a smaller number");
+            throw new PPException("Please enter a postive integer within 16 bits");
         }
 
         if (rpmFromInt > rpmToInt) {
@@ -639,7 +639,7 @@ public class BuilderListComponentCommand extends Command {
             powerToInt = Integer.parseInt(powerTo);
 
         } catch (NumberFormatException e) {
-            throw new PPException("Power too large, please enter a smaller number");
+            throw new PPException("Please enter a postive integer within 16 bits");
         }
 
         // if (powerFromInt > powerToInt
@@ -852,7 +852,7 @@ public class BuilderListComponentCommand extends Command {
         try {
             threadInt = Integer.parseInt(thread);
         } catch (NumberFormatException e) {
-            throw new PPException("Thread too large, please enter a smaller thread number");
+            throw new PPException("Please enter a postive integer within 16 bits");
         }
         flagsArray.add("Thread: " + thread);
 
@@ -886,7 +886,7 @@ public class BuilderListComponentCommand extends Command {
         try {
             coreInt = Integer.parseInt(core);
         } catch (NumberFormatException e) {
-            throw new PPException("Core too large, please enter a smaller core number");
+            throw new PPException("Please enter a postive integer within 16 bits");
         }
         componentList = ComponentList.filterByCore(componentList, coreInt, componentIndexes);
         return componentList;
@@ -954,7 +954,7 @@ public class BuilderListComponentCommand extends Command {
             priceFromInt = Integer.parseInt(priceFrom);
             priceToInt = Integer.parseInt(priceTo);
         } catch (NumberFormatException e) {
-            throw new PPException("Price must be a positive integer");
+            throw new PPException("Please enter a postive integer within 16 bits");
         }
         if (priceFromInt > priceToInt) {
             throw new PPException("Start price must be less than end price");

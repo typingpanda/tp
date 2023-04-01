@@ -36,7 +36,7 @@ public class BuilderCompareGpuCommand extends Command {
             firstComponentIndex = Integer.parseInt(firstComponent) - 1;
             secondComponentIndex = Integer.parseInt(secondComponent) - 1;
         } catch (NumberFormatException e) {
-            throw new PPException("Please enter an integer");
+            throw new PPException("Please enter a positive integer within 16 bits");
         }
 
         // check if index is out of bounds
