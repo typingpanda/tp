@@ -32,8 +32,7 @@ Here is the list of PC Builds:
 3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
 What would you like to do?
 ===================================================
-[H[2J
-===================================================
+===================================================
 PC viewer
 Here is the list of PC Builds:
 1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
@@ -43,8 +42,7 @@ Here is the list of PC Builds:
 What would you like to do?
 ===================================================
 Custom PC: [ newpc1 ] has been created
-[H[2J
-===================================================
+===================================================
 PC viewer
 Here is the list of PC Builds:
 1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
@@ -55,8 +53,7 @@ Here is the list of PC Builds:
 What would you like to do?
 ===================================================
 Custom PC: [ newpc2 ] has been created
-[H[2J
-===================================================
+===================================================
 PC viewer
 Here is the list of PC Builds:
 1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
