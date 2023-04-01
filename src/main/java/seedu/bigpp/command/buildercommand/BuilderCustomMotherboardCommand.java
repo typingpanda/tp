@@ -37,7 +37,7 @@ public class BuilderCustomMotherboardCommand extends BuilderCustomComponentComma
 
         String formfactor = argumentList[3].trim().toLowerCase();
         String socket = argumentList[4].trim();
-        if (!socket.equals("LGA1200") || !socket.equals("LGA1700") || !socket.equals("AM4") || !socket.equals("AM5")) {
+        if (!socket.equals("LGA1200") && !socket.equals("LGA1700") && !socket.equals("AM4") && !socket.equals("AM5")) {
             throw new PPException("Please enter a valid socket for the custom component (LGA1200, LGA1700, AM4, AM5)");
         }
         if (FormFactorEnum.isFormFactor(formfactor) == false) {

@@ -41,7 +41,7 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
         }
 
         String type = argumentList[1].trim();
-        if (!type.equals("ssd") || !type.equals("hdd")) {
+        if (!type.equals("ssd") && !type.equals("hdd")) {
             throw new PPException("Please enter a valid type for the custom component (ssd, hdd)");
         }
         Storage storage = new Storage(name, brand, price, type, size, power);

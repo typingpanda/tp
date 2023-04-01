@@ -43,7 +43,7 @@ public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
         }
 
         String socket = argumentList[8].trim();
-        if (!socket.equals("LGA1200") || !socket.equals("LGA1700") || !socket.equals("AM4") || !socket.equals("AM5")) {
+        if (!socket.equals("LGA1200") && !socket.equals("LGA1700") && !socket.equals("AM4") && !socket.equals("AM5")) {
             throw new PPException("Please enter a valid socket for the custom component (LGA1200, LGA1700, AM4, AM5))");
         }
         CPU cpu = new CPU(name, brand, price, cores, threads, baseClock, boostClock, power, socket);
