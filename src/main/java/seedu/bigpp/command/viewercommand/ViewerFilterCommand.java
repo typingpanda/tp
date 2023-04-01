@@ -97,6 +97,11 @@ public class ViewerFilterCommand extends Command {
         if (priceTo.matches(".*\\D.*")) {
             throw new PPException("End price must be a positive integer");
         }
+
+        if (priceFrom.length() > 6 || priceTo.length() > 6) {
+            throw new PPException("Price must be smaller than 1000000");
+        }
+
         int priceFromInt = Integer.parseInt(priceFrom);
         int priceToInt = Integer.parseInt(priceTo);
         if (priceFromInt > priceToInt) {

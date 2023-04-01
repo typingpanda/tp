@@ -28,6 +28,10 @@ public class BuilderEditBudgetCommand extends Command {
             throw new PPException("Please enter a budget that is an integer");
         }
 
+        if (argument.length() > 6) {
+            throw new PPException("Integer too large, please enter a smaller budget");
+        }
+
         int budget = Integer.parseInt(super.getArguments());
 
         if (budget <= 0 && budget != -1) {
