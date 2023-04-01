@@ -25,10 +25,16 @@ public class ViewerEditCommand extends Command {
         }
 
         if (argument.matches(".*\\D.*")) {
-            throw new PPException("Please enter an integer");
+            throw new PPException("Please enter a positive integer");
         }
 
-        int pcIndex = Integer.parseInt(argument) - 1;
+        int pcIndex = 0;
+
+        try {
+            pcIndex = Integer.parseInt(argument) - 1;
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a postive integer within 16 bits");
+        }
 
         // throw exception if index selected is out of the PCList range
         if (pcIndex < 0 || pcIndex >= dataStorage.pcList.size()) {

@@ -32,7 +32,7 @@ public class BuilderCustomMotherboardCommand extends BuilderCustomComponentComma
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price and power should be floats");
+                    "Please enter floats within 32 bits");
         }
 
         String formfactor = argumentList[3].trim().toLowerCase();

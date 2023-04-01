@@ -49,7 +49,7 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price and power should be floats, memory sticks and speed should be integers");
+                    "Please enter integers and floats within 16 and 32 bits respectively");
         }
         RAM ram = new RAM(name, brand, price, memory, sticks, speed, power);
 

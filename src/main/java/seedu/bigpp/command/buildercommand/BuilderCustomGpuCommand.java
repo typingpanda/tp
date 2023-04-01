@@ -32,7 +32,7 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price and power should be floats");
+                    "Please enter a floats within 32 bits");
         }
 
         String formfactor = argumentList[4].trim().toLowerCase();
