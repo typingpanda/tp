@@ -446,6 +446,10 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Noise end range must be an integer");
         }
 
+        if (noiseFrom.length() > 4 || noiseTo.length() > 4) {
+            throw new PPException("Noise must be less than 10000");
+        }
+
         int noiseFromInt = Integer.parseInt(noiseFrom);
         int noiseToInt = Integer.parseInt(noiseTo);
 
@@ -455,10 +459,6 @@ public class BuilderListComponentCommand extends Command {
 
         if (noiseFromInt < 0 || noiseToInt < 0) {
             throw new PPException("Noise must be a positive integer");
-        }
-
-        if (noiseFromInt > 10000 || noiseToInt > 10000) {
-            throw new PPException("Noise must be less than 10000");
         }
 
         componentList = ComponentList.filterByNoise(componentList, noiseFromInt, noiseToInt, componentIndexes);
@@ -508,6 +508,10 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Rpm end range must be an integer");
         }
 
+        if (powerFrom.length() > 4 || powerTo.length() > 4) {
+            throw new PPException("Rpm must be less than 10000");
+        }
+
         int rpmFromInt = Integer.parseInt(powerFrom);
         int rpmToInt = Integer.parseInt(powerTo);
 
@@ -517,10 +521,6 @@ public class BuilderListComponentCommand extends Command {
 
         if (rpmFromInt < 0 || rpmToInt < 0) {
             throw new PPException("Rpm must be a positive integer");
-        }
-
-        if (rpmFromInt > 100000 || rpmToInt > 100000) {
-            throw new PPException("Rpm must be less than 100000");
         }
 
         componentList = ComponentList.filterByRpm(componentList, rpmFromInt, rpmToInt, componentIndexes);
@@ -605,6 +605,10 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Power end range must be an integer");
         }
 
+        if (powerFrom.length() > 4 || powerTo.length() > 4) {
+            throw new PPException("Power must be less than 10000W");
+        }
+
         int powerFromInt = Integer.parseInt(powerFrom);
         int powerToInt = Integer.parseInt(powerTo);
 
@@ -614,10 +618,6 @@ public class BuilderListComponentCommand extends Command {
 
         if (powerFromInt < 0 || powerToInt < 0) {
             throw new PPException("Power must be a positive integer");
-        }
-
-        if (powerFromInt > 10000 || powerToInt > 10000) {
-            throw new PPException("Power must be less than 10000W");
         }
 
         switch (componentType) {
@@ -910,6 +910,10 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("End price must be a positive integer");
         }
 
+        if (priceFrom.length() > 6 || priceTo.length() > 6) {
+            throw new PPException("Price must be smaller than 1000000");
+        }
+
         int priceFromInt = Integer.parseInt(priceFrom);
         int priceToInt = Integer.parseInt(priceTo);
 
@@ -919,9 +923,7 @@ public class BuilderListComponentCommand extends Command {
         if (priceFromInt < 0 || priceToInt < 0) {
             throw new PPException("Price must be greater than 0");
         }
-        if (priceFromInt > 1000000 || priceToInt > 1000000) {
-            throw new PPException("Price must be smaller than 1000000");
-        }
+
         componentList = ComponentList.filterByPrice(componentList, priceFrom, priceTo, componentIndexes);
         flagsArray.add("price: " + priceFrom + " to " + priceTo);
         return componentList;
