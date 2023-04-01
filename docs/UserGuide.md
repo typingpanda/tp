@@ -10,7 +10,7 @@
     - [`view PC_INDEX`](#view-pc_index)
     - [`edit PC_INDEX`](#edit-pc_index)
     - [`delete PC_INDEX`](#delete-pc_index)
-    - [`filter -name PC_NAME -cost /from PC_START_COST /to PC_END_COST -built PC_isComplete`](#filter--name-pc_name--cost-from-pc_start_cost-to-pc_end_cost--built-pc_iscomplete)
+    - [`filter -name PC_NAME -price /from PC_START_COST /to PC_END_COST -built PC_isComplete`](#filter--name-pc_name--cost-from-pc_start_cost-to-pc_end_cost--built-pc_iscomplete)
   - [In PCBuilder Mode](#in-pcbuilder-mode)
     - [`list COMPONENT_TYPE [-COMPONENT_FLAG FLAG]`](#list-component_type--component_flag-flag)
     - [`select COMPONENT_TYPE INDEX`](#select-component_type-index)
@@ -20,7 +20,6 @@
     - [`name NEW_NAME`](#name-new_name)
     - [`custom COMPONENT_TYPE SPEC_1,SPEC_2, ...`](#custom-component_type-spec_1spec_2-)
     - [`back`](#back)
-    - [`bye`](#bye)
 - [Additional Features](#additional-features)
   - [Compatibility Check](#compatibility-check)
   - [Glossary](#glossary)
@@ -86,28 +85,128 @@ What would you like to do?
 ===================================================
 
 ```
+If the ASCII art of BIG PP does not look correct, it is due to your terminal size being too small, if so you can disregard this issue.
 
 ## Commands
+Our commands are split up for two modes, PCViewer and PCBuilder. The commands for each mode will only be recognised for the specific mode that you are currently in. The modes will specifically be stated at the top of each printout in the terminal. 
 
-### In PCViewer Mode
-#### `add PC_NAME`
-**Functionality:** Adds a PC with the name `PC_NAME` to your PC list
-
-#### `view PC_INDEX`
-**Functionality:** Views the PC with index `PC_INDEX`
-
-#### `edit PC_INDEX`
-**Functionality:** Enters PCBuilder mode for the PC with index `PC_INDEX`
-
-#### `delete PC_INDEX`
-**Functionality:** Deletes the PC with index `PC_INDEX`
-
-#### `filter -name PC_NAME -cost /from PC_START_COST /to PC_END_COST -built PC_isComplete`
-**Functionality:** Filters the PC with the following flags `-name`, `-cost` and `-built`
-
-**Example:** filter the PC List by the name of intermediate, in the range of starting from 1000 to 3000 and is a complete built
+For reference,
+ - PCViewer looks like this:
 ```
-input: filter -cost /from 1000 /to 3000 -built complete
+===================================================
+PC viewer
+Here is the list of PC Builds:
+1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+What would you like to do?
+===================================================
+```
+ - PCBuilder looks like this
+```
+===================================================
+PC builder
+Custom-PC: [expert (copy)] - $2339.74/infinite - Complete
+Components:
+CPU        : AMD Ryzen 9 7950X
+CPU Cooler : Cooler Master MASTERLIQUID ML120L RGB V2
+GPU        : MSI GAMING Z TRIO RTX3080
+Motherboard: Gigabyte B650I AORUS ULTRA
+RAM        : Corsair Vengeance RGB Pro 32 GB
+Storage    : Samsung 980 Pro
+PSU        : SeaSonic FOCUS PLUS 850 Gold
+Chassis    : Corsair iCUE 4000X RGB
+
+What would you like to do?
+===================================================
+```
+---
+### Common Commands
+Common commands will be the commands that the user will be able to use in both the modes
+
+#### **Bye command**
+Usage: `bye`
+Functionality: Exits the application and saves all user data that has currently been changed since the opening of the application
+
+<span style="color:red">**IMPORTANT:** the user MUST execute this command to save the data that has been edited, if the user decides to end the program using ctrl+c or other methods, their edited data would be lost!</span> 
+
+#### **Help command**
+Usage: `help`
+Functionality: Displays the valid commands in the respective modes
+Example:
+ - Entering the help command in the PCViewer mode will show the following output:
+```
+Here are the list of valid commands: 
+Add <name> - Add a new PC of a given name 
+Delete <index> -  Delete the PC of a given index 
+Edit <index> - Edit the PC of a given index 
+View <index> - Display all the components of the PC of a given index 
+```
+
+ - Entering the help command in the PCBuilder mode will show the following output:
+```
+Here are the list of valid commands: 
+list <component> - List all components of a certain type
+name <new_name> - Change the name of the PC currently being edited to <new_name>
+budget <new_budget> - Change the budget of the PC currently being edited to <new_budget> 
+select <component_type> <index> -  Add the component of type <component_type> with index <index> to the PC currently being edited 
+info <component_type> - View all the specifications of the component of type <component_type> currently selected for the build
+unselect <component_type> - Remove the component of type <component_type> from the PC currently beingedited
+custom <component_type> <component_specifications...> - Creates a custom component of type <component_type> with all the <component_specifications> and adds it to the list of components of that type
+compare <component_type> <index_1>&<index_2> Compares all the specifications between the components oftype <component_type> with indices <index_1> and <index_2>
+```
+Notes: Entering the help command in either PCViewer mode or PCBuilder mode will present different sets of valid commands
+
+---
+### PCViewer Mode Commands
+PCViewer Mode commands will be the commands that the user will be able to use in the PCViewer Mode
+
+#### **Add command**
+Usage: `add PC_NAME`
+Functionality: Adds a PC with the name `PC_NAME` to your PC list
+Example:
+```
+===================================================
+PC viewer
+Here is the list of PC Builds:
+1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+4.Custom-PC: [NEWPC] - $0.0/infinite - Incomplete
+What would you like to do?
+===================================================
+Custom PC: [ NEWPC ] has been created
+```
+Notes: newly added PCs will always begin with infinite budget
+
+#### View command
+Usage: `view PC_INDEX`
+Functionality: Views the PC with index `PC_INDEX`
+Example:
+
+#### Edit command
+Usage: `edit PC_INDEX`
+Functionality: Enters PCBuilder mode for the PC with index `PC_INDEX`. If the PC that the user has selected to edit is a **prebuilt PC**, the application would create a copy of it and mark it as a **custom PC**. This is we provide the prebuilts as a reference for the user.
+
+#### Delete command
+Usage: `delete PC_INDEX`
+Functionality: Deletes the PC with index `PC_INDEX`
+
+#### Filter command
+Usage: `filter FLAGS`
+
+Available flags:
+ - `-name PC_NAME`
+ - `-price /from PC_START_COST /to PC_END_COST`
+ - `-built PC_ISCOMPLETE`
+ - `-clear`
+
+Functionality:
+ - Filter u `-name PC_NAME` to filter the PC List by the given name
+
+Example: filter the PC List by the name of intermediate, in the range of starting price from 1000 to 3000 and is a completed build
+```
+input: filter -name intermediate -price /from 1000 /to 3000 -built complete
 
 output:
 
@@ -119,12 +218,20 @@ What would you like to do?
 ===================================================
 Filter completed
 ```
+Notes: 
+#### `filter -clear`
+Functionality: Clears all filters and shows all PCs currently in the list
+Example:
 
-### In PCBuilder Mode
-#### `list COMPONENT_TYPE [-COMPONENT_FLAG FLAG]`
-**Functionality:** Lists all components of type `COMPONENT_TYPE` with optional flags. These are the following common flags `-name`, `-brand` and `-price` for all components. Flags that are unique to each components can be used too, such as `-power`, `-formfactor`, `socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `memory`, `-sticks`, `-speed`, `-type` and `-efficiency`. Noise, power, rpm, price, boostclock and baseclock requires an input range by using /from and /to flags. Multiple flags can be used together.
+---
+### PCBuilder Mode Commands
+PCBuilder Mode commands will be the commands that the user will be able to use in the PCBuilder Mode
 
-**Example:**
+#### List command
+Usage: `list COMPONENT_TYPE [-COMPONENT_FLAG FLAG]`
+Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags. These are the following common flags `-name`, `-brand` and `-price` for all components. Flags that are unique to each components can be used too, such as `-power`, `-formfactor`, `socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `memory`, `-sticks`, `-speed`, `-type` and `-efficiency`. Noise, power, rpm, price, boostclock and baseclock requires an input range by using /from and /to flags. Multiple flags can be used together.
+
+Example:
 ```
 input: list cpu -name intel -price /from 1 /to 100
 
@@ -146,10 +253,13 @@ SOCKET: LGA1200
 ================
 ```
 
-#### `select COMPONENT_TYPE INDEX`
-**Functionality:** Adds the component of type `COMPONENT_TYPE` with index `INDEX` to the current PC Build
+Notes: Arguments with missing flags will be ignored.
 
-**Example:** add component of type `GPU` with index `4` to the current PC Build.
+#### Select command
+Usage: `select COMPONENT_TYPE INDEX`
+Functionality: Adds the component of type `COMPONENT_TYPE` with index `INDEX` to the current PC Build
+
+Example: add component of type `GPU` with index `4` to the current PC Build.
 ```
 input: select gpu 4
 
@@ -170,10 +280,11 @@ Chassis    : - Not Selected -
 
 ```
 
-#### `unselect COMPONENT_TYPE`
-**Functionality:** Removes the component of type `COMPONENT_TYPE` from your PC Build.
+#### Unselect command
+Usage: `unselect COMPONENT_TYPE`
+Functionality: Removes the component of type `COMPONENT_TYPE` from your PC Build.
 
-**Example:** remove compoennt of type `GPU` from the current PC Build.
+Example: remove compoennt of type `GPU` from the current PC Build.
 ```
 Previous PC compoenent list:
 ===================================================
@@ -209,10 +320,11 @@ Chassis    : - Not Selected -
 
 ```
 
-#### `compare COMPONENT_TYPE INDEX_1 & INDEX_2`
-**Functionality:** Compares 2 components,`INDEX_1` and `INDEX_2` of type `COMPONENT_TYPE` with one another. Compares each specification in a table format
+#### Compare command
+Usage: `compare COMPONENT_TYPE INDEX_1 & INDEX_2`
+Functionality: Compares 2 components,`INDEX_1` and `INDEX_2` of type `COMPONENT_TYPE` with one another. Compares each specification in a table format
 
-**Example:** Compare 2 components of type `CPU`. Comparison between indexes `1` and `2`.
+Example: Compare 2 components of type `CPU`. Comparison between indexes `1` and `2`.
 ```
 input: compare cpu 1 & 2
 
@@ -233,10 +345,11 @@ ________________________________________________________________________________
 
 
 
-#### `budget INTEGER`
-**Functionality:** Sets the budget of the current PC build to `INTEGER`
+#### Budget command
+Usage: `budget INTEGER`
+Functionality: Sets the budget of the current PC build to `INTEGER`
 
-**Example** Set budget of Prebuilt-PC [Beginner] to be $1000
+Example Set budget of Prebuilt-PC [Beginner] to be $1000
 ```
 input: budget 1000
 
@@ -260,10 +373,11 @@ Current build budget is now: $1000.00
 
 ```
 
-#### `name NEW_NAME`
-**Functionality:** Sets the name of the current PC build to `NEW_NAME`
+#### Name command
+Usage: `name NEW_NAME`
+Functionality: Sets the name of the current PC build to `NEW_NAME`
 
-**Example** Set the name of Prebuilt-PC [Beginner] to be MyPC
+Example Set the name of Prebuilt-PC [Beginner] to be MyPC
 ```
 input: name MyPC
 
@@ -286,9 +400,9 @@ What would you like to do?
 Current build name is now: MyPc
 ```
 
-#### `custom COMPONENT_TYPE SPEC_1,SPEC_2, ...`
-**Functionality:** Adds a custom component of type COMPONENT_TYPE with the specs SPEC_1, SPEC_2, ... to the
-current PC build
+#### Custom command
+Usage: `custom COMPONENT_TYPE SPEC_1|SPEC_2|...`
+Functionality: Adds a custom component of type COMPONENT_TYPE with the specs SPEC_1, SPEC_2, ... to the current PC build
 ```
 input: custom cpu Intel-new-cpu|Intel|99.5|4|8|3.5|4.6|122|LGA1200
 
@@ -312,10 +426,8 @@ CPU added: Intel-new-cpu
 ```
 
 #### `back`
-**Functionality:** Goes back to PCViewer menu
+Functionality: Goes back to PCViewer menu
 
-#### `bye`
-**Functionality:** Exits the application
 
 ## Additional Features
 
