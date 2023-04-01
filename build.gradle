@@ -33,10 +33,10 @@ application {
     mainClass = "seedu.bigpp.BigPP"
 }
 
-// shadowJar {
-//     archiveBaseName = "bigpp"
-//     archiveClassifier = null
-// }
+shadowJar {
+    archiveBaseName = "bigpp"
+    archiveClassifier = null
+}
 
 checkstyle {
     toolVersion = '10.2'
