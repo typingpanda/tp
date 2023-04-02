@@ -54,6 +54,7 @@ If you encounter unfamiliar terminology in this guide, please refer to the [Glos
 
 
 Upon successful initialization of the program for the first time, you would be greeted by the following, assuming you do not currently have a user.json file in your _home folder_
+
 ```
 User file does not exist. Creating new user file.
 User PCs found, loading...
@@ -91,6 +92,7 @@ What would you like to do?
 ===================================================
 
 ```
+
 If the ASCII art of BIG PP does not look correct, it is due to your terminal size being too small, if so you can disregard this issue.
 
 ## Commands
@@ -98,6 +100,7 @@ Our commands are split up for two modes, PCViewer and PCBuilder. The commands fo
 
 For reference,
  - PCViewer looks like this:
+ 
 ```
 ===================================================
 PC viewer
@@ -108,7 +111,9 @@ Here is the list of PC Builds:
 What would you like to do?
 ===================================================
 ```
+
  - PCBuilder looks like this
+
 ```
 ===================================================
 PC builder
@@ -126,7 +131,9 @@ Chassis    : Corsair iCUE 4000X RGB
 What would you like to do?
 ===================================================
 ```
+
 ---
+
 ### Common Commands
 Common commands will be the commands that the user will be able to use in both the modes
 
@@ -144,6 +151,7 @@ Usage: `help`
 Functionality: Displays the valid commands in the respective modes
 Example:
  - Entering the help command in the PCViewer mode will produce the following output at the bottom of your terminal:
+
 ```
 Here are the list of valid commands: 
 Add <name> - Add a new PC of a given name 
@@ -153,6 +161,7 @@ View <index> - Display all the components of the PC of a given index
 ```
 
  - Entering the help command in the PCBuilder mode will produce the following output at the bottom of your terminal:
+
 ```
 Here are the list of valid commands: 
 list <component> - List all components of a certain type
@@ -164,12 +173,13 @@ unselect <component_type> - Remove the component of type <component_type> from t
 custom <component_type> <component_specifications...> - Creates a custom component of type <component_type> with all the <component_specifications> and adds it to the list of components of that type
 compare <component_type> <index_1>&<index_2> Compares all the specifications between the components oftype <component_type> with indices <index_1> and <index_2>
 ```
+
 Notes: Entering the help command in either PCViewer mode or PCBuilder mode will present different sets of valid commands
 
 ---
+
 ### PCViewer Mode Commands
 PCViewer Mode commands will be the commands that the user will be able to use in the PCViewer Mode
-
 
 #### **Add Command**
 Usage: `add PC_NAME`
@@ -178,6 +188,7 @@ Functionality: Adds a PC with the name `PC_NAME` to your PC list
 
 Example:
 >input: add NEWPC
+
 ```
 ===================================================
 PC viewer
@@ -190,9 +201,11 @@ What would you like to do?
 ===================================================
 Custom PC: [ NEWPC ] has been created
 ```
+
 Notes: newly added PCs will always begin with infinite budget
 
 ---
+
 #### **View Command**
 Usage: `view PC_INDEX`
 
@@ -200,6 +213,7 @@ Functionality: Views the PC with index `PC_INDEX`
 
 Example:
 >input: view 3
+
 ```
 ===================================================
 PC viewer
@@ -223,6 +237,7 @@ Chassis    : Corsair iCUE 4000X RGB
 ```
 
 ---
+
 #### **Edit Command**
 Usage: `edit PC_INDEX`
 
@@ -230,6 +245,7 @@ Functionality: Enters PCBuilder mode for the PC with index `PC_INDEX`.
 
 Example:
 >input: edit 4
+
 ```
 ===================================================
 PC builder
@@ -252,6 +268,7 @@ Currently editing PC: NEWPC
 Notes: If the PC that the user has selected to edit is a `PREBUILT_PC`, the application would create a copy of it and mark it as a `CUSTOM_PC`. This is because we provide the prebuilts as a reference for the user, and not for editing.
 
 ---
+
 #### **Delete Command**
 Usage: `delete PC_INDEX`
 
@@ -259,6 +276,7 @@ Functionality: Deletes the PC with index `PC_INDEX`
 
 Example:
 >input: delete 4
+
 ```
 ===================================================
 PC viewer
@@ -272,10 +290,9 @@ Custom PC: [ NEWPC ] has been deleted
 ```
 
 ---
+
 #### **Filter Command**
 Usage: `filter FILTER_FLAGS`
-
-
 
 Available flags:
 > `-name PC_NAME`
@@ -305,9 +322,11 @@ What would you like to do?
 ===================================================
 Filter completed
 ```
+
 Notes: The flags can by strung together *in any order* such as `filter -price /from 1000 /to 3000 -name intermediate -built complete`. However, if the `-clear` flag is detected, this will take **precedence** and remove all filters regardless of other flags.
 
 ---
+
 ### PCBuilder Mode Commands
 PCBuilder Mode commands will be the commands that the user will be able to use in the PCBuilder Mode
 
@@ -316,6 +335,7 @@ Usage: `list COMPONENT_TYPE [-COMPONENT_FLAG LIST_FLAG]`
 Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags. These are the following common flags `-name`, `-brand` and `-price` for all components. Flags that are unique to each components can be used too, such as `-power`, `-formfactor`, `-socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `-memory`, `-sticks`, `-speed`, `-type` and `-efficiency`. Noise, power, rpm, price, boostclock and baseclock requires an input range by using /from and /to flags. Multiple flags can be used together.
 
 Example:
+
 ```
 input: list cpu -name intel -price /from 1 /to 100
 
@@ -340,6 +360,7 @@ SOCKET: LGA1200
 Notes: Arguments with missing flags will be ignored.
 
 ---
+
 #### **Select Command**
 Usage: `select COMPONENT_TYPE COMPONENT_INDEX`
 
@@ -347,6 +368,7 @@ Functionality: Adds the component of type `COMPONENT_TYPE` with index `INDEX` to
 
 Example: add component of type `GPU` with index `4` to the current PC Build.
 >input: select gpu 4
+
 ```
 ===================================================
 PC builder
@@ -366,9 +388,11 @@ What would you like to do?
 gpu added! : MSI GAMING Z TRIO RTX3080
 
 ```
+
 Notes: you can select any component at any time and do not need to list components before selecting as long as you know which index you want to add.
 
 ---
+
 #### **Unselect Command**
 Usage: `unselect COMPONENT_TYPE`
 
@@ -377,6 +401,7 @@ Functionality: Removes the component of type `COMPONENT_TYPE` from your PC Build
 Example: remove component of type `GPU` from the current PC Build.
 
 >input: unselect gpu
+
 ```
 ===================================================
 PC builder
@@ -397,6 +422,7 @@ gpu removed!
 ```
 
 ---
+
 #### **Compare Command**
 Usage: `compare COMPONENT_TYPE INDEX_1 & INDEX_2`
 
@@ -404,6 +430,7 @@ Functionality: Compares 2 components,`INDEX_1` and `INDEX_2` of type `COMPONENT_
 
 Example: Compare 2 components of type `CPU`. Comparison between indexes `1` and `2`.
 >input: compare cpu 1 & 2
+
 ```
 ________________________________________________________________________________________________
 |NAME        |Intel core i3-10100                     |Intel core i5-10600k                    |
@@ -420,6 +447,7 @@ ________________________________________________________________________________
 ```
 
 ---
+
 #### **Budget Command**
 Usage: `budget POSITIVE_INTEGER`
 
@@ -427,6 +455,7 @@ Functionality: Sets the `BUDGET` of the current PC build to `POSITIVE_INTEGER`
 
 Example Set `BUDGET` of the PC you are currently editing to be $1000
 >input: budget 1000
+
 ```
 ===================================================
 PC builder
@@ -448,6 +477,7 @@ Current build budget is now: $1000.00
 ```
 
 ---
+
 #### **Name Command**
 Usage: `name PC_NAME`
 
@@ -455,6 +485,7 @@ Functionality: Sets the name of the current PC build to `PC_NAME`
 
 Example Set the name of PC to be MyPC
 >input: name MyPC
+
 ```
 ===================================================
 PC builder
@@ -475,11 +506,13 @@ Current build name is now: MyPc
 ```
 
 ---
+
 #### **Custom Command**
 Usage: `custom COMPONENT_TYPE SPEC_1|SPEC_2|...`
 
 Functionality: Adds a custom component of type COMPONENT_TYPE with the specs `SPEC_1`, `SPEC_2`...... to the current PC build
 >input input: custom cpu Intel-new-cpu|Intel|99.5|4|8|3.5|4.6|122|LGA1200
+
 ```
 ===================================================
 PC builder
@@ -498,9 +531,11 @@ What would you like to do?
 ===================================================
 CPU added: Intel-new-cpu
 ```
+
 Notes: Please see the glossary for the `SPEC` definitions for each component
 
 ---
+
 #### **Back Command**
 Usage: `back`
 
@@ -522,6 +557,7 @@ Based on the rules stated above, the compatibility checker will throw the user e
 
 Example: The `CPU` current added has a socket **LGA1200** and the new `MOTHERBOARD` that the user wants to add has a socket **AM5**.
 >input: custom motherboard newmobo|AMD|10|atx|AM5|10
+
 ```
 ===================================================
 PC builder
@@ -541,8 +577,6 @@ What would you like to do?
 Motherboard socket is not compatible with current cpu socket
 Please choose another motherboard or change your cpu
 ```
-
-
 
 ## Glossary
 
@@ -581,7 +615,6 @@ Please choose another motherboard or change your cpu
 | FORMFACTOR       |                 The standard size specification of the components                 |      String      |                                                                                `atx`,`mini` and `micro`                                                                                |
 
 ### Command Glossary
-
 
 |   Viewer Menu Commands    |                     Format                     |                                                Flags                                                |
 |:-------------------------:|:----------------------------------------------:|:---------------------------------------------------------------------------------------------------:|
