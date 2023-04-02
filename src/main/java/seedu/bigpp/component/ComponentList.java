@@ -7,6 +7,7 @@ import seedu.bigpp.component.gpu.GPU;
 import seedu.bigpp.component.motherboard.Motherboard;
 import seedu.bigpp.component.ram.RAM;
 import seedu.bigpp.component.storage.Storage;
+import seedu.bigpp.component.psu.PSU;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,34 @@ public class ComponentList<T> extends ArrayList<Component> {
         }
 
         return outputString;
+    }
+
+    //filter psu by efficiency. efficiency can be bronze, silver or gold
+    public static ComponentList<?> filterByEfficiencyPsu(ComponentList<?> componentList, String efficiency,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            PSU psu = (PSU) componentList.get(i);
+            if (psu.getEfficiency().toLowerCase().contains(efficiency)) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
+    }
+
+    // filter psu by power
+    public static ComponentList<?> filterByPowerPsu(ComponentList<?> componentList, int from, int to,
+            ArrayList<Integer> componentIndexes) {
+        ComponentList<?> filteredComponentList = new ComponentList<>();
+        for (int i = 0; i <= componentList.size() - 1; i++) {
+            PSU psu = (PSU) componentList.get(i);
+            if (psu.getPower() >= from && psu.getPower() <= to) {
+                filteredComponentList.add(componentList.get(i));
+                componentIndexes.add(i + 1);
+            }
+        }
+        return filteredComponentList;
     }
 
     // filter storage by power
