@@ -581,6 +581,7 @@ Please choose another motherboard or change your cpu
 ## Glossary
 
 ### Parameters Glossary
+
 | Parameter        |                                    Explanation                                    |       Type       |                                                                                        Example                                                                                         |
 |:----------------:|:---------------------------------------------------------------------------------:|:----------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | PC_NAME          |                               Name  of the PC Build                               |      String      |                                                                                      "The Beast"                                                                                       |
@@ -613,6 +614,7 @@ Please choose another motherboard or change your cpu
 | PC_ISCOMPLETE    |                                   State of  PC                                    |      String      |                                                                               "complete" / "incomplete"                                                                                |
 | COMPONENT_TYPE   |                 Type of Component that is required to build a PC                  |      String      |                                                       `cpu`,`gpu`,`cpu-cooler`,`motherboard`,`ram`,`storage`,`psu` and `chassis`                                                       |
 | FORMFACTOR       |                 The standard size specification of the components                 |      String      |                                                                                `atx`,`mini` and `micro`                                                                                |
+
 
 ### Command Glossary
 
