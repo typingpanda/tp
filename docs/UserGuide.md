@@ -2,33 +2,34 @@
 # User Guide
 <!-- omit in toc -->
 ## Table of contents
-- [Introduction](#Introduction)
-- [Getting Started](#Getting-Started)
-- [Commands](#Commands)
-  - [Common Commands](#Common-Commands)
-    - [**Bye Command**](#Bye-Command)
-    - [**Help Command**](#Help-Command)
-  - [PCViewer Mode Commands](#PCViewer-Mode-Commands)
-    - [**Add Command**](#Add-Command)
-    - [**View Command**](#View-Command)
-    - [**Edit Command**](#Edit-Command)
-    - [**Delete Command**](#Delete-Command)
-    - [**Filter Command**](#Filter-Command)
-  - [PCBuilder Mode Commands](#PCBuilder-Mode-Commands)
-    - [**List Command**](#List-Command)
-    - [**Select Command**](#Select-Command)
-    - [**Unselect Command**](#Unselect-Command)
-    - [**Compare Command**](#Compare-Command)
-    - [**Budget Command**](#Budget-Command)
-    - [**Name Command**](#Name-Command)
-    - [**Custom Command**](#Custom-Command)
-    - [**Back Command**](#Back-Command)
-- [Additional Features](#Additional-Features)
-  - [Compatibility Check](#Compatibility-Check)
-- [Glossary](#Glossary)
-  - [Parameters Glossary](#Parameters-Glossary)
-  - [Command Glossary](#Command-Glossary)
-    - [Acceptable Custom Component Commands](#Acceptable-Custom-Component-Commands)
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [Commands](#commands)
+  - [Common Commands](#common-commands)
+    - [**Bye Command**](#bye-command)
+    - [**Help Command**](#help-command)
+  - [PCViewer Mode Commands](#pcviewer-mode-commands)
+    - [**Add Command**](#add-command)
+    - [**View Command**](#view-command)
+    - [**Edit Command**](#edit-command)
+    - [**Delete Command**](#delete-command)
+    - [**Filter Command**](#filter-command)
+  - [PCBuilder Mode Commands](#pcbuilder-mode-commands)
+    - [**List Command**](#list-command)
+- [Notes: Arguments with missing flags will be ignored. Flags that are not relevant to the component will also be ignored.](#notes-arguments-with-missing-flags-will-be-ignored-flags-that-are-not-relevant-to-the-component-will-also-be-ignored)
+    - [**Select Command**](#select-command)
+    - [**Unselect Command**](#unselect-command)
+    - [**Compare Command**](#compare-command)
+    - [**Budget Command**](#budget-command)
+    - [**Name Command**](#name-command)
+    - [**Custom Command**](#custom-command)
+    - [**Back Command**](#back-command)
+- [Additional Features](#additional-features)
+  - [Compatibility Check](#compatibility-check)
+- [Glossary](#glossary)
+  - [Parameters Glossary](#parameters-glossary)
+  - [Command Glossary](#command-glossary)
+    - [Acceptable Custom Component Commands](#acceptable-custom-component-commands)
 
 ## Introduction
 
@@ -332,12 +333,52 @@ PCBuilder Mode commands will be the commands that the user will be able to use i
 
 #### **List Command**
 Usage: `list COMPONENT_TYPE [-COMPONENT_FLAG LIST_FLAG]`
-Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags. These are the following common flags `-name`, `-brand` and `-price` for all components. Flags that are unique to each components can be used too, such as `-power`, `-formfactor`, `-socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `-memory`, `-sticks`, `-speed`, `-type` and `-efficiency`. Noise, power, rpm, price, boostclock and baseclock requires an input range by using /from and /to flags. Multiple flags can be used together.
+
+Available flags:
+> `-details`
+> 
+> `-name COMPONENT_NAME`
+>
+> `-brand COMPONENT_BRAND`
+>
+> `-price /from COMPONENT_START_PRICE /to COMPONENT_END_PRICE`
+>
+> `-power /from COMPONENT_START_POWER /to COMPONENT_END_POWER`
+>
+> `-formfactor COMPONENT_FORMFACTOR`
+>
+> `-socket COMPONENT_SOCKET`
+>
+> `-core /from COMPONENT_START_CORE /to COMPONENT_END_CORE`
+>
+> `-thread /from COMPONENT_START_THREAD /to COMPONENT_END_THREAD`
+>
+> `-baseclock /from COMPONENT_START_BASECLOCK /to COMPONENT_END_BASECLOCK`
+>
+> `-boostclock /from COMPONENT_START_BOOSTCLOCK /to COMPONENT_END_BOOSTCLOCK`
+>
+> `-size /from COMPONENT_START_SIZE /to COMPONENT_END_SIZE`
+>
+> `-rpm /from COMPONENT_START_RPM /to COMPONENT_END_RPM`
+>
+> `-noise /from COMPONENT_START_NOISE /to COMPONENT_END_NOISE`
+>
+> `-memory COMPONENT_MEMORY`
+>
+> `-sticks /from COMPONENT_START_STICKS /to COMPONENT_END_STICKS`
+>
+> `-speed /from COMPONENT_START_SPEED /to COMPONENT_END_SPEED`
+>
+> `-type COMPONENT_TYPE`
+> 
+> `-efficiency COMPONENT_EFFICIENCY`
+
+Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags. List command shows only the names of components for readability. For detailed information, use the `-details` flag. Multiple flags can be used together.
 
 Example:
 
 ```
-input: list cpu -name intel -price /from 1 /to 100
+input: list cpu -name intel -price /from 1 /to 100 -details
 
 output:
 Here are all available components of type 'cpu':
@@ -357,8 +398,7 @@ SOCKET: LGA1200
 ================
 ```
 
-Notes: Arguments with missing flags will be ignored.
-
+Notes: Arguments with missing flags will be ignored. Flags that are not relevant to the component will also be ignored.
 ---
 
 #### **Select Command**
