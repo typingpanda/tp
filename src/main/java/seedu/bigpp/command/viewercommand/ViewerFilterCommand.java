@@ -33,18 +33,14 @@ public class ViewerFilterCommand extends Command {
 
         String[] userInputStringArray = userInputString.split(" ");
         if (userInputString.equals("")) {
-            throw new PPException("Please enter a valid filter");
+            throw new PPException("Please enter a valid flag");
         }
         if (containsFlag(userInputStringArray, CLEAR_FLAG)) {
             handleClearFlag(userInputStringArray);
             return "Filter cleared";
         }
         if (userInputStringArray.length <= 1) {
-            throw new PPException("Please enter a valid flag and description");
-        }
-        if (userInputStringArray.length > 1) {
-            if (hasFlag(userInputStringArray)) {
-                PCList.setFilterTrue();
+            if (hasFlag(userInputStringArray)){
                 if (containsFlag(userInputStringArray, NAME_FLAG)) {
                     handleNameFlag(userInputStringArray);
                 }
@@ -54,6 +50,24 @@ public class ViewerFilterCommand extends Command {
                 if (containsFlag(userInputStringArray, PRICE_FLAG)) {
                     handlePriceFlag(userInputString, userInputStringArray);
                 }
+                return "";
+            }
+            else {
+                throw new PPException("Please enter a valid flag and description");
+            }
+        }
+        if (userInputStringArray.length > 1) {
+            if (hasFlag(userInputStringArray)) {
+                if (containsFlag(userInputStringArray, NAME_FLAG)) {
+                    handleNameFlag(userInputStringArray);
+                }
+                if (containsFlag(userInputStringArray, BUILT_FLAG)) {
+                    handleBuiltFlag(userInputStringArray);
+                }
+                if (containsFlag(userInputStringArray, PRICE_FLAG)) {
+                    handlePriceFlag(userInputString, userInputStringArray);
+                }
+                PCList.setFilterTrue();
             } else {
                 throw new PPException("Please enter a valid flag");
             }
