@@ -5,13 +5,5 @@
 		"formfactor": "atx",
 		"power": 850,
 		"price": 159.94
-	},
-
-	"Prince of Pereira": {
-		"brand": "Matthew",
-		"efficiency": "Gold",
-		"formfactor": "atx",
-		"power": 9000,
-		"price": 9000
 	}
 }
