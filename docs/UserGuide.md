@@ -16,7 +16,6 @@
     - [**Filter Command**](#filter-command)
   - [PCBuilder Mode Commands](#pcbuilder-mode-commands)
     - [**List Command**](#list-command)
-- [Notes: Arguments with missing flags will be ignored. Flags that are not relevant to the component will also be ignored.](#notes-arguments-with-missing-flags-will-be-ignored-flags-that-are-not-relevant-to-the-component-will-also-be-ignored)
     - [**Select Command**](#select-command)
     - [**Unselect Command**](#unselect-command)
     - [**Compare Command**](#compare-command)
@@ -399,6 +398,7 @@ SOCKET: LGA1200
 ```
 
 Notes: Arguments with missing flags will be ignored. Flags that are not relevant to the component will also be ignored.
+
 ---
 
 #### **Select Command**
