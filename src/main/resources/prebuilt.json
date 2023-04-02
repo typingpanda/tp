@@ -46,7 +46,7 @@
 			"price": 22.99
 		},
 		"storage": {
-			"type": "M.2 SSD",
+			"type": "ssd",
 			"size": 512,
 			"power": 4.5,
 			"name": "ADATA XPG SPECTRIX S40G RGB",
@@ -116,7 +116,7 @@
 			"price": 43.98
 		},
 		"storage": {
-			"type": "HDD",
+			"type": "hdd",
 			"size": 1024,
 			"power": 6.8,
 			"name": "Seagate BarraCuda",
@@ -186,7 +186,7 @@
 			"price": 104.99
 		},
 		"storage": {
-			"type": "M.2 SSD",
+			"type": "ssd",
 			"size": 2048,
 			"power": 5.2,
 			"name": "Samsung 980 Pro",

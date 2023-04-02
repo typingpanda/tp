@@ -44,12 +44,16 @@ public class Storage extends Component {
     }
 
     @Override
-    public String toString() {
-        return "NAME: " + super.getName() +
-                "\nBRAND: " + super.getBrand() +
-                "\nPRICE: " + super.getPrice() +
-                "\nTYPE: " + type + '\'' +
-                "\nSIZE: " + size +
-                "\nPOWER: " + power;
+    public String toString(Boolean getDetails) {
+        if (getDetails) {
+            return "NAME: " + super.getName() +
+                    "\nBRAND: " + super.getBrand() +
+                    "\nPRICE: " + super.getPrice() +
+                    "\nTYPE: " + type +
+                    "\nSIZE: " + size +
+                    "\nPOWER: " + power;
+        } else {
+            return super.name;
+        }
     }
 }

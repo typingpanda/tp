@@ -21,7 +21,7 @@ public class PCList extends ArrayList<PC> {
     }
 
     public void printPcList() {
-        if (isFilter) {
+        if (getIsFilter()) {
             printAltPcList();
         } else {
             if (this.size() > 0) {
@@ -38,7 +38,7 @@ public class PCList extends ArrayList<PC> {
     public void printAltPcList() {
         int pcCount = 0;
         if (this.size() > 0) {
-            out.println("Here is the list of PC Builds:");
+            out.println("Here is the filtered list of PC Builds:");
             for (int i = 0; i < this.size(); i++) {
                 if (filterByBuilt(this.get(i), getIsBuilt()) && filterByPrice(this.get(i),
                         getPriceFrom(), getPriceTo()) && filterByName(this.get(i), getName())) {

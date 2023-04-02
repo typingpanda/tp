@@ -34,17 +34,17 @@ public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
 
             // Check if all the values are positive
             if (price < 0 || cores < 0 || threads < 0 || baseClock < 0 || boostClock < 0 || power < 0) {
-                throw new PPException("price, baseClock, boostClock, power, cores and threads should be positive");
+                throw new PPException("Pleae enter integers and floats within 16 and 32 bits respectively");
             }
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price, baseClock, boostClock and power should be a float, cores and threads should be an integer");
+                    "Pleae enter integers and floats within 16 and 32 bits respectively");
         }
 
         String socket = argumentList[8].trim();
-        if (socket.equals("")) {
-            throw new PPException("Please enter a valid socket for the custom component");
+        if (!socket.equals("LGA1200") && !socket.equals("LGA1700") && !socket.equals("AM4") && !socket.equals("AM5")) {
+            throw new PPException("Please enter a valid socket for the custom component (LGA1200, LGA1700, AM4, AM5))");
         }
         CPU cpu = new CPU(name, brand, price, cores, threads, baseClock, boostClock, power, socket);
 

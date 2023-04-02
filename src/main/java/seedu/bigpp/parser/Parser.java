@@ -178,7 +178,7 @@ public class Parser {
             return new BuilderCustomCpuCoolerCommand(attributes);
         default:
             return new UnrecognizedCommand(
-                    "Invalid component type!, valid types are "
+                    "Invalid component type! Valid types are "
                             + "(cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
         }
     }
@@ -210,7 +210,7 @@ public class Parser {
             return new BuilderCompareCpuCoolerCommand(attributes);
         default:
             return new UnrecognizedCommand(
-                    "Invalid component type!, valid types are "
+                    "Invalid component type! Valid types are "
                             + "(cpu,gpu,ram,storage,psu,motherboard,cpu-cooler,chassis)");
         }
     }

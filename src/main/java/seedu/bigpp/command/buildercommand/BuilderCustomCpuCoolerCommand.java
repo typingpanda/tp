@@ -35,7 +35,7 @@ public class BuilderCustomCpuCoolerCommand extends BuilderCustomComponentCommand
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price, power and noise should be floats, rpm should be an int");
+                    "Please enter integers and floats within 16 and 32 bits respectively");
         }
 
         CPUCooler cpuCooler = new CPUCooler(name, brand, price, rpm, noise, power);

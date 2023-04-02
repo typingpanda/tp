@@ -20,8 +20,7 @@ public class ViewerFilterCommand extends Command {
     }
 
     /**
-     * Checks for the filter flags and applies it to the PC Viewer menu user
-     * interface
+     * Checks for the filter flags and applies it to the PC Viewer menu user interface
      * @return that the filter has been executed successfully
      */
     @Override
@@ -34,19 +33,14 @@ public class ViewerFilterCommand extends Command {
 
         String[] userInputStringArray = userInputString.split(" ");
         if (userInputString.equals("")) {
-            throw new PPException("Please enter a valid filter");
+            throw new PPException("Please enter a valid flag");
         }
         if (containsFlag(userInputStringArray, CLEAR_FLAG)) {
-            PCList.setFilterFalse();
-            PCList.setBuilt("");
-            PCList.setPriceFrom("");
-            PCList.setName("");
-            PCList.setPriceTo("");
+            handleClearFlag(userInputStringArray);
             return "Filter cleared";
         }
-        if (userInputStringArray.length > 1) {
-            if (hasFlag(userInputStringArray)) {
-                PCList.setFilterTrue();
+        if (userInputStringArray.length <= 1) {
+            if (hasFlag(userInputStringArray)){
                 if (containsFlag(userInputStringArray, NAME_FLAG)) {
                     handleNameFlag(userInputStringArray);
                 }
@@ -56,14 +50,40 @@ public class ViewerFilterCommand extends Command {
                 if (containsFlag(userInputStringArray, PRICE_FLAG)) {
                     handlePriceFlag(userInputString, userInputStringArray);
                 }
+                return "";
+            }
+            else {
+                throw new PPException("Please enter a valid flag and description");
+            }
+        }
+        if (userInputStringArray.length > 1) {
+            if (hasFlag(userInputStringArray)) {
+                if (containsFlag(userInputStringArray, NAME_FLAG)) {
+                    handleNameFlag(userInputStringArray);
+                }
+                if (containsFlag(userInputStringArray, BUILT_FLAG)) {
+                    handleBuiltFlag(userInputStringArray);
+                }
+                if (containsFlag(userInputStringArray, PRICE_FLAG)) {
+                    handlePriceFlag(userInputString, userInputStringArray);
+                }
+                PCList.setFilterTrue();
             } else {
                 throw new PPException("Please enter a valid flag");
             }
-
+            return "Filter completed";
         }
-        return "Filter completed";
+        return "";
     }
 
+
+    private void handleClearFlag(String[] flagAndDescriptionArray) throws PPException {
+        PCList.setFilterFalse();
+        PCList.setBuilt("");
+        PCList.setPriceFrom("");
+        PCList.setName("");
+        PCList.setPriceTo("");
+    }
     private void handlePriceFlag(String userInputString, String[] flagAndDescriptionArray) throws PPException {
         int priceFlagIndex = indexOfFlag(flagAndDescriptionArray, PRICE_FLAG);
         if (priceFlagIndex == flagAndDescriptionArray.length - 1) {
@@ -72,14 +92,14 @@ public class ViewerFilterCommand extends Command {
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
         if (flagPriceDescription.split("\\s+").length < 4) {
             throw new PPException(
-                    "Please enter the full price description after the flag containing the start " +
-                            "and end price range");
+                    "Please enter the full price description after the flag containing the start "
+                            + "and end price range");
         }
         String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
-                    "Flag detected in price description. Please enter a different price" +
-                            " description after the flag");
+                    "Flag detected in price description. Please enter a different price"
+                            + " description after the flag");
         }
         String fromFlag = flagPriceDescriptionArray[0].trim();
         if (!fromFlag.equals("/from")) {
@@ -97,8 +117,16 @@ public class ViewerFilterCommand extends Command {
         if (priceTo.matches(".*\\D.*")) {
             throw new PPException("End price must be a positive integer");
         }
-        int priceFromInt = Integer.parseInt(priceFrom);
-        int priceToInt = Integer.parseInt(priceTo);
+
+        int priceFromInt = 0;
+        int priceToInt = 0;
+
+        try {
+            priceFromInt = Integer.parseInt(priceFrom);
+            priceToInt = Integer.parseInt(priceTo);
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a postive integer within 16 bits");
+        }
         if (priceFromInt > priceToInt) {
             throw new PPException("Start price must be less than end price");
         }
@@ -141,7 +169,7 @@ public class ViewerFilterCommand extends Command {
     }
 
     private static boolean isFlag(String flag) {
-        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BUILT_FLAG);
+        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BUILT_FLAG) || flag.equals(CLEAR_FLAG);
     }
 
     private static boolean hasFlag(String[] userInputStringArray) {

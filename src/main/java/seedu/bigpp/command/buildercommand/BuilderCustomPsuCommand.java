@@ -3,6 +3,7 @@ package seedu.bigpp.command.buildercommand;
 import seedu.bigpp.component.psu.PSU;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
+import seedu.bigpp.pc.FormFactorEnum;
 import seedu.bigpp.ui.UI;
 
 public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
@@ -31,13 +32,16 @@ public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price and power should be floats");
+                    "Please enter floats within 32 bits");
         }
 
         String efficiency = argumentList[2].trim();
-        String formFactor = argumentList[3].trim();
-        if (efficiency.equals("") || formFactor.equals("")) {
-            throw new PPException("Please enter a valid efficiency and form factor for the custom component");
+        String formFactor = argumentList[3].trim().toLowerCase();
+        if (efficiency.equals("")) {
+            throw new PPException("Please enter a efficiency for the custom component");
+        }
+        if (FormFactorEnum.isFormFactor(formFactor) == false) {
+            throw new PPException("Please enter a valid formfactor for the custom component (mini, micro, atx)");
         }
         PSU psu = new PSU(name, price, brand, efficiency, formFactor, power);
 

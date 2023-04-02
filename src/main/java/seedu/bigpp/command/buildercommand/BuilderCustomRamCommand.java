@@ -30,6 +30,18 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
             sticks = Integer.parseInt(argumentList[3]);
             speed = Integer.parseInt(argumentList[4]);
 
+            if (sticks != 1 && sticks != 2 && sticks != 4) {
+                throw new PPException("sticks should be 1, 2 or 4");
+            }
+
+            if (memory != 8 && memory != 16 && memory != 32 && memory != 64) {
+                throw new PPException("memory should be 8, 16, 32 or 64");
+            }
+
+            if (speed != 1600 && speed != 2000 && speed != 2666 && speed != 3200 && speed != 3600) {
+                throw new PPException("speed should be 1600, 2000, 2666, 3200 or 3600");
+            }
+
             // Check if all the values are positive
             if (price < 0 || power < 0 || memory < 0 || sticks < 0 || speed < 0) {
                 throw new PPException("price, power, memory, sticks, and speed should be positive");
@@ -37,7 +49,7 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "price and power should be floats, memory sticks and speed should be integers");
+                    "Please enter integers and floats within 16 and 32 bits respectively");
         }
         RAM ram = new RAM(name, brand, price, memory, sticks, speed, power);
 

@@ -39,7 +39,7 @@ public class BuilderInfoCommand extends Command {
         }
 
         String outputString = "Here is the specifications of your selected " + componentTypeString + ": \n";
-        return outputString + dataStorage.pcList.get(pcIndex).getComponent(componentTypeString);
+        return outputString + dataStorage.pcList.get(pcIndex).getComponent(componentTypeString).toString(true);
 
     }
 }
