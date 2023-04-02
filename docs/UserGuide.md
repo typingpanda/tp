@@ -134,7 +134,10 @@ Common commands will be the commands that the user will be able to use in both t
 Usage: `bye`
 Functionality: Exits the application and saves all user data that has currently been changed since the opening of the application
 
-<span style="color:red">**IMPORTANT:** the user MUST execute this command to save the data that has been edited, if the user decides to end the program using ctrl+c or other methods, their edited data would be lost!</span> 
+```diff
+- **IMPORTANT:** the user MUST execute this command to save the data that has been edited, 
+- if the user decides to end the program using ctrl+c or other methods, their edited data would be lost! 
+```
 
 #### **Help Command**
 Usage: `help`
