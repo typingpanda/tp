@@ -311,6 +311,7 @@ The following explains the functionality of filtering by each flag:
  - `-clear` will clear all filters that were applied previously
 
 Example: filter the PC List by the name of intermediate, in the range of starting price from 1000 to 3000 and is a completed build
+
 >input: filter -name intermediate -price /from 1000 /to 3000 -built complete
 
 ```
@@ -376,10 +377,9 @@ Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags
 
 Example:
 
-```
-input: list cpu -name intel -price /from 1 /to 100 -details
+> input: list cpu -name intel -price /from 1 /to 100 -details
 
-output:
+```
 Here are all available components of type 'cpu':
 meeting the following criteria:
 name: intel
