@@ -39,6 +39,7 @@ public class BuilderListComponentCommand extends Command {
     private static final String TYPE_FLAG = "-type";
     private static final String FORM_FACTOR_FLAG = "-formfactor";
     private static final String EFFICIENCY_FLAG = "-efficiency";
+    private static final String DETAILS_FLAG = "-details";
 
     public BuilderListComponentCommand(String arguments) {
         setArguments(arguments);
@@ -73,6 +74,8 @@ public class BuilderListComponentCommand extends Command {
         ArrayList<Integer> componentIndexes = new ArrayList<Integer>();
         ArrayList<String> flagsArray = new ArrayList<String>();
 
+        Boolean getDetails = false;
+
         if (userInputStringArray.length > 1) {
             String[] flagAndDescriptionArray = Arrays.copyOfRange(userInputStringArray, 1, userInputStringArray.length);
             if (hasFlag(userInputStringArray)) {
@@ -87,6 +90,9 @@ public class BuilderListComponentCommand extends Command {
                 if (containsFlag(flagAndDescriptionArray, PRICE_FLAG)) {
                     componentList = handlePriceFlag(userInputString, componentList, flagsArray, flagAndDescriptionArray,
                             componentIndexes);
+                }
+                if (containsFlag(flagAndDescriptionArray, DETAILS_FLAG)) {
+                    getDetails = true;
                 }
 
                 switch (componentType) {
@@ -244,8 +250,7 @@ public class BuilderListComponentCommand extends Command {
                 outputString += flagDescription + "\n";
             }
         }
-
-        return outputString + componentList.getListString(componentIndexes);
+        return outputString + componentList.getListString(componentIndexes, getDetails);
     }
 
     // handle efficiency flag, can be bronze, silver or gold
@@ -340,7 +345,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle speed flag, speed can be 1600 or 3200
+    // handle speed flag, speed can be 1600/2000/2666/3000/3200/3600
     private ComponentList<?> handleSpeedFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -365,8 +370,8 @@ public class BuilderListComponentCommand extends Command {
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a valid speed (1600 or 3200))");
         }
-        if (speed != 1600 && speed != 3200) {
-            throw new PPException("Please enter a valid speed (1600 or 3200))");
+        if (speed != 1600 && speed != 2000 && speed != 2666 && speed != 3000 && speed != 3200 && speed != 3600) {
+            throw new PPException("Please enter a valid speed (1600/2000/2666/3000/3200/3600))");
         }
 
         flagsArray.add("speed: " + speed);
@@ -375,7 +380,7 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle sticks flag, sticks could be int 1 or 2
+    // handle sticks flag, sticks could be int 1, 2, 3, 4
     private ComponentList<?> handleSticksFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -395,22 +400,22 @@ public class BuilderListComponentCommand extends Command {
         }
 
         int sticks = 0;
+
         try {
             sticks = Integer.parseInt(sticksDescriptionArray[0]);
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a valid sticks description (1 or 2))");
         }
-        if (sticks != 1 && sticks != 2) {
-            throw new PPException("Please enter a valid sticks description (1 or 2))");
+        if (sticks != 1 && sticks != 2 && sticks != 3 && sticks != 4) {
+            throw new PPException("Please enter a valid sticks description (1, 2, 3 or 4))");
         }
-
         flagsArray.add("Sticks: " + sticks);
         componentList = ComponentList.filterBySticks(componentList, sticks, componentIndexes);
 
         return componentList;
     }
 
-    // handle memory flag, memory could be int 8, 16, 32
+    // handle memory flag, memory could be int 8, 16, 32, 64
     private ComponentList<?> handleMemoryFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -432,8 +437,9 @@ public class BuilderListComponentCommand extends Command {
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a valid memory description (8, 16 or 32)");
         }
-        if (memory != 8 && memory != 16 && memory != 32) {
-            throw new PPException("Please enter a valid memory description (8, 16 or 32)");
+        if (memory != 8 && memory != 16 && memory != 32 && memory != 64) {
+            throw new PPException("Please enter a valid memory description (8, 16, 32 or 64)");
+
         }
 
         flagsArray.add("Memory: " + memory + "GB");
@@ -1019,17 +1025,13 @@ public class BuilderListComponentCommand extends Command {
     }
 
     private static boolean isFlag(String flag) {
-        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BRAND_FLAG) || flag.equals(
-                CORE_FLAG) || flag.equals(THREAD_FLAG) || flag.equals(BASE_CLOCK_FLAG) || flag.equals(SIZE_FLAG)
-                || flag
-                        .equals(BOOST_CLOCK_FLAG)
-                || flag.equals(POWER_FLAG) || flag.equals(SOCKET_FLAG) || flag.equals(
-                        RPM_FLAG)
-                || flag.equals(NOISE_FLAG) || flag.equals(MEMORY_FLAG) || flag.equals(
-                        STICKS_FLAG)
-                || flag.equals(SPEED_FLAG) || flag.equals(TYPE_FLAG) || flag
-                        .equals(FORM_FACTOR_FLAG)
-                || flag.equals(EFFICIENCY_FLAG);
+        return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BRAND_FLAG) || flag.equals(CORE_FLAG)
+                || flag.equals(THREAD_FLAG) || flag.equals(BASE_CLOCK_FLAG) || flag.equals(SIZE_FLAG)
+                || flag.equals(BOOST_CLOCK_FLAG) || flag.equals(POWER_FLAG)
+                || flag.equals(SOCKET_FLAG) || flag.equals(RPM_FLAG) || flag.equals(NOISE_FLAG)
+                || flag.equals(MEMORY_FLAG) || flag.equals(STICKS_FLAG) || flag.equals(SPEED_FLAG)
+                || flag.equals(TYPE_FLAG) || flag.equals(FORM_FACTOR_FLAG)
+                || flag.equals(EFFICIENCY_FLAG) || flag.equals(DETAILS_FLAG);
     }
 
     private static boolean hasFlag(String[] userInputStringArray) {

@@ -1,3 +1,0 @@
-add newpc1
-add newpc2
-delete 1

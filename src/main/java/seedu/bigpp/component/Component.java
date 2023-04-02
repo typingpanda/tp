@@ -29,7 +29,11 @@ public class Component {
         this.price = price;
     }
 
-    public String toString() {
-        return "Name: " + this.name + "\nBrand: " + this.brand + "\nPrice: " + this.price;
+    public String toString(Boolean getDetails) {
+        if (getDetails) {
+            return "NAME: " + this.name + "\nBRAND: " + this.brand + "\nPRICE: " + this.price;
+        } else {
+            return this.name;
+        }
     }
 }
