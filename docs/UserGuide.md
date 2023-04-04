@@ -1,11 +1,8 @@
-<!---
-@@author Magmanat
--->
-
+<!-- omit in toc -->
+<!-- @@author Magmanat -->
 # User Guide
-
+<!-- omit in toc -->
 ## Table of contents
-
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
 - [Commands](#commands)
@@ -34,13 +31,14 @@
   - [Command Glossary](#command-glossary)
     - [Acceptable Custom Component Commands](#acceptable-custom-component-commands)
 
+
 ## Introduction
 
 Welcome to Big PC Part-Picker (BigPP)
 BigPP is a command-line application designed for PC enthusiasts and professional PC builders who aim to:
 
-- streamline the [process](#commands) of managing computer builds
-- verify the [compatibility](#compatibility-check) of selected components.
+ - streamline the [process](#commands) of managing computer builds 
+ - verify the [compatibility](#compatibility-check) of selected components.
 
 This developer-oriented guide offers a comprehensive overview of the various commands and features available in BigPP. It is intended for users who are familiar with command-line interfaces.
 If you encounter unfamiliar terminology in this guide, please refer to the [Glossary](#glossary) for a list of terms and their definitions.
@@ -48,12 +46,13 @@ If you encounter unfamiliar terminology in this guide, please refer to the [Glos
 ## Getting Started
 
 1. Install [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) for your operating system. If you are unsure about how to do this, you can refer to the [Java installation guide](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html) or consult a search engine.
-2. Download the latest version of `BigPP` from
-   [the releases page](https://github.com/AY2223S2-CS2113-T12-2/tp/releases).
+2. Download the latest version of `BigPP` from 
+[the releases page](https://github.com/AY2223S2-CS2113-T12-2/tp/releases).
 3. Copy the file to an empty folder you want to use as the _home folder_ This will be the folder in which BigPP will store all of its user data.
 4. Right click inside the _home folder_ and open a terminal at that location
 5. Run the command `java -jar BigPP.jar` to start the app.
 6. Refer to the [Commands](#Commands) below to try out the application!
+
 
 Upon successful initialization of the program for the first time, you would be greeted by the following, assuming you do not currently have a user.json file in your _home folder_
 
@@ -62,20 +61,20 @@ User file does not exist. Creating new user file.
 User PCs found, loading...
           _____                    _____                    _____                            _____                    _____
          /\    \                  /\    \                  /\    \                          /\    \                  /\    \
-        /::\    \                /::\    \                /::\    \                        /::\    \                /::\    \
-       /::::\    \               \:::\    \              /::::\    \                      /::::\    \              /::::\    \
-      /::::::\    \               \:::\    \            /::::::\    \                    /::::::\    \            /::::::\    \
-     /:::/\:::\    \               \:::\    \          /:::/\:::\    \                  /:::/\:::\    \          /:::/\:::\    \
-    /:::/__\:::\    \               \:::\    \        /:::/  \:::\    \                /:::/__\:::\    \        /:::/__\:::\    \
-   /::::\   \:::\    \              /::::\    \      /:::/    \:::\    \              /::::\   \:::\    \      /::::\   \:::\    \
-  /::::::\   \:::\    \    ____    /::::::\    \    /:::/    / \:::\    \            /::::::\   \:::\    \    /::::::\   \:::\    \
- /:::/\:::\   \:::\ ___\  /\   \  /:::/\:::\    \  /:::/    /   \:::\ ___\          /:::/\:::\   \:::\____\  /:::/\:::\   \:::\____\
+        /::\    \                /::\    \                /::\    \                        /::\    \                /::\    \        
+       /::::\    \               \:::\    \              /::::\    \                      /::::\    \              /::::\    \       
+      /::::::\    \               \:::\    \            /::::::\    \                    /::::::\    \            /::::::\    \      
+     /:::/\:::\    \               \:::\    \          /:::/\:::\    \                  /:::/\:::\    \          /:::/\:::\    \     
+    /:::/__\:::\    \               \:::\    \        /:::/  \:::\    \                /:::/__\:::\    \        /:::/__\:::\    \    
+   /::::\   \:::\    \              /::::\    \      /:::/    \:::\    \              /::::\   \:::\    \      /::::\   \:::\    \   
+  /::::::\   \:::\    \    ____    /::::::\    \    /:::/    / \:::\    \            /::::::\   \:::\    \    /::::::\   \:::\    \  
+ /:::/\:::\   \:::\ ___\  /\   \  /:::/\:::\    \  /:::/    /   \:::\ ___\          /:::/\:::\   \:::\____\  /:::/\:::\   \:::\____\ 
 /:::/__\:::\   \:::|    |/::\   \/:::/  \:::\____\/:::/____/  ___\:::|    |        /:::/  \:::\   \:::|    |/:::/  \:::\   \:::|    |
 \:::\   \:::\  /:::|____|\:::\  /:::/    \::/    /\:::\    \ /\  /:::|____|        \::/    \:::\  /:::|____|\::/    \:::\  /:::|____|
- \:::\   \:::\/:::/    /  \:::\/:::/    / \/____/  \:::\    /::\ \::/    /          \/_____/\:::\/:::/    /  \/_____/\:::\/:::/    /
-  \:::\   \::::::/    /    \::::::/    /            \:::\   \:::\ \/____/                    \::::::/    /            \::::::/    /
-   \:::\   \::::/    /      \::::/____/              \:::\   \:::\____\                       \::::/    /              \::::/    /
-    \:::\  /:::/    /        \:::\    \               \:::\  /:::/    /                        \::/____/                \::/____/
+ \:::\   \:::\/:::/    /  \:::\/:::/    / \/____/  \:::\    /::\ \::/    /          \/_____/\:::\/:::/    /  \/_____/\:::\/:::/    / 
+  \:::\   \::::::/    /    \::::::/    /            \:::\   \:::\ \/____/                    \::::::/    /            \::::::/    /  
+   \:::\   \::::/    /      \::::/____/              \:::\   \:::\____\                       \::::/    /              \::::/    /   
+    \:::\  /:::/    /        \:::\    \               \:::\  /:::/    /                        \::/____/                \::/____/    
      \:::\/:::/    /          \:::\    \               \:::\/:::/    /                          ~~                       ~~
       \::::::/    /            \:::\    \               \::::::/    /
        \::::/    /              \:::\____\               \::::/    /
@@ -98,13 +97,11 @@ What would you like to do?
 If the ASCII art of BIG PP does not look correct, it is due to your terminal size being too small, if so you can disregard this issue.
 
 ## Commands
-
-Our commands are split up for two modes, PCViewer and PCBuilder. The commands for each mode will only be recognised for the specific mode that you are currently in. The modes will specifically be stated at the top of each printout in the terminal. Additional leading and trailing whitespaces from user input will be ignored.
+Our commands are split up for two modes, PCViewer and PCBuilder. The commands for each mode will only be recognised for the specific mode that you are currently in. The modes will specifically be stated at the top of each printout in the terminal. Additional leading and trailing whitespaces from  user input will be ignored.
 
 For reference,
-
-- PCViewer looks like this:
-
+ - PCViewer looks like this:
+ 
 ```
 ===================================================
 PC viewer
@@ -116,7 +113,7 @@ What would you like to do?
 ===================================================
 ```
 
-- PCBuilder looks like this
+ - PCBuilder looks like this
 
 ```
 ===================================================
@@ -139,47 +136,43 @@ What would you like to do?
 ---
 
 ### Common Commands
-
 Common commands will be the commands that the user will be able to use in both the modes
 
-#### **Bye Command**
+<!-- @@author Reynold-SL -->
 
+#### **Bye Command**
 Usage: `bye`
 Functionality: Exits the application and saves all user data that has currently been changed since the opening of the application
 
 ```diff
-- **IMPORTANT:** the user MUST execute this command to save the data that has been edited,
-- if the user decides to end the program using ctrl+c or other methods, their edited data would be lost!
+- **IMPORTANT:** the user MUST execute this command to save the data that has been edited, 
+- if the user decides to end the program using ctrl+c or other methods, their edited data would be lost! 
 ```
 
-<!---
-@@author Reynold-SL
--->
+<!-- @@author Reynold-SL -->
 
 #### **Help Command**
-
 Usage: `help`
 Functionality: Displays the valid commands in the respective modes
 Example:
-
-- Entering the help command in the PCViewer mode will produce the following output at the bottom of your terminal:
-
-```
-Here are the list of valid commands:
-Add <name> - Add a new PC of a given name
-Delete <index> -  Delete the PC of a given index
-Edit <index> - Edit the PC of a given index
-View <index> - Display all the components of the PC of a given index
-```
-
-- Entering the help command in the PCBuilder mode will produce the following output at the bottom of your terminal:
+ - Entering the help command in the PCViewer mode will produce the following output at the bottom of your terminal:
 
 ```
-Here are the list of valid commands:
+Here are the list of valid commands: 
+Add <name> - Add a new PC of a given name 
+Delete <index> -  Delete the PC of a given index 
+Edit <index> - Edit the PC of a given index 
+View <index> - Display all the components of the PC of a given index 
+```
+
+ - Entering the help command in the PCBuilder mode will produce the following output at the bottom of your terminal:
+
+```
+Here are the list of valid commands: 
 list <component> - List all components of a certain type
 name <new_name> - Change the name of the PC currently being edited to <new_name>
-budget <new_budget> - Change the budget of the PC currently being edited to <new_budget>
-select <component_type> <index> -  Add the component of type <component_type> with index <index> to the PC currently being edited
+budget <new_budget> - Change the budget of the PC currently being edited to <new_budget> 
+select <component_type> <index> -  Add the component of type <component_type> with index <index> to the PC currently being edited 
 info <component_type> - View all the specifications of the component of type <component_type> currently selected for the build
 unselect <component_type> - Remove the component of type <component_type> from the PC currently beingedited
 custom <component_type> <component_specifications...> - Creates a custom component of type <component_type> with all the <component_specifications> and adds it to the list of components of that type
@@ -188,25 +181,20 @@ compare <component_type> <index_1>&<index_2> Compares all the specifications bet
 
 Notes: Entering the help command in either PCViewer mode or PCBuilder mode will present different sets of valid commands
 
+
+
 ---
-
-<!---
-@@author superkaiba
--->
-
+<!-- @@author superkaiba -->
 ### PCViewer Mode Commands
-
 PCViewer Mode commands will be the commands that the user will be able to use in the PCViewer Mode
 
 #### **Add Command**
-
 Usage: `add PC_NAME`
 
 Functionality: Adds a PC with the name `PC_NAME` to your PC list
 
 Example:
-
-> input: add NEWPC
+>input: add NEWPC
 
 ```
 ===================================================
@@ -226,14 +214,12 @@ Notes: newly added PCs will always begin with infinite budget
 ---
 
 #### **View Command**
-
 Usage: `view PC_INDEX`
 
 Functionality: Views the PC with index `PC_INDEX`
 
 Example:
-
-> input: view 3
+>input: view 3
 
 ```
 ===================================================
@@ -258,20 +244,15 @@ Chassis    : Corsair iCUE 4000X RGB
 ```
 
 ---
-
-<!---
-@@author Magmanat
--->
+<!-- @@author Magmanat -->
 
 #### **Edit Command**
-
 Usage: `edit PC_INDEX`
 
-Functionality: Enters PCBuilder mode for the PC with index `PC_INDEX`.
+Functionality: Enters PCBuilder mode for the PC with index `PC_INDEX`. 
 
 Example:
-
-> input: edit 4
+>input: edit 4
 
 ```
 ===================================================
@@ -297,14 +278,12 @@ Notes: If the PC that the user has selected to edit is a `PREBUILT_PC`, the appl
 ---
 
 #### **Delete Command**
-
 Usage: `delete PC_INDEX`
 
 Functionality: Deletes the PC with index `PC_INDEX`
 
 Example:
-
-> input: delete 4
+>input: delete 4
 
 ```
 ===================================================
@@ -319,36 +298,29 @@ Custom PC: [ NEWPC ] has been deleted
 ```
 
 ---
-
-<!---
-@@author Reynold-SL
--->
-
+<!-- @@author Reynold-SL -->
 #### **Filter Command**
-
 Usage: `filter FILTER_FLAGS`
 
 Available flags:
-
 > `-name PC_NAME`
->
+> 
 > `-price /from PC_START_PRICE /to PC_END_PRICE`
->
+> 
 > `-built PC_ISCOMPLETE`
->
+> 
 > `-clear`
 
-Functionality:
-The following explains the functionality of filtering by each flag:
-
-- `-name PC_NAME` will filter the PC List by the given name
-- `price /from PC_START_PRICE /to PC_END_PRICE` will filter the PC List by a given price range
-- `-built PC_ISCOMPLETE` will filter the PC List by built of either complete or incomplete
-- `-clear` will clear all filters that were applied previously
+Functionality: 
+The following explains the functionality of filtering by each flag: 
+ - `-name PC_NAME` will filter the PC List by the given name
+ - `price /from PC_START_PRICE /to PC_END_PRICE` will filter the PC List by a given price range
+ - `-built PC_ISCOMPLETE` will filter the PC List by built of either complete or incomplete
+ - `-clear` will clear all filters that were applied previously
 
 Example: filter the PC List by the name of intermediate, in the range of starting price from 1000 to 3000 and is a completed build
 
-> input: filter -name intermediate -price /from 1000 /to 3000 -built complete
+>input: filter -name intermediate -price /from 1000 /to 3000 -built complete
 
 ```
 ===================================================
@@ -360,26 +332,21 @@ What would you like to do?
 Filter completed
 ```
 
-Notes: The flags can by strung together _in any order_ such as `filter -price /from 1000 /to 3000 -name intermediate -built complete`. However, if the `-clear` flag is detected, this will take **precedence** and remove all filters regardless of other flags.
+Notes: The flags can by strung together *in any order* such as `filter -price /from 1000 /to 3000 -name intermediate -built complete`. However, if the `-clear` flag is detected, this will take **precedence** and remove all filters regardless of other flags.
 
 ---
 
-<!---
-@@author typingpanda
--->
+<!-- @@author typingpanda -->
 
 ### PCBuilder Mode Commands
-
 PCBuilder Mode commands will be the commands that the user will be able to use in the PCBuilder Mode
 
 #### **List Command**
-
 Usage: `list COMPONENT_TYPE [-COMPONENT_FLAG LIST_FLAG]`
 
 Available flags:
-
 > `-details`
->
+> 
 > `-name COMPONENT_NAME`
 >
 > `-brand COMPONENT_BRAND`
@@ -413,7 +380,7 @@ Available flags:
 > `-speed /from COMPONENT_START_SPEED /to COMPONENT_END_SPEED`
 >
 > `-type COMPONENT_TYPE`
->
+> 
 > `-efficiency COMPONENT_EFFICIENCY`
 
 Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags. List command shows only the names of components for readability. For detailed information, use the `-details` flag. Multiple flags can be used together.
@@ -444,19 +411,15 @@ Notes: Arguments with missing flags will be ignored. Flags that are not relevant
 
 ---
 
-<!---
-@@author Ryujikjs
--->
+<!-- @@author Ryujikjs -->
 
 #### **Select Command**
-
 Usage: `select COMPONENT_TYPE COMPONENT_INDEX`
 
 Functionality: Adds the component of type `COMPONENT_TYPE` with index `INDEX` to the current PC Build
 
 Example: add component of type `GPU` with index `4` to the current PC Build.
-
-> input: select gpu 4
+>input: select gpu 4
 
 ```
 ===================================================
@@ -483,14 +446,13 @@ Notes: you can select any component at any time and do not need to list componen
 ---
 
 #### **Unselect Command**
-
 Usage: `unselect COMPONENT_TYPE`
 
 Functionality: Removes the component of type `COMPONENT_TYPE` from your PC Build.
 
 Example: remove component of type `GPU` from the current PC Build.
 
-> input: unselect gpu
+>input: unselect gpu
 
 ```
 ===================================================
@@ -514,14 +476,12 @@ gpu removed!
 ---
 
 #### **Compare Command**
-
 Usage: `compare COMPONENT_TYPE INDEX_1 & INDEX_2`
 
 Functionality: Compares 2 components,`INDEX_1` and `INDEX_2` of type `COMPONENT_TYPE` with one another. Compares each specification in a table format
 
 Example: Compare 2 components of type `CPU`. Comparison between indexes `1` and `2`.
-
-> input: compare cpu 1 & 2
+>input: compare cpu 1 & 2
 
 ```
 ________________________________________________________________________________________________
@@ -540,19 +500,15 @@ ________________________________________________________________________________
 
 ---
 
-<!---
-@@author typingpanda
--->
+<!-- @@author typingpanda -->
 
 #### **Budget Command**
-
 Usage: `budget POSITIVE_INTEGER`
 
 Functionality: Sets the `BUDGET` of the current PC build to `POSITIVE_INTEGER`
 
 Example Set `BUDGET` of the PC you are currently editing to be $1000
-
-> input: budget 1000
+>input: budget 1000
 
 ```
 ===================================================
@@ -577,14 +533,12 @@ Current build budget is now: $1000.00
 ---
 
 #### **Name Command**
-
 Usage: `name PC_NAME`
 
 Functionality: Sets the name of the current PC build to `PC_NAME`
 
 Example Set the name of PC to be MyPC
-
-> input: name MyPC
+>input: name MyPC
 
 ```
 ===================================================
@@ -607,17 +561,13 @@ Current build name is now: MyPc
 
 ---
 
-<!---
-@@author superkaiba
--->
+<!-- @@author superkaiba -->
 
 #### **Custom Command**
-
 Usage: `custom COMPONENT_TYPE SPEC_1|SPEC_2|...`
 
 Functionality: Adds a custom component of type COMPONENT_TYPE with the specs `SPEC_1`, `SPEC_2`...... to the current PC build
-
-> input input: custom cpu Intel-new-cpu|Intel|99.5|4|8|3.5|4.6|122|LGA1200
+>input input: custom cpu Intel-new-cpu|Intel|99.5|4|8|3.5|4.6|122|LGA1200
 
 ```
 ===================================================
@@ -643,21 +593,17 @@ Notes: Please see the glossary for the `SPEC` definitions for each component
 ---
 
 #### **Back Command**
-
 Usage: `back`
 
 Functionality: Goes back to PCViewer menu
 
 ---
 
-<!---
-@@author Magmanat
--->
+<!-- @@author Magmanat -->
 
 ## Additional Features
 
 ### Compatibility Check
-
 BigPP will check if your components that you added are compatible with each other. There are a few ways that BigPP will ensure your PC components are all compatible with each other.
 
 1. `CHASSIS` must always be of a bigger or same `FORMFACTOR` than the inner components such as `GPU`, `PSU` etc, this check is ignored if your chassis is not added.
@@ -668,8 +614,7 @@ BigPP will check if your components that you added are compatible with each othe
 Based on the rules stated above, the compatibility checker will throw the user error messages if he tries to add any component which breaks the rules, and suggest changes that the user can make to avoid adding incompatible components.
 
 Example: The `CPU` current added has a socket **LGA1200** and the new `MOTHERBOARD` that the user wants to add has a socket **AM5**.
-
-> input: custom motherboard newmobo|AMD|10|atx|AM5|10
+>input: custom motherboard newmobo|AMD|10|atx|AM5|10
 
 ```
 ===================================================
@@ -691,53 +636,54 @@ Motherboard socket is not compatible with current cpu socket
 Please choose another motherboard or change your cpu
 ```
 
-<!---
-@@author Ryujikjs
--->
-
+<!-- @@author Ryujikjs -->
 ## Glossary
 
 ### Parameters Glossary
 
-|    Parameter     |                                    Explanation                                    |       Type       |        Example        |
-| :--------------: | :-------------------------------------------------------------------------------: | :--------------: | :-------------------: |
-|     PC_NAME      |                               Name of the PC Build                                |      String      |      "The Beast"      |
-|     PC_INDEX     |                              Index number of the PC                               | Positive Integer |           1           |
-|   PREBUILT_PC    |                      PC with all its components pre selected                      |      -nil-       |         -nil-         |
-|    CUSTOM_PC     |                      PC that can be fully customised by user                      |      -nil-       |         -nil-         |
-|  PC_START_COST   |             Initial cost of the PC (must be lesser than PC_END_COST)              |  Positive Float  |         0.00          |
-|   PC_END_COST    |             Final cost of the PC (must be greater than PC_START_COST)             |  Positive Float  |        1500.90        |
-|       NAME       |                               Name of the component                               |      String      | "Intel core i3-10100" |
-|      PRICE       |                              Price of the component                               |  Positive Float  |        100.00         |
-|      BRAND       |                    Name of the manufacturer of the compoenent                     |      String      |         "msi"         |
-|      POWER       |                The power consumption of the component in Watts(W)                 |  Positive Float  |         150.0         |
-|      SOCKET      | Physical socket where CPU is placed in(CPU must be seated in a compatible socket) |      String      |       "LGA1200"       |
-|       CORE       |                 Number of physical cores avaiable for computation                 | Positive Integer |           4           |
-|      THREAD      |                 Number of virtual cores avaiable for computation                  | Positive Integer |           8           |
-|    BASECLOCK     |                Baseline clockspeed of component in gigahertz (GHz)                | Positive Integer |          3.2          |
-|    BOOSTCLOCK    |          Boosted clockspeed of component when under load gigahertz (GHz)          | Positive Integer |          4.2          |
-|       RPM        |                 Speed of rotation in revolutions per minute (RPM)                 | Positive Integer |          500          |
-|      NOISE       |              Measurement of sound component produces in decibels(dB)              | Positive Integer |          43           |
-|    EFFICIENCY    |                       The power efficiency of power supply                        |      String      |        "gold"         |
-| POSITIVE_INTEGER |                       A positive integer between 0 - 65,535                       | Positive Integer |           1           |
+|    Parameter     |                                    Explanation                                    |       Type       |                                                                                        Example                                                                                         |
+|:----------------:|:---------------------------------------------------------------------------------:|:----------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|     PC_NAME      |                               Name  of the PC Build                               |      String      |                                                                                      "The Beast"                                                                                       |
+|     PC_INDEX     |                              Index number of the PC                               | Positive Integer |                                                                                           1                                                                                            |
+|   PREBUILT_PC    |                      PC with all its components pre selected                      |      -nil-       |                                                                                         -nil-                                                                                          |
+|    CUSTOM_PC     |                      PC that can be fully customised by user                      |      -nil-       |                                                                                         -nil-                                                                                          |
+|  PC_START_COST   |             Initial cost of the PC (must be lesser than PC_END_COST)              |  Positive Float  |                                                                                          0.00                                                                                          |
+|   PC_END_COST    |             Final cost of the PC (must be greater than PC_START_COST)             |  Positive Float  |                                                                                        1500.90                                                                                         |
+|       NAME       |                               Name of the component                               |      String      |                                                                                 "Intel core i3-10100"                                                                                  |
+|      PRICE       |                              Price of the component                               |  Positive Float  |                                                                                         100.00                                                                                         |
+|      BRAND       |                    Name of the manufacturer of the compoenent                     |      String      |                                                                                         "msi"                                                                                          |
+|      POWER       |                The power consumption of the component in Watts(W)                 |  Positive Float  |                                                                                         150.0                                                                                          |
+|      SOCKET      | Physical socket where CPU is placed in(CPU must be seated in a compatible socket) |      String      |                                                                                       "LGA1200"                                                                                        |
+|       CORE       |                 Number of physical cores avaiable for computation                 | Positive Integer |                                                                                           4                                                                                            |
+|      THREAD      |                 Number of virtual cores avaiable for computation                  | Positive Integer |                                                                                           8                                                                                            |
+|    BASECLOCK     |               Baseline clockspeed of component  in gigahertz (GHz)                | Positive Integer |                                                                                          3.2                                                                                           |
+|    BOOSTCLOCK    |          Boosted clockspeed of component when under load gigahertz (GHz)          | Positive Integer |                                                                                          4.2                                                                                           |
+|       RPM        |                 Speed of rotation in revolutions per minute (RPM)                 | Positive Integer |                                                                                          500                                                                                           |
+|      NOISE       |              Measurement of sound component produces in decibels(dB)              | Positive Integer |                                                                                           43                                                                                           |
+|    EFFICIENCY    |                       The power efficiency of power supply                        |      String      |                                                                                         "gold"                                                                                         |
+| POSITIVE_INTEGER |                       A positive integer between 0 - 65,535                       | Positive Integer |                                                                                           1                                                                                            |
 
-| **Parameter**  | **Explanation**                                      | **Type**         |                                                                               **All Acceptable Inputs**                                                                                |
-| -------------- | ---------------------------------------------------- | ---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| SIZE           | Size of storage components in gigabytes(GB)          | Positive Integer |                                                                                512, 1024, 2048 and 4096                                                                                |
+
+
+
+
+
+| **Parameter**  | **Explanation**                                      | **Type**         |                                                                                **All Acceptable Inputs**                                                                                 |
+| -------------- | ---------------------------------------------------- | ---------------- |:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| SIZE           | Size of storage components in  gigabytes(GB)         | Positive Integer |                                                                                512, 1024, 2048 and 4096                                                                                |
 | MEMORY         | Amount of random access memory(RAM) in gigabytes(GB) | Positive Integer |                                                                                    8, 16, 32 and 64                                                                                    |
 | STICKS         | Numper of physical RAM sticks                        | Positive Integer |                                                                                       1, 2 and 4                                                                                       |
 | SPEED          | Speed of RAM in Megahertz(MHz)                       | Positive Integer |                                                                            1600, 2000, 2666, 3200 and 3600                                                                             |
 | TYPE           | Type of storage device                               | String           |                                                                                      "ssd"/"hdd"                                                                                       |
 | FILTER_FLAGS   | Attributes of PC Build to filter                     | String           |                                            `-name PC_NAME`,`-price /from PC_START_COST /to PC_END_COST`,`-built PC_ISCOMPLETE` and`-clear`                                             |
 | LIST_FLAGS     | Attributes of the component                          | String           | `-name`, `-brand`, `-price`,`-power`, `-formfactor`, `-socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `-memory`, `-sticks`, `-speed` and `-type` |
-| PC_ISCOMPLETE  | State of PC                                          | String           |                                                                               "complete" / "incomplete"                                                                                |
+| PC_ISCOMPLETE  | State of  PC                                         | String           |                                                                               "complete" / "incomplete"                                                                                |
 | COMPONENT_TYPE | Type of Component that is required to build a PC     | String           |                                                       `cpu`,`gpu`,`cpu-cooler`,`motherboard`,`ram`,`storage`,`psu` and `chassis`                                                       |
 | FORMFACTOR     | The standard size specification of the components    | String           |                                                                                `atx`,`mini` and `micro`                                                                                |
-
 ### Command Glossary
 
 |   Viewer Menu Commands    |                     Format                     |                                                Flags                                                |
-| :-----------------------: | :--------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
+|:-------------------------:|:----------------------------------------------:|:---------------------------------------------------------------------------------------------------:|
 |          Add PC           |                 `add PC_NAME`                  |                                                 nil                                                 |
 |          View PC          |                `view PC_INDEX`                 |                                                 nil                                                 |
 |          Edit PC          |                `edit PC_INDEX`                 |                                                 nil                                                 |
@@ -747,7 +693,7 @@ Please choose another motherboard or change your cpu
 |         List CPU          |     `list cpu [-COMPONENT_FLAG LIST_FLAG]`     | `-name`, `-brand`, `-price`,`-power`, `-socket`, `-core`, `-thread`, `-baseclock` and `-boostclock` |
 |         List GPU          |     `list gpu [-COMPONENT_FLAG LIST_FLAG]`     |                       `-name`, `-brand`, `-price`,`-power` and `-formfactor`                        |
 |      List CPU Cooler      | `list cpu-cooler [-COMPONENT_FLAG LIST_FLAG]`  |                     `-name`, `-brand`, `-price`, `-rpm`, `-noise` and `-power`                      |
-|     List Motherboard      | `list motherboard [-COMPONENT_FLAG LIST_FLAG]` |                   `-name`, `-brand`, `-price`,`-formfactor`,`-socket`and `-power`                   |
+|     List  Motherboard     | `list motherboard [-COMPONENT_FLAG LIST_FLAG]` |                   `-name`, `-brand`, `-price`,`-formfactor`,`-socket`and `-power`                   |
 |         List RAM          |     `list ram [-COMPONENT_FLAG LIST_FLAG]`     |               `-name`, `-brand`, `-price`,`-memory`, `-sticks`, `-speed` and`-power`                |
 |       List Storage        |   `list storage [-COMPONENT_FLAG LIST_FLAG]`   |                     `-name`, `-brand`, `-price`, `-type`, `-size` and `-power`                      |
 |         List PSU          |     `list psu [-COMPONENT_FLAG LIST_FLAG]`     |                `-name`, `-brand`, `-price`,`-efficiency`, `-formfactor` and `-power`                |
@@ -760,8 +706,8 @@ Please choose another motherboard or change your cpu
 |     Custom Component      |  `custom COMPONENT_TYPE SPEC_1\|SPEC_2\|...`   |                     [Acceptable Format](#acceptable-custom-component-commands)                      |
 |           Back            |                     `back`                     |                                                 nil                                                 |
 
-#### Acceptable Custom Component Commands
 
+#### Acceptable Custom Component Commands
 The acceptable formats for custom component creation are as shown below
 
 1. `custom cpu NAME|BRAND|PRICE|CORE|THREAD|BASECLOCK|BOOSTCLOCK|POWER|SOCKET`
@@ -772,3 +718,6 @@ The acceptable formats for custom component creation are as shown below
 6. `custom storage NAME|BRAND|PRICE|TYPE|SIZE|POWER`
 7. `custom psu NAME|BRAND|PRICE|EFFICIENCY|FORMFACTOR|POWER`
 8. `custom chassis NAME|BRAND|PRICE|FORMFACTOR`
+
+
+
