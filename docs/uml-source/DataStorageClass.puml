@@ -2,10 +2,34 @@
 
 
 class ComponentList<T> {
-    + getListString(componentIndexes: ArrayList<Integer>): String
-    + filterByName(componentList: ComponentList<?>, name: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
-    + filterByBrand(componentList: ComponentList<?>, brand: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
-    + filterByPrice(componentList: ComponentList<?>, priceFrom: String, priceTo: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
+    +getListString(componentIndexes: ArrayList<Integer>, getDetails: Boolean): String
+    +filterByEfficiencyPsu(...)
+    +filterByPowerPsu(...)
+    +filterByPowerStorage(...)
+    +filterBySizeStorage(...)
+    +filterByTypeStorage(...)
+    +filterByPowerRam(...)
+    +filterBySpeed(...)
+    +filterBySticks(...)
+    +filterByMemory(...)
+    +filterByPowerMotherboard(...)
+    +filterBySocketMotherboard(...)
+    +filterByFormFactorMotherboard(...)
+    +filterByPowerGpu(...)
+    +filterByFormFactorGpu(...)
+    +filterByPowerCpuCooler(...)
+    +filterByNoise(...)
+    + filterByRpm(...)               
+    + filterBySocketCpu(...)             
+    + filterByPowerCpu(...)          
+    + filterByBoostClock(...)    
+    + filterByBaseClock(...)    
+    + filterByThread(...)                  
+    + filterByCore(...)                     
+    + filterByFormFactorChassis(...) 
+    + filterByName(...)                  
+    + filterByBrand(...)                 
+    + filterByPrice(...)
 }
 
 
@@ -30,9 +54,32 @@ StorageList --|> ComponentList
 
 
 class PCList {
-    + printPcList(): void
+    -isFilter: Boolean
+    -priceFrom: String
+    -priceTo: String
+    -name: String
+    -built: String
+    +printPcList()
+    +printAltPcList()
+    +getIsFilter(): Boolean
+    +getIsBuilt(): String
+    +getName(): String
+    +getPriceFrom(): String
+    +getPriceTo(): String
+    +setFilterTrue()
+    +setFilterFalse()
+    +setBuilt(String)
+    +setName(String)
+    +setPriceFrom(String)
+    +setPriceTo(String)
+    +filterByPrice(...)
+    +filterByName(...)
+    +filterByBuilt(...)
 }
 
+
+              
+             
 
 
 class DataStorage {

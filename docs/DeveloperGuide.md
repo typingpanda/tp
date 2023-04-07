@@ -1,6 +1,9 @@
 <!-- omit in toc -->
+
 # Developer Guide
+
 <!-- omit in toc -->
+
 ## Table of contents
 
 - [General Overview](#general-overview)
@@ -21,17 +24,22 @@
   - [Glossary](#glossary)
   - [Instructions for manual testing](#instructions-for-manual-testing)
 
+---
 
 ## General Overview
+
 below is the overall architecture diagram for how BigPP works.
 
 ![Architecture Diagram](uml-pictures/ArchitectureDiagram.png)
 
 The program will first load the `UserJson` and files in the `Resources` folder to populate its internal memory of `PCLists` and `ComponentLists`. This will be stored in its `DataStorage`. The `User`'s interaction with the `UI` will be `parsed` into a `command` which would update the `DataStorage` and eventually update the `Menu` which is displayed back to the `User`. This would continue until the `User` exits the program, which would result in the data stored in `DataStorage` being saved into the `UserJson`.
 
+---
+
 ## Design & implementation
 
 ### UI class
+
 Below is the Class diagram for the UI class
 
 ![UI Class Diagram](uml-pictures/UIClassDiagram.png)
@@ -39,20 +47,23 @@ Below is the Class diagram for the UI class
 The `UI` Class serves as the interface between the user and BigPP. It is responsible for the following key actions
 
 1. **Initialization**: Upon start up of BigPP, the instance of `DataStorage` is parsed into the `updateUI` method of `UI` to give it the ability to access resources for BigPP. `UIState` is set to be `PCViewer`.
-   
 2. **Functionality**
-  - Shows welcome message to the user
-  - Gets input from the user
-  - Sets the `UIState` of BigPP depending on user command
-  - Updates the user interface to show the menu depending on the `UIState`
-  - Clears the terminal after every user command
-  - Shows feedback to the user after every user command
+
+- Shows welcome message to the user
+- Gets input from the user
+- Sets the `UIState` of BigPP depending on user command
+- Updates the user interface to show the menu depending on the `UIState`
+- Clears the terminal after every user command
+- Shows feedback to the user after every user command
 
 3. **Behavior**: The `UI` Class acts as the intermediary between the user and BigPP. `UIState` of `UI` can change between `PCViewer` and `PCBuilder` which would result in different commands available to the user. This makes the possible commands that can be given clear to the user.
 
 In summary, UI gives crucial feedback to the user such as the menu of possible commands based on the current menu and results of a given command.
 
+---
+
 ### DataStorage class
+
 Below is the Class diagram for the DataStorage class:
 
 ![DataStorage Class Diagram](uml-pictures/DataStorageClass.png)
@@ -63,16 +74,19 @@ The `DataStorage` class serves as a centralized storage and management system fo
 
 2. **Functionality**: The `DataStorage` class
 
-    - Loads the entire `user.json` file that is saved in the storage of the user's computer. This json file will contain all of the PC builds that the user has made in his prior usages of BigPP.
-    - Loads all of the pre-built PC builds that are in the `Resources` folder that have been pre-set by us for the user to view.
-    - Loads all of the data that is in the `Resources` folder which stores pre-loaded data of BigPP which includes all of the component data that is available in our database.
-    - Saves all the user data into `user.json` file that is saved in the storage of user's computer when the user inputs the "bye" command.
+   - Loads the entire `user.json` file that is saved in the storage of the user's computer. This json file will contain all of the PC builds that the user has made in his prior usages of BigPP.
+   - Loads all of the pre-built PC builds that are in the `Resources` folder that have been pre-set by us for the user to view.
+   - Loads all of the data that is in the `Resources` folder which stores pre-loaded data of BigPP which includes all of the component data that is available in our database.
+   - Saves all the user data into `user.json` file that is saved in the storage of user's computer when the user inputs the "bye" command.
 
 3. **Behavior**: The `DataStorage` class acts as an intermediary between the application and the stored lists of components and PC builds. It helps to maintain a clean separation of concerns by providing a unified interface for handling data storage and retrieval. This allows the rest of the application to interact with the data easily.
 
 In summary, the `DataStorage` class is responsible for managing lists of components and PC builds, providing methods to load all the data needed, and interact with this loaded data.
 
+---
+
 #### ===== loadChassis() method =====
+
 This Sequential analysis will show how the loadChassis() method works, this will also serve as an example for all the other load methods that the DataStorage class has.
 
 The `loadChassis` method reads chassis information from a JSON file and populates a `ChassisList` with the data.
@@ -90,21 +104,27 @@ found below:
 
 ![load Chassis Sequential Diagram](uml-pictures/loadChassisSequential.png)
 
+---
+
 ### Parser class
+
 The UML class diagram shows the features of the Parser class:
 
 ![Parser Class Diagram](uml-pictures/ParserClass.png)
 
 The purpose of the Parser class is to parse the user input into commands for execution. With reference to the diagram,
 the Parser class does not have any attributes and only contains public methods for parsing of the user input.
-The methods in the Parser class creates a subclass which inherits from the abstract superclass Command class. 
+The methods in the Parser class creates a subclass which inherits from the abstract superclass Command class.
 From the diagram, Command class has a private attribute named arguments which stores the user inputs as a String. The Command class
-contains methods that help to set and retrieve the private attribute in the class. 
+contains methods that help to set and retrieve the private attribute in the class.
 Overall, this class diagram provides an overview of the purpose of the Parser class.
 
+---
+
 #### ===== ViewerAddCommand() method =====
+
 This Sequential analysis will show how the ViewerAddCommand() method works, this will also serve as an example for the ViewerDeleteCommand and ViewerViewCommand.
-During the ParseCommand, when a add command is detected in the user input, it will call the `ViewerAddCommand` method with 
+During the ParseCommand, when a add command is detected in the user input, it will call the `ViewerAddCommand` method with
 a name as its argument. The `ViewerAddCommand` then calls a method to retrieve the argument.The `ViewerAddCommand`
 checks if the argument is empty and throws an `PPException` if it is empty. A `PC` object is created with the argument as
 an input. The `add` method is called by accessing the `dataStorage` and `pcList` classes to add the `PC` object to the list.
@@ -113,6 +133,9 @@ Finally, a message is returned to inform the user that the `ViewerAddCommand` me
 A UML sequence diagram showing the interactions between the different objects involved in handling this method can be
 found below:
 ![Viewer Add Command Sequential Diagram](uml-pictures/ViewerAddCommand.png)
+
+---
+
 ### PC Class Architecture
 
 ![PC Class Diagram](uml-pictures/PcDiagram.png)
@@ -127,8 +150,12 @@ The `PC` class has methods to set and get the components of a `PC` object, as we
 
 Overall, this class diagram provides a high-level overview of the components that make up a computer system and their relationships to each other.
 
+---
+
 ### Command class
+
 #### ===== `list [COMPONENT]` Command (builder mode) =====
+
 The `list [COMPONENT]` command prints out a formatted list of all available components of type `[COMPONENT]`.
 
 When the user inputs a command of the form `list [COMPONENT]` in builder mode,
@@ -140,6 +167,7 @@ The `BuilderListComponentCommand.executeCommand()` method is then executed as pa
 inside `BigPP.runLoopUntilExit()`.
 
 It first verifies:
+
 - That the component argument is not empty. If it is then it throws a `BuilderMissingComponentException()`
 - That the component given by the user exists in the database. If it doesn't then it throws a
   `BuilderMissingComponentException()`
@@ -167,34 +195,33 @@ found below:
 
 ![List Component Command](./uml-pictures/listComponentCommand.png)
 
+---
 
 ## Appendix: Requirements
+
 ### Product scope
+
 #### Target user profile
 
 People who want to build PC's and keep track of their builds.
 
 #### Value proposition
 
- - Saves time and effort in selecting PC components
- - Helps users avoid compatibility issues or mistakes
- - Enables users to build cost-effective systems.
- - Prebuilt PCs
+- Saves time and effort in selecting PC components
+- Helps users avoid compatibility issues or mistakes
+- Enables users to build cost-effective systems.
+- Prebuilt PCs
 
 ### User Stories
 
-|Version| As a ... | I want to ... | So that I can ...|
-|--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+| Version | As a ... | I want to ...             | So that I can ...                                           |
+| ------- | -------- | ------------------------- | ----------------------------------------------------------- |
+| v1.0    | new user | see usage instructions    | refer to them when I forget how to use the application      |
+| v2.0    | user     | find a to-do item by name | locate a to-do without having to go through the entire list |
 
 ### Non-Functional Requirements
 
 {Give non-functional requirements}
-
-### Glossary
-
-* *glossary item* - Definition
 
 ### Instructions for manual testing
 
