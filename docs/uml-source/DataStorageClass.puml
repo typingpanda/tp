@@ -113,15 +113,15 @@ class DataStorage {
 }
 
 
-DataStorage --> ChassisList
-DataStorage --> CPUList
-DataStorage --> CPUCoolerList
-DataStorage --> GPUList
-DataStorage --> MotherboardList
-DataStorage --> PSUList
-DataStorage --> RAMList
-DataStorage --> StorageList
-DataStorage --> PCList
+DataStorage --> "0..1" ChassisList
+DataStorage --> "0..1" CPUList
+DataStorage --> "0..1" CPUCoolerList
+DataStorage --> "0..1" GPUList
+DataStorage --> "0..1" MotherboardList
+DataStorage --> "0..1" PSUList
+DataStorage --> "0..1" RAMList
+DataStorage --> "0..1" StorageList
+DataStorage --> "1" PCList
 
 hide class circle
 
