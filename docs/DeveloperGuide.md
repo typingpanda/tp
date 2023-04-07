@@ -129,6 +129,7 @@ Overall, this class diagram provides an overview of the purpose of the Parser cl
 ### PC Class Architecture
 
 ![PC Class Diagram](uml-pictures/PcDiagram.png)
+(Note: all private properties have getters and setters but have been omitted to make diagram more readable)
 
 This UML class diagram shows the classes and their relationships in a computer system, which is represented by the `PC` class. The PC class has several attributes, including name, isPrebuilt, cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis, and budget.
 
@@ -234,15 +235,50 @@ People who want to build PC's and keep track of their builds.
 
 ### User Stories
 
-| Version | As a ... | I want to ...             | So that I can ...                                           |
-| ------- | -------- | ------------------------- | ----------------------------------------------------------- |
-| v1.0    | new user | see usage instructions    | refer to them when I forget how to use the application      |
-| v2.0    | user     | find a to-do item by name | locate a to-do without having to go through the entire list |
+|Version| As a ... | I want to ... | So that I can ...|
+|--------|----------|---------------|------------------|
+|v1.0|new user|See usage instructions|Refer to them when I forget how to use the application|
+|v1.0|user|Create a new custom PC|Start a fresh PC build|
+****|v1.0|user|Add and delete computer components|Build my computer and remove unwanted builds|
+|v1.0|user|View the components of my PC build|See the entire PC build and which components have been chosen|
+|v1.0|user|Edit a PC build|Customize the components of a PC build to my liking|
+|v1.0|user|Select and unselect componetns from the PC|Choose and change the components as i wish|
+|v1.0|user|Change the name of my PC build|Identify my different PC build by their custom name|
+|v1.0|frugal user|Add a budget to my build|Ensure that my PC build does not exceed what i am willing to spend|
+|v1.0|user|List all the selectable components of a certain type|View the available options for a certain component|
+|v2.0|comparitive user|Compare the specifications bettween two components|Have a side by side comparison and choose the better component|
+|v2.0|user|Filter the PC builds by ther name/budget/completion|View all PC build that satisfy my requirements|
+|v2.0|Experienced user|Add custom components|Add components to my build that are not availabe in the component list|
+|v2.0|new builder|Be able to see if components are not compatible|Avoid building PC with incompatible parts|
+|v2.0|Experienced user|Filter the component list by specifications|Find specific components that meet my criteria|
+
+
+
 
 ### Non-Functional Requirements
 
-{Give non-functional requirements}
+1. Java 11 or above installed
+2. Program built to support only single user
+3. Size of terminal
 
 ### Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+1. Download the latest `.jar`  file from this [link](https://github.com/AY2223S2-CS2113-T12-2/tp/releases).
+2. Open the folder that the `.jar` file is in and run the program in your terminal using `java -jar bigpp.jar`.
+3. Read through user guide to get detailed documentation on functionality and commands of application.
+4. See all available commands by using `help`.
+5. View Prebuilt PC specifications using `view 1`
+6. Create a new PC using `add newPC`.
+7. Edit the newly created PC by using `edit 4`.
+8. Set a Budget for the build by using `budget 1000`.
+9. List all cpu components available by using `list cpu`.
+10. List cpu compoennts that are filterd by price by using `list cpu -price /from 0 /to 200`.
+11. Select cpu by using `select cpu 1`.
+12. Select compatible motherboard by using `select motherboard 1`.
+13. Unselect cpu by using `unselect cpu`.
+14. Compare two motherboard components by using `compare motherboard 2 & 7`.
+15. Change the Name of the build by using `name notNewPC`.
+16. Add custom cpu to the build by using `custom cpu Intel-new-cpu|Intel|99.5|4|8|3.5|4.6|122|LGA1200`.
+17. Go back to the viewer menu by using `back`.
+18. Filter the avilable PC builds to see only incomplete builds by using `filter -built incomplete`.
+19. Use `bye` to exit program.
