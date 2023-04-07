@@ -7,7 +7,7 @@
 ## Table of contents
 
 - [General Overview](#general-overview)
-- [Design \& implementation](#design--implementation)
+- [Design & implementation](#design--implementation)
   - [UI class](#ui-class)
   - [DataStorage class](#datastorage-class)
     - [===== loadChassis() method =====](#-loadchassis-method-)

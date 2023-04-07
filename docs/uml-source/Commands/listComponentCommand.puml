@@ -4,8 +4,8 @@
 !pragma teoz true
 hide footbox
 
-User -> BigPP : list [COMPONENT]
-activate User
+-> BigPP : list [COMPONENT]
+
 activate BigPP
 
 BigPP -> Parser : parseCommand(String userInput)
