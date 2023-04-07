@@ -72,7 +72,7 @@ The `DataStorage` class serves as a centralized storage and management system fo
 
 In summary, the `DataStorage` class is responsible for managing lists of components and PC builds, providing methods to load all the data needed, and interact with this loaded data.
 
-#### loadChassis() method
+#### ===== loadChassis() method =====
 This Sequential analysis will show how the loadChassis() method works, this will also serve as an example for all the other load methods that the DataStorage class has.
 
 The `loadChassis` method reads chassis information from a JSON file and populates a `ChassisList` with the data.
@@ -102,7 +102,7 @@ From the diagram, Command class has a private attribute named arguments which st
 contains methods that help to set and retrieve the private attribute in the class. 
 Overall, this class diagram provides an overview of the purpose of the Parser class.
 
-####  ViewerAddCommand() method
+#### ===== ViewerAddCommand() method =====
 This Sequential analysis will show how the ViewerAddCommand() method works, this will also serve as an example for the ViewerDeleteCommand and ViewerViewCommand.
 During the ParseCommand, when a add command is detected in the user input, it will call the `ViewerAddCommand` method with 
 a name as its argument. The `ViewerAddCommand` then calls a method to retrieve the argument.The `ViewerAddCommand`
@@ -128,7 +128,7 @@ The `PC` class has methods to set and get the components of a `PC` object, as we
 Overall, this class diagram provides a high-level overview of the components that make up a computer system and their relationships to each other.
 
 ### Command class
-#### `list [COMPONENT]` Command (builder mode)
+#### ===== `list [COMPONENT]` Command (builder mode) =====
 The `list [COMPONENT]` command prints out a formatted list of all available components of type `[COMPONENT]`.
 
 When the user inputs a command of the form `list [COMPONENT]` in builder mode,
