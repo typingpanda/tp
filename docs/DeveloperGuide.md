@@ -6,24 +6,25 @@
 
 ## Table of contents
 
-- [General Overview](#general-overview)
-- [Design & implementation](#design--implementation)
-  - [UI class](#ui-class)
-  - [DataStorage class](#datastorage-class)
-    - [===== loadChassis() method =====](#-loadchassis-method-)
-  - [Parser class](#parser-class)
-    - [===== ViewerAddCommand() method =====](#-vieweraddcommand-method-)
-  - [PC Class Architecture](#pc-class-architecture)
-  - [Command class](#command-class)
-    - [===== `list [COMPONENT]` Command (builder mode) =====](#-list-component-command-builder-mode-)
-- [Appendix: Requirements](#appendix-requirements)
-  - [Product scope](#product-scope)
-    - [Target user profile](#target-user-profile)
-    - [Value proposition](#value-proposition)
-  - [User Stories](#user-stories)
-  - [Non-Functional Requirements](#non-functional-requirements)
-  - [Glossary](#glossary)
-  - [Instructions for manual testing](#instructions-for-manual-testing)
+- [Developer Guide](#developer-guide)
+  - [Table of contents](#table-of-contents)
+  - [General Overview](#general-overview)
+  - [Design and implementation](#design-and-implementation)
+    - [UI class](#ui-class)
+    - [DataStorage class](#datastorage-class)
+      - [===== loadChassis() method =====](#-loadchassis-method-)
+    - [Parser class](#parser-class)
+    - [PC Class Architecture](#pc-class-architecture)
+    - [Command class](#command-class)
+      - [===== `ViewerAddCommand` method (viewer mode) =====](#-vieweraddcommand-method-viewer-mode-)
+      - [===== `BuilderListComponentCommand` (builder mode) =====](#-builderlistcomponentcommand-builder-mode-)
+  - [Appendix: Requirements](#appendix-requirements)
+    - [Product scope](#product-scope)
+      - [Target user profile](#target-user-profile)
+      - [Value proposition](#value-proposition)
+    - [User Stories](#user-stories)
+    - [Non-Functional Requirements](#non-functional-requirements)
+    - [Instructions for manual testing](#instructions-for-manual-testing)
 
 ---
 
@@ -37,7 +38,7 @@ The program will first load the `UserJson` and files in the `Resources` folder t
 
 ---
 
-## Design & implementation
+## Design and implementation
 
 ### UI class
 
@@ -140,9 +141,9 @@ Overall, this class diagram provides a high-level overview of the components tha
 
 ### Command class
 
-#### ===== ViewerAddCommand() method =====
+#### ===== `ViewerAddCommand` method (viewer mode) =====
 
-This Sequential analysis will show how the ViewerAddCommand() method works, this will also serve as an example for the ViewerDeleteCommand and ViewerViewCommand.
+This Sequential analysis will show how the `ViewerAddCommand` method works, this will also serve as an example for the `ViewerDeleteCommand` and `ViewerViewCommand`.
 During the ParseCommand, when a add command is detected in the user input, it will call the `ViewerAddCommand` method with
 a name as its argument. The `ViewerAddCommand` then calls a method to retrieve the argument.The `ViewerAddCommand`
 checks if the argument is empty and throws an `PPException` if it is empty. A `PC` object is created with the argument as
@@ -153,9 +154,9 @@ A UML sequence diagram showing the interactions between the different objects in
 found below:
 ![Viewer Add Command Sequential Diagram](uml-pictures/ViewerAddCommand.png)
 
-#### ===== `list [COMPONENT]` Command (builder mode) =====
+#### ===== `BuilderListComponentCommand` (builder mode) =====
 
-The `list [COMPONENT]` command prints out a formatted list of all available components of type `[COMPONENT]`.
+The `BuilderListComponentCommand` command prints out a formatted list of all available components of type `COMPONENT`.
 
 When the user inputs a command of the form `list [COMPONENT]` in builder mode,
 it is parsed by the `Parser.parseBuilderCommand` method which recognizes the first word as
