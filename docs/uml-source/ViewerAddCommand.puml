@@ -10,6 +10,7 @@ opt "add <name>"
 ParseViewerCommand -> ViewerAddCommand: ViewerAddCommand(String arguments)
 activate ViewerAddCommand
 ViewerAddCommand -> ViewerAddCommand: getArguments()
+activate ViewerAddCommand
 alt != ""
     ViewerAddCommand -> PC: PC(name, false)
     activate PC
@@ -19,8 +20,9 @@ alt != ""
     deactivate DataStorage.pcList
     PC --> ViewerAddCommand
     deactivate PC
+    deactivate ViewerAddCommand
     ViewerAddCommand --> ParseViewerCommand: return success message
-else
+else else
     ViewerAddCommand --> ParseViewerCommand: throw PPException with error message
 end
 
