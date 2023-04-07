@@ -1,5 +1,17 @@
 @startuml
+skinparam ClassAttributeIconSize 0
 
+class ":PC" as PC
+class ":Component" as Component
+class ":CPU" as CPU
+class ":GPU" as GPU
+class ":Chassis" as Chassis
+class ":Component" as Component
+class ":CPUCooler" as CPUCooler
+class ":Motherboard" as Motherboard
+class ":RAM" as RAM
+class ":Storage" as Storage
+class ":PSU" as PSU
 
 class PC {
     - name: String
@@ -71,7 +83,6 @@ class CPU {
 }
 class Chassis {
     -size: String
-
     +COMPONENT_STRING: String = "CHASSIS_TYPE"
     +Chassis(name: String, brand: String, 
     price: float, size: String)
@@ -83,7 +94,6 @@ class CPUCooler {
     -rpm: int
     -noise: float
     -power: float
-
     +COMPONENT_STRING: String = "CPU_COOLER_TYPE"
     +CPUCooler(name: String, brand: String, 
     price: float, rpm: int, noise: float, power: float)
@@ -98,7 +108,6 @@ class CPUCooler {
 class GPU {
     - power: float
     - size: String
-    
     +COMPONENT_STRING: String = "GPU_TYPE"
     + GPU(name: String, brand: String, 
     price: float, power: float, size: String)
@@ -186,5 +195,7 @@ Component <|-up- GPU
 Component <|-up- Storage
 Component <|-up- PSU
 Component <|-up- Chassis
+
+hide class circle
 
 @enduml
