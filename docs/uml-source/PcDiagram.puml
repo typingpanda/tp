@@ -19,30 +19,7 @@ class PC {
     - budget: int
     + PC(name: String, isPrebuilt: Boolean)
     + PC(pcCopy: PC)
-    + setChassis(chassis: Chassis): void
-    + setCpu(cpu: CPU): void
-    + setCpuCooler(cpuCooler: CPUCooler): void
-    + setGpu(gpu: GPU): void
-    + setMotherboard(motherboard: Motherboard): void
-    + setRam(ram: RAM): void
-    + setStorage(storage: Storage): void
-    + setPsu(psu: PSU): void
-    + setComponent(component: Component): void
-    + setNullComponent(componentType: String): void
-    + getCpu(): CPU
-    + getCpuCooler(): CPUCooler
-    + getGpu(): GPU
-    + getMotherboard(): Motherboard
-    + getRam(): RAM
-    + getStorage(): Storage
-    + getPsu(): PSU
-    + getChassis(): Chassis
     + getComponent(componentName: String): Component
-    + setName(name: String): void
-    + setBudget(budget: int): void
-    + getName(): String
-    + getIsPreBuilt(): boolean
-    + getBudget(): int
     + getBudgetString(): String
 }
 
@@ -50,12 +27,6 @@ class Component {
     -name: String
     -brand: String
     -price: float
-    +getName(): String
-    +getBrand(): String
-    +getPrice(): float
-    +setName(name: String): void
-    +setBrand(brand: String): void
-    +setPrice(price: float): void
     +toString(): String
 }
 
@@ -67,18 +38,6 @@ class CPU {
     -power: float
     -socket: String
     +COMPONENT_STRING: String = "CPU_TYPE"
-    +getCores(): int
-    +getThreads(): int
-    +getBaseClock(): float
-    +getBoostClock(): float
-    +getPower(): float
-    +getSocket(): String
-    +setCores(cores: int): void
-    +setThreads(threads: int): void
-    +setBaseClock(baseClock: float): void
-    +setBoostClock(boostClock: float): void
-    +setPower(power: float): void
-    +setSocket(socket: String): void
     +toString(): String
 }
 class Chassis {
@@ -86,8 +45,6 @@ class Chassis {
     +COMPONENT_STRING: String = "CHASSIS_TYPE"
     +Chassis(name: String, brand: String, 
     price: float, size: String)
-    +getSize(): String
-    +setSize(size: String): void
     +toString(): String
 }
 class CPUCooler {
@@ -97,12 +54,6 @@ class CPUCooler {
     +COMPONENT_STRING: String = "CPU_COOLER_TYPE"
     +CPUCooler(name: String, brand: String, 
     price: float, rpm: int, noise: float, power: float)
-    +getRpm(): int
-    +getNoise(): float
-    +getPower(): float
-    +setRpm(rpm: int): void
-    +setNoise(noise: float): void
-    +setPower(power: float): void
     +toString(): String
 }
 class GPU {
@@ -111,10 +62,6 @@ class GPU {
     +COMPONENT_STRING: String = "GPU_TYPE"
     + GPU(name: String, brand: String, 
     price: float, power: float, size: String)
-    + getPower(): float
-    + getSize(): String
-    + setPower(power: float): void
-    + setSize(size: String): void
     + toString(): String
 }
 
@@ -125,12 +72,6 @@ class Motherboard {
     +COMPONENT_STRING: String = "MOTHERBOARD_TYPE"
     + Motherboard(name: String, brand: String, 
     price: float, size: String, socket: String, power: float)
-    + getFormFactor(): String
-    + setFormFactor(size: String): void
-    + getSocket(): String
-    + setSocket(socket: String): void
-    + getPower(): float
-    + setPower(power: float): void
     + toString(): String
 }
 class RAM {
@@ -141,14 +82,6 @@ class RAM {
   +COMPONENT_STRING: String = "RAM_TYPE"
   + RAM(name: String, brand: String, 
   price: float, memory: int, sticks: int, speed: int, power: float)
-  + getMemory(): int
-  + setMemory(memory: int): void
-  + getSticks(): int
-  + setSticks(sticks: int): void
-  + getSpeed(): int
-  + setSpeed(speed: int): void
-  + getPower(): float
-  + setPower(power: float): void
   + toString(): String
 }
 class Storage {
@@ -158,12 +91,6 @@ class Storage {
   +COMPONENT_STRING: String = "STORAGE_TYPE"
   + Storage(name: String, brand: String, 
   price: float, size: int, type: String, power: float)
-  + getSize(): int
-  + setSize(size: int): void
-  + getType(): String
-  + setType(type: String): void
-  + getPower(): float
-  + setPower(power: float): void
   + toString(): String
 }
 class PSU {
@@ -172,10 +99,6 @@ class PSU {
   +COMPONENT_STRING: String = "PSU_TYPE"
   + PSU(name: String, brand: String, 
   price: float, power: float, size: String)
-  + getPower(): float
-  + setPower(power: float): void
-  + getSize(): String
-  + setSize(size: String): void
   + toString(): String
 }
 

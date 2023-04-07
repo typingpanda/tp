@@ -126,6 +126,7 @@ Overall, this class diagram provides an overview of the purpose of the Parser cl
 ### PC Class Architecture
 
 ![PC Class Diagram](uml-pictures/PcDiagram.png)
+(Note: all private properties have getters and setters but have been omitted to make diagram more readable)
 
 This UML class diagram shows the classes and their relationships in a computer system, which is represented by the `PC` class. The PC class has several attributes, including name, isPrebuilt, cpu, cpuCooler, gpu, motherboard, ram, storage, psu, chassis, and budget.
 
