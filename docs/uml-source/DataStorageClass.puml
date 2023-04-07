@@ -1,5 +1,17 @@
 @startuml
+skinparam classAttributeIconSize 0
 
+class ":ComponentList" as ComponentList
+class ":ChassisList" as ChassisList
+class ":CPUList" as CPUList
+class ":CPUCoolerList" as CPUCoolerList
+class ":GPUList" as GPUList
+class ":MotherboardList" as MotherboardList
+class ":PSUList" as PSUList
+class ":RAMList" as RAMList
+class ":StorageList" as StorageList
+class ":PCList" as PCList
+class ":DataStorage" as DataStorage
 
 class ComponentList<T> {
     + getListString(componentIndexes: ArrayList<Integer>): String
@@ -7,17 +19,6 @@ class ComponentList<T> {
     + filterByBrand(componentList: ComponentList<?>, brand: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
     + filterByPrice(componentList: ComponentList<?>, priceFrom: String, priceTo: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
 }
-
-
-
-class ChassisList
-class CPUList
-class CPUCoolerList
-class GPUList
-class MotherboardList
-class PSUList
-class RAMList
-class StorageList
 
 ChassisList --|> ComponentList
 CPUList --|> ComponentList
@@ -74,5 +75,7 @@ DataStorage --> PSUList
 DataStorage --> RAMList
 DataStorage --> StorageList
 DataStorage --> PCList
+
+hide class circle
 
 @enduml

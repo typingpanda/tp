@@ -1,6 +1,12 @@
 @startuml
+skinparam classAttributeIconSize 0
 
-abstract class UI {
+class ":UI" as UI
+class ":PCBuilderMenu" as PCBuilderMenu
+class ":PCViewerMenu" as PCViewerMenu
+class ":UIState" as UIState
+
+class UI <<abstract>> {
     -uiState: UIState
     -LOGO: String
     -DIVIDER: String
@@ -27,7 +33,7 @@ class PCViewerMenu {
     +printMenu(): void
 }
 
-enum UIState {
+class UIState <<enumeration>> {
     PCViewer
     PCBuilder
 }
@@ -35,5 +41,7 @@ enum UIState {
 UI --> "1" PCBuilderMenu
 UI --> "1" PCViewerMenu 
 UI --> UIState
+
+hide class circle
 
 @enduml
