@@ -5,15 +5,19 @@ import seedu.bigpp.datastorage.DataStorage;
 
 public class ViewerHelpCommand extends Command {
     private static final String HELP = "Here are the list of valid commands: \n"
-            + "add <name> : Add a new PC of a given name \n"
-            + "delete <index> :  Delete the PC of a given index \n"
-            + "edit <index> : Edit the PC of a given index \n"
-            + "view <index> : Display all the components of the PC of a given index \n"
-            + "filter -name <PC_NAME> : Filter PC List by a given name\n"
-            + "filter -price /from <PC_START_PRICE> /to <PC_END_PRICE> : Filter PC List by a given price range\n"
-            + "filter -built <PC_ISCOMPLETE> : Filter PC List by a built of complete or incomplete\n"
-            + "filter -clear : Clear all filters that were applied previously\n";
+            + String.format("%53s", "_".repeat(53))
+            + String.format("%n|%-25s|%-25s|", " Command Type", " Command Usage")
+            + String.format("%n|%-25s|%-25s|", "-".repeat(25), "-".repeat(25))
+            + String.format("%n|%-25s|%-25s|"," Add new PC", " add PC_NAME")
+            + String.format("%n|%-25s|%-25s|"," Edit PC", " edit PC_INDEX")
+            + String.format("%n|%-25s|%-25s|", " View PC Specs", " view PC_INDEX")
+            + String.format("%n|%-25s|%-25s|", " Delete PC", " delete PC_INDEX")
+            + String.format("%n|%-25s|%-25s|", " Filter PC List", " filter FILTER_FLAGS")
+            + String.format("%n|%-25s|%-25s|", " Exit program", " bye")
+            + String.format("%n%53s", "-".repeat(53))
+            + "\nFor more detailed documentation on commands, please refer to our user guide!\n";
 
+       
 
     /**
      * Help command to view the list of valid commands
