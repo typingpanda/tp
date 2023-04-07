@@ -1,30 +1,26 @@
 <!-- omit in toc -->
-
 # Developer Guide
 
 <!-- omit in toc -->
-
 ## Table of contents
 
-- [Developer Guide](#developer-guide)
-  - [Table of contents](#table-of-contents)
-  - [General Overview](#general-overview)
-  - [Design and implementation](#design-and-implementation)
-    - [UI class](#ui-class)
-    - [DataStorage class](#datastorage-class)
-      - [===== loadChassis() method =====](#-loadchassis-method-)
-    - [Parser class](#parser-class)
-    - [PC Class Architecture](#pc-class-architecture)
-    - [Command class](#command-class)
-      - [===== `ViewerAddCommand` method (viewer mode) =====](#-vieweraddcommand-method-viewer-mode-)
-      - [===== `BuilderListComponentCommand` (builder mode) =====](#-builderlistcomponentcommand-builder-mode-)
-  - [Appendix: Requirements](#appendix-requirements)
-    - [Product scope](#product-scope)
-      - [Target user profile](#target-user-profile)
-      - [Value proposition](#value-proposition)
-    - [User Stories](#user-stories)
-    - [Non-Functional Requirements](#non-functional-requirements)
-    - [Instructions for manual testing](#instructions-for-manual-testing)
+- [General Overview](#general-overview)
+- [Design and implementation](#design-and-implementation)
+  - [UI class](#ui-class)
+  - [DataStorage class](#datastorage-class)
+    - [===== loadChassis() method =====](#-loadchassis-method-)
+  - [Parser class](#parser-class)
+  - [PC Class Architecture](#pc-class-architecture)
+  - [Command class](#command-class)
+    - [===== `ViewerAddCommand` method (viewer mode) =====](#-vieweraddcommand-method-viewer-mode-)
+    - [===== `BuilderListComponentCommand` (builder mode) =====](#-builderlistcomponentcommand-builder-mode-)
+- [Appendix: Requirements](#appendix-requirements)
+  - [Product scope](#product-scope)
+    - [Target user profile](#target-user-profile)
+    - [Value proposition](#value-proposition)
+  - [User Stories](#user-stories)
+  - [Non-Functional Requirements](#non-functional-requirements)
+  - [Instructions for manual testing](#instructions-for-manual-testing)
 
 ---
 
