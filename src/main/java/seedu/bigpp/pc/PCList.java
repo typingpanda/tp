@@ -5,14 +5,14 @@ import static seedu.bigpp.ui.UI.out;
 
 public class PCList extends ArrayList<PC> {
 
-    private static Boolean isFilter;
+    private static Boolean isFiltered;
     private static String priceFrom;
     private static String priceTo;
     private static String name;
     private static String built;
 
     public PCList() {
-        isFilter = false;
+        isFiltered = false;
         built = "";
         priceFrom = "";
         priceTo = "";
@@ -21,7 +21,7 @@ public class PCList extends ArrayList<PC> {
     }
 
     public void printPcList() {
-        if (getIsFilter()) {
+        if (getIsFiltered()) {
             printAltPcList();
         } else {
             if (this.size() > 0) {
@@ -54,8 +54,8 @@ public class PCList extends ArrayList<PC> {
         }
     }
 
-    public static Boolean getIsFilter() {
-        return isFilter;
+    public static Boolean getIsFiltered() {
+        return isFiltered;
     }
 
     public static String getIsBuilt() {
@@ -75,11 +75,11 @@ public class PCList extends ArrayList<PC> {
     }
 
     public static void setFilterTrue() {
-        isFilter = true;
+        isFiltered = true;
     }
 
     public static void setFilterFalse() {
-        isFilter = false;
+        isFiltered = false;
     }
 
     public static void setBuilt(String input) {
