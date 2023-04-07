@@ -49,7 +49,7 @@ Below is the Class diagram for the UI class
 
 ![UI Class Diagram](uml-pictures/UIClassDiagram.png)
 
-The `UI` Class serves as the interface between the user and BigPP. It is responsible for the following key actions
+The `UI` Class serves as the connection between the user and BigPP. It is responsible for the following key actions
 
 1. **Initialization**: Upon start up of BigPP, the instance of `DataStorage` is parsed into the `updateUI` method of `UI` to give it the ability to access resources for BigPP. `UIState` is set to be `PCViewer`.
 2. **Functionality**
