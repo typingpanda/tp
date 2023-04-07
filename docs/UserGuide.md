@@ -7,33 +7,35 @@
 
 ## Table of contents
 
-- [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Commands](#commands)
-  - [Common Commands](#common-commands)
-    - [**Bye Command**](#bye-command)
-    - [**Help Command**](#help-command)
-  - [PCViewer Mode Commands](#pcviewer-mode-commands)
-    - [**Add Command**](#add-command)
-    - [**View Command**](#view-command)
-    - [**Edit Command**](#edit-command)
-    - [**Delete Command**](#delete-command)
-    - [**Filter Command**](#filter-command)
-  - [PCBuilder Mode Commands](#pcbuilder-mode-commands)
-    - [**List Command**](#list-command)
-    - [**Select Command**](#select-command)
-    - [**Unselect Command**](#unselect-command)
-    - [**Compare Command**](#compare-command)
-    - [**Budget Command**](#budget-command)
-    - [**Name Command**](#name-command)
-    - [**Custom Command**](#custom-command)
-    - [**Back Command**](#back-command)
-- [Additional Features](#additional-features)
-  - [Compatibility Check](#compatibility-check)
-- [Glossary](#glossary)
-  - [Parameters Glossary](#parameters-glossary)
-  - [Command Glossary](#command-glossary)
-    - [Acceptable Custom Component Commands](#acceptable-custom-component-commands)
+- [User Guide](#user-guide)
+  - [Table of contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Getting Started](#getting-started)
+  - [Commands](#commands)
+    - [Common Commands](#common-commands)
+      - [**Bye Command**](#bye-command)
+      - [**Help Command**](#help-command)
+    - [PCViewer Mode Commands](#pcviewer-mode-commands)
+      - [**Add Command**](#add-command)
+      - [**View Command**](#view-command)
+      - [**Edit Command**](#edit-command)
+      - [**Delete Command**](#delete-command)
+      - [**Filter Command**](#filter-command)
+    - [PCBuilder Mode Commands](#pcbuilder-mode-commands)
+      - [**List Command**](#list-command)
+      - [**Select Command**](#select-command)
+      - [**Unselect Command**](#unselect-command)
+      - [**Compare Command**](#compare-command)
+      - [**Budget Command**](#budget-command)
+      - [**Name Command**](#name-command)
+      - [**Custom Command**](#custom-command)
+      - [**Back Command**](#back-command)
+  - [Additional Features](#additional-features)
+    - [Compatibility Check](#compatibility-check)
+  - [Glossary](#glossary)
+    - [Parameters Glossary](#parameters-glossary)
+    - [Command Glossary](#command-glossary)
+      - [Acceptable Custom Component Commands](#acceptable-custom-component-commands)
 
 ## Introduction
 
@@ -367,7 +369,7 @@ PCBuilder Mode commands will be the commands that the user will be able to use i
 
 #### **List Command**
 
-Usage: `list COMPONENT_TYPE [-COMPONENT_FLAG LIST_FLAG]`
+Usage: `list COMPONENT_TYPE [-FLAG]`
 
 Available flags:
 

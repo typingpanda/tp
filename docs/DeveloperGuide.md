@@ -6,24 +6,28 @@
 
 ## Table of contents
 
-- [General Overview](#general-overview)
-- [Design \& implementation](#design--implementation)
-  - [UI class](#ui-class)
-  - [DataStorage class](#datastorage-class)
-    - [===== loadChassis() method =====](#-loadchassis-method-)
-  - [Parser class](#parser-class)
-    - [===== ViewerAddCommand() method =====](#-vieweraddcommand-method-)
-  - [PC Class Architecture](#pc-class-architecture)
-  - [Command class](#command-class)
-    - [===== `list [COMPONENT]` Command (builder mode) =====](#-list-component-command-builder-mode-)
-- [Appendix: Requirements](#appendix-requirements)
-  - [Product scope](#product-scope)
-    - [Target user profile](#target-user-profile)
-    - [Value proposition](#value-proposition)
-  - [User Stories](#user-stories)
-  - [Non-Functional Requirements](#non-functional-requirements)
-  - [Glossary](#glossary)
-  - [Instructions for manual testing](#instructions-for-manual-testing)
+- [Developer Guide](#developer-guide)
+  - [Table of contents](#table-of-contents)
+  - [General Overview](#general-overview)
+  - [Design \& implementation](#design--implementation)
+    - [UI class](#ui-class)
+    - [DataStorage class](#datastorage-class)
+      - [===== loadChassis() method =====](#-loadchassis-method-)
+    - [Parser class](#parser-class)
+    - [PC Class Architecture](#pc-class-architecture)
+    - [Command class](#command-class)
+      - [===== ViewerAddCommand() method =====](#-vieweraddcommand-method-)
+      - [===== `list [COMPONENT]` Command (builder mode) =====](#-list-component-command-builder-mode-)
+    - [Object Diagram](#object-diagram)
+      - [===== Viewer Mode =====](#-viewer-mode-)
+      - [===== Builder Mode =====](#-builder-mode-)
+  - [Appendix: Requirements](#appendix-requirements)
+    - [Product scope](#product-scope)
+      - [Target user profile](#target-user-profile)
+      - [Value proposition](#value-proposition)
+    - [User Stories](#user-stories)
+    - [Non-Functional Requirements](#non-functional-requirements)
+    - [Instructions for manual testing](#instructions-for-manual-testing)
 
 ---
 
@@ -193,6 +197,23 @@ A UML sequence diagram showing the interactions between the different objects in
 found below:
 
 ![List Component Command](./uml-pictures/listComponentCommand.png)
+
+---
+
+### Object Diagram
+
+In these object diagrams, a typical flow of the program is shown. The first diagram shows the flow of the program when the user is in the viewer mode and adds a PC. Then, the second diagram shows the flow of the program when the user is in the builder mode and edits the name of the PC added.
+#### ===== Viewer Mode =====
+![Viewer Mode Object Diagram](uml-pictures/ViewerObjectDiagram.png)
+
+When the program first starts, the `BigPP` class is instantiated and the `run()` method is called. The `run()` method calls the `runLoopUntilExit()` method which is a loop that runs until the user exits. The `UI` calls the `getInput()` method to get the user input. The `Parser` class then parses the user input ("add MyPC"). The `parseCommand` method calls the `ViewerAddCommand` method with the name of the PC as the argument. The `ViewerAddCommand` calls its executeCommand method. This adds a PC named "MyPC".
+
+#### ===== Builder Mode =====
+![Builder Mode Object Diagram](uml-pictures/BuilderObjectDiagram.png)
+
+The user can enter the `edit PC_INDEX` command to edit a PC and enter Builder Mode. Now in builder mode, the user can enter the `name NAME` command to edit the name of the PC. The `Parser` class then parses the user input ("name MyEditedPC"). The `parseBuilderCommand` method calls the `BuilderNameComponentCommand` method with the name of the PC as the argument. The `BuilderNameComponentCommand` calls its executeCommand method. This edits the name of the PC to "MyEditedPC".
+
+
 
 ---
 
