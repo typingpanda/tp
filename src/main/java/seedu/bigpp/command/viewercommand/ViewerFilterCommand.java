@@ -6,6 +6,7 @@ import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.pc.PCList;
 import seedu.bigpp.ui.UI;
 import seedu.bigpp.ui.UIState;
+
 import java.util.Arrays;
 
 public class ViewerFilterCommand extends Command {
@@ -40,7 +41,7 @@ public class ViewerFilterCommand extends Command {
             return "Filter cleared";
         }
         if (userInputStringArray.length <= 1) {
-            if (hasFlag(userInputStringArray)){
+            if (hasFlag(userInputStringArray)) {
                 if (containsFlag(userInputStringArray, NAME_FLAG)) {
                     handleNameFlag(userInputStringArray);
                 }
@@ -51,8 +52,7 @@ public class ViewerFilterCommand extends Command {
                     handlePriceFlag(userInputString, userInputStringArray);
                 }
                 return "";
-            }
-            else {
+            } else {
                 throw new PPException("Please enter a valid flag and description");
             }
         }
@@ -76,7 +76,6 @@ public class ViewerFilterCommand extends Command {
         return "";
     }
 
-
     private void handleClearFlag(String[] flagAndDescriptionArray) throws PPException {
         PCList.setFilterFalse();
         PCList.setBuilt("");
@@ -84,6 +83,7 @@ public class ViewerFilterCommand extends Command {
         PCList.setName("");
         PCList.setPriceTo("");
     }
+
     private void handlePriceFlag(String userInputString, String[] flagAndDescriptionArray) throws PPException {
         int priceFlagIndex = indexOfFlag(flagAndDescriptionArray, PRICE_FLAG);
         if (priceFlagIndex == flagAndDescriptionArray.length - 1) {
