@@ -151,6 +151,8 @@ A UML sequence diagram showing the interactions between the different objects in
 found below:
 ![Viewer Add Command Sequential Diagram](uml-pictures/ViewerAddCommand.png)
 
+---
+
 #### ===== `BuilderListComponentCommand` (builder mode) =====
 
 The `BuilderListComponentCommand` command prints out a formatted list of all available components of type `COMPONENT`.
