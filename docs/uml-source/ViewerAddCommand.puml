@@ -1,10 +1,10 @@
 @startuml
 title ViewerAddCommand.executeCommand() Sequence Diagram
 
-participant ParseViewerCommand
-participant ViewerAddCommand
-participant PC
-participant DataStorage.pcList
+participant ":ParseViewerCommand" as ParseViewerCommand
+participant ":ViewerAddCommand" as ViewerAddCommand
+participant ":PC" as PC
+participant ":DataStorage.pcList" as DataStorage.pcList
 
 opt "add <name>"
 ParseViewerCommand -> ViewerAddCommand: ViewerAddCommand(String arguments)
