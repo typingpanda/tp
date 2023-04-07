@@ -14,10 +14,34 @@ class ":PCList" as PCList
 class ":DataStorage" as DataStorage
 
 class ComponentList<T> {
-    + getListString(componentIndexes: ArrayList<Integer>): String
-    + filterByName(componentList: ComponentList<?>, name: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
-    + filterByBrand(componentList: ComponentList<?>, brand: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
-    + filterByPrice(componentList: ComponentList<?>, priceFrom: String, priceTo: String, componentIndexes: ArrayList<Integer>): ComponentList<?>
+    +getListString(componentIndexes: ArrayList<Integer>, getDetails: Boolean): String
+    +filterByEfficiencyPsu(...)
+    +filterByPowerPsu(...)
+    +filterByPowerStorage(...)
+    +filterBySizeStorage(...)
+    +filterByTypeStorage(...)
+    +filterByPowerRam(...)
+    +filterBySpeed(...)
+    +filterBySticks(...)
+    +filterByMemory(...)
+    +filterByPowerMotherboard(...)
+    +filterBySocketMotherboard(...)
+    +filterByFormFactorMotherboard(...)
+    +filterByPowerGpu(...)
+    +filterByFormFactorGpu(...)
+    +filterByPowerCpuCooler(...)
+    +filterByNoise(...)
+    + filterByRpm(...)               
+    + filterBySocketCpu(...)             
+    + filterByPowerCpu(...)          
+    + filterByBoostClock(...)    
+    + filterByBaseClock(...)    
+    + filterByThread(...)                  
+    + filterByCore(...)                     
+    + filterByFormFactorChassis(...) 
+    + filterByName(...)                  
+    + filterByBrand(...)                 
+    + filterByPrice(...)
 }
 
 ChassisList --|> ComponentList
@@ -31,9 +55,32 @@ StorageList --|> ComponentList
 
 
 class PCList {
-    + printPcList(): void
+    -isFilter: Boolean
+    -priceFrom: String
+    -priceTo: String
+    -name: String
+    -built: String
+    +printPcList()
+    +printAltPcList()
+    +getIsFilter(): Boolean
+    +getIsBuilt(): String
+    +getName(): String
+    +getPriceFrom(): String
+    +getPriceTo(): String
+    +setFilterTrue()
+    +setFilterFalse()
+    +setBuilt(String)
+    +setName(String)
+    +setPriceFrom(String)
+    +setPriceTo(String)
+    +filterByPrice(...)
+    +filterByName(...)
+    +filterByBuilt(...)
 }
 
+
+              
+             
 
 
 class DataStorage {
@@ -66,15 +113,15 @@ class DataStorage {
 }
 
 
-DataStorage --> ChassisList
-DataStorage --> CPUList
-DataStorage --> CPUCoolerList
-DataStorage --> GPUList
-DataStorage --> MotherboardList
-DataStorage --> PSUList
-DataStorage --> RAMList
-DataStorage --> StorageList
-DataStorage --> PCList
+DataStorage --> "0..1" ChassisList
+DataStorage --> "0..1" CPUList
+DataStorage --> "0..1" CPUCoolerList
+DataStorage --> "0..1" GPUList
+DataStorage --> "0..1" MotherboardList
+DataStorage --> "0..1" PSUList
+DataStorage --> "0..1" RAMList
+DataStorage --> "0..1" StorageList
+DataStorage --> "1" PCList
 
 hide class circle
 
