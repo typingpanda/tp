@@ -1,3 +1,4 @@
+<!-- @@author Magmanat -->
 <!-- omit in toc -->
 # Prince Pereira - Project Portfolio Page
 
@@ -9,6 +10,9 @@
   - [Enhancements to BigPP](#enhancements-to-bigpp)
   - [Contributions to UG](#contributions-to-ug)
   - [Contributions to DG](#contributions-to-dg)
+  - [Team Contributions](#team-contributions)
+  - [Reviewing/Mentoring Contributions](#reviewingmentoring-contributions)
+>>>>>>> 7e82f53ef31940f2288a27b01a3a4657cd6d78a6
   - [Reviewing/Mentoring Contributions](#reviewingmentoring-contributions)
 
 ___
@@ -58,6 +62,15 @@ ___
 6. Add Class Diagram on [DataStorage Class](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#datastorage-class) to explain how our data is being stored and interacted with in BigPP.
 7. Add a sequential Diagram on how data is loaded with an example on [LoadChassis() method](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#-loadchassis-method-) in DataStorage class
 
+___
+
+### Team Contributions
+ - Contributions to the team-based tasks:
+    - Setting up of GitHub team org/repo
+    - Maintaining issue tracker
+    - Release management (v1.0, v2.0)
+
+___
 
 ### Reviewing/Mentoring Contributions
  - [PR1](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/29#discussion_r1126784188 )
