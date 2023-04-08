@@ -61,7 +61,11 @@ public abstract class UI {
             + "                              \n"
             + "                                                                                                        "
             + "                             \n";
-    private static final String DIVIDER = "===================================================";
+    private static final String PC_VIEWER_DIVIDER =
+            "===================================================";
+    private static final String PC_BUILDER_DIVIDER =
+            "===================================================";
+
 
     private static UIState uiState = UIState.PCVIEWER;
 
@@ -93,20 +97,22 @@ public abstract class UI {
         if (!isInitial) {
             clearTerminal();
         }
-        out.println(DIVIDER);
 
         switch (uiState) {
         case PCVIEWER:
+            out.println(PC_VIEWER_DIVIDER);
             pcViewerMenu.printMenu(dataStorage);
+            out.println(PC_VIEWER_DIVIDER);
             break;
         case PCBUILDER:
+            out.println(PC_BUILDER_DIVIDER);
             pcBuilderMenu.printMenu(dataStorage);
+            out.println(PC_BUILDER_DIVIDER);
             break;
         default:
             break;
         }
 
-        out.println(DIVIDER);
     }
 
     public static void clearTerminal() {

@@ -27,7 +27,7 @@ public class PCList extends ArrayList<PC> {
             if (this.size() > 0) {
                 out.println("Here is the list of PC Builds:");
                 for (int i = 0; i < this.size(); i++) {
-                    out.println((i + 1) + "." + this.get(i));
+                    out.println("    "  + (i + 1) + "." + this.get(i));
                 }
             } else {
                 out.println("List currently empty!");
@@ -42,7 +42,7 @@ public class PCList extends ArrayList<PC> {
             for (int i = 0; i < this.size(); i++) {
                 if (filterByBuilt(this.get(i), getIsBuilt()) && filterByPrice(this.get(i),
                         getPriceFrom(), getPriceTo()) && filterByName(this.get(i), getName())) {
-                    out.println((i + 1) + "." + this.get(i));
+                    out.println("    " + (i + 1) + "." + this.get(i));
                     pcCount += 1;
                 }
             }
