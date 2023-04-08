@@ -17,8 +17,8 @@ public class PCBuilderMenu extends Menu {
     }
 
     public void printMenu(DataStorage dataStorage) {
-        out.println("\033[95;1mPC builder\033[0;0m");
+        out.println("PC builder");
         out.println(dataStorage.pcList.get(pcIndex).viewComponents());
-        out.println("\033[95;1mWhat would you like to do?\033[0;0m");
+        out.println("What would you like to do?");
     }
 }

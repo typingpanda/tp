@@ -62,9 +62,9 @@ public abstract class UI {
             + "                                                                                                        "
             + "                             \n";
     private static final String PC_VIEWER_DIVIDER =
-            "\033[94m===================================================\033[0m";
+            "===================================================";
     private static final String PC_BUILDER_DIVIDER =
-            "\033[95m===================================================\033[0m";
+            "===================================================";
 
 
     private static UIState uiState = UIState.PCVIEWER;

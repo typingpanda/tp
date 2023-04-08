@@ -25,12 +25,12 @@ public class PCList extends ArrayList<PC> {
             printAltPcList();
         } else {
             if (this.size() > 0) {
-                out.println("\033[96mHere is the list of PC Builds:\033[0m");
+                out.println("Here is the list of PC Builds:");
                 for (int i = 0; i < this.size(); i++) {
-                    out.println("    " + "\033[92;3m" + (i + 1) + "." + this.get(i) + "\033[0;0m");
+                    out.println("    "  + (i + 1) + "." + this.get(i));
                 }
             } else {
-                out.println("\033[91mList currently empty!\033[0m");
+                out.println("List currently empty!");
             }
         }
     }
@@ -38,7 +38,7 @@ public class PCList extends ArrayList<PC> {
     public void printAltPcList() {
         int pcCount = 0;
         if (this.size() > 0) {
-            out.println("\033[96mHere is the filtered list of PC Builds:\033[0m");
+            out.println("Here is the filtered list of PC Builds:");
             for (int i = 0; i < this.size(); i++) {
                 if (filterByBuilt(this.get(i), getIsBuilt()) && filterByPrice(this.get(i),
                         getPriceFrom(), getPriceTo()) && filterByName(this.get(i), getName())) {
@@ -47,10 +47,10 @@ public class PCList extends ArrayList<PC> {
                 }
             }
             if (pcCount == 0) {
-                out.println("\033[91mFiltered list is empty\033[0m");
+                out.println("Filtered list is empty");
             }
         } else {
-            out.println("\033[91mList currently empty!\033[0m");
+            out.println("List currently empty!");
         }
     }
 
