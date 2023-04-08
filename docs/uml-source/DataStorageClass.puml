@@ -62,7 +62,7 @@ class PCList {
     -built: String
     +printPcList()
     +printAltPcList()
-    +getIsFilter(): Boolean
+    +getIsFiltered(): Boolean
     +getIsBuilt(): String
     +getName(): String
     +getPriceFrom(): String
@@ -84,16 +84,6 @@ class PCList {
 
 
 class DataStorage {
-    - CHASSIS_PATH: String
-    - CPU_PATH: String
-    - CPU_COOLER_PATH: String
-    - GPU_PATH: String
-    - MOTHERBOARD_PATH: String
-    - PSU_PATH: String
-    - RAM_PATH: String
-    - STORAGE_PATH: String
-    - PREBUILT_PATH: String
-    - USER_PATH: String
     - GSON: Gson
     - stringToComponentListMap: Map<String, ComponentList<?>>
     - pcList: PCList
