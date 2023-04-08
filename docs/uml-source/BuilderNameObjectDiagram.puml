@@ -1,13 +1,12 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class ":BigPP" as BigPP
-class ":UI" as UI
-class ":Parser" as Parser
-class ":Command" as Command
-class ":BuilderEditNameCommand" as BuilderEditNameCommand
-' class ":ViewerAddCommand" as ViewerAddCommand
-
+class "<u>:BigPP</u>" as BigPP
+class "<u>:UI</u>" as UI
+class "<u>:Parser</u>" as Parser
+class "<u>:Command</u>" as Command
+' class "<u>:BuilderEditNameCommand</u>" as BuilderEditNameCommand
+class "<u>:ViewerAddCommand</u>" as ViewerAddCommand 
 
 class BigPP {
     +main
@@ -36,22 +35,22 @@ class Command {
     +executeCommand()
 }
 
-class BuilderEditNameCommand {
-
-    +executeCommand()
-}
-
-' class ViewerAddCommand {
+' class BuilderEditNameCommand {
 
 '     +executeCommand()
 ' }
 
+class ViewerAddCommand {
+
+    +executeCommand()
+}
+
 BigPP -- UI
 BigPP -- Parser
-Parser -- BuilderEditNameCommand
-' Parser -- ViewerAddCommand
-Command <|-right- BuilderEditNameCommand
-' Command <|-right- ViewerAddCommand
+' Parser -- BuilderEditNameCommand
+Parser -- ViewerAddCommand
+' Command <|-right- BuilderEditNameCommand
+Command <|-right- ViewerAddCommand
 
 hide circle
 
