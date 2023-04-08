@@ -1,17 +1,17 @@
 @startuml
 skinparam ClassAttributeIconSize 0
 
-class ":PC" as PC
-class ":Component" as Component
-class ":CPU" as CPU
-class ":GPU" as GPU
-class ":Chassis" as Chassis
-class ":Component" as Component
-class ":CPUCooler" as CPUCooler
-class ":Motherboard" as Motherboard
-class ":RAM" as RAM
-class ":Storage" as Storage
-class ":PSU" as PSU
+class "PC" as PC
+class "Component" as Component
+class "CPU" as CPU
+class "GPU" as GPU
+class "Chassis" as Chassis
+class "Component" as Component
+class "CPUCooler" as CPUCooler
+class "Motherboard" as Motherboard
+class "RAM" as RAM
+class "Storage" as Storage
+class "PSU" as PSU
 
 class PC {
     - name: String
