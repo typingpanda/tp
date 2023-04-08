@@ -1,30 +1,46 @@
 @startuml
-":DataStorage" -> ":DataStorage" : loadAll()
+hide footbox
+
+activate ":BigPP"
+create ":DataStorage"
+":BigPP" -> ":DataStorage" : DataStorage(String path)
+
+create ":Gson"
+":DataStorage" -> ":Gson" : new Gson()
+create "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>"
+":DataStorage" -> "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>" : new HashMap<String, ComponentList<?>>()
+
+
+":DataStorage" --> ":BigPP"
+
+
+":BigPP" -> ":DataStorage" : loadAll()
 activate ":DataStorage"
 ":DataStorage" -> ":DataStorage" : loadChassis(String path)
+activate ":DataStorage"
 
-":DataStorage" -> "GSON" : fromJson(String json, Type type)
-activate "GSON"
-"GSON" --> ":DataStorage" : Map<String, Chassis>
-deactivate "GSON"
+":DataStorage" -> ":Gson" : fromJson(String json, Type type)
+activate ":Gson"
+":Gson" --> ":DataStorage" : Map<String, Chassis>
+deactivate ":Gson"
 
 loop for each entry in chassisMap
-  ":DataStorage" -> "Chassis" : setName(String name)
-  activate "Chassis"
-  "Chassis" --> ":DataStorage"
-  deactivate "Chassis"
+  ":DataStorage" -> ":Chassis" : setName(String name)
+  activate ":Chassis"
+  ":Chassis" --> ":DataStorage"
+  deactivate ":Chassis"
 end
 
 loop for each entry in chassisMap
-  ":DataStorage" -> "DataStorage.stringToComponentListMap" : get(String componentType)
-  activate "DataStorage.stringToComponentListMap"
-  "DataStorage.stringToComponentListMap" --> ":DataStorage" : ChassisList
-  deactivate "DataStorage.stringToComponentListMap"
+  ":DataStorage" -> "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>" : get(String componentType)
+  activate "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>"
+  "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>" --> ":DataStorage" : :ChassisList
+  deactivate "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>"
   
-  ":DataStorage" -> "ChassisList" : add(Chassis chassis)
-  activate "ChassisList"
-  "ChassisList" --> ":DataStorage"
-  deactivate "ChassisList"
+  ":DataStorage" -> ":ChassisList" : add(Chassis chassis)
+  activate ":ChassisList"
+  ":ChassisList" --> ":DataStorage"
+  deactivate ":ChassisList"
 end
 
 deactivate ":DataStorage"
