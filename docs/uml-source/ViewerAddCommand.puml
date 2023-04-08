@@ -1,13 +1,14 @@
 @startuml
 title ViewerAddCommand.executeCommand() Sequence Diagram
 
-participant ":ParseViewerCommand" as ParseViewerCommand
+participant ":Parser" as Parser
 participant ":ViewerAddCommand" as ViewerAddCommand
 participant ":PC" as PC
 participant ":DataStorage.pcList" as DataStorage.pcList
 
+activate Parser
 opt "add <name>"
-ParseViewerCommand -> ViewerAddCommand: ViewerAddCommand(String arguments)
+Parser -> ViewerAddCommand: ViewerAddCommand(String arguments)
 activate ViewerAddCommand
 ViewerAddCommand -> ViewerAddCommand: getArguments()
 activate ViewerAddCommand
@@ -21,9 +22,9 @@ alt != ""
     PC --> ViewerAddCommand
     deactivate PC
     deactivate ViewerAddCommand
-    ViewerAddCommand --> ParseViewerCommand: return success message
+    ViewerAddCommand --> Parser: return success message
 else else
-    ViewerAddCommand --> ParseViewerCommand: throw PPException with error message
+    ViewerAddCommand --> Parser: throw PPException with error message
 end
 
 deactivate ViewerAddCommand
