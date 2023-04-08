@@ -5,6 +5,8 @@
 <!-- omit in toc -->
 ## Table of contents
 
+- [Acknowledgements](#acknowledgements)
+- [Getting Started](#getting-started)
 - [General Overview](#general-overview)
 - [Design and implementation](#design-and-implementation)
   - [UI class](#ui-class)
@@ -25,6 +27,19 @@
   - [User Stories](#user-stories)
   - [Non-Functional Requirements](#non-functional-requirements)
   - [Instructions for manual testing](#instructions-for-manual-testing)
+
+---
+
+## Acknowledgements
+These are the external libraries that we have used for developing our application
+
+1. [GSON library](https://sites.google.com/site/gson/gson-user-guide)
+
+___
+
+## Getting Started
+
+Please refer to the [User Guide](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/UserGuide.md) for more details on the input/output of the application
 
 ---
 
