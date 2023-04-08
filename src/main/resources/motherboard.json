@@ -82,5 +82,89 @@
 		"formfactor": "mini",
 		"socket": "AM5",
 		"power": 49
+	},
+	"EVGA X590 PRO WiFi": {
+		"price": 129.99,
+		"brand": "EVGA",
+		"formfactor": "atx",
+		"socket": "LGA1200",
+		"power": 50
+	},
+	"Zotac Z790 XTREME": {
+		"price": 249.99,
+		"brand": "Zotac",
+		"formfactor": "atx",
+		"socket": "LGA1700",
+		"power": 55
+	},
+	"Biostar X580GT8": {
+		"price": 199.99,
+		"brand": "Biostar",
+		"formfactor": "atx",
+		"socket": "AM4",
+		"power": 54
+	},
+	"Colorful CVN B660 GAMING": {
+		"price": 229.99,
+		"brand": "Colorful",
+		"formfactor": "atx",
+		"socket": "AM5",
+		"power": 52
+	},
+	"EVGA X590 Micro WiFi": {
+		"price": 169.99,
+		"brand": "EVGA",
+		"formfactor": "micro",
+		"socket": "LGA1200",
+		"power": 53
+	},
+	"Zotac Z790M XTREME": {
+		"price": 179.99,
+		"brand": "Zotac",
+		"formfactor": "micro",
+		"socket": "LGA1700",
+		"power": 51
+	},
+	"Biostar X580MGT8": {
+		"price": 159.99,
+		"brand": "Biostar",
+		"formfactor": "micro",
+		"socket": "AM4",
+		"power": 57
+	},
+	"Colorful CVN B660M GAMING": {
+		"price": 179.99,
+		"brand": "Colorful",
+		"formfactor": "micro",
+		"socket": "AM5",
+		"power": 56
+	},
+	"EVGA X590 Stinger WiFi": {
+		"price": 199.99,
+		"brand": "EVGA",
+		"formfactor": "mini",
+		"socket": "LGA1200",
+		"power": 58
+	},
+	"Zotac Z790ITX XTREME": {
+		"price": 269.99,
+		"brand": "Zotac",
+		"formfactor": "mini",
+		"socket": "LGA1700",
+		"power": 59
+	},
+	"Biostar X580ITX GT8": {
+		"price": 219.99,
+		"brand": "Biostar",
+		"formfactor": "mini",
+		"socket": "AM4",
+		"power": 61
+	},
+	"Colorful CVN B660I GAMING": {
+		"price": 199.99,
+		"brand": "Colorful",
+		"formfactor": "mini",
+		"socket": "AM5",
+		"power": 60
 	}
 }
