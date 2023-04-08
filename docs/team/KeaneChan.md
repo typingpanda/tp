@@ -24,7 +24,7 @@ PC Part picker is a CLI application that allows users to create and save their o
 - `UnrecognizedCommand` class for handling invalid commands
   
 **JUnit Tests**
-- JUnit Tests for `BuilderListComponentCommand`, `BuilderEditNameCommand`, `BuilderEditBudgetCommand`, `BackCommand`, `UnrecognizedCommand` and `BuilderSelectComponentCommand`
+- JUnit Tests for `BuilderListComponentCommand`, `BuilderEditNameCommand`, `BuilderEditBudgetCommand`, `BackCommand` and `BuilderSelectComponentCommand`
 
 **Logging**
 - Logging for `BigPP` class
@@ -35,9 +35,13 @@ PC Part picker is a CLI application that allows users to create and save their o
 - `name` command for builder mode
 - `budget` command for builder mode
 
+In the UG, clear instructions were given for the user to follow to use the commands. The UG also included examples to help the user understand how to use the commands.
+
 ## Contributions to the DG:
 - `UI` Class Diagram
 - Object Diagrams for `ViewerAddCommand` and `BuilderEditNameCommand`
+
+In te DG, explanations were given for the design of the application. The diagrams were also used to help understand the design of the application.
 
 ## Review/mentoring contributions:
 
