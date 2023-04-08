@@ -245,7 +245,7 @@ The user can enter the `edit PC_INDEX` command to edit a PC and enter Builder Mo
 
 ---
 
-<!-- Ryujikjs -->
+<!-- @@author Ryujikjs -->
 
 ## Appendix: Requirements
 
