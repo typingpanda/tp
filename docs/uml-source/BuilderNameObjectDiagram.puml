@@ -1,0 +1,58 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class ":BigPP" as BigPP
+class ":UI" as UI
+class ":Parser" as Parser
+class ":Command" as Command
+class ":BuilderEditNameCommand" as BuilderEditNameCommand
+' class ":ViewerAddCommand" as ViewerAddCommand
+
+
+class BigPP {
+    +main
+
+    -runLoopUntilExit()
+    +run()
+}
+
+class UI {
+    -uiState:UIState
+
+    +getInput()
+    +updateUI()
+    +showResult()
+}
+
+class Parser {
+
+    -parseViewerCommand()
+    -parseBuilderCommand()
+    +parseCommand()
+}
+
+class Command {
+
+    +executeCommand()
+}
+
+class BuilderEditNameCommand {
+
+    +executeCommand()
+}
+
+' class ViewerAddCommand {
+
+'     +executeCommand()
+' }
+
+BigPP -- UI
+BigPP -- Parser
+Parser -- BuilderEditNameCommand
+' Parser -- ViewerAddCommand
+Command <|-right- BuilderEditNameCommand
+' Command <|-right- ViewerAddCommand
+
+hide circle
+
+@enduml

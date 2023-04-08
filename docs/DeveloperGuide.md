@@ -14,6 +14,9 @@
   - [Command class](#command-class)
     - [===== `ViewerAddCommand` method (viewer mode) =====](#-vieweraddcommand-method-viewer-mode-)
     - [===== `BuilderListComponentCommand` (builder mode) =====](#-builderlistcomponentcommand-builder-mode-)
+  - [Object Diagram](#object-diagram)
+    - [===== Viewer Mode =====](#-viewer-mode-)
+    - [===== Builder Mode =====](#-builder-mode-)
 - [Appendix: Requirements](#appendix-requirements)
   - [Product scope](#product-scope)
     - [Target user profile](#target-user-profile)
@@ -42,7 +45,7 @@ Below is the Class diagram for the UI class
 
 ![UI Class Diagram](uml-pictures/UIClassDiagram.png)
 
-The `UI` Class serves as the interface between the user and BigPP. It is responsible for the following key actions
+The `UI` Class serves as the connection between the user and BigPP. It is responsible for the following key actions
 
 1. **Initialization**: Upon start up of BigPP, the instance of `DataStorage` is parsed into the `updateUI` method of `UI` to give it the ability to access resources for BigPP. `UIState` is set to be `PCViewer`.
 2. **Functionality**
@@ -196,6 +199,23 @@ found below:
 
 ---
 
+### Object Diagram
+
+In these object diagrams, a typical flow of the program is shown. The first diagram shows the flow of the program when the user is in the viewer mode and adds a PC. Then, the second diagram shows the flow of the program when the user is in the builder mode and edits the name of the PC added.
+#### ===== Viewer Mode =====
+![Viewer Mode Object Diagram](uml-pictures/ViewerObjectDiagram.png)
+
+When the program first starts, the `BigPP` class is instantiated and the `run()` method is called. The `run()` method calls the `runLoopUntilExit()` method which is a loop that runs until the user exits. The `UI` calls the `getInput()` method to get the user input. The `Parser` class then parses the user input ("add MyPC"). The `parseCommand` method calls the `ViewerAddCommand` method with the name of the PC as the argument. The `ViewerAddCommand` calls its executeCommand method. This adds a PC named "MyPC".
+
+#### ===== Builder Mode =====
+![Builder Mode Object Diagram](uml-pictures/BuilderObjectDiagram.png)
+
+The user can enter the `edit PC_INDEX` command to edit a PC and enter Builder Mode. Now in builder mode, the user can enter the `name NAME` command to edit the name of the PC. The `Parser` class then parses the user input ("name MyEditedPC"). The `parseBuilderCommand` method calls the `BuilderNameComponentCommand` method with the name of the PC as the argument. The `BuilderNameComponentCommand` calls its executeCommand method. This edits the name of the PC to "MyEditedPC".
+
+
+
+---
+
 ## Appendix: Requirements
 
 ### Product scope
@@ -217,7 +237,7 @@ People who want to build PC's and keep track of their builds.
 |--------|----------|---------------|------------------|
 |v1.0|new user|See usage instructions|Refer to them when I forget how to use the application|
 |v1.0|user|Create a new custom PC|Start a fresh PC build|
-|v1.0|user|Add and delete computer components|Build my computer and remove unwanted builds|
+****|v1.0|user|Add and delete computer components|Build my computer and remove unwanted builds|
 |v1.0|user|View the components of my PC build|See the entire PC build and which components have been chosen|
 |v1.0|user|Edit a PC build|Customize the components of a PC build to my liking|
 |v1.0|user|Select and unselect componetns from the PC|Choose and change the components as i wish|
@@ -248,7 +268,7 @@ People who want to build PC's and keep track of their builds.
 5. View Prebuilt PC specifications using `view 1`
 6. Create a new PC using `add newPC`.
 7. Edit the newly created PC by using `edit 4`.
-8. Set a Budget for the build 
+8. Set a Budget for the build by using `budget 1000`.
 9. List all cpu components available by using `list cpu`.
 10. List cpu compoennts that are filterd by price by using `list cpu -price /from 0 /to 200`.
 11. Select cpu by using `select cpu 1`.
