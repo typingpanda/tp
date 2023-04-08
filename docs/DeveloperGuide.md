@@ -268,7 +268,7 @@ People who want to build PC's and keep track of their builds.
 |--------|----------|---------------|------------------|
 |v1.0|new user|See usage instructions|Refer to them when I forget how to use the application|
 |v1.0|user|Create a new custom PC|Start a fresh PC build|
-****|v1.0|user|Add and delete computer components|Build my computer and remove unwanted builds|
+|v1.0|user|Add and delete computer components|Build my computer and remove unwanted builds|
 |v1.0|user|View the components of my PC build|See the entire PC build and which components have been chosen|
 |v1.0|user|Edit a PC build|Customize the components of a PC build to my liking|
 |v1.0|user|Select and unselect componetns from the PC|Choose and change the components as i wish|
