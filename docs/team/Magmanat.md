@@ -12,8 +12,6 @@
   - [Contributions to DG](#contributions-to-dg)
   - [Team Contributions](#team-contributions)
   - [Reviewing/Mentoring Contributions](#reviewingmentoring-contributions)
->>>>>>> 7e82f53ef31940f2288a27b01a3a4657cd6d78a6
-  - [Reviewing/Mentoring Contributions](#reviewingmentoring-contributions)
 
 ___
 
