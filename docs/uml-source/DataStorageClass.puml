@@ -1,17 +1,17 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class ":ComponentList" as ComponentList
-class ":ChassisList" as ChassisList
-class ":CPUList" as CPUList
-class ":CPUCoolerList" as CPUCoolerList
-class ":GPUList" as GPUList
-class ":MotherboardList" as MotherboardList
-class ":PSUList" as PSUList
-class ":RAMList" as RAMList
-class ":StorageList" as StorageList
-class ":PCList" as PCList
-class ":DataStorage" as DataStorage
+class "ComponentList" as ComponentList
+class "ChassisList" as ChassisList
+class "CPUList" as CPUList
+class "CPUCoolerList" as CPUCoolerList
+class "GPUList" as GPUList
+class "MotherboardList" as MotherboardList
+class "PSUList" as PSUList
+class "RAMList" as RAMList
+class "StorageList" as StorageList
+class "PCList" as PCList
+class "DataStorage" as DataStorage
 
 class ComponentList<T> {
     +getListString(componentIndexes: ArrayList<Integer>, getDetails: Boolean): String
