@@ -27,6 +27,13 @@ ___
 ___
 
 ### Enhancements to BigPP
+1. Setup of the skeleton framework for how Classes and objects would interact with each other after discussions with the team.
+2. Implement the entire Loading and Saving of data methods within BigPP into the DataStorage Class to be able to handle data appropriately.
+3. Setup the framework on how the Parser class will be used to Parse input from the user
+4. Setup the Component Class and its respective subclasses such as `cpu`, `gpu`, etc. That will allow for multiple different components to be used for builds
+5. Setup the compatibility checks that work in the background to allow users to add components without worry of incompatibilities 
+6. Setup how the UI class works and how it will display the content nicely to the user by clearing the previous input from the terminal
+7. Setup the PPExceptions to allow the team to develop with exception handling in mind
 
 ___
 
@@ -42,3 +49,10 @@ ___
 ___
 
 ### Contributions to DG
+1. Setup of the skeleton of DG with the appropriate headers for everything
+2. Setup the Table of Contents to work properly such that it can link all developers to the appropriate sections
+3. Add the [Acknowledgements](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#acknowledgements) section which acknowledges the external libraries we have used
+4. Add the [Getting Started](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#getting-started) section that refers the developers to the User Guide for more details
+5. Add [General Overview](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#general-overview) to introduce the Developers to the architecture diagram on the big picture on how BigPP works
+6. Add Class Diagram on [DataStorage Class](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#datastorage-class) to explain how our data is being stored and interacted with in BigPP.
+7. Add a sequential Diagram on how data is loaded with an example on [LoadChassis() method](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#-loadchassis-method-) in DataStorage class
