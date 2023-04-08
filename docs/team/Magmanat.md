@@ -1,3 +1,4 @@
+<!-- @@author Magmanat -->
 <!-- omit in toc -->
 # Prince Pereira - Project Portfolio Page
 
