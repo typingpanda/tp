@@ -9,6 +9,7 @@
   - [Enhancements to BigPP](#enhancements-to-bigpp)
   - [Contributions to UG](#contributions-to-ug)
   - [Contributions to DG](#contributions-to-dg)
+  - [Reviewing/Mentoring Contributions](#reviewingmentoring-contributions)
 
 ___
 
@@ -56,3 +57,20 @@ ___
 5. Add [General Overview](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#general-overview) to introduce the Developers to the architecture diagram on the big picture on how BigPP works
 6. Add Class Diagram on [DataStorage Class](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#datastorage-class) to explain how our data is being stored and interacted with in BigPP.
 7. Add a sequential Diagram on how data is loaded with an example on [LoadChassis() method](https://github.com/AY2223S2-CS2113-T12-2/tp/blob/master/docs/DeveloperGuide.md#-loadchassis-method-) in DataStorage class
+
+
+### Reviewing/Mentoring Contributions
+ - [PR1](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/29#discussion_r1126784188 )
+ - [PR2](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/32#discussion_r1128278426)
+ - [PR3](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/33#discussion_r1128284831)
+ - [PR4](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/51#discussion_r1133125838)
+ - [PR5](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/58#discussion_r1133278681)
+ - [PR6](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/59#discussion_r1133787998)
+ - [PR7](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/68#discussion_r1135847024)
+ - [PR8](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/69#discussion_r1135855728)
+ - [PR9](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/71#discussion_r1135873682)
+ - [PR10](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/102#discussion_r1142481833)
+ - [PR11](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/103#discussion_r1142507625)
+ - [PR12](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/108#discussion_r1144212880)
+ - [PR13](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/109#discussion_r1144580115)
+ - [PR14](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/144#discussion_r1150873420)
