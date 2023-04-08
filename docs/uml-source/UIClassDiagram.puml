@@ -1,10 +1,10 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class ":UI" as UI
-class ":PCBuilderMenu" as PCBuilderMenu
-class ":PCViewerMenu" as PCViewerMenu
-class ":UIState" as UIState
+class "UI" as UI
+class "PCBuilderMenu" as PCBuilderMenu
+class "PCViewerMenu" as PCViewerMenu
+class "UIState" as UIState
 
 class UI <<abstract>> {
     -uiState: UIState
