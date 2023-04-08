@@ -1,3 +1,4 @@
+<!-- @@author Magmanat -->
 <!-- omit in toc -->
 # Developer Guide
 
@@ -37,6 +38,7 @@ The program will first load the `UserJson` and files in the `Resources` folder t
 
 ---
 
+<!-- @@author typingpanda -->
 ## Design and implementation
 
 ### UI class
@@ -62,6 +64,8 @@ The `UI` Class serves as the connection between the user and BigPP. It is respon
 In summary, UI gives crucial feedback to the user such as the menu of possible commands based on the current menu and results of a given command.
 
 ---
+
+<!-- @@author Magmanat -->
 
 ### DataStorage class
 
@@ -107,6 +111,8 @@ found below:
 
 ---
 
+<!-- @@author Reynold-SL -->
+
 ### Parser class
 
 The UML class diagram shows the features of the Parser class:
@@ -121,6 +127,8 @@ contains methods that help to set and retrieve the private attribute in the clas
 Overall, this class diagram provides an overview of the purpose of the Parser class.
 
 ---
+
+<!-- @@author Ryujikjs -->
 
 ### PC Class Architecture
 
@@ -139,6 +147,8 @@ Overall, this class diagram provides a high-level overview of the components tha
 
 ---
 
+<!-- @@author Reynold-SR -->
+
 ### Command class
 
 #### ===== `ViewerAddCommand` method (viewer mode) =====
@@ -155,6 +165,8 @@ found below:
 ![Viewer Add Command Sequential Diagram](uml-pictures/ViewerAddCommand.png)
 
 ---
+
+<!-- @@author superkaiba -->
 
 #### ===== `BuilderListComponentCommand` (builder mode) =====
 
@@ -199,6 +211,8 @@ found below:
 
 ---
 
+<!-- @@author typingpanda -->
+
 ### Object Diagram
 
 In these object diagrams, a typical flow of the program is shown. The first diagram shows the flow of the program when the user is in the viewer mode and adds a PC. Then, the second diagram shows the flow of the program when the user is in the builder mode and edits the name of the PC added.
@@ -215,6 +229,8 @@ The user can enter the `edit PC_INDEX` command to edit a PC and enter Builder Mo
 
 
 ---
+
+<!-- Ryujikjs -->
 
 ## Appendix: Requirements
 
