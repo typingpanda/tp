@@ -3,24 +3,25 @@ package seedu.bigpp.command.viewercommand;
 import org.junit.jupiter.api.Test;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
-
+import seedu.bigpp.ui.UI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FilterCommandTest {
     @Test
     public void executeCommand_filterPCListCommandByName_success() throws PPException {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
         dataStorage.loadAll();
 
         ViewerFilterCommand command = new ViewerFilterCommand("-name intermediate");
         String result = command.executeCommand(dataStorage);
-
         assertEquals("Filter completed" , result);
     }
 
     @Test
     public void executeCommand_filterPCListCommandByPrice_success() throws PPException {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
         dataStorage.loadAll();
 
@@ -32,6 +33,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_filterPCListCommandByIsBuilt_success() throws PPException {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
         dataStorage.loadAll();
 
@@ -43,6 +45,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_clearFilterCommand_success() throws PPException {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
         dataStorage.loadAll();
 
@@ -54,6 +57,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_invalidFlag_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("")
@@ -64,6 +68,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_invalidFlagAndDescriptionIndex_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("abc")
@@ -74,6 +79,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_missingPriceDescription_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-price ")
@@ -84,6 +90,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_incompletePriceDescription_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-price " +
@@ -95,6 +102,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_missingPriceFromDescription_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-price " +
@@ -105,6 +113,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_missingPriceToDescription_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-price " +
@@ -115,6 +124,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_invalidPriceFromDescription_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-price " +
@@ -125,6 +135,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_invalidPriceToDescription_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-price " +
@@ -135,6 +146,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_startPriceBiggerThanEndPrice_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-price " +
@@ -145,6 +157,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_priceIsTooLarge_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-price " +
@@ -155,6 +168,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_missingBuiltDescription_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-built ")
@@ -165,6 +179,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_builtDescriptionIsAFlag_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-built -built")
@@ -176,6 +191,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_builtDescriptionIsInvalid_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-built abc")
@@ -187,6 +203,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_missingNameDescription_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-name ")
@@ -197,6 +214,7 @@ public class FilterCommandTest {
 
     @Test
     public void executeCommand_nameDescriptionIsAFlag_exceptionThrown() {
+        UI.setPCViewerMode();
         DataStorage dataStorage = new DataStorage();
 
         Exception exception = assertThrows(PPException.class, () -> new ViewerFilterCommand("-name -name")

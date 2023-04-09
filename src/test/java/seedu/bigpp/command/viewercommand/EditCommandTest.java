@@ -48,7 +48,7 @@ public class EditCommandTest {
     public void executeCommand_invalidIndex_exceptionThrown() {
         DataStorage dataStorage = new DataStorage();
 
-        Exception exception = assertThrows(PPException.class, () -> new ViewerDeleteCommand("-name ")
+        Exception exception = assertThrows(PPException.class, () -> new ViewerEditCommand("0")
                 .executeCommand(dataStorage));
 
         assertEquals("Please enter a valid index", exception.getMessage());
