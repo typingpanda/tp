@@ -10,7 +10,7 @@ I have developed a product called Big PC Partpicker(BigPP) alongside my teammate
 [Code Contributed](https://nus-cs2113-ay2223s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2023-02-17&tabOpen=true&tabType=authorship&tabAuthor=Ryujikjs&tabRepo=AY2223S2-CS2113-T12-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
 
 ### Enhancements implemented:
-  - `select COMPONENT_TYPE COMONENT_INDEX` command 
+  - `select COMPONENT_TYPE COMPONENT_INDEX` command 
     - Added functionality to select a component for the PC build in builder mode.
     - Had to handle various exceptions such as invalid components and invalid index inputs.
     - Had to make sure that selected component was successfully added to the PC object and properly displayed
