@@ -537,11 +537,11 @@ ________________________________________________________________________________
 
 #### **Budget Command**
 
-Usage: `budget POSITIVE_INTEGER`
+Usage: `budget INTEGER`
 
-Functionality: Sets the `BUDGET` of the current PC build to `POSITIVE_INTEGER`
+Functionality: Sets the `BUDGET` of the current PC build to either an `INTEGER` by entering a positive integer or to `INFINITE` by entering `-1` as arguments.
 
-Example Set `BUDGET` of the PC you are currently editing to be $1000
+Example: Set `BUDGET` of the PC you are currently editing to be $1000
 
 > input: budget 1000
 
@@ -565,6 +565,30 @@ Current build budget is now: $1000.00
 
 ```
 
+Example: Set `BUDGET` of the PC you are currently editing to be `INFINITE`
+
+> input: budget -1
+
+```
+===================================================
+PC builder
+Custom-PC: [beginner (copy)] - $917.28/infinite - Complete
+Power Consumption: 234.5W/850.0W
+Components:
+CPU        : Intel core i3-10100
+CPU Cooler : Thermalright AXP90-X36
+GPU        : Gigabyte GAMING OC RTX3050
+Motherboard: Asus Prime Z590-P WiFi
+RAM        : G.Skill Ripjaws X 8 GB
+Storage    : ADATA XPG SPECTRIX S40G RGB
+PSU        : SeaSonic FOCUS PLUS 850 Gold
+Chassis    : Fractal Design Pop XL Air
+
+What would you like to do?
+===================================================       
+Current build budget is now: infinite
+
+```
 ---
 
 #### **Name Command**
