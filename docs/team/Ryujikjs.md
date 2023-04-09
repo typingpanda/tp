@@ -9,7 +9,7 @@ I have developed a product called Big PC Partpicker(BigPP) alongside my teammate
 ### Summary of Contributions
 [Code Contributed](https://nus-cs2113-ay2223s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2023-02-17&tabOpen=true&tabType=authorship&tabAuthor=Ryujikjs&tabRepo=AY2223S2-CS2113-T12-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false)
 
-- Enhancements implemented:
+### Enhancements implemented:
   - `select COMPONENT_TYPE COMONENT_INDEX` command 
     - Added functionality to select a component for the PC build in builder mode.
     - Had to handle various exceptions such as invalid components and invalid index inputs.
@@ -24,7 +24,8 @@ I have developed a product called Big PC Partpicker(BigPP) alongside my teammate
     - Each individual command class has to handle various exceptions suchs as invalid components, invalid index, and also invalid command structure.
     - Each table of comparison had to be formatted individually to compare the specifications unique to each component.
   
-- Contributions to the UG:
+
+### Contributions to the UG:
   -  `select COMPONENT_TYPE COMONENT_INDEX` command guide
      -  Detailed instructions on how to use the command along with an example code.
   - `unselect COMPONENT_TYPE` command guide
@@ -40,7 +41,7 @@ I have developed a product called Big PC Partpicker(BigPP) alongside my teammate
   - Acceptable Custom Component Commands
     - Show all custom commands and the parameters that need to be specified
     
-- Contributions to the DG:
+### Contributions to the DG:
   - `PC` Class Diagram
     - Overview of the PC class architecture with diagram for visualisation
   - User Stories
@@ -48,5 +49,3 @@ I have developed a product called Big PC Partpicker(BigPP) alongside my teammate
   - Non-functional Requirements
   - Instructions for Manual Testing
     - Detailed and step-by-step instructions for user to test our application
-
-- Review/mentoring contributions:
