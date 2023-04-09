@@ -54,6 +54,7 @@ For the enhancements implemented, I focused more on the commands for the PCViewe
   - Created a description to explain the flow of how the `ViewerAddCommand` class works as well as a sequence diagram for better visualisation
 
 ## Contributions to team-based tasks:
+For contributions to team based tasks, I was present for all the tutorials and took turns to draw the diagrams required during the tutorials
 
 ## Review/mentoring contributions:
 - [Review 1](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/79)

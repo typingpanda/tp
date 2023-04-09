@@ -162,7 +162,7 @@ Overall, this class diagram provides a high-level overview of the components tha
 
 ---
 
-<!-- @@author Reynold-SR -->
+<!-- @@author Reynold-SL -->
 
 ### Command class
 
