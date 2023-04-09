@@ -253,7 +253,14 @@ public class BuilderListComponentCommand extends Command {
         return outputString + componentList.getListString(componentIndexes, getDetails);
     }
 
-    // handle efficiency flag, can be bronze, silver or gold
+    /*
+     * This method handles the form factor flag for psu
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleEfficiencyFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int efficiencyIndex = indexOfFlag(flagAndDescriptionArray, EFFICIENCY_FLAG);
@@ -280,7 +287,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle size flag, size can be 512, 1024, 2048, 4096
+    /*
+     * This method handles the size flag for storage
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleSizeFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int sizeIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
@@ -315,7 +329,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle type flag, type can be M.2 SSD, HDD, or SATA SSD
+    /*
+     * This method handles the type flage for storage
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleTypeFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -345,7 +366,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle speed flag, speed can be 1600/2000/2666/3000/3200/3600
+    /*
+     * This method handles the speed flag for ram
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleSpeedFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -380,7 +408,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle sticks flag, sticks could be int 1, 2, 3, 4
+    /*
+     * This method handles the sticks flag for ram
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleSticksFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -415,7 +450,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle memory flag, memory could be int 8, 16, 32, 64
+    /*
+     * This method handles the memory flag for storage
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleMemoryFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -448,7 +490,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle formfactor flag, formfactor could be string ATX, Micro or Mini
+    /*
+     * This method handles the formfactor flag for storage
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleFormFactorFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes, String componentType)
@@ -492,6 +541,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
+    /*
+     * This method handles the noise flag for cpucooler
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleNoiseFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -554,6 +611,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
+    /*
+     * This method handles the rpm flag for cpucooler
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleRpmFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -619,7 +684,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle socket flag that can be either AM4, AM5, LGA1200 or LGA1700
+    /*
+     * This method handles the socket flag for cpu and motherboard
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleSocketFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes, String componentType)
@@ -654,7 +726,15 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle power flag with int from and int to range
+    /*
+     * This method handles the power flag for cpu, cpucooler, gpu, motherboard, ram,
+     * storage and psu
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handlePowerFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes, String componentType)
@@ -749,7 +829,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
-    // handle boost clock flag, boost clock is a float and has a /from and /to flag
+    /*
+     * This method handles the boost clock flag for cpu
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleBoostClockFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -812,7 +899,14 @@ public class BuilderListComponentCommand extends Command {
 
     }
 
-    // handle base clock flag, base clock is a float and has a /from and /to flag
+    /*
+     * This method handles the base clock flag for cpu
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleBaseClockFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
@@ -872,6 +966,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
+    /*
+     * This method handles the thread flag for cpu
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleThreadFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int threadFlagIndex = indexOfFlag(flagAndDescriptionArray, THREAD_FLAG);
@@ -905,6 +1007,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
+    /*
+     * This method handles the core flag for cpu
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleCoreFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int coreFlagIndex = indexOfFlag(flagAndDescriptionArray, CORE_FLAG);
@@ -937,6 +1047,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
+    /*
+     * This method handles the price flag for all components
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handlePriceFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray, String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes)
             throws PPException {
@@ -994,6 +1112,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
+    /*
+     * This method handles the brand flag for all components
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleBrandFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int brandFlagIndex = indexOfFlag(flagAndDescriptionArray, BRAND_FLAG);
@@ -1009,6 +1135,14 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
+    /*
+     * This method handles the name flag for all components
+     * @param userInputString the user input string, flagsArray the arraylist of
+     * flags, flagAndDescriptionArray the
+     * array of flags and description, componentIndexes the arraylist of component
+     * indexes
+     * @return the filtered component list
+     */
     private ComponentList<?> handleNameFlag(ComponentList<?> componentList, ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int nameFlagIndex = indexOfFlag(flagAndDescriptionArray, NAME_FLAG);
@@ -1024,6 +1158,11 @@ public class BuilderListComponentCommand extends Command {
         return componentList;
     }
 
+    /*
+     * This method checks if the flag is a valid flag
+     * @param flag the flag to be checked
+     * @return true if the flag is valid, false otherwise
+     */
     private static boolean isFlag(String flag) {
         return flag.equals(NAME_FLAG) || flag.equals(PRICE_FLAG) || flag.equals(BRAND_FLAG) || flag.equals(CORE_FLAG)
                 || flag.equals(THREAD_FLAG) || flag.equals(BASE_CLOCK_FLAG) || flag.equals(SIZE_FLAG)
@@ -1034,6 +1173,11 @@ public class BuilderListComponentCommand extends Command {
                 || flag.equals(EFFICIENCY_FLAG) || flag.equals(DETAILS_FLAG);
     }
 
+    /*
+     * This method checks if the user input string contains any flag
+     * @param userInputStringArray the array of the user input string
+     * @return true if the user input string contains a flag, false otherwise
+     */
     private static boolean hasFlag(String[] userInputStringArray) {
         for (String flag : userInputStringArray) {
             if (isFlag(flag)) {
@@ -1043,6 +1187,13 @@ public class BuilderListComponentCommand extends Command {
         return false;
     }
 
+    /*
+     * This method checks if the flagAndDescriptionArray contains a specific flag
+     * @param flagAndDescriptionArray the array of flags and description
+     * @param flag the flag to be checked
+     * @return true if the flagAndDescriptionArray contains the flag, false
+     * otherwise
+     */
     private static boolean containsFlag(String[] flagAndDescriptionArray, String flag) {
         for (String flagAndDescription : flagAndDescriptionArray) {
             if (flagAndDescription.equals(flag)) {
@@ -1052,6 +1203,12 @@ public class BuilderListComponentCommand extends Command {
         return false;
     }
 
+    /*
+     * This method returns the index of the flag in the flagAndDescriptionArray
+     * @param flagAndDescriptionArray the array of flags and description
+     * @param flag the flag to be checked
+     * @return the index of the flag in the flagAndDescriptionArray
+     */
     private static int indexOfFlag(String[] flagAndDescriptionArray, String flag) {
         for (int i = 0; i < flagAndDescriptionArray.length; i++) {
             if (flagAndDescriptionArray[i].equals(flag)) {
