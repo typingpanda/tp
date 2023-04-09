@@ -3,8 +3,6 @@ package seedu.bigpp.command.viewercommand;
 import org.junit.jupiter.api.Test;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
-import seedu.bigpp.pc.PC;
-import seedu.bigpp.pc.PCList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
