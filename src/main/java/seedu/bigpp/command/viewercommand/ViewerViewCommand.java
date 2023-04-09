@@ -26,7 +26,7 @@ public class ViewerViewCommand extends Command {
 
         // throw exception if index selected is not an integer
         if (argument.matches(".*\\D.*")) {
-            throw new PPException("Please enter an integer");
+            throw new PPException("Please enter a positive integer");
         }
 
         int pcIndex = 0;
