@@ -168,25 +168,38 @@ Example:
 - Entering the help command in the PCViewer mode will produce the following output at the bottom of your terminal:
 
 ```
-Here are the list of valid commands:
-Add <name> - Add a new PC of a given name
-Delete <index> -  Delete the PC of a given index
-Edit <index> - Edit the PC of a given index
-View <index> - Display all the components of the PC of a given index
+Here are the list of valid commands: 
+_____________________________________________________
+| Command Type            | Command Usage           |
+|-------------------------|-------------------------|
+| Add new PC              | add PC_NAME             |
+| Edit PC                 | edit PC_INDEX           |
+| View PC Specs           | view PC_INDEX           |
+| Delete PC               | delete PC_INDEX         |
+| Filter PC List          | filter FILTER_FLAGS     |
+| Exit program            | bye                     |
+-----------------------------------------------------
+For more detailed documentation on commands, please refer to our user guide!
 ```
 
 - Entering the help command in the PCBuilder mode will produce the following output at the bottom of your terminal:
 
 ```
 Here are the list of valid commands:
-list <component> - List all components of a certain type
-name <new_name> - Change the name of the PC currently being edited to <new_name>
-budget <new_budget> - Change the budget of the PC currently being edited to <new_budget>
-select <component_type> <index> -  Add the component of type <component_type> with index <index> to the PC currently being edited
-info <component_type> - View all the specifications of the component of type <component_type> currently selected for the build
-unselect <component_type> - Remove the component of type <component_type> from the PC currently beingedited
-custom <component_type> <component_specifications...> - Creates a custom component of type <component_type> with all the <component_specifications> and adds it to the list of components of that type
-compare <component_type> <index_1>&<index_2> Compares all the specifications between the components oftype <component_type> with indices <index_1> and <index_2>
+______________________________________________________________________________
+| Command Type            | Command Usage                                    |
+|-------------------------|--------------------------------------------------|
+| List Component          | list COMPONENT_TYPE [-COMPONENT_FLAG lIST_FLAG]  |
+| Select Component        | select COMPONENT_TYPE COMPONENT_INDEX            |
+| Unselect Component      | unselect COMPONENT_TYPE                          |
+| Compare Components      | compare COMPONENT_TYPE INDEX_1 & INDEX_2         |
+| Change Budget           | budget POSITIVE_INTEGER                          |
+| Change PC Name          | name PC_NAME                                     |
+| Create Custom Component | custom COMPONENT_TYPE SPEC1|SPEC_2|...           |
+| Back Command            | back                                             |
+| Exit program            | bye                                              |
+------------------------------------------------------------------------------
+For more detailed documentation on commands, please refer to our user guide!
 ```
 
 Notes: Entering the help command in either PCViewer mode or PCBuilder mode will present different sets of valid commands
@@ -240,10 +253,10 @@ Example:
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
-2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
-3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
-4.Custom-PC: [NEWPC] - $0.0/infinite - Incomplete
+    1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+    2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+    3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+    4.Custom-PC: [NEWPC] - $0.0/infinite - Incomplete
 What would you like to do?
 ===================================================
 Prebuilt-PC: [expert] - $2339.74/infinite - Complete
@@ -309,9 +322,9 @@ Example:
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
-2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
-3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+    1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+    2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+    3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
 What would you like to do?
 ===================================================
 Custom PC: [ NEWPC ] has been deleted
@@ -351,13 +364,14 @@ Example: filter the PC List by the name of intermediate, in the range of startin
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+    2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
 What would you like to do?
 ===================================================
 Filter completed
 ```
 
 Notes: The flags can by strung together _in any order_ such as `filter -price /from 1000 /to 3000 -name intermediate -built complete`. However, if the `-clear` flag is detected, this will take **precedence** and remove all filters regardless of other flags.
+Please note that you will still be able to edit the PCs that are not filtered as the filter is simply only for easier viewing of the PCs which you would like to edit.
 
 ---
 

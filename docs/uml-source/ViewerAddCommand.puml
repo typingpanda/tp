@@ -1,15 +1,26 @@
 @startuml
 title ViewerAddCommand.executeCommand() Sequence Diagram
 
+participant ":BigPP" as BigPP
 participant ":Parser" as Parser
 participant ":ViewerAddCommand" as ViewerAddCommand
 participant ":PC" as PC
 participant ":DataStorage.pcList" as DataStorage.pcList
 
+activate BigPP
+-> BigPP: add [String]
+BigPP -> Parser: parseCommand(String userinput)
+activate Parser
+Parser -> Parser: parseViewerCommand(String userinput)
 activate Parser
 opt "add <name>"
 Parser -> ViewerAddCommand: ViewerAddCommand(String arguments)
 activate ViewerAddCommand
+ViewerAddCommand --> Parser
+deactivate Parser
+Parser --> BigPP: ":ViewerAddCommand"
+deactivate Parser
+BigPP -> ViewerAddCommand: executeCommand()
 ViewerAddCommand -> ViewerAddCommand: getArguments()
 activate ViewerAddCommand
 alt != ""
@@ -22,9 +33,12 @@ alt != ""
     PC --> ViewerAddCommand
     deactivate PC
     deactivate ViewerAddCommand
-    ViewerAddCommand --> Parser: return success message
+    ViewerAddCommand --> BigPP: return success message
+    <-- BigPP: return success message
+
 else else
-    ViewerAddCommand --> Parser: throw PPException with error message
+    ViewerAddCommand --> BigPP: throw PPException with error message
+    <-- BigPP: return error message
 end
 
 deactivate ViewerAddCommand
