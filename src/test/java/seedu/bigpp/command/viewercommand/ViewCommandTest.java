@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.pc.PC;
-import seedu.bigpp.ui.UI;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
