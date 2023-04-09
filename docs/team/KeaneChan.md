@@ -7,20 +7,19 @@ PC Part picker is a CLI application that allows users to create and save their o
 
 ## Enhancements implemented:
 
-**Commands**
-- `list COMPONENT_TYPE [-FLAG]` command 
-  - Filter methods for list component command for each component type
+**Functional Code**
+- `BuilderListComponentCommand` for builder mode
+  - Filter methods for list component command for all component types
 - `BuilderEditNameCommand` for builder mode
   - Command to change the name of a PC build
 - `BuilderEditBudgetCommand` for builder mode
   - Command to change the budget of a PC build
 - `BackCommand` for builder mode
   - Command to return from PCBuilderMenu to PCViewerMenu
-  
-**Classes**
-- `ComponentList` class for filtering components
-  - Filter methods for each component type
-- `PCBuilderMenu` class for PCBuilderMenu
+- `ComponentList` 
+  - Filter methods for all component types
+- `PCBuilderMenu` 
+  - Menu to display the user's PC build
 - `UnrecognizedCommand` class for handling invalid commands
   
 **JUnit Tests**
