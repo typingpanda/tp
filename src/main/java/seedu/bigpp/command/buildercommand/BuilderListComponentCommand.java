@@ -908,10 +908,6 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a positive boost clock");
         }
 
-        if (boostClockLowerBound > 10 || boostClockUpperBound > 10) {
-            throw new PPException("Please enter a boost clock that is smaller than 10");
-        }
-
         flagsArray.add("Boost Clock: " + boostClockLowerBound + " to " + boostClockUpperBound);
         componentList = ComponentList.filterByBoostClock(componentList, boostClockLowerBound, boostClockUpperBound,
                 componentIndexes);
