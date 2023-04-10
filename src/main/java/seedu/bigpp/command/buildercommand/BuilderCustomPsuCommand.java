@@ -35,10 +35,10 @@ public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
                     "Please enter floats within 32 bits");
         }
 
-        String efficiency = argumentList[2].trim();
+        String efficiency = argumentList[2].trim().toLowerCase();
         String formFactor = argumentList[3].trim().toLowerCase();
-        if (efficiency.equals("")) {
-            throw new PPException("Please enter a efficiency for the custom component");
+        if (!efficiency.equals("gold") && !efficiency.equals("silver") && !efficiency.equals("bronze")) {
+            throw new PPException("Please enter a valid efficiency for the custom component (gold, silver, bronze)");
         }
         if (FormFactorEnum.isFormFactor(formFactor) == false) {
             throw new PPException("Please enter a valid formfactor for the custom component (mini, micro, atx)");
