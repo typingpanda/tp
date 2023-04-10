@@ -573,7 +573,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String noiseFrom = noiseDescriptionArray[1];
-        if (!noiseFrom.matches(".*\\D.*")) {
+        if (!noiseFrom.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Noise start range must be an integer");
         }
 
@@ -583,7 +583,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String noiseTo = noiseDescriptionArray[3];
-        if (!noiseTo.matches(".*\\D.*")) {
+        if (!noiseTo.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Noise end range must be an integer");
         }
 
@@ -645,7 +645,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String rpmFrom = rpmDescriptionArray[1];
-        if (!rpmFrom.matches(".*\\D.*")) {
+        if (!rpmFrom.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Rpm start range must be an integer");
         }
 
@@ -655,7 +655,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String rpmTo = rpmDescriptionArray[3];
-        if (!rpmTo.matches(".*\\D.*")) {
+        if (!rpmTo.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Rpm end range must be an integer");
         }
 
@@ -760,7 +760,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String powerFrom = powerDescriptionArray[1];
-        if (!powerFrom.matches(".*\\D.*")) {
+        if (!powerFrom.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Power start range must be an integer");
         }
 
@@ -770,7 +770,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String powerTo = powerDescriptionArray[3];
-        if (!powerTo.matches(".*\\D.*")) {
+        if (!powerTo.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Power end range must be an integer");
         }
 
@@ -862,7 +862,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String boostClockLowerBoundString = boostClockDescriptionArray[1];
-        if (!boostClockLowerBoundString.matches(".*\\D.*")) {
+        if (!boostClockLowerBoundString.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Please enter a float for the lower bound of the boost clock");
         }
 
@@ -872,7 +872,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String boostClockUpperBoundString = boostClockDescriptionArray[3];
-        if (!boostClockUpperBoundString.matches(".*\\D.*")) {
+        if (!boostClockUpperBoundString.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Please enter a float for the upper bound of the boost clock");
         }
 
@@ -931,7 +931,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String fromBaseClock = baseClockDescriptionArray[1].trim();
-        if (!fromBaseClock.matches(".*\\D.*")) {
+        if (!fromBaseClock.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Base clock should be a float");
         }
 
@@ -941,7 +941,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String toBaseClock = baseClockDescriptionArray[3].trim();
-        if (!toBaseClock.matches(".*\\D.*")) {
+        if (!toBaseClock.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Base clock should be a float");
         }
 
@@ -992,7 +992,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a valid thread number (4, 8, 12, 16, 20, 24 or 32)");
         }
 
-        if (!thread.matches(".*\\D.*")) {
+        if (!thread.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Please enter an integer for thread number");
         }
         int threadInt = 0;
@@ -1034,7 +1034,7 @@ public class BuilderListComponentCommand extends Command {
         }
         flagsArray.add("core: " + core);
 
-        if (!core.matches(".*\\D.*")) {
+        if (!core.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("Please enter an integer for core number");
         }
         int coreInt = 0;
@@ -1079,7 +1079,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please use /from to specify the start price range");
         }
         String priceFrom = flagPriceDescriptionArray[1].trim();
-        if (!priceFrom.matches(".*\\D.*")) {
+        if (!priceFrom.matches("^/^\\d*\\.?\\d*$/")) {
             throw new PPException("Start price must be a positive integer");
         }
         String toFlag = flagPriceDescriptionArray[2].trim();
@@ -1088,7 +1088,7 @@ public class BuilderListComponentCommand extends Command {
         }
         String priceTo = flagPriceDescriptionArray[3].trim();
 
-        if (!priceTo.matches(".*\\D.*")) {
+        if (!priceTo.matches("/^\\d*\\.?\\d*$/")) {
             throw new PPException("End price must be a positive integer");
         }
 

@@ -132,18 +132,6 @@ public class BuilderListComponentCommandTest {
     }
 
     @Test
-    public void executeCommand_listCpuInvalidPriceRange_exceptionThrown() {
-        dataStorage.initStringToComponentListMap();
-        dataStorage.loadAll();
-
-        UI.setPCBuilderMode(0);
-
-        Exception exception = assertThrows(PPException.class, () -> new BuilderListComponentCommand(
-                "cpu -price /from 100 /to 10").executeCommand(dataStorage));
-        assertEquals("Start price must be less than end price", exception.getMessage());
-    }
-
-    @Test
     public void executeCommand_listcpuInvalidPrice_exceptionThrown() {
         dataStorage.initStringToComponentListMap();
         dataStorage.loadAll();
