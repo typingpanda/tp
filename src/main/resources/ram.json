@@ -1,7 +1,7 @@
 {
 	"Kingston FURY Beast 16 GB": {
 		"price": 43.98,
-		"memory": 16,
+		"memory": 8,
 		"sticks": 2,
 		"speed": 3200,
 		"brand": "Kingston",
@@ -17,7 +17,7 @@
 	},
 	"Corsair Vengeance RGB Pro 32 GB": {
 		"price": 104.99,
-		"memory": 32,
+		"memory": 16,
 		"sticks": 2,
 		"speed": 3600,
 		"brand": "Corsair",
@@ -25,7 +25,7 @@
 	},
 	"G.Skill Trident Z RGB 64 GB": {
 		"price": 164.99,
-		"memory": 64,
+		"memory": 32,
 		"sticks": 2,
 		"speed": 3200,
 		"brand": "G.Skill",
@@ -49,7 +49,7 @@
 	},
 	"WhisperWind Pro 16 GB": {
 		"price": 59.99,
-		"memory": 16,
+		"memory": 8,
 		"sticks": 2,
 		"speed": 2666,
 		"brand": "WhisperWind",
@@ -65,7 +65,7 @@
 	},
 	"HyperDrive SpeedBlaze 16 GB": {
 		"price": 61.99,
-		"memory": 16,
+		"memory": 8,
 		"sticks": 2,
 		"speed": 2000,
 		"brand": "HyperDrive",
@@ -73,7 +73,7 @@
 	},
 	"WhisperWind Pro 32 GB": {
 		"price": 119.99,
-		"memory": 32,
+		"memory": 16,
 		"sticks": 2,
 		"speed": 2666,
 		"brand": "WhisperWind",
@@ -89,7 +89,7 @@
 	},
 	"HyperDrive SpeedBlaze 32 GB": {
 		"price": 123.99,
-		"memory": 32,
+		"memory": 16,
 		"sticks": 2,
 		"speed": 2000,
 		"brand": "HyperDrive",
@@ -97,7 +97,7 @@
 	},
 	"WhisperWind Pro 64 GB": {
 		"price": 239.99,
-		"memory": 64,
+		"memory": 32,
 		"sticks": 2,
 		"speed": 2666,
 		"brand": "WhisperWind",
@@ -113,7 +113,7 @@
 	},
 	"HyperDrive SpeedBlaze 64 GB": {
 		"price": 247.99,
-		"memory": 64,
+		"memory": 32,
 		"sticks": 2,
 		"speed": 2000,
 		"brand": "HyperDrive",

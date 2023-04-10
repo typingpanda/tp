@@ -151,7 +151,7 @@ public class ComponentList<T> extends ArrayList<Component> {
         ComponentList<?> filteredComponentList = new ComponentList<>();
         for (int i = 0; i <= componentList.size() - 1; i++) {
             RAM ram = (RAM) componentList.get(i);
-            if (ram.getMemory() == memory) {
+            if (ram.getMemory() * ram.getSticks() == memory) {
                 filteredComponentList.add(componentList.get(i));
                 componentIndexes.add(i + 1);
             }
