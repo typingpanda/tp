@@ -565,17 +565,17 @@ People who want to build PC's and keep track of their builds.
       ```
       ===================================================
       PC builder
-      Custom-PC: [expert (copy)] - $2339.74/infinite - Complete
-      Power Consumption: 584.2W/850.0W
+      Custom-PC: [newPC] - $0.0/$1000.00 - Incomplete
+      Power Consumption: 0.0W/0W
       Components:
-      CPU        : AMD Ryzen 9 7950X
-      CPU Cooler : Cooler Master MASTERLIQUID ML120L RGB V2
-      GPU        : MSI GAMING Z TRIO RTX3080
-      Motherboard: Gigabyte B650I AORUS ULTRA
-      RAM        : Corsair Vengeance RGB Pro 32 GB
-      Storage    : Samsung 980 Pro
-      PSU        : SeaSonic FOCUS PLUS 850 Gold
-      Chassis    : Corsair iCUE 4000X RGB
+      CPU        : - Not Selected -
+      CPU Cooler : - Not Selected -
+      GPU        : - Not Selected -
+      Motherboard: - Not Selected -
+      RAM        : - Not Selected -
+      Storage    : - Not Selected -
+      PSU        : - Not Selected -
+      Chassis    : - Not Selected -
 
       What would you like to do?
       ===================================================
