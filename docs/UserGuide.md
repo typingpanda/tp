@@ -175,7 +175,9 @@ Functionality: Exits the application and saves all user data that has currently 
 #### **Help Command**
 
 Usage: `help`
+
 Functionality: Displays the valid commands in the respective modes
+
 Example:
 
 - Entering the help command in the PCViewer mode will produce the following output at the bottom of your terminal:
@@ -387,7 +389,7 @@ Example: filter the PC List by the name of intermediate, in the range of startin
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-    2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+    2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
 What would you like to do?
 ===================================================
 Filter completed
