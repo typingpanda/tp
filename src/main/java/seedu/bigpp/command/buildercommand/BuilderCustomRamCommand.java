@@ -15,20 +15,13 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
         return 7;
     }
 
-    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
+    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand,
+            float price)
             throws PPException {
-        float price = 0;
         float power = 0;
         int memory = 0;
         int sticks = 0;
         int speed = 0;
-
-        try {
-            price = Float.parseFloat(argumentList[2]);
-        } catch (NumberFormatException e) {
-            throw new PPException(
-                    "Please enter a valid price");
-        }
 
         try {
             memory = Integer.parseInt(argumentList[3]);
@@ -73,7 +66,7 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
                     "Please enter a valid power");
         }
 
-        if (price < 0 || memory < 0 || sticks < 0 || speed < 0 || power < 0) {
+        if (memory < 0 || sticks < 0 || speed < 0 || power < 0) {
             throw new PPException("price, memory, sticks, speed and power should be positive");
         }
 

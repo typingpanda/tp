@@ -16,22 +16,9 @@ public class BuilderCustomChassisCommand extends BuilderCustomComponentCommand {
         return 4;
     }
 
-    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
+    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand,
+            float price)
             throws PPException {
-        float price = 0;
-
-        try {
-            price = Float.parseFloat(argumentList[2]);
-
-            // Check if all the values are positive
-            if (price < 0) {
-                throw new PPException("price should be positive");
-            }
-
-        } catch (NumberFormatException e) {
-            throw new PPException(
-                    "Please enter a valid price");
-        }
 
         String formFactor = argumentList[3].trim().toLowerCase();
         if (FormFactorEnum.isFormFactor(formFactor) == false) {

@@ -16,17 +16,10 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
         return 5;
     }
 
-    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
+    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand,
+            float price)
             throws PPException {
-        float price = 0;
         float power = 0;
-
-        try {
-            price = Float.parseFloat(argumentList[2]);
-        } catch (NumberFormatException e) {
-            throw new PPException(
-                    "Please enter a valid price");
-        }
 
         try {
             power = Float.parseFloat(argumentList[3]);
@@ -36,8 +29,8 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
         }
 
         // Check if all the values are positive
-        if (price < 0 || power < 0) {
-            throw new PPException("price and power should be positive");
+        if (power < 0) {
+            throw new PPException("power should be positive");
         }
 
         String formfactor = argumentList[4].trim().toLowerCase();
