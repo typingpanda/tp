@@ -1,5 +1,6 @@
-# Prince Pereira - Project Portfolio Page
+<div style="page-break-after: always;"></div>
 
+# Prince Pereira - Project Portfolio Page
 
 ## Table of Contents
 - [Overview](#overview)
@@ -69,17 +70,4 @@ ___
 ___
 
 ### Reviewing/Mentoring Contributions
- - [PR1](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/29#discussion_r1126784188 )
- - [PR2](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/32#discussion_r1128278426)
- - [PR3](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/33#discussion_r1128284831)
- - [PR4](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/51#discussion_r1133125838)
- - [PR5](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/58#discussion_r1133278681)
- - [PR6](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/59#discussion_r1133787998)
- - [PR7](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/68#discussion_r1135847024)
- - [PR8](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/69#discussion_r1135855728)
- - [PR9](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/71#discussion_r1135873682)
- - [PR10](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/102#discussion_r1142481833)
- - [PR11](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/103#discussion_r1142507625)
- - [PR12](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/108#discussion_r1144212880)
- - [PR13](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/109#discussion_r1144580115)
- - [PR14](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/144#discussion_r1150873420)
+ - [PR#29](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/29#discussion_r1126784188),[PR#32](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/32#discussion_r1128278426),[PR#33](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/33#discussion_r1128284831),[PR#51](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/51#discussion_r1133125838),[PR#58](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/58#discussion_r1133278681),[PR#59](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/59#discussion_r1133787998),[PR#68](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/68#discussion_r1135847024),[PR#69](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/69#discussion_r1135855728),[PR#71](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/71#discussion_r1135873682),[PR#102](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/102#discussion_r1142481833),[PR#103](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/103#discussion_r1142507625),[PR#108](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/108#discussion_r1144212880),[PR#109](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/109#discussion_r1144580115),[PR#144](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/144#discussion_r1150873420)
