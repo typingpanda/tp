@@ -60,6 +60,8 @@ If you encounter unfamiliar terminology in this guide, please refer to the [Glos
 5. Run the command `java -jar BigPP.jar` to start the app.
 6. Refer to the [Commands](#Commands) below to try out the application!
 
+<div style="page-break-after: always;"></div>
+
 Upon successful initialization of the program for the first time, you would be greeted by the following, assuming you do not currently have a user.json file in your _home folder_
 
 ```
@@ -159,8 +161,10 @@ Usage: `bye`
 Functionality: Exits the application and saves all user data that has currently been changed since the opening of the application
 
 ```diff
-- **IMPORTANT:** the user MUST execute this command to save the data that has been edited,
-- if the user decides to end the program using ctrl+c or other methods, their edited data would be lost!
+- **IMPORTANT:** the user MUST execute this command 
+- to save the data that has been edited,
+- if the user decides to end the program using ctrl+c or 
+- other methods, their edited data would be lost!
 ```
 
 <!-- @@author Reynold-SL -->
@@ -810,7 +814,10 @@ Please choose another motherboard or change your cpu
 |          Edit PC          |                `edit PC_INDEX`                 |                                                 nil                                                 |
 |         Delete PC         |               `delete PC_INDEX`                |                                                 nil                                                 |
 |        Filter PCs         |             `filter FILTER_FLAGS`              |   `-name PC_NAME`,`-price /from PC_START_COST /to PC_END_COST`,`-built PC_ISCOMPLETE` and`-clear`   |
+
+
 | **Builder Menu Commands** |                   **Format**                   |                                              **Flags**                                              |
+| :-----------------------: | :--------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
 |         List CPU          |     `list cpu [-COMPONENT_FLAG LIST_FLAG]`     | `-name`, `-brand`, `-price`,`-power`, `-socket`, `-core`, `-thread`, `-baseclock` and `-boostclock` |
 |         List GPU          |     `list gpu [-COMPONENT_FLAG LIST_FLAG]`     |                       `-name`, `-brand`, `-price`,`-power` and `-formfactor`                        |
 |      List CPU Cooler      | `list cpu-cooler [-COMPONENT_FLAG LIST_FLAG]`  |                     `-name`, `-brand`, `-price`, `-rpm`, `-noise` and `-power`                      |
