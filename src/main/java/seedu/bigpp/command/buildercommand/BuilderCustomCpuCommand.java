@@ -40,6 +40,10 @@ public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
 
         try {
             baseClock = Float.parseFloat(argumentList[5]);
+            if (baseClock > 10) {
+                throw new PPException(
+                        "Too large of a base clock");
+            }
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid base clock");
@@ -47,20 +51,33 @@ public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
 
         try {
             boostClock = Float.parseFloat(argumentList[6]);
+            if (boostClock > 10) {
+                throw new PPException(
+                        "Too large of a boost clock");
+            }
+
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid boost clock");
         }
 
+        if (boostClock < baseClock) {
+            throw new PPException("Boost clock should be greater than base clock");
+        }
+
         try {
             power = Float.parseFloat(argumentList[7]);
+            if (power > 5000) {
+                throw new PPException(
+                        "Too large of a power");
+            }
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid power");
         }
 
         if (cores < 0 || threads < 0 || baseClock < 0 || boostClock < 0 || power < 0) {
-            throw new PPException("price, cores, threads, base clock, boost clock and power should be positive");
+            throw new PPException("cores, threads, base clock, boost clock and power should be positive");
         }
 
         String socket = argumentList[8].trim();

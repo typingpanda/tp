@@ -23,6 +23,11 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
 
         try {
             power = Float.parseFloat(argumentList[3]);
+            if (power > 5000) {
+                throw new PPException(
+                        "Too large of a power");
+            }
+
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid power");

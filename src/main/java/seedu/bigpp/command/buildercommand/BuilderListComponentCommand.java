@@ -887,7 +887,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a positive boost clock");
         }
 
-        if (boostClockLowerBound > 100 || boostClockUpperBound > 100) {
+        if (boostClockLowerBound > 10 || boostClockUpperBound > 10) {
             throw new PPException("Please enter a boost clock that is smaller than 100");
         }
 
@@ -956,7 +956,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Base clock cannot be negative");
         }
 
-        if (fromBaseClockFloat > 100 || toBaseClockFloat > 100) {
+        if (fromBaseClockFloat > 10 || toBaseClockFloat > 10) {
             throw new PPException("Base clock cannot be greater than 100");
         }
 

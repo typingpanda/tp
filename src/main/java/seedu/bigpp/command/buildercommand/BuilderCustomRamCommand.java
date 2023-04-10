@@ -61,13 +61,19 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
 
         try {
             power = Float.parseFloat(argumentList[6]);
+
+            if (power > 5000) {
+                throw new PPException(
+                        "Too large of a power");
+            }
+
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid power");
         }
 
         if (memory < 0 || sticks < 0 || speed < 0 || power < 0) {
-            throw new PPException("price, memory, sticks, speed and power should be positive");
+            throw new PPException("memory, sticks, speed and power should be positive");
         }
 
         RAM ram = new RAM(name, brand, price, memory, sticks, speed, power);
