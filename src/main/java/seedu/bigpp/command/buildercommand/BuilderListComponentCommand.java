@@ -442,7 +442,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a valid sticks description (1 or 2))");
         }
         if (sticks != 1 && sticks != 2 && sticks != 3 && sticks != 4) {
-            throw new PPException("Please enter a valid sticks description (1, 2, 3 or 4))");
+            throw new PPException("Please enter a valid sticks description (1 or 2))");
         }
         flagsArray.add("Sticks: " + sticks);
         componentList = ComponentList.filterBySticks(componentList, sticks, componentIndexes);
