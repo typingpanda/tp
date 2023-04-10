@@ -1,3 +1,5 @@
+<div style="page-break-after: always;"></div>
+
 # Keane Chan - Project Portfolio Page
 
 ## Overview: PC Part Picker
@@ -29,6 +31,7 @@ PC Part picker is a CLI application that allows users to create and save their o
 - Logging for `BigPP` class
   - Logging for overall flow of the application
   
+---
 ## Contributions to the UG:
 -  `list COMPONENT_TYPE [-FLAG]` command
 - `name` command for builder mode
@@ -36,12 +39,14 @@ PC Part picker is a CLI application that allows users to create and save their o
 
 In the UG, clear instructions were given for the user to follow to use the commands. The UG also included examples to help the user understand how to use the commands.
 
+---
 ## Contributions to the DG:
 - `UI` Class Diagram
 - Object Diagrams for `ViewerAddCommand` and `BuilderEditNameCommand`
 
-In te DG, explanations were given for the design of the application. The diagrams were also used to help understand the design of the application.
+In the DG, explanations were given for the design of the application. The diagrams were also used to help understand the design of the application.
 
+---
 ## Review/mentoring contributions:
 
   - [PR1](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/35#discussion_r1128972854)
@@ -51,4 +56,3 @@ In te DG, explanations were given for the design of the application. The diagram
   - [PR5](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/108#discussion_r1144216412)
   
   In these pull requests, I reviewed my teammates' code by facilitating discussions on the code and complimenting them on their work when deserved. I also explained the rationale behind my code to my teammates when they asked for clarification.  
-  
