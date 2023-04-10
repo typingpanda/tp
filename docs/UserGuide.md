@@ -685,7 +685,7 @@ Usage: `custom COMPONENT_TYPE SPEC_1|SPEC_2|...`
 
 Functionality: Adds a custom component of type COMPONENT_TYPE with the specs `SPEC_1`, `SPEC_2`...... to the current PC build
 
-> input input: custom cpu Intel-new-cpu|Intel|99.5|4|8|3.5|4.6|122|LGA1200
+> input: custom cpu Intel-new-cpu\|Intel\|99.5\|4\|8\|3.5\|4.6\|122\|LGA1200
 
 ```
 ===================================================
@@ -739,7 +739,7 @@ Based on the rules stated above, the compatibility checker will throw the user e
 
 Example: The `CPU` current added has a socket **LGA1200** and the new `MOTHERBOARD` that the user wants to add has a socket **AM5**.
 
-> input: custom motherboard newmobo|AMD|10|atx|AM5|10
+> input: custom motherboard newmobo\|AMD\|10\|atx\|AM5\|10
 
 ```
 ===================================================
@@ -789,14 +789,12 @@ If certain attributes of the components have been deleted, such as "name", "pric
 |      PRICE       |                              Price of the component                               |  Positive Float  |        100.00         |
 |      BRAND       |                    Name of the manufacturer of the compoenent                     |      String      |         "msi"         |
 |      POWER       |                The power consumption of the component in Watts(W)                 |  Positive Float  |         150.0         |
-|      SOCKET      | Physical socket where CPU is placed in(CPU must be seated in a compatible socket) |      String      |       "LGA1200"       |
 |       CORE       |                 Number of physical cores avaiable for computation                 | Positive Integer |           4           |
 |      THREAD      |                 Number of virtual cores avaiable for computation                  | Positive Integer |           8           |
 |    BASECLOCK     |                Baseline clockspeed of component in gigahertz (GHz)                | Positive Integer |          3.2          |
 |    BOOSTCLOCK    |          Boosted clockspeed of component when under load gigahertz (GHz)          | Positive Integer |          4.2          |
 |       RPM        |                 Speed of rotation in revolutions per minute (RPM)                 | Positive Integer |          500          |
 |      NOISE       |              Measurement of sound component produces in decibels(dB)              | Positive Integer |          43           |
-|    EFFICIENCY    |                       The power efficiency of power supply                        |      String      |        "gold"         |
 | POSITIVE_INTEGER |                       A positive integer between 0 - 65,535                       | Positive Integer |           1           |
 
 | **Parameter**  | **Explanation**                                      | **Type**         |                                                                               **All Acceptable Inputs**                                                                                |
@@ -805,12 +803,14 @@ If certain attributes of the components have been deleted, such as "name", "pric
 | MEMORY         | Amount of random access memory(RAM) in gigabytes(GB) | Positive Integer |                                                                                    8, 16, 32 and 64                                                                                    |
 | STICKS         | Numper of physical RAM sticks                        | Positive Integer |                                                                                       1, 2 and 4                                                                                       |
 | SPEED          | Speed of RAM in Megahertz(MHz)                       | Positive Integer |                                                                            1600, 2000, 2666, 3200 and 3600                                                                             |
-| TYPE           | Type of storage device                               | String           |                                                                                      "ssd"/"hdd"                                                                                       |
-| FILTER_FLAGS   | Attributes of PC Build to filter                     | String           |                                            `-name PC_NAME`,`-price /from PC_START_COST /to PC_END_COST`,`-built PC_ISCOMPLETE` and`-clear`                                             |
+| TYPE           | Type of storage device                               | String           |                                                                                      `ssd` and `hdd`                                                                                   |
+| FILTER_FLAGS   | Attributes of PC Build to filter                     | String           |                                            `-name`,`-price`,`-built` and`-clear`                                             |
 | LIST_FLAGS     | Attributes of the component                          | String           | `-name`, `-brand`, `-price`,`-power`, `-formfactor`, `-socket`, `-core`, `-thread`, `-baseclock`, `-boostclock`, `-size`, `-rpm`, `-noise`, `-memory`, `-sticks`, `-speed` and `-type` |
-| PC_ISCOMPLETE  | State of PC                                          | String           |                                                                               "complete" / "incomplete"                                                                                |
+| PC_ISCOMPLETE  | State of PC                                          | String           |                                                                               `complete` and `incomplete`                                                                                |
 | COMPONENT_TYPE | Type of Component that is required to build a PC     | String           |                                                       `cpu`,`gpu`,`cpu-cooler`,`motherboard`,`ram`,`storage`,`psu` and `chassis`                                                       |
 | FORMFACTOR     | The standard size specification of the components    | String           |                                                                                `atx`,`mini` and `micro`                                                                                |
+|      SOCKET      | Physical socket where CPU is placed in(CPU must be seated in a compatible socket) |      String      |       `LGA1200`,`LGA1700`,`AM4`,`AM5`       |
+|    EFFICIENCY    |                       The power efficiency of power supply                        |      String      |        "gold"         |
 
 <div style="page-break-after: always;"></div>
 
@@ -822,7 +822,7 @@ If certain attributes of the components have been deleted, such as "name", "pric
 |          View PC          |                `view PC_INDEX`                 |                                                 nil                                                 |
 |          Edit PC          |                `edit PC_INDEX`                 |                                                 nil                                                 |
 |         Delete PC         |               `delete PC_INDEX`                |                                                 nil                                                 |
-|        Filter PCs         |             `filter FILTER_FLAGS`              |   `-name PC_NAME`,`-price /from PC_START_COST /to PC_END_COST`,`-built PC_ISCOMPLETE` and`-clear`   |
+|        Filter PCs         |             `filter FILTER_FLAGS`              |   `-name`,`-price`,`-built` and `-clear`   |
 
 
 | **Builder Menu Commands** |                   **Format**                   |                                              **Flags**                                              |
