@@ -30,6 +30,7 @@
     - [**Back Command**](#back-command)
 - [Additional Features](#additional-features)
   - [Compatibility Check](#compatibility-check)
+  - [Advanced User Guide](#advanced-user-guide)
 - [Glossary](#glossary)
   - [Parameters Glossary](#parameters-glossary)
   - [Command Glossary](#command-glossary)
@@ -760,7 +761,7 @@ Motherboard socket is not compatible with current cpu socket
 Please choose another motherboard or change your cpu
 ```
 
-### Advanced User user.json
+### Advanced User Guide
 You are able to edit the Json file to change the data of your custom built PCs as an advanced user. However if any formatting error is created due to this, the program would prompt:
 ```
 Error loading user PCs, please backup your user json then delete it.
