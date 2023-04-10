@@ -770,8 +770,8 @@ public class BuilderListComponentCommand extends Command {
         String powerFrom = powerDescriptionArray[1];
         try {
             powerFromFloat = Float.parseFloat(powerFrom);
-            if (powerFromFloat > 1000) {
-                throw new PPException("Power start range must be smaller than 1000");
+            if (powerFromFloat > 5000) {
+                throw new PPException("Power start range must be smaller than 5000");
             }
         } catch (NumberFormatException e) {
             throw new PPException("Power start range must be a float");
