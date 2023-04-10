@@ -441,7 +441,7 @@ public class BuilderListComponentCommand extends Command {
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a valid sticks description (1 or 2))");
         }
-        if (sticks != 1 && sticks != 2 && sticks != 3 && sticks != 4) {
+        if (sticks != 1 && sticks != 2) {
             throw new PPException("Please enter a valid sticks description (1 or 2))");
         }
         flagsArray.add("Sticks: " + sticks);
@@ -552,7 +552,7 @@ public class BuilderListComponentCommand extends Command {
     private ComponentList<?> handleNoiseFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
-        int rpmNoiseIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
+        int rpmNoiseIndex = indexOfFlag(flagAndDescriptionArray, NOISE_FLAG);
         if (rpmNoiseIndex == flagAndDescriptionArray.length - 1) {
             throw new PPException("Please enter a description after the noise flag");
         }
@@ -622,7 +622,7 @@ public class BuilderListComponentCommand extends Command {
     private ComponentList<?> handleRpmFlag(String userInputString, ComponentList<?> componentList,
             ArrayList<String> flagsArray,
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
-        int rpmFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
+        int rpmFlagIndex = indexOfFlag(flagAndDescriptionArray, RPM_FLAG);
 
         if (rpmFlagIndex == flagAndDescriptionArray.length - 1) {
             throw new PPException("Please enter a description after the rpm flag");
