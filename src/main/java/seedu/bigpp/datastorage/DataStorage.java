@@ -1,6 +1,7 @@
 package seedu.bigpp.datastorage;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class DataStorage {
     private static final String PREBUILT_PATH = "prebuilt.json";
     private static final String USER_PATH = "./user.json";
 
-    private static final Gson GSON = new Gson();
+    private static final Gson GSON = new GsonBuilder().serializeNulls().create();
 
     public Map<String, ComponentList<?>> stringToComponentListMap = new HashMap<String, ComponentList<?>>();
     public PCList pcList = new PCList();
@@ -99,7 +100,13 @@ public class DataStorage {
     public void loadAll() {
         // load prebuilt PCs, then load user PCs
         loadPrebuiltPcs(PREBUILT_PATH);
-        loadUserPcs(USER_PATH);
+
+        try {
+            loadUserPcs(USER_PATH);
+        } catch (Exception e) {
+            out.println("Error loading user PCs, please backup your user file then delete it.");
+            System.exit(0);
+        }
 
         // load all components
         initStringToComponentListMap();
