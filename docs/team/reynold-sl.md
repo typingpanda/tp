@@ -1,4 +1,4 @@
-<div style="page-break-after: always;"></div>
+
 
 ## Reynold Lam - Project Portfolio Page
 
@@ -70,4 +70,3 @@ For contributions to team based tasks, I was present for all the tutorials and p
 - [Review 3](https://github.com/nus-cs2113-AY2223S2/tp/pull/52/files/77013d229815e2eb36bfb72434ccbc127934114f)
 - [Review 4](https://github.com/nus-cs2113-AY2223S2/tp/pull/6/files/54eff476e453138d6441bc55dab2912939e887c1)
 
-<div style="page-break-after: always;"></div>

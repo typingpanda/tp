@@ -1,4 +1,4 @@
-<div style="page-break-after: always;"></div>
+
 
 # Prince Pereira - Project Portfolio Page
 ___

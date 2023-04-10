@@ -351,9 +351,9 @@ People who want to build PC's and keep track of their builds.
         ===================================================
         PC viewer
         Here is the list of PC Builds:
-            1.Prebuilt-PC: [beginner] - $813.29/infinite - Complete
-            2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
-            3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
+            1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+            2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+            3.Prebuilt-PC: [advanced] - $2339.74/infinite - Complete
         What would you like to do?
         =================================================== 
        ```
@@ -443,6 +443,7 @@ People who want to build PC's and keep track of their builds.
      ===================================================
      PC builder
      Custom-PC: [newPC] - $0.0/infinite - Incomplete
+     Power Consumption: 0.0W/0W
      Components:
      CPU        : - Not Selected -
      CPU Cooler : - Not Selected -
@@ -464,6 +465,7 @@ People who want to build PC's and keep track of their builds.
      ===================================================
      PC builder
      Custom-PC: [newPC] - $0.0/infinite - Incomplete
+     Power Consumption: 0.0W/0W
      Components:
      CPU        : - Not Selected -
      CPU Cooler : - Not Selected -
@@ -487,6 +489,7 @@ People who want to build PC's and keep track of their builds.
      ===================================================
      PC builder
      Custom-PC: [newPC] - $0.0/infinite - Incomplete
+     Power Consumption: 0.0W/0W
      Components:
      CPU        : - Not Selected -
      CPU Cooler : - Not Selected -

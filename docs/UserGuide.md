@@ -95,9 +95,9 @@ Welcome to BigPP!
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $813.29/infinite - Complete
-2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
-3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
+1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+3.Prebuilt-PC: [advanced] - $2339.74/infinite - Complete
 What would you like to do?
 ===================================================
 
@@ -132,6 +132,7 @@ What would you like to do?
 ===================================================
 PC builder
 Custom-PC: [expert (copy)] - $2339.74/infinite - Complete
+Power Consumption: 584.2W/850.0W
 Components:
 CPU        : AMD Ryzen 9 7950X
 CPU Cooler : Cooler Master MASTERLIQUID ML120L RGB V2
@@ -279,6 +280,7 @@ Here is the list of PC Builds:
 What would you like to do?
 ===================================================
 Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+Power Consumption: 584.2W/850.0W
 Components:
 CPU        : AMD Ryzen 9 7950X
 CPU Cooler : Cooler Master MASTERLIQUID ML120L RGB V2
@@ -310,6 +312,7 @@ Example:
 ===================================================
 PC builder
 Custom-PC: [NEWPC] - $0.0/infinite - Incomplete
+Power Consumption: 0.0W/0W
 Components:
 CPU        : - Not Selected -
 CPU Cooler : - Not Selected -
@@ -458,13 +461,13 @@ Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags
 
 Example:
 
-> input: list cpu -name intel -price /from 1 /to 100 -details
+> input: list cpu -name intel -price /from 70 /to 100 -details
 
 ```
 Here are all available components of type 'cpu':
 meeting the following criteria:
 name: intel
-price: 1 to 100
+price: 70 to 100
 1.
 NAME: Intel core i3-10100
 BRAND: Intel
@@ -500,6 +503,7 @@ Example: add component of type `GPU` with index `4` to the current PC Build.
 ===================================================
 PC builder
 Custom-PC: [pc] - $934.06/infinite - Incomplete
+Power Consumption: 350.0W/0W
 Components:
 CPU        : - Not Selected -
 CPU Cooler : - Not Selected -
@@ -536,6 +540,7 @@ Example: remove component of type `GPU` from the current PC Build.
 ===================================================
 PC builder
 Custom-PC: [pc] - $0.0/infinite - Incomplete
+Power Consumption: 0.0W/0W
 Components:
 CPU        : - Not Selected -
 CPU Cooler : - Not Selected -
@@ -600,6 +605,7 @@ Example: Set `BUDGET` of the PC you are currently editing to be $1000
 ===================================================
 PC builder
 Custom-PC: [beginner (copy)] - $813.29/$1000.00 - Complete
+Power Consumption: 234.5W/850.0W
 Components:
 CPU        : Intel core i3-10100
 CPU Cooler : Thermalright AXP90-X36
@@ -659,20 +665,21 @@ Example Set the name of PC to be MyPC
 ```
 ===================================================
 PC builder
-Custom-PC: [MyPc] - $813.29/$1000.00 - Complete
+Custom-PC: [MyPC] - $917.28/infinite - Complete
+Power Consumption: 234.5W/850.0W
 Components:
 CPU        : Intel core i3-10100
 CPU Cooler : Thermalright AXP90-X36
 GPU        : Gigabyte GAMING OC RTX3050
 Motherboard: Asus Prime Z590-P WiFi
-RAM        : Kingston FURY Beast 16 GB
+RAM        : G.Skill Ripjaws X 8 GB
 Storage    : ADATA XPG SPECTRIX S40G RGB
 PSU        : SeaSonic FOCUS PLUS 850 Gold
 Chassis    : Fractal Design Pop XL Air
 
 What would you like to do?
 ===================================================
-Current build name is now: MyPc
+Current build name is now: MyPC
 ```
 
 <div style="page-break-after: always;"></div>
@@ -693,6 +700,7 @@ Functionality: Adds a custom component of type COMPONENT_TYPE with the specs `SP
 ===================================================
 PC builder
 Custom-PC: [pc-1] - $99.5/infinite - Incomplete
+Power Consumption: 122.0W/0W
 Components:
 CPU        : Intel-new-cpu
 CPU Cooler : - Not Selected -
@@ -747,6 +755,7 @@ Example: The `CPU` current added has a socket **LGA1200** and the new `MOTHERBOA
 ===================================================
 PC builder
 Custom-PC: [pc] - $224.48/infinite - Incomplete
+Power Consumption: 65.0W/0W
 Components:
 CPU        : Intel core i3-10100
 CPU Cooler : - Not Selected -
@@ -779,25 +788,25 @@ If certain attributes of the components have been deleted, such as "name", "pric
 
 ### Parameters Glossary
 
-|    Parameter     |                                    Explanation                                    |       Type       |        Example        |
-| :--------------: | :-------------------------------------------------------------------------------: | :--------------: | :-------------------: |
-|     PC_NAME      |                               Name of the PC Build                                |      String      |      "The Beast"      |
-|     PC_INDEX     |                              Index number of the PC                               | Positive Integer |           1           |
-|   PREBUILT_PC    |                      PC with all its components pre selected                      |      -nil-       |         -nil-         |
-|    CUSTOM_PC     |                      PC that can be fully customised by user                      |      -nil-       |         -nil-         |
-|  PC_START_COST   |             Initial cost of the PC (must be lesser than PC_END_COST)              |  Positive Float  |         0.00          |
-|   PC_END_COST    |             Final cost of the PC (must be greater than PC_START_COST)             |  Positive Float  |        1500.90        |
-|       NAME       |                               Name of the component                               |      String      | "Intel core i3-10100" |
-|      PRICE       |                              Price of the component                               |  Positive Float  |        100.00         |
-|      BRAND       |                    Name of the manufacturer of the compoenent                     |      String      |         "msi"         |
-|      POWER       |                The power consumption of the component in Watts(W)                 |  Positive Float  |         150.0         |
-|       CORE       |                 Number of physical cores avaiable for computation                 | Positive Integer |           4           |
-|      THREAD      |                 Number of virtual cores avaiable for computation                  | Positive Integer |           8           |
-|    BASECLOCK     |                Baseline clockspeed of component in gigahertz (GHz)                | Positive Integer |          3.2          |
-|    BOOSTCLOCK    |          Boosted clockspeed of component when under load gigahertz (GHz)          | Positive Integer |          4.2          |
-|       RPM        |                 Speed of rotation in revolutions per minute (RPM)                 | Positive Integer |          500          |
-|      NOISE       |              Measurement of sound component produces in decibels(dB)              | Positive Integer |          43           |
-| POSITIVE_INTEGER |                       A positive integer between 0 - 65,535                       | Positive Integer |           1           |
+|    Parameter     |                                    Explanation                                    |             Type              |        Example        |
+| :--------------: | :-------------------------------------------------------------------------------: |:-----------------------------:|:---------------------:|
+|     PC_NAME      |                               Name of the PC Build                                |            String             |      "The Beast"      |
+|     PC_INDEX     |                              Index number of the PC                               |       Positive Integer        |           1           |
+|   PREBUILT_PC    |                      PC with all its components pre selected                      |             -nil-             |         -nil-         |
+|    CUSTOM_PC     |                      PC that can be fully customised by user                      |             -nil-             |         -nil-         |
+|  PC_START_COST   |             Initial cost of the PC (must be lesser than PC_END_COST)              |        Positive Float         |         0.00          |
+|   PC_END_COST    |             Final cost of the PC (must be greater than PC_START_COST)             |        Positive Float         |        1500.90        |
+|       NAME       |                               Name of the component                               |            String             | "Intel core i3-10100" |
+|      PRICE       |                              Price of the component                               | Positive Float (<= 100000.00) |        100.00         |
+|      BRAND       |                    Name of the manufacturer of the compoenent                     |            String             |         "msi"         |
+|      POWER       |                The power consumption of the component in Watts(W)                 |  Positive Float (<= 5000.0)   |         150.0         |
+|       CORE       |                 Number of physical cores avaiable for computation                 |       Positive Integer        |           4           |
+|      THREAD      |                 Number of virtual cores avaiable for computation                  |       Positive Integer        |           8           |
+|    BASECLOCK     |                Baseline clockspeed of component in gigahertz (GHz)                |   Positive Float (<= 10.0)    |          3.2          |
+|    BOOSTCLOCK    |          Boosted clockspeed of component when under load gigahertz (GHz)          |   Positive Float (<= 10.0)    |          4.2          |
+|       RPM        |                 Speed of rotation in revolutions per minute (RPM)                 |       Positive Integer        |          500          |
+|      NOISE       |              Measurement of sound component produces in decibels(dB)              |   Positive Integer (<= 500)   |          43           |
+| POSITIVE_INTEGER |                       A positive integer between 0 - 65,535                       |       Positive Integer        |           1           |
 
 | **Parameter**  | **Explanation**                                      | **Type**         |                                                                               **All Acceptable Inputs**                                                                                |
 | -------------- | ---------------------------------------------------- | ---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
