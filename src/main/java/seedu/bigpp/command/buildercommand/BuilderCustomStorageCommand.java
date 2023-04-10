@@ -15,7 +15,7 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
         return 6;
     }
 
-    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand,
+    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String Exception, String brand,
             float price)
             throws PPException {
         float power = 0;
@@ -35,6 +35,12 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
 
         try {
             power = Float.parseFloat(argumentList[5]);
+
+            if (power > 5000) {
+                throw new PPException(
+                        "Too large of a power");
+            }
+
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid power");
@@ -49,7 +55,7 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
         if (!type.equals("ssd") && !type.equals("hdd")) {
             throw new PPException("Please enter a valid type for the custom component (ssd, hdd)");
         }
-        Storage storage = new Storage(name, brand, price, type, size, power);
+        Storage storage = new Storage(Exception, brand, price, type, size, power);
 
         return dataStorage.pcList.get(UI.pcBuilderMenu.getPCIndex()).setStorage(storage);
     }

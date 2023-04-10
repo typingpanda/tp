@@ -31,6 +31,11 @@ public class BuilderCustomCpuCoolerCommand extends BuilderCustomComponentCommand
 
         try {
             noise = Float.parseFloat(argumentList[4]);
+
+            if (noise > 500) {
+                throw new PPException(
+                        "Too large of a noise level");
+            }
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid noise level");
@@ -38,6 +43,11 @@ public class BuilderCustomCpuCoolerCommand extends BuilderCustomComponentCommand
 
         try {
             power = Float.parseFloat(argumentList[5]);
+            if (power > 5000) {
+                throw new PPException(
+                        "Too large of a power");
+            }
+
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid power");
@@ -45,7 +55,7 @@ public class BuilderCustomCpuCoolerCommand extends BuilderCustomComponentCommand
 
         // Check if all the values are positive
         if (power < 0 || rpm < 0 || noise < 0) {
-            throw new PPException("price, power, rpm and noise should be positive");
+            throw new PPException("power, rpm and noise should be positive");
         }
 
         CPUCooler cpuCooler = new CPUCooler(name, brand, price, rpm, noise, power);

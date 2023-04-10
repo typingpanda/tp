@@ -23,6 +23,12 @@ public class BuilderCustomMotherboardCommand extends BuilderCustomComponentComma
 
         try {
             power = Float.parseFloat(argumentList[5]);
+
+            if (power > 5000) {
+                throw new PPException(
+                        "Too large of a power");
+            }
+
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid power");
@@ -30,7 +36,7 @@ public class BuilderCustomMotherboardCommand extends BuilderCustomComponentComma
 
         // Check if all the values are positive
         if (power < 0) {
-            throw new PPException("price and power should be positive");
+            throw new PPException("power should be positive");
         }
 
         String formfactor = argumentList[3].trim().toLowerCase();
