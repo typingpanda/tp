@@ -66,11 +66,11 @@ public class Parser {
         commandWord = commandWord.trim();
 
         // try common commands first
-        if (userInput.equals("back")) {
+        if (commandWord.equals("back")) {
             return new BackCommand();
         }
 
-        if (userInput.equals("bye")) {
+        if (commandWord.equals("bye")) {
             return new ByeCommand();
         }
 
