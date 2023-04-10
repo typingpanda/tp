@@ -72,14 +72,12 @@ The `UI` Class serves as the connection between the user and BigPP. It is respon
 
 1. **Initialization**: Upon start up of BigPP, the instance of `DataStorage` is parsed into the `updateUI` method of `UI` to give it the ability to access resources for BigPP. `UIState` is set to be `PCViewer`.
 2. **Functionality**
-
-- Shows welcome message to the user
-- Gets input from the user
-- Sets the `UIState` of BigPP depending on user command
-- Updates the user interface to show the menu depending on the `UIState`
-- Clears the terminal after every user command
-- Shows feedback to the user after every user command
-
+  - Shows welcome message to the user
+  - Gets input from the user
+  - Sets the `UIState` of BigPP depending on user command
+  - Updates the user interface to show the menu depending on the `UIState`
+  - Clears the terminal after every user command
+  - Shows feedback to the user after every user command
 3. **Behavior**: The `UI` Class acts as the intermediary between the user and BigPP. `UIState` of `UI` can change between `PCViewer` and `PCBuilder` which would result in different commands available to the user. This makes the possible commands that can be given clear to the user.
 
 In summary, UI gives crucial feedback to the user such as the menu of possible commands based on the current menu and results of a given command.
@@ -688,6 +686,9 @@ People who want to build PC's and keep track of their builds.
       ===================================================
       cpu removed!
       ```
+      
+      <div style="page-break-after: always;"></div>
+      
 14. Compare two motherboard components by using `compare motherboard 2 & 7`.
     - Expected output:
       ```
