@@ -644,8 +644,8 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter '/from' before the rpm range");
         }
 
-        String powerFrom = rpmDescriptionArray[1];
-        if (powerFrom.matches(".*\\D.*")) {
+        String rpmFrom = rpmDescriptionArray[1];
+        if (rpmFrom.matches(".*\\D.*")) {
             throw new PPException("Rpm start range must be an integer");
         }
 
@@ -654,8 +654,8 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter '/to' before the rpm range");
         }
 
-        String powerTo = rpmDescriptionArray[3];
-        if (powerTo.matches(".*\\D.*")) {
+        String rpmTo = rpmDescriptionArray[3];
+        if (rpmTo.matches(".*\\D.*")) {
             throw new PPException("Rpm end range must be an integer");
         }
 
@@ -663,8 +663,8 @@ public class BuilderListComponentCommand extends Command {
         int rpmToInt = 0;
 
         try {
-            rpmFromInt = Integer.parseInt(powerFrom);
-            rpmToInt = Integer.parseInt(powerTo);
+            rpmFromInt = Integer.parseInt(rpmFrom);
+            rpmToInt = Integer.parseInt(rpmTo);
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a postive integer within 16 bits");
         }
@@ -679,7 +679,7 @@ public class BuilderListComponentCommand extends Command {
 
         componentList = ComponentList.filterByRpm(componentList, rpmFromInt, rpmToInt, componentIndexes);
 
-        flagsArray.add("Rpm: " + powerFrom + " to " + powerTo);
+        flagsArray.add("Rpm: " + rpmFrom + " to " + rpmTo);
 
         return componentList;
     }
