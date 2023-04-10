@@ -5,22 +5,31 @@ participant ":BigPP" as BigPP
 participant ":Parser" as Parser
 participant ":ViewerAddCommand" as ViewerAddCommand
 participant ":PC" as PC
-participant ":DataStorage.pcList" as DataStorage.pcList
+participant "DataStorage.pcList:PCList" as DataStorage.pcList
 
 activate BigPP
 -> BigPP: add [String]
-BigPP -> Parser: parseCommand(String userinput)
+
+create Parser
+BigPP -> Parser: Parser().parseCommand(String userinput)
 activate Parser
 Parser -> Parser: parseViewerCommand(String userinput)
 activate Parser
 opt "add <name>"
+
+create ViewerAddCommand
 Parser -> ViewerAddCommand: ViewerAddCommand(String arguments)
 activate ViewerAddCommand
 ViewerAddCommand --> Parser
+deactivate ViewerAddCommand
+
 deactivate Parser
-Parser --> BigPP: ":ViewerAddCommand"
+Parser --> BigPP: ViewerAddCommand
 deactivate Parser
+
 BigPP -> ViewerAddCommand: executeCommand()
+activate ViewerAddCommand
+
 ViewerAddCommand -> ViewerAddCommand: getArguments()
 activate ViewerAddCommand
 alt != ""
