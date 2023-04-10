@@ -13,7 +13,7 @@ public class BuilderCustomChassisCommand extends BuilderCustomComponentCommand {
     }
 
     public int getExpectedArgumentLength() {
-        return 5;
+        return 4;
     }
 
     public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
@@ -30,7 +30,7 @@ public class BuilderCustomChassisCommand extends BuilderCustomComponentCommand {
 
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "Please enter a float within 32 bits");
+                    "Please enter a valid price");
         }
 
         String formFactor = argumentList[3].trim().toLowerCase();

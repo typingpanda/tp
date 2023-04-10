@@ -6,7 +6,7 @@ import seedu.bigpp.datastorage.DataStorage;
 
 public class PCViewerMenu extends Menu {
     public void printMenu(DataStorage dataStorage) {
-        out.println("PC VIEWER");
+        out.println("PC viewer");
         dataStorage.pcList.printPcList();
         out.println("What would you like to do?");
     }

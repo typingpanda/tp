@@ -27,10 +27,10 @@ public class BuilderSelectCommand extends Command {
             throw new PPException("Please select a component");
         }
 
-        String[] inputArray = inputString.split("\\s+", 2);
+        String[] inputArray = inputString.split(" ", 2);
         String componentTypeString = inputArray[0];
-        componentTypeString = componentTypeString.toLowerCase();
         componentTypeString = componentTypeString.trim();
+        componentTypeString = componentTypeString.toLowerCase();
 
         // throw exception if component type is not valid eg. "select jfk"
         if (!dataStorage.stringToComponentListMap.containsKey(componentTypeString)) {
@@ -57,7 +57,8 @@ public class BuilderSelectCommand extends Command {
             throw new PPException("Please enter a postive integer within 16 bits");
         }
         // throw exception if index is out of bounds eg. "select cpu 100"
-        if (componentIndex < 0 || componentIndex >= dataStorage.stringToComponentListMap.get(inputArray[0]).size()) {
+        if (componentIndex < 0
+                || componentIndex >= dataStorage.stringToComponentListMap.get(componentTypeString).size()) {
             throw new PPException("Please enter a valid index");
         }
 

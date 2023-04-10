@@ -21,7 +21,8 @@ public class ViewerFilterCommand extends Command {
     }
 
     /**
-     * Checks for the filter flags and applies it to the PC Viewer menu user interface
+     * Checks for the filter flags and applies it to the PC Viewer menu user
+     * interface
      * @return that the filter has been executed successfully
      */
     @Override
@@ -90,12 +91,12 @@ public class ViewerFilterCommand extends Command {
             throw new PPException("Please enter a price description after the flag");
         }
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
-        if (flagPriceDescription.split("\\s+").length < 4) {
+        if (flagPriceDescription.split(" ").length < 4) {
             throw new PPException(
                     "Please enter the full price description after the flag containing the start "
                             + "and end price range");
         }
-        String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
+        String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split(" "), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
                     "Flag detected in price description. Please enter a different price"

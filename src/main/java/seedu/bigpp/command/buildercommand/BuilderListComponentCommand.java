@@ -59,7 +59,7 @@ public class BuilderListComponentCommand extends Command {
         String userInputString = getArguments();
         userInputString = userInputString.toLowerCase();
 
-        String[] userInputStringArray = userInputString.split("\\s+");
+        String[] userInputStringArray = userInputString.split(" ");
         String componentType = userInputStringArray[0];
 
         if (userInputString.equals("")) {
@@ -303,7 +303,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String sizeDescription = flagAndDescriptionArray[sizeIndex + 1].trim().toLowerCase();
-        if (sizeDescription.split("\\s+").length < 1) {
+        if (sizeDescription.split(" ").length < 1) {
             throw new PPException("Please enter size description");
         }
 
@@ -346,7 +346,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String typeDescription = userInputString.split(TYPE_FLAG)[1].trim().toLowerCase();
-        if (typeDescription.split("\\s+").length < 1) {
+        if (typeDescription.split(" ").length < 1) {
             throw new PPException("Please enter type description");
         }
 
@@ -383,7 +383,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String speedDescription = userInputString.split(SPEED_FLAG)[1].trim().toLowerCase();
-        if (speedDescription.split("\\s+").length < 1) {
+        if (speedDescription.split(" ").length < 1) {
             throw new PPException("Please enter speed description");
         }
 
@@ -425,7 +425,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String sticksDescription = userInputString.split(STICKS_FLAG)[1].trim().toLowerCase();
-        if (sticksDescription.split("\\s+").length < 1) {
+        if (sticksDescription.split(" ").length < 1) {
             throw new PPException("Please enter sticks description");
         }
 
@@ -508,7 +508,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String formFactorDescription = userInputString.split(FORM_FACTOR_FLAG)[1].trim().toLowerCase();
-        if (formFactorDescription.split("\\s+").length < 1) {
+        if (formFactorDescription.split(" ").length < 1) {
             throw new PPException("Please enter a full formfactor description");
         }
 
@@ -558,7 +558,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String noiseDescription = userInputString.split(NOISE_FLAG)[1].trim().toLowerCase();
-        if (noiseDescription.split("\\s+").length < 4) {
+        if (noiseDescription.split(" ").length < 4) {
             throw new PPException("Please enter a full noise description");
         }
 
@@ -630,7 +630,7 @@ public class BuilderListComponentCommand extends Command {
 
         String rpmDescription = userInputString.split(RPM_FLAG)[1].trim().toLowerCase();
 
-        if (rpmDescription.split("\\s+").length < 4) {
+        if (rpmDescription.split(" ").length < 4) {
             throw new PPException("Please enter a full rpm description");
         }
 
@@ -745,7 +745,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String powerDescription = userInputString.split(POWER_FLAG)[1].trim().toLowerCase();
-        if (powerDescription.split("\\s+").length < 4) {
+        if (powerDescription.split(" ").length < 4) {
             throw new PPException("Please enter a full power description");
         }
 
@@ -846,11 +846,11 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String boostClockDescription = userInputString.split(BOOST_CLOCK_FLAG)[1].trim().toLowerCase();
-        if (boostClockDescription.split("\\s+").length < 4) {
+        if (boostClockDescription.split(" ").length < 4) {
             throw new PPException("Please enter a full boost clock description");
         }
 
-        String[] boostClockDescriptionArray = Arrays.copyOfRange(boostClockDescription.split("\\s+"), 0, 4);
+        String[] boostClockDescriptionArray = Arrays.copyOfRange(boostClockDescription.split(" "), 0, 4);
         if (hasFlag(boostClockDescriptionArray)) {
             throw new PPException(
                     "Flag detected in boost clock description. Please enter a valid boost clock description");
@@ -916,7 +916,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String baseClockDescription = userInputString.split(BASE_CLOCK_FLAG)[1].trim().toLowerCase();
-        if (baseClockDescription.split("\\s+").length < 4) {
+        if (baseClockDescription.split(" ").length < 4) {
             throw new PPException("Please enter a full base clock description");
         }
 
@@ -1063,12 +1063,12 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a price description after the flag");
         }
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
-        if (flagPriceDescription.split("\\s+").length < 4) {
+        if (flagPriceDescription.split(" ").length < 4) {
             throw new PPException(
                     "Please enter the full price description after the flag containing the start "
                             + "and end price range");
         }
-        String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split("\\s+"), 0, 4);
+        String[] flagPriceDescriptionArray = Arrays.copyOfRange(flagPriceDescription.split(" "), 0, 4);
         if (hasFlag(flagPriceDescriptionArray)) {
             throw new PPException(
                     "Flag detected in price description. Please enter a different price"

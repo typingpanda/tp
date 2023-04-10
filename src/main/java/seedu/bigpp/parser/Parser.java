@@ -54,7 +54,7 @@ public class Parser {
     public Command parseCommand(String userInput) {
 
         String trimmedInput = userInput.trim();
-        String[] inputList = trimmedInput.split("\\s+", 2);
+        String[] inputList = trimmedInput.split(" ", 2);
         String arguments = "";
 
         if (inputList.length == 2) {
@@ -66,11 +66,11 @@ public class Parser {
         commandWord = commandWord.trim();
 
         // try common commands first
-        if (userInput.equals("back")) {
+        if (commandWord.equals("back")) {
             return new BackCommand();
         }
 
-        if (userInput.equals("bye")) {
+        if (commandWord.equals("bye")) {
             return new ByeCommand();
         }
 
@@ -152,7 +152,7 @@ public class Parser {
      * @return the command
      */
     private Command parseCustomCommand(String arguments) {
-        String[] inputList = arguments.split("\\s+", 2);
+        String[] inputList = arguments.split(" ", 2);
         String componentType = inputList[0].toLowerCase();
         String attributes = "";
         if (inputList.length == 2) {
@@ -184,7 +184,7 @@ public class Parser {
     }
 
     private Command parseCompareCommand(String arguments) {
-        String[] inputList = arguments.split("\\s+", 2);
+        String[] inputList = arguments.split(" ", 2);
         String componentType = inputList[0].trim();
         String attributes = "";
         if (inputList.length == 2) {

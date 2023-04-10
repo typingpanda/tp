@@ -26,20 +26,48 @@ public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
 
         try {
             price = Float.parseFloat(argumentList[2]);
-            cores = Integer.parseInt(argumentList[3]);
-            threads = Integer.parseInt(argumentList[4]);
-            baseClock = Float.parseFloat(argumentList[5]);
-            boostClock = Float.parseFloat(argumentList[6]);
-            power = Float.parseFloat(argumentList[7]);
-
-            // Check if all the values are positive
-            if (price < 0 || cores < 0 || threads < 0 || baseClock < 0 || boostClock < 0 || power < 0) {
-                throw new PPException("Pleae enter integers and floats within 16 and 32 bits respectively");
-            }
-
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "Pleae enter integers and floats within 16 and 32 bits respectively");
+                    "Please enter a valid price");
+        }
+
+        try {
+            cores = Integer.parseInt(argumentList[3]);
+        } catch (NumberFormatException e) {
+            throw new PPException(
+                    "Please enter a valid number of cores");
+        }
+
+        try {
+            threads = Integer.parseInt(argumentList[4]);
+        } catch (NumberFormatException e) {
+            throw new PPException(
+                    "Please enter a valid number of threads");
+        }
+
+        try {
+            baseClock = Float.parseFloat(argumentList[5]);
+        } catch (NumberFormatException e) {
+            throw new PPException(
+                    "Please enter a valid base clock");
+        }
+
+        try {
+            boostClock = Float.parseFloat(argumentList[6]);
+        } catch (NumberFormatException e) {
+            throw new PPException(
+                    "Please enter a valid boost clock");
+        }
+
+        try {
+            power = Float.parseFloat(argumentList[7]);
+        } catch (NumberFormatException e) {
+            throw new PPException(
+                    "Please enter a valid power");
+        }
+
+        if (price < 0 || cores < 0 || threads < 0 || baseClock < 0 || boostClock < 0 || power < 0) {
+            throw new PPException("price, cores, threads, base clock, boost clock and power should be positive");
         }
 
         String socket = argumentList[8].trim();
