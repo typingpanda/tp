@@ -104,7 +104,7 @@ public class DataStorage {
         try {
             loadUserPcs(USER_PATH);
         } catch (Exception e) {
-            out.println("Error loading user PCs, please backup your user file then delete it.");
+            out.println("Error loading user PCs, please backup your user json then delete it.");
             System.exit(0);
         }
 
