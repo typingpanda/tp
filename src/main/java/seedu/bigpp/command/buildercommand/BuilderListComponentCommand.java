@@ -753,6 +753,8 @@ public class BuilderListComponentCommand extends Command {
         if (hasFlag(powerDescriptionArray)) {
             throw new PPException("Flag detected in power description. Please enter a valid power range");
         }
+        float powerFromFloat = 0;
+        float powerToFloat = 0;
 
         String fromFlag = powerDescriptionArray[0];
         if (!fromFlag.equals("/from")) {
@@ -760,8 +762,13 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String powerFrom = powerDescriptionArray[1];
-        if (powerFrom.matches(".*\\D.*")) {
-            throw new PPException("Power start range must be an integer");
+        try {
+            powerFromFloat = Float.parseFloat(powerFrom);
+            if (powerFromFloat > 1000) {
+                throw new PPException("Power start range must be smaller than 1000");
+            }
+        } catch (NumberFormatException e) {
+            throw new PPException("Power start range must be a float");
         }
 
         String toFlag = powerDescriptionArray[2];
@@ -770,54 +777,51 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String powerTo = powerDescriptionArray[3];
-        if (powerTo.matches(".*\\D.*")) {
-            throw new PPException("Power end range must be an integer");
-        }
 
-        int powerFromInt = 0;
-        int powerToInt = 0;
         try {
-            powerFromInt = Integer.parseInt(powerFrom);
-            powerToInt = Integer.parseInt(powerTo);
-
+            powerToFloat = Float.parseFloat(powerTo);
+            if (powerToFloat > 1000) {
+                throw new PPException("Power end range must be smaller than 1000");
+            }
         } catch (NumberFormatException e) {
-            throw new PPException("Please enter a postive integer within 16 bits");
+            throw new PPException("Power end range must be a float");
         }
-
         // if (powerFromInt > powerToInt
-        if (powerFromInt > powerToInt) {
+        if (powerFromFloat > powerToFloat) {
             throw new PPException("Power start range must be smaller than power end range");
         }
 
-        if (powerFromInt < 0 || powerToInt < 0) {
-            throw new PPException("Power must be a positive integer");
+        if (powerFromFloat < 0 || powerToFloat < 0) {
+            throw new PPException("Power must be a positive float");
         }
 
         switch (componentType) {
         case CPU_TYPE:
-            componentList = ComponentList.filterByPowerCpu(componentList, powerFromInt, powerToInt, componentIndexes);
+            componentList = ComponentList.filterByPowerCpu(componentList, powerFromFloat, powerToFloat,
+                    componentIndexes);
             break;
         case CPU_COOLER_TYPE:
-            componentList = ComponentList.filterByPowerCpuCooler(componentList, powerFromInt, powerToInt,
+            componentList = ComponentList.filterByPowerCpuCooler(componentList, powerFromFloat, powerToFloat,
                     componentIndexes);
             break;
         case GPU_TYPE:
-            componentList = ComponentList.filterByPowerGpu(componentList, powerFromInt, powerToInt, componentIndexes);
+            componentList = ComponentList.filterByPowerGpu(componentList, powerFromFloat, powerToFloat,
+                    componentIndexes);
             break;
         case MOTHERBOARD_TYPE:
-            componentList = ComponentList.filterByPowerMotherboard(componentList, powerFromInt, powerToInt,
+            componentList = ComponentList.filterByPowerMotherboard(componentList, powerFromFloat, powerToFloat,
                     componentIndexes);
             break;
         case RAM_TYPE:
-            componentList = ComponentList.filterByPowerRam(componentList, powerFromInt, powerToInt,
+            componentList = ComponentList.filterByPowerRam(componentList, powerFromFloat, powerToFloat,
                     componentIndexes);
             break;
         case STORAGE_TYPE:
-            componentList = ComponentList.filterByPowerStorage(componentList, powerFromInt, powerToInt,
+            componentList = ComponentList.filterByPowerStorage(componentList, powerFromFloat, powerToFloat,
                     componentIndexes);
             break;
         case PSU_TYPE:
-            componentList = ComponentList.filterByPowerPsu(componentList, powerFromInt, powerToInt,
+            componentList = ComponentList.filterByPowerPsu(componentList, powerFromFloat, powerToFloat,
                     componentIndexes);
             break;
         default:
@@ -862,9 +866,8 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String boostClockLowerBoundString = boostClockDescriptionArray[1];
-        if (boostClockLowerBoundString.matches(".*\\D.*")) {
-            throw new PPException("Please enter a float for the lower bound of the boost clock");
-        }
+        float boostClockLowerBound = 0;
+        float boostClockUpperBound = 0;
 
         String toFlag = boostClockDescriptionArray[2];
         if (!toFlag.equals("/to")) {
@@ -872,12 +875,24 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String boostClockUpperBoundString = boostClockDescriptionArray[3];
-        if (boostClockUpperBoundString.matches(".*\\D.*")) {
-            throw new PPException("Please enter a float for the upper bound of the boost clock");
+
+        try {
+            boostClockLowerBound = Float.parseFloat(boostClockLowerBoundString);
+            if (boostClockLowerBound > 1000) {
+                throw new PPException("Boost clock cannot be greater than 1000");
+            }
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a valid lower bound for the boost clock");
         }
 
-        float boostClockLowerBound = Float.parseFloat(boostClockLowerBoundString);
-        float boostClockUpperBound = Float.parseFloat(boostClockUpperBoundString);
+        try {
+            boostClockUpperBound = Float.parseFloat(boostClockUpperBoundString);
+            if (boostClockUpperBound > 1000) {
+                throw new PPException("Boost clock cannot be greater than 1000");
+            }
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a valid upper bound for the boost clock");
+        }
 
         if (boostClockLowerBound > boostClockUpperBound) {
             throw new PPException("Please enter a lower bound that is smaller than the upper bound");
@@ -885,10 +900,6 @@ public class BuilderListComponentCommand extends Command {
 
         if (boostClockLowerBound < 0 || boostClockUpperBound < 0) {
             throw new PPException("Please enter a positive boost clock");
-        }
-
-        if (boostClockLowerBound > 100 || boostClockUpperBound > 100) {
-            throw new PPException("Please enter a boost clock that is smaller than 100");
         }
 
         flagsArray.add("Boost Clock: " + boostClockLowerBound + " to " + boostClockUpperBound);
@@ -931,9 +942,6 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String fromBaseClock = baseClockDescriptionArray[1].trim();
-        if (fromBaseClock.matches(".*\\D.*")) {
-            throw new PPException("Base clock should be a float");
-        }
 
         String toFlag = baseClockDescriptionArray[2].trim();
         if (!toFlag.equals("/to")) {
@@ -941,13 +949,27 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String toBaseClock = baseClockDescriptionArray[3].trim();
-        if (toBaseClock.matches(".*\\D.*")) {
-            throw new PPException("Base clock should be a float");
+
+        float fromBaseClockFloat = 0;
+        float toBaseClockFloat = 0;
+
+        try {
+            fromBaseClockFloat = Float.parseFloat(fromBaseClock);
+            if (fromBaseClockFloat > 1000) {
+                throw new PPException("Base clock cannot be more than 1000");
+            }
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a float for the lower bound of the base clock");
         }
 
-        float fromBaseClockFloat = Float.parseFloat(fromBaseClock);
-        float toBaseClockFloat = Float.parseFloat(toBaseClock);
-
+        try {
+            toBaseClockFloat = Float.parseFloat(toBaseClock);
+            if (toBaseClockFloat > 1000) {
+                throw new PPException("Base clock cannot be more than 1000");
+            }
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a float for the upper bound of the base clock");
+        }
         if (fromBaseClockFloat > toBaseClockFloat) {
             throw new PPException("Start range must be smaller than end range");
         }
@@ -1078,32 +1100,37 @@ public class BuilderListComponentCommand extends Command {
         if (!fromFlag.equals("/from")) {
             throw new PPException("Please use /from to specify the start price range");
         }
+        float priceFromFloat = 0;
+        float priceToFloat = 0;
         String priceFrom = flagPriceDescriptionArray[1].trim();
-        if (priceFrom.matches(".*\\D.*")) {
-            throw new PPException("Start price must be a positive integer");
+        try {
+            priceFromFloat = Float.parseFloat(priceFrom);
+            if (priceFromFloat > 10000) {
+                throw new PPException("Price must be smaller than 10000");
+            }
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a float for price start range");
         }
+
         String toFlag = flagPriceDescriptionArray[2].trim();
         if (!toFlag.equals("/to")) {
             throw new PPException("Please use /to to specify the end price range");
         }
         String priceTo = flagPriceDescriptionArray[3].trim();
 
-        if (priceTo.matches(".*\\D.*")) {
-            throw new PPException("End price must be a positive integer");
+        try {
+            priceToFloat = Float.parseFloat(priceTo);
+            if (priceToFloat > 10000) {
+                throw new PPException("Price must be smaller than 10000");
+            }
+        } catch (NumberFormatException e) {
+            throw new PPException("Please enter a float for price end range");
         }
 
-        int priceFromInt = 0;
-        int priceToInt = 0;
-        try {
-            priceFromInt = Integer.parseInt(priceFrom);
-            priceToInt = Integer.parseInt(priceTo);
-        } catch (NumberFormatException e) {
-            throw new PPException("Please enter a postive integer within 16 bits");
-        }
-        if (priceFromInt > priceToInt) {
+        if (priceFromFloat > priceToFloat) {
             throw new PPException("Start price must be less than end price");
         }
-        if (priceFromInt < 0 || priceToInt < 0) {
+        if (priceFromFloat < 0 || priceToFloat < 0) {
             throw new PPException("Price must be greater than 0");
         }
 
