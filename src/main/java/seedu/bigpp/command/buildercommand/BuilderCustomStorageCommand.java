@@ -15,18 +15,11 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
         return 6;
     }
 
-    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
+    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand,
+            float price)
             throws PPException {
-        float price = 0;
         float power = 0;
         int size = 0;
-
-        try {
-            price = Float.parseFloat(argumentList[2]);
-        } catch (NumberFormatException e) {
-            throw new PPException(
-                    "Please enter a valid price");
-        }
 
         try {
             size = Integer.parseInt(argumentList[4]);
@@ -48,8 +41,8 @@ public class BuilderCustomStorageCommand extends BuilderCustomComponentCommand {
         }
 
         // Check if all the values are positive
-        if (price < 0 || power < 0 || size < 0) {
-            throw new PPException("price, power and size should be positive");
+        if (power < 0 || size < 0) {
+            throw new PPException("power and size should be positive");
         }
 
         String type = argumentList[3].trim();

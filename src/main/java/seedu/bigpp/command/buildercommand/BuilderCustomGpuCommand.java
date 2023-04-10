@@ -16,7 +16,8 @@ public class BuilderCustomGpuCommand extends BuilderCustomComponentCommand {
         return 5;
     }
 
-    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
+    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand,
+            float price)
             throws PPException {
         float price = 0;
         float power = 0;

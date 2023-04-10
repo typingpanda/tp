@@ -15,21 +15,14 @@ public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
         return 9;
     }
 
-    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
+    public String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand,
+            float price)
             throws PPException {
-        float price = 0;
         int cores = 0;
         int threads = 0;
         float baseClock = 0;
         float boostClock = 0;
         float power = 0;
-
-        try {
-            price = Float.parseFloat(argumentList[2]);
-        } catch (NumberFormatException e) {
-            throw new PPException(
-                    "Please enter a valid price");
-        }
 
         try {
             cores = Integer.parseInt(argumentList[3]);
@@ -66,7 +59,7 @@ public class BuilderCustomCpuCommand extends BuilderCustomComponentCommand {
                     "Please enter a valid power");
         }
 
-        if (price < 0 || cores < 0 || threads < 0 || baseClock < 0 || boostClock < 0 || power < 0) {
+        if (cores < 0 || threads < 0 || baseClock < 0 || boostClock < 0 || power < 0) {
             throw new PPException("price, cores, threads, base clock, boost clock and power should be positive");
         }
 

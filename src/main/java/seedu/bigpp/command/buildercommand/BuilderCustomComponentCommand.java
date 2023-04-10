@@ -12,7 +12,8 @@ public abstract class BuilderCustomComponentCommand extends Command {
 
     public abstract int getExpectedArgumentLength();
 
-    public abstract String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand)
+    public abstract String addNewComponent(String[] argumentList, DataStorage dataStorage, String name, String brand,
+            float price)
             throws PPException;
 
     @Override
@@ -34,7 +35,20 @@ public abstract class BuilderCustomComponentCommand extends Command {
             throw new PPException("Please enter a brand for the custom component");
         }
 
-        return addNewComponent(argumentList, dataStorage, name, brand);
+        float price = 0;
+
+        try {
+            price = Float.parseFloat(argumentList[2]);
+        } catch (NumberFormatException e) {
+            throw new PPException(
+                    "Please enter a valid price");
+        }
+
+        if (price < 0) {
+            throw new PPException("price should be positive");
+        }
+
+        return addNewComponent(argumentList, dataStorage, name, brand, price);
     }
 
 }
