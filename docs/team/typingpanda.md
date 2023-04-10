@@ -44,7 +44,7 @@ In the UG, clear instructions were given for the user to follow to use the comma
 - `UI` Class Diagram
 - Object Diagrams for `ViewerAddCommand` and `BuilderEditNameCommand`
 
-In te DG, explanations were given for the design of the application. The diagrams were also used to help understand the design of the application.
+In the DG, explanations were given for the design of the application. The diagrams were also used to help understand the design of the application.
 
 ---
 ## Review/mentoring contributions:
