@@ -1,5 +1,7 @@
 <!-- @@author Magmanat -->
 <!-- omit in toc -->
+<div style="page-break-after: always;"></div>
+
 # User Guide
 
 <!-- omit in toc -->
@@ -33,6 +35,8 @@
   - [Command Glossary](#command-glossary)
     - [Acceptable Custom Component Commands](#acceptable-custom-component-commands)
 
+<div style="page-break-after: always;"></div>
+
 ## Introduction
 
 Welcome to Big PC Part-Picker (BigPP)
@@ -43,6 +47,8 @@ BigPP is a command-line application designed for PC enthusiasts and professional
 
 This developer-oriented guide offers a comprehensive overview of the various commands and features available in BigPP. It is intended for users who are familiar with command-line interfaces.
 If you encounter unfamiliar terminology in this guide, please refer to the [Glossary](#glossary) for a list of terms and their definitions.
+
+<div style="page-break-after: always;"></div>
 
 ## Getting Started
 
@@ -96,6 +102,8 @@ What would you like to do?
 
 If the ASCII art of BIG PP does not look correct, it is due to your terminal size being too small, if so you can disregard this issue.
 
+<div style="page-break-after: always;"></div>
+
 ## Commands
 
 Our commands are split up for two modes, PCViewer and PCBuilder. The commands for each mode will only be recognised for the specific mode that you are currently in. The modes will specifically be stated at the top of each printout in the terminal. Additional leading and trailing whitespaces from user input will be ignored.
@@ -135,6 +143,8 @@ What would you like to do?
 ===================================================
 ```
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 ### Common Commands
@@ -154,6 +164,8 @@ Functionality: Exits the application and saves all user data that has currently 
 ```
 
 <!-- @@author Reynold-SL -->
+
+<div style="page-break-after: always;"></div>
 
 #### **Help Command**
 
@@ -204,6 +216,8 @@ Notes: Entering the help command in either PCViewer mode or PCBuilder mode will 
 
 <!-- @@author superkaiba -->
 
+<div style="page-break-after: always;"></div>
+
 ### PCViewer Mode Commands
 
 PCViewer Mode commands will be the commands that the user will be able to use in the PCViewer Mode
@@ -232,6 +246,8 @@ Custom PC: [ NEWPC ] has been created
 ```
 
 Notes: newly added PCs will always begin with infinite budget
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -266,6 +282,8 @@ Storage    : Samsung 980 Pro
 PSU        : SeaSonic FOCUS PLUS 850 Gold
 Chassis    : Corsair iCUE 4000X RGB
 ```
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -302,6 +320,8 @@ Currently editing PC: NEWPC
 
 Notes: If the PC that the user has selected to edit is a `PREBUILT_PC`, the application would create a copy of it and mark it as a `CUSTOM_PC`. This is because we provide the prebuilts as a reference for the user, and not for editing.
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 #### **Delete Command**
@@ -325,6 +345,8 @@ What would you like to do?
 ===================================================
 Custom PC: [ NEWPC ] has been deleted
 ```
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -368,6 +390,8 @@ Filter completed
 
 Notes: The flags can by strung together _in any order_ such as `filter -price /from 1000 /to 3000 -name intermediate -built complete`. However, if the `-clear` flag is detected, this will take **precedence** and remove all filters regardless of other flags.
 Please note that you will still be able to edit the PCs that are not filtered as the filter is simply only for easier viewing of the PCs which you would like to edit.
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -421,6 +445,8 @@ Available flags:
 >
 > `-efficiency COMPONENT_EFFICIENCY`
 
+<div style="page-break-after: always;"></div>
+
 Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags. List command shows only the names of components for readability. For detailed information, use the `-details` flag. Multiple flags can be used together.
 
 Example:
@@ -446,6 +472,8 @@ SOCKET: LGA1200
 ```
 
 Notes: Arguments with missing flags will be ignored. Flags that are not relevant to the component will also be ignored.
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -483,6 +511,8 @@ gpu added! : MSI GAMING Z TRIO RTX3080
 
 Notes: you can select any component at any time and do not need to list components before selecting as long as you know which index you want to add.
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 #### **Unselect Command**
@@ -514,6 +544,8 @@ What would you like to do?
 gpu removed!
 ```
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 #### **Compare Command**
@@ -540,6 +572,8 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________
 
 ```
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -575,6 +609,8 @@ Current build budget is now: $1000.00
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 Example: Set `BUDGET` of the PC you are currently editing to be `INFINITE`
 
 > input: budget -1
@@ -599,6 +635,8 @@ What would you like to do?
 Current build budget is now: infinite
 
 ```
+<div style="page-break-after: always;"></div>
+
 ---
 
 #### **Name Command**
@@ -629,6 +667,8 @@ What would you like to do?
 ===================================================
 Current build name is now: MyPc
 ```
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -671,6 +711,8 @@ Usage: `back`
 
 Functionality: Goes back to PCViewer menu
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 <!-- @@author Magmanat -->
@@ -687,6 +729,8 @@ BigPP will check if your components that you added are compatible with each othe
 4. Your `CPU` and `MOTHERBOARD` needs to have the same `SOCKET`.
 
 Based on the rules stated above, the compatibility checker will throw the user error messages if he tries to add any component which breaks the rules, and suggest changes that the user can make to avoid adding incompatible components.
+
+<div style="page-break-after: always;"></div>
 
 Example: The `CPU` current added has a socket **LGA1200** and the new `MOTHERBOARD` that the user wants to add has a socket **AM5**.
 
@@ -711,6 +755,8 @@ What would you like to do?
 Motherboard socket is not compatible with current cpu socket
 Please choose another motherboard or change your cpu
 ```
+
+<div style="page-break-after: always;"></div>
 
 <!-- @@author Ryujikjs -->
 
@@ -753,6 +799,8 @@ Please choose another motherboard or change your cpu
 | COMPONENT_TYPE | Type of Component that is required to build a PC     | String           |                                                       `cpu`,`gpu`,`cpu-cooler`,`motherboard`,`ram`,`storage`,`psu` and `chassis`                                                       |
 | FORMFACTOR     | The standard size specification of the components    | String           |                                                                                `atx`,`mini` and `micro`                                                                                |
 
+<div style="page-break-after: always;"></div>
+
 ### Command Glossary
 
 |   Viewer Menu Commands    |                     Format                     |                                                Flags                                                |
@@ -778,6 +826,9 @@ Please choose another motherboard or change your cpu
 |          Name PC          |                 `name PC_NAME`                 |                                                 nil                                                 |
 |     Custom Component      |  `custom COMPONENT_TYPE SPEC_1\|SPEC_2\|...`   |                     [Acceptable Format](#acceptable-custom-component-commands)                      |
 |           Back            |                     `back`                     |                                                 nil                                                 |
+
+
+<div style="page-break-after: always;"></div>
 
 #### Acceptable Custom Component Commands
 
