@@ -360,10 +360,10 @@ People who want to build PC's and keep track of their builds.
         =================================================== 
        ```
 3. Read through user guide to get detailed documentation on functionality and commands of application.
+    <div style="page-break-after: always;"></div>
 
-<div style="page-break-after: always;"></div>
 
-4. See all available commands by using `help`.
+5. See all available commands by using `help`.
    - Expected output (PCViewer Mode):
      ```
      Here are the list of valid commands: 
@@ -397,8 +397,7 @@ People who want to build PC's and keep track of their builds.
      ------------------------------------------------------------------------------
      For more detailed documentation on commands, please refer to our user guide!
      ```
-     
-<div style="page-break-after: always;"></div>
+     <div style="page-break-after: always;"></div>
      
 5. View Prebuilt PC specifications using `view 1`
    - Expected output:
