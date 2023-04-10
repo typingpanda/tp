@@ -6,6 +6,7 @@ import seedu.bigpp.datastorage.DataStorage;
 import seedu.bigpp.exceptions.PPException;
 import seedu.bigpp.parser.Parser;
 import seedu.bigpp.ui.UI;
+import static seedu.bigpp.ui.UI.out;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
@@ -29,9 +30,15 @@ public class BigPP {
         // Initialize the DataStorage
         dataStorage = new DataStorage();
 
-        dataStorage.loadAll();
-        UI.showWelcome();
-        UI.updateUI(true, dataStorage);
+        try {
+            dataStorage.loadAll();
+            UI.showWelcome();
+            UI.updateUI(true, dataStorage);
+        } catch (Exception e) {
+            out.println("Error loading user PCs, please backup your user json then delete it.");
+            System.exit(0);
+        }
+
         runLoopUntilExit();
     }
 

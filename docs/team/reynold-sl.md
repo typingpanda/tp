@@ -9,13 +9,11 @@ Hi I'm Reynold Lam, an Aspiring Computer Engineer from National University Of Si
 I have developed a product called Big PC Partpicker(BigPP) alongside my teammates. Big PC Part picker is a CLI application that allows
 users to create and save their own custom PC build and a summary of my contributions to the team project Big PC Partpicker are as shown below
 
----
 
 ## Summary of Contributions
 [Code Contributed](https://nus-cs2113-ay2223s2.github.io/tp-dashboard/?search=Reynold-SL&breakdown=true&sort=groupTitle%20dsc&sortWithin=title&since=2023-02-17&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=functional-code~docs~test-code~other&tabOpen=true&tabType=zoom&zA=Reynold-SL&zR=AY2223S2-CS2113-T12-2%2Ftp%5Bmaster%5D&zACS=81.58333333333333&zS=2023-02-17&zFS=Reynold-SL&zU=2023-04-08&zMG=false&zFTF=commit&zFGS=groupByRepos&zFR=false)
 
----
-
+>>>>>>> upstream/master
 ## Enhancements implemented:
 For the enhancements implemented, I focused more on the commands for the PCViewer Menu.
 
@@ -46,8 +44,8 @@ For the enhancements implemented, I focused more on the commands for the PCViewe
     The single string of inputs are then split by spaces and trimmed and stored into a string array. Methods are created to check if the flags exist and the 
     respective flag method is called to update the private variables in the PCList
 
----
 
+>>>>>>> upstream/master
 ## Contributions to the UG:
 - `bye` command
   - Added a description as well as an expected outcome for better visualisation
@@ -56,7 +54,8 @@ For the enhancements implemented, I focused more on the commands for the PCViewe
 - `filter FILTER_FLAGS` command
   - Added a description which informs the user on the types of flags that he can filter the PCList by and its expected outcome when filtering by a given input for better visualisation
 
----
+
+>>>>>>> upstream/master
 
 ## Contributions to the DG:
 - `Parser` class
@@ -66,12 +65,14 @@ For the enhancements implemented, I focused more on the commands for the PCViewe
 - Expected outcome for manual testing
   - Added expected outcome for the terminal when the user types in the respective code
 
----
+
+>>>>>>> upstream/master
 
 ## Contributions to team-based tasks:
 For contributions to team based tasks, I was present for all the tutorials and provided relevant inputs and opinions and took turns to draw the diagrams required during the tutorials
 
----
+
+>>>>>>> upstream/master
 
 ## Review/mentoring contributions:
 - [Review 1](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/79)
@@ -80,8 +81,7 @@ For contributions to team based tasks, I was present for all the tutorials and p
 - [Review 4](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/120)
 - [Review 5](https://github.com/AY2223S2-CS2113-T12-2/tp/pull/44)
 
----
-
+>>>>>>> upstream/master
 ## Contributions beyond the project team:
 - [Review 1](https://github.com/nus-cs2113-AY2223S2/ip/pull/178/files/c89843fdf5ea4051b4ba683bd02502033e5ab91b)
 - [Review 2](https://github.com/nus-cs2113-AY2223S2/ip/pull/26/files/f8d18020e63518122ed7001ce74f0c4ddf35d553)
