@@ -401,7 +401,7 @@ People who want to build PC's and keep track of their builds.
    - Expected output:
      ```
      ===================================================
-     PC VIEWER
+     PC viewer
      Here is the list of PC Builds:
          1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
          2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
@@ -769,7 +769,7 @@ People who want to build PC's and keep track of their builds.
     - Expected output:
       ```
       ===================================================
-      PC VIEWER
+      PC viewer
       Here is the list of PC Builds:
           1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
           2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
@@ -783,7 +783,7 @@ People who want to build PC's and keep track of their builds.
     - Expected output:
       ```
       ===================================================
-      PC VIEWER
+      PC viewer
       Here is the filtered list of PC Builds:
           4.Custom-PC: [notNewPC] - $221.49/$1000.00 - Incomplete
       What would you like to do?
@@ -794,7 +794,7 @@ People who want to build PC's and keep track of their builds.
     - Expected output:
       ```
       ===================================================
-      PC VIEWER
+      PC viewer
       Here is the list of PC Builds:
           1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
           2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
