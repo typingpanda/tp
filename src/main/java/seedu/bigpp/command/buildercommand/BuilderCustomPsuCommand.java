@@ -23,6 +23,12 @@ public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
 
         try {
             power = Float.parseFloat(argumentList[5]);
+
+            if (power > 5000) {
+                throw new PPException(
+                        "Too large of a power");
+            }
+
         } catch (NumberFormatException e) {
             throw new PPException(
                     "Please enter a valid power");
@@ -30,7 +36,7 @@ public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
 
         // Check if all the values are positive
         if (power < 0) {
-            throw new PPException("price and power should be positive");
+            throw new PPException("power should be positive");
         }
 
         String efficiency = argumentList[3].trim().toLowerCase();
