@@ -227,6 +227,8 @@ with the component string input by the user (e.g. `cpu`). The `stringToComponent
 filled when the program is first run using `DataStorage.initStringToComponentListMap()` and maps component names
 (e.g. `cpu`) to their corresponding `ComponentList` object (e.g. an object of type `CPUList`).
 
+<div style="page-break-after: always;"></div>
+
 The `ComponentList` class inherits from `ArrayList` but additionally implements the `getListString()` method which
 returns a formatted list of all the components in the `ComponentList` object.
 
@@ -259,6 +261,8 @@ In these object diagrams, a typical flow of the program is shown. The first diag
 
 When the program first starts, the `BigPP` class is instantiated and the `run()` method is called. The `run()` method calls the `runLoopUntilExit()` method which is a loop that runs until the user exits. The `UI` calls the `getInput()` method to get the user input. The `Parser` class then parses the user input ("add MyPC"). The `parseCommand` method calls the `ViewerAddCommand` method with the name of the PC as the argument. The `ViewerAddCommand` calls its executeCommand method. This adds a PC named "MyPC".
 
+<div style="page-break-after: always;"></div>
+
 #### ===== Builder Mode =====
 ![Builder Mode Object Diagram](uml-pictures/BuilderObjectDiagram.png)
 
@@ -285,6 +289,14 @@ People who want to build PC's and keep track of their builds.
 - Enables users to build cost-effective systems.
 - Prebuilt PCs
 
+### Non-Functional Requirements
+
+1. Java 11 or above installed
+2. Program built to support only single user
+3. Size of terminal
+
+<div style="page-break-after: always;"></div>
+
 ### User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
@@ -305,12 +317,6 @@ People who want to build PC's and keep track of their builds.
 |v2.0|Experienced user|Filter the component list by specifications|Find specific components that meet my criteria|
 
 <div style="page-break-after: always;"></div>
-
-### Non-Functional Requirements
-
-1. Java 11 or above installed
-2. Program built to support only single user
-3. Size of terminal
 
 ### Instructions for manual testing
 
@@ -431,6 +437,9 @@ People who want to build PC's and keep track of their builds.
      ===================================================
      Custom PC: [ newPC ] has been created
      ```
+     
+     <div style="page-break-after: always;"></div>
+     
 7. Edit the newly created PC by using `edit 4`.
    - Expected output:
      ```
@@ -451,8 +460,6 @@ People who want to build PC's and keep track of their builds.
      ===================================================
      Currently editing PC: newPC
      ```
-     
-     <div style="page-break-after: always;"></div>
      
 8. Set a Budget for the build by using `budget 1000`.
    - Expected output:
