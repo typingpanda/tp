@@ -19,6 +19,9 @@ public class ViewerViewCommand extends Command {
     public String executeCommand(DataStorage dataStorage) throws PPException {
         String argument = super.getArguments();
 
+        // ensure only one argument is given
+        argument = argument.split(" ")[0];
+
         // throw exception if no index is selected
         if (argument.equals("")) {
             throw new PPException("Please input an index");

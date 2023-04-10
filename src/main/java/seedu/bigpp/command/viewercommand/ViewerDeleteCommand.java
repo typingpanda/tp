@@ -20,6 +20,10 @@ public class ViewerDeleteCommand extends Command {
     @Override
     public String executeCommand(DataStorage dataStorage) throws PPException {
         String argument = super.getArguments();
+
+        // ensure only one argument is given
+        argument = argument.split(" ")[0];
+
         if (argument.equals("")) {
             throw new PPException("Please input an index");
         }
