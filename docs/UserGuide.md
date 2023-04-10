@@ -809,8 +809,8 @@ If certain attributes of the components have been deleted, such as "name", "pric
 | PC_ISCOMPLETE  | State of PC                                          | String           |                                                                               `complete` and `incomplete`                                                                                |
 | COMPONENT_TYPE | Type of Component that is required to build a PC     | String           |                                                       `cpu`,`gpu`,`cpu-cooler`,`motherboard`,`ram`,`storage`,`psu` and `chassis`                                                       |
 | FORMFACTOR     | The standard size specification of the components    | String           |                                                                                `atx`,`mini` and `micro`                                                                                |
-|      SOCKET      | Physical socket where CPU is placed in(CPU must be seated in a compatible socket) |      String      |       `LGA1200`,`LGA1700`,`AM4`,`AM5`       |
-|    EFFICIENCY    |                       The power efficiency of power supply                        |      String      |        "gold"         |
+|      SOCKET      | Physical socket where CPU is placed in(CPU must be seated in a compatible socket) |      String      |       `LGA1200`,`LGA1700`,`AM4` and `AM5`       |
+|    EFFICIENCY    |                       The power efficiency of power supply                        |      String      |        `gold`,`silver` and `bronze`         |
 
 <div style="page-break-after: always;"></div>
 
