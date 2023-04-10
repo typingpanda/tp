@@ -600,6 +600,10 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Noise start range must be smaller than noise end range");
         }
 
+        if (noiseFromInt > 500 || noiseToInt > 500) {
+            throw new PPException("Noise must be smaller than 500");
+        }
+
         if (noiseFromInt < 0 || noiseToInt < 0) {
             throw new PPException("Noise must be a positive integer");
         }
@@ -782,8 +786,8 @@ public class BuilderListComponentCommand extends Command {
 
         try {
             powerToFloat = Float.parseFloat(powerTo);
-            if (powerToFloat > 1000) {
-                throw new PPException("Power end range must be smaller than 1000");
+            if (powerToFloat > 5000) {
+                throw new PPException("Power end range must be smaller than 5000");
             }
         } catch (NumberFormatException e) {
             throw new PPException("Power end range must be a float");
@@ -880,8 +884,8 @@ public class BuilderListComponentCommand extends Command {
 
         try {
             boostClockLowerBound = Float.parseFloat(boostClockLowerBoundString);
-            if (boostClockLowerBound > 1000) {
-                throw new PPException("Boost clock cannot be greater than 1000");
+            if (boostClockLowerBound > 10) {
+                throw new PPException("Boost clock cannot be greater than 00");
             }
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a valid lower bound for the boost clock");
@@ -889,8 +893,8 @@ public class BuilderListComponentCommand extends Command {
 
         try {
             boostClockUpperBound = Float.parseFloat(boostClockUpperBoundString);
-            if (boostClockUpperBound > 1000) {
-                throw new PPException("Boost clock cannot be greater than 1000");
+            if (boostClockUpperBound > 10) {
+                throw new PPException("Boost clock cannot be greater than 10");
             }
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a valid upper bound for the boost clock");
@@ -904,8 +908,8 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a positive boost clock");
         }
 
-        if (boostClockLowerBound > 100 || boostClockUpperBound > 100) {
-            throw new PPException("Please enter a boost clock that is smaller than 100");
+        if (boostClockLowerBound > 10 || boostClockUpperBound > 10) {
+            throw new PPException("Please enter a boost clock that is smaller than 10");
         }
 
         flagsArray.add("Boost Clock: " + boostClockLowerBound + " to " + boostClockUpperBound);
@@ -961,8 +965,8 @@ public class BuilderListComponentCommand extends Command {
 
         try {
             fromBaseClockFloat = Float.parseFloat(fromBaseClock);
-            if (fromBaseClockFloat > 1000) {
-                throw new PPException("Base clock cannot be more than 1000");
+            if (fromBaseClockFloat > 10) {
+                throw new PPException("Base clock cannot be more than 10");
             }
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a float for the lower bound of the base clock");
@@ -970,8 +974,8 @@ public class BuilderListComponentCommand extends Command {
 
         try {
             toBaseClockFloat = Float.parseFloat(toBaseClock);
-            if (toBaseClockFloat > 1000) {
-                throw new PPException("Base clock cannot be more than 1000");
+            if (toBaseClockFloat > 10) {
+                throw new PPException("Base clock cannot be more than 10");
             }
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a float for the upper bound of the base clock");
@@ -1107,8 +1111,8 @@ public class BuilderListComponentCommand extends Command {
         String priceFrom = flagPriceDescriptionArray[1].trim();
         try {
             priceFromFloat = Float.parseFloat(priceFrom);
-            if (priceFromFloat > 10000) {
-                throw new PPException("Price must be smaller than 10000");
+            if (priceFromFloat > 100000) {
+                throw new PPException("Price must be smaller than 100000");
             }
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a float for price start range");
@@ -1122,8 +1126,8 @@ public class BuilderListComponentCommand extends Command {
 
         try {
             priceToFloat = Float.parseFloat(priceTo);
-            if (priceToFloat > 10000) {
-                throw new PPException("Price must be smaller than 10000");
+            if (priceToFloat > 100000) {
+                throw new PPException("Price must be smaller than 100000");
             }
         } catch (NumberFormatException e) {
             throw new PPException("Please enter a float for price end range");
