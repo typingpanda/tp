@@ -1,5 +1,3 @@
-<div style="page-break-after: always;"></div>
-
 # Keane Chan - Project Portfolio Page
 
 ## Overview: PC Part Picker
