@@ -573,7 +573,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String noiseFrom = noiseDescriptionArray[1];
-        if (!noiseFrom.matches("/^\\d*\\.?\\d*$/")) {
+        if (noiseFrom.matches(".*\\D.*")) {
             throw new PPException("Noise start range must be an integer");
         }
 
@@ -583,7 +583,7 @@ public class BuilderListComponentCommand extends Command {
         }
 
         String noiseTo = noiseDescriptionArray[3];
-        if (!noiseTo.matches("/^\\d*\\.?\\d*$/")) {
+        if (noiseTo.matches(".*\\D.*")) {
             throw new PPException("Noise end range must be an integer");
         }
 
@@ -984,10 +984,6 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Base clock cannot be negative");
         }
 
-        if (fromBaseClockFloat > 10 || toBaseClockFloat > 10) {
-            throw new PPException("Base clock cannot be greater than 100");
-        }
-
         flagsArray.add("Base clock from " + fromBaseClock + " to " + toBaseClock);
         componentList = ComponentList.filterByBaseClock(componentList, fromBaseClockFloat, toBaseClockFloat,
                 componentIndexes);
@@ -1020,7 +1016,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a valid thread number (4, 8, 12, 16, 20, 24 or 32)");
         }
 
-        if (!thread.matches("/^\\d*\\.?\\d*$/")) {
+        if (thread.matches(".*\\D.*")) {
             throw new PPException("Please enter an integer for thread number");
         }
         int threadInt = 0;
@@ -1062,7 +1058,7 @@ public class BuilderListComponentCommand extends Command {
         }
         flagsArray.add("core: " + core);
 
-        if (!core.matches("/^\\d*\\.?\\d*$/")) {
+        if (core.matches(".*\\D.*")) {
             throw new PPException("Please enter an integer for core number");
         }
         int coreInt = 0;
