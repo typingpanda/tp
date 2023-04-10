@@ -27,7 +27,7 @@ public class BuilderSelectCommand extends Command {
             throw new PPException("Please select a component");
         }
 
-        String[] inputArray = inputString.split("\\s+", 2);
+        String[] inputArray = inputString.split(" ", 2);
         String componentTypeString = inputArray[0];
         componentTypeString = componentTypeString.toLowerCase();
         componentTypeString = componentTypeString.trim();
