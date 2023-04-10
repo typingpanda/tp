@@ -1,3 +1,5 @@
+<div style="page-break-after: always;"></div>
+
 <!-- @@author Magmanat -->
 <!-- omit in toc -->
 # Developer Guide
@@ -28,6 +30,8 @@
   - [Non-Functional Requirements](#non-functional-requirements)
   - [Instructions for manual testing](#instructions-for-manual-testing)
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 ## Acknowledgements
@@ -50,6 +54,8 @@ below is the overall architecture diagram for how BigPP works.
 ![Architecture Diagram](uml-pictures/ArchitectureDiagram.png)
 
 The program will first load the `UserJson` and files in the `Resources` folder to populate its internal memory of `PCLists` and `ComponentLists`. This will be stored in its `DataStorage`. The `User`'s interaction with the `UI` will be `parsed` into a `command` which would update the `DataStorage` and eventually update the `Menu` which is displayed back to the `User`. This would continue until the `User` exits the program, which would result in the data stored in `DataStorage` being saved into the `UserJson`.
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -78,6 +84,8 @@ The `UI` Class serves as the connection between the user and BigPP. It is respon
 
 In summary, UI gives crucial feedback to the user such as the menu of possible commands based on the current menu and results of a given command.
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 <!-- @@author Magmanat -->
@@ -87,6 +95,8 @@ In summary, UI gives crucial feedback to the user such as the menu of possible c
 Below is the Class diagram for the DataStorage class:
 
 ![DataStorage Class Diagram](uml-pictures/DataStorageClass.png)
+
+<div style="page-break-after: always;"></div>
 
 The `DataStorage` class serves as a centralized storage and management system for lists of components and PC builds in the application. It is responsible for the following key actions:
 
@@ -102,6 +112,8 @@ The `DataStorage` class serves as a centralized storage and management system fo
 3. **Behavior**: The `DataStorage` class acts as an intermediary between the application and the stored lists of components and PC builds. It helps to maintain a clean separation of concerns by providing a unified interface for handling data storage and retrieval. This allows the rest of the application to interact with the data easily.
 
 In summary, the `DataStorage` class is responsible for managing lists of components and PC builds, providing methods to load all the data needed, and interact with this loaded data.
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -124,6 +136,8 @@ found below:
 
 ![load Chassis Sequential Diagram](uml-pictures/loadChassisSequential.png)
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 <!-- @@author Reynold-SL -->
@@ -140,6 +154,8 @@ The methods in the Parser class creates a subclass which inherits from the abstr
 From the diagram, Command class has a private attribute named arguments which stores the user inputs as a String. The Command class
 contains methods that help to set and retrieve the private attribute in the class.
 Overall, this class diagram provides an overview of the purpose of the Parser class.
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -160,6 +176,8 @@ The `PC` class has methods to set and get the components of a `PC` object, as we
 
 Overall, this class diagram provides a high-level overview of the components that make up a computer system and their relationships to each other.
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 <!-- @@author Reynold-SL -->
@@ -179,6 +197,8 @@ Finally, a message is returned to inform the user that the `ViewerAddCommand` me
 A UML sequence diagram showing the interactions between the different objects involved in handling this method can be
 found below:
 ![Viewer Add Command Sequential Diagram](uml-pictures/ViewerAddCommand.png)
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -225,6 +245,8 @@ found below:
 
 ![List Component Command](./uml-pictures/listComponentCommand.png)
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 <!-- @@author typingpanda -->
@@ -242,7 +264,7 @@ When the program first starts, the `BigPP` class is instantiated and the `run()`
 
 The user can enter the `edit PC_INDEX` command to edit a PC and enter Builder Mode. Now in builder mode, the user can enter the `name NAME` command to edit the name of the PC. The `Parser` class then parses the user input ("name MyEditedPC"). The `parseBuilderCommand` method calls the `BuilderNameComponentCommand` method with the name of the PC as the argument. The `BuilderNameComponentCommand` calls its executeCommand method. This edits the name of the PC to "MyEditedPC".
 
-
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -282,8 +304,7 @@ People who want to build PC's and keep track of their builds.
 |v2.0|new builder|Be able to see if components are not compatible|Avoid building PC with incompatible parts|
 |v2.0|Experienced user|Filter the component list by specifications|Find specific components that meet my criteria|
 
-
-
+<div style="page-break-after: always;"></div>
 
 ### Non-Functional Requirements
 
@@ -333,6 +354,9 @@ People who want to build PC's and keep track of their builds.
         =================================================== 
        ```
 3. Read through user guide to get detailed documentation on functionality and commands of application.
+
+<div style="page-break-after: always;"></div>
+
 4. See all available commands by using `help`.
    - Expected output (PCViewer Mode):
      ```
@@ -367,6 +391,9 @@ People who want to build PC's and keep track of their builds.
      ------------------------------------------------------------------------------
      For more detailed documentation on commands, please refer to our user guide!
      ```
+     
+<div style="page-break-after: always;"></div>
+     
 5. View Prebuilt PC specifications using `view 1`
    - Expected output:
      ```
@@ -424,6 +451,9 @@ People who want to build PC's and keep track of their builds.
      ===================================================
      Currently editing PC: newPC
      ```
+     
+     <div style="page-break-after: always;"></div>
+     
 8. Set a Budget for the build by using `budget 1000`.
    - Expected output:
      ```
@@ -444,6 +474,9 @@ People who want to build PC's and keep track of their builds.
      ===================================================
      Current build budget is now: $1000.00
      ```
+     
+     <div style="page-break-after: always;"></div>
+     
 9. List all cpu components available by using `list cpu`.
    - Expected output:
      ```
@@ -524,26 +557,30 @@ People who want to build PC's and keep track of their builds.
      AMD Ryzen 5 5500
      ================
      ```
+     
+     <div style="page-break-after: always;"></div>
+     
 10. List cpu components that are filtered by price by using `list cpu -price /from 0 /to 200`.
     - Expected output:
       ```
       ===================================================
       PC builder
-      Custom-PC: [newPC] - $0.0/infinite - Incomplete
+      Custom-PC: [expert (copy)] - $2339.74/infinite - Complete
+      Power Consumption: 584.2W/850.0W
       Components:
-      CPU        : - Not Selected -
-      CPU Cooler : - Not Selected -
-      GPU        : - Not Selected -
-      Motherboard: - Not Selected -
-      RAM        : - Not Selected -
-      Storage    : - Not Selected -
-      PSU        : - Not Selected -
-      Chassis    : - Not Selected -
+      CPU        : AMD Ryzen 9 7950X
+      CPU Cooler : Cooler Master MASTERLIQUID ML120L RGB V2
+      GPU        : MSI GAMING Z TRIO RTX3080
+      Motherboard: Gigabyte B650I AORUS ULTRA
+      RAM        : Corsair Vengeance RGB Pro 32 GB
+      Storage    : Samsung 980 Pro
+      PSU        : SeaSonic FOCUS PLUS 850 Gold
+      Chassis    : Corsair iCUE 4000X RGB
 
       What would you like to do?
       ===================================================
       Here are all available components of type 'cpu':
-      meeting the following criteria: 
+      meeting the following criteria:
       price: 0 to 200
       1.
       Intel core i3-10100
@@ -551,17 +588,8 @@ People who want to build PC's and keep track of their builds.
       2.
       Intel core i5-10600k
       ================
-      3.
-      Intel core i7-10700k
-      ================
       4.
       Intel core i3-12100f
-      ================
-      5.
-      Intel core i5-12600k
-      ================
-      6.
-      Intel core i7-12700k
       ================
       7.
       AMD Ryzen 3 3200G
@@ -569,35 +597,14 @@ People who want to build PC's and keep track of their builds.
       8.
       AMD Ryzen 5 5600X
       ================
-      9.
-      AMD Ryzen 7 5800X
-      ================
-      10.
-      AMD Ryzen 5 7600X
-      ================
-      11.
-      AMD Ryzen 7 7700X
-      ================
-      12.
-      AMD Ryzen 9 7950X
-      ================
       13.
       Intel Core i2-11350
       ================
       14.
       Intel Core i5-10400F
       ================
-      15.
-      Intel Core i9-10950K
-      ================
       16.
       Intel Core i3-12260
-      ================
-      17.
-      Intel Core i7-12850
-      ================
-      18.
-      Intel Core i9-13900K
       ================
       19.
       AMD Ryzen 3 3300X
@@ -606,6 +613,9 @@ People who want to build PC's and keep track of their builds.
       AMD Ryzen 5 5500
       ================
       ```
+      
+      <div style="page-break-after: always;"></div>
+      
 11. Select cpu by using `select cpu 1`.
     - Expected output:
       ```
@@ -648,6 +658,9 @@ People who want to build PC's and keep track of their builds.
       ===================================================
       motherboard added! : Asus Prime Z590-P WiFi
       ```
+      
+      <div style="page-break-after: always;"></div>
+      
 13. Unselect cpu by using `unselect cpu`.
     - Expected output:
       ```
@@ -697,6 +710,9 @@ People who want to build PC's and keep track of their builds.
       |POWER       |47.0W                                   |43.0W                                   |
       ________________________________________________________________________________________________
       ```
+      
+      <div style="page-break-after: always;"></div>
+      
 15. Change the Name of the build by using `name notNewPC`.
     - Expected output:
       ```
@@ -739,6 +755,9 @@ People who want to build PC's and keep track of their builds.
       ===================================================
       CPU added: Intel-new-cpu
       ```
+      
+      <div style="page-break-after: always;"></div>
+      
 17. Go back to the viewer menu by using `back`.
     - Expected output:
       ```
