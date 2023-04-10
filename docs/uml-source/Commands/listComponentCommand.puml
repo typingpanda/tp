@@ -4,44 +4,51 @@
 !pragma teoz true
 hide footbox
 
--> ":BigPP" : list [COMPONENT]
+participant ":BigPP" as BigPP
+participant ":Parser" as Parser
+participant ":BuilderListComponentCommand" as BuilderListComponentCommand
+participant "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>" as DataStorage.stringToComponentListMap
+participant ":[COMPONENT_TYPE]List" as ComponentList
 
-activate ":BigPP"
 
-":BigPP" -> ":Parser" : parseCommand(String userInput)
-activate ":Parser"
+-> BigPP : list [COMPONENT]
 
-":Parser" -> ":Parser" : parseBuilderCommand(String userInput)
-activate ":Parser"
-create ":BuilderListComponentCommand"
+activate BigPP
 
-":Parser" -> ":BuilderListComponentCommand" : ":BuilderListComponentCommand"(String arguments)
-activate ":BuilderListComponentCommand"
-":BuilderListComponentCommand" --> ":Parser"
-deactivate ":BuilderListComponentCommand"
+create Parser
+BigPP -> Parser: Parser().parseCommand(String userinput)
+activate Parser
+Parser -> Parser : parseBuilderCommand(String userInput)
+activate Parser
+create BuilderListComponentCommand
 
-deactivate ":Parser"
-":Parser" --> ":BigPP": ":BuilderListComponentCommand"
-deactivate ":Parser"
+Parser -> BuilderListComponentCommand : BuilderListComponentCommand(String arguments)
+activate BuilderListComponentCommand
+BuilderListComponentCommand --> Parser
+deactivate BuilderListComponentCommand
 
-":BigPP" -> ":BuilderListComponentCommand" : executeCommand()
-activate ":BuilderListComponentCommand"
-":BuilderListComponentCommand" -> "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>" : get(String componentType)
-activate "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>"
-"DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>" --> ":BuilderListComponentCommand" : ":[COMPONENT_TYPE]List"
-deactivate "DataStorage.stringToComponentListMap:Map<String, ComponentList<?>>"
+deactivate Parser
+Parser --> BigPP: BuilderListComponentCommand
+deactivate Parser
 
-":BuilderListComponentCommand" -> ":[COMPONENT_TYPE]List" : getListString()
-activate ":[COMPONENT_TYPE]List"
-":[COMPONENT_TYPE]List" --> ":BuilderListComponentCommand" : formatted/filtered list of desired components
-deactivate ":[COMPONENT_TYPE]List"
+BigPP -> BuilderListComponentCommand : executeCommand()
+activate BuilderListComponentCommand
+BuilderListComponentCommand -> DataStorage.stringToComponentListMap : get(String componentType)
+activate DataStorage.stringToComponentListMap
+DataStorage.stringToComponentListMap --> BuilderListComponentCommand : ComponentList
+deactivate DataStorage.stringToComponentListMap
 
-":BuilderListComponentCommand" --> ":BigPP" : formatted list
-deactivate ":BuilderListComponentCommand"
+BuilderListComponentCommand -> ComponentList : getListString()
+activate ComponentList
+ComponentList --> BuilderListComponentCommand : formatted/filtered list of desired components
+deactivate ComponentList
 
-<-- ":BigPP" : formatted list
+BuilderListComponentCommand --> BigPP : formatted list
+deactivate BuilderListComponentCommand
 
-deactivate ":BigPP"
+<-- BigPP : formatted list
+
+deactivate BigPP
 
 
 @enduml

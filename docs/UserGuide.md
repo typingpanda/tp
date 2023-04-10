@@ -1,41 +1,41 @@
-<!-- omit in toc -->
 <!-- @@author Magmanat -->
+<!-- omit in toc -->
+<div style="page-break-after: always;"></div>
 
 # User Guide
 
 <!-- omit in toc -->
-
 ## Table of contents
 
-- [User Guide](#user-guide)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Getting Started](#getting-started)
-  - [Commands](#commands)
-    - [Common Commands](#common-commands)
-      - [**Bye Command**](#bye-command)
-      - [**Help Command**](#help-command)
-    - [PCViewer Mode Commands](#pcviewer-mode-commands)
-      - [**Add Command**](#add-command)
-      - [**View Command**](#view-command)
-      - [**Edit Command**](#edit-command)
-      - [**Delete Command**](#delete-command)
-      - [**Filter Command**](#filter-command)
-    - [PCBuilder Mode Commands](#pcbuilder-mode-commands)
-      - [**List Command**](#list-command)
-      - [**Select Command**](#select-command)
-      - [**Unselect Command**](#unselect-command)
-      - [**Compare Command**](#compare-command)
-      - [**Budget Command**](#budget-command)
-      - [**Name Command**](#name-command)
-      - [**Custom Command**](#custom-command)
-      - [**Back Command**](#back-command)
-  - [Additional Features](#additional-features)
-    - [Compatibility Check](#compatibility-check)
-  - [Glossary](#glossary)
-    - [Parameters Glossary](#parameters-glossary)
-    - [Command Glossary](#command-glossary)
-      - [Acceptable Custom Component Commands](#acceptable-custom-component-commands)
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [Commands](#commands)
+  - [Common Commands](#common-commands)
+    - [**Bye Command**](#bye-command)
+    - [**Help Command**](#help-command)
+  - [PCViewer Mode Commands](#pcviewer-mode-commands)
+    - [**Add Command**](#add-command)
+    - [**View Command**](#view-command)
+    - [**Edit Command**](#edit-command)
+    - [**Delete Command**](#delete-command)
+    - [**Filter Command**](#filter-command)
+  - [PCBuilder Mode Commands](#pcbuilder-mode-commands)
+    - [**List Command**](#list-command)
+    - [**Select Command**](#select-command)
+    - [**Unselect Command**](#unselect-command)
+    - [**Compare Command**](#compare-command)
+    - [**Budget Command**](#budget-command)
+    - [**Name Command**](#name-command)
+    - [**Custom Command**](#custom-command)
+    - [**Back Command**](#back-command)
+- [Additional Features](#additional-features)
+  - [Compatibility Check](#compatibility-check)
+- [Glossary](#glossary)
+  - [Parameters Glossary](#parameters-glossary)
+  - [Command Glossary](#command-glossary)
+    - [Acceptable Custom Component Commands](#acceptable-custom-component-commands)
+
+<div style="page-break-after: always;"></div>
 
 ## Introduction
 
@@ -47,6 +47,8 @@ BigPP is a command-line application designed for PC enthusiasts and professional
 
 This developer-oriented guide offers a comprehensive overview of the various commands and features available in BigPP. It is intended for users who are familiar with command-line interfaces.
 If you encounter unfamiliar terminology in this guide, please refer to the [Glossary](#glossary) for a list of terms and their definitions.
+
+<div style="page-break-after: always;"></div>
 
 ## Getting Started
 
@@ -100,6 +102,8 @@ What would you like to do?
 
 If the ASCII art of BIG PP does not look correct, it is due to your terminal size being too small, if so you can disregard this issue.
 
+<div style="page-break-after: always;"></div>
+
 ## Commands
 
 Our commands are split up for two modes, PCViewer and PCBuilder. The commands for each mode will only be recognised for the specific mode that you are currently in. The modes will specifically be stated at the top of each printout in the terminal. Additional leading and trailing whitespaces from user input will be ignored.
@@ -139,6 +143,8 @@ What would you like to do?
 ===================================================
 ```
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 ### Common Commands
@@ -159,6 +165,8 @@ Functionality: Exits the application and saves all user data that has currently 
 
 <!-- @@author Reynold-SL -->
 
+<div style="page-break-after: always;"></div>
+
 #### **Help Command**
 
 Usage: `help`
@@ -168,25 +176,38 @@ Example:
 - Entering the help command in the PCViewer mode will produce the following output at the bottom of your terminal:
 
 ```
-Here are the list of valid commands:
-Add <name> - Add a new PC of a given name
-Delete <index> -  Delete the PC of a given index
-Edit <index> - Edit the PC of a given index
-View <index> - Display all the components of the PC of a given index
+Here are the list of valid commands: 
+_____________________________________________________
+| Command Type            | Command Usage           |
+|-------------------------|-------------------------|
+| Add new PC              | add PC_NAME             |
+| Edit PC                 | edit PC_INDEX           |
+| View PC Specs           | view PC_INDEX           |
+| Delete PC               | delete PC_INDEX         |
+| Filter PC List          | filter FILTER_FLAGS     |
+| Exit program            | bye                     |
+-----------------------------------------------------
+For more detailed documentation on commands, please refer to our user guide!
 ```
 
 - Entering the help command in the PCBuilder mode will produce the following output at the bottom of your terminal:
 
 ```
 Here are the list of valid commands:
-list <component> - List all components of a certain type
-name <new_name> - Change the name of the PC currently being edited to <new_name>
-budget <new_budget> - Change the budget of the PC currently being edited to <new_budget>
-select <component_type> <index> -  Add the component of type <component_type> with index <index> to the PC currently being edited
-info <component_type> - View all the specifications of the component of type <component_type> currently selected for the build
-unselect <component_type> - Remove the component of type <component_type> from the PC currently beingedited
-custom <component_type> <component_specifications...> - Creates a custom component of type <component_type> with all the <component_specifications> and adds it to the list of components of that type
-compare <component_type> <index_1>&<index_2> Compares all the specifications between the components oftype <component_type> with indices <index_1> and <index_2>
+______________________________________________________________________________
+| Command Type            | Command Usage                                    |
+|-------------------------|--------------------------------------------------|
+| List Component          | list COMPONENT_TYPE [-COMPONENT_FLAG lIST_FLAG]  |
+| Select Component        | select COMPONENT_TYPE COMPONENT_INDEX            |
+| Unselect Component      | unselect COMPONENT_TYPE                          |
+| Compare Components      | compare COMPONENT_TYPE INDEX_1 & INDEX_2         |
+| Change Budget           | budget POSITIVE_INTEGER                          |
+| Change PC Name          | name PC_NAME                                     |
+| Create Custom Component | custom COMPONENT_TYPE SPEC1|SPEC_2|...           |
+| Back Command            | back                                             |
+| Exit program            | bye                                              |
+------------------------------------------------------------------------------
+For more detailed documentation on commands, please refer to our user guide!
 ```
 
 Notes: Entering the help command in either PCViewer mode or PCBuilder mode will present different sets of valid commands
@@ -194,6 +215,8 @@ Notes: Entering the help command in either PCViewer mode or PCBuilder mode will 
 ---
 
 <!-- @@author superkaiba -->
+
+<div style="page-break-after: always;"></div>
 
 ### PCViewer Mode Commands
 
@@ -224,6 +247,8 @@ Custom PC: [ NEWPC ] has been created
 
 Notes: newly added PCs will always begin with infinite budget
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 #### **View Command**
@@ -240,10 +265,10 @@ Example:
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
-2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
-3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
-4.Custom-PC: [NEWPC] - $0.0/infinite - Incomplete
+    1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+    2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+    3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+    4.Custom-PC: [NEWPC] - $0.0/infinite - Incomplete
 What would you like to do?
 ===================================================
 Prebuilt-PC: [expert] - $2339.74/infinite - Complete
@@ -257,6 +282,8 @@ Storage    : Samsung 980 Pro
 PSU        : SeaSonic FOCUS PLUS 850 Gold
 Chassis    : Corsair iCUE 4000X RGB
 ```
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -293,6 +320,8 @@ Currently editing PC: NEWPC
 
 Notes: If the PC that the user has selected to edit is a `PREBUILT_PC`, the application would create a copy of it and mark it as a `CUSTOM_PC`. This is because we provide the prebuilts as a reference for the user, and not for editing.
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 #### **Delete Command**
@@ -309,13 +338,15 @@ Example:
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
-2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
-3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+    1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+    2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+    3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
 What would you like to do?
 ===================================================
 Custom PC: [ NEWPC ] has been deleted
 ```
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -351,13 +382,16 @@ Example: filter the PC List by the name of intermediate, in the range of startin
 ===================================================
 PC viewer
 Here is the list of PC Builds:
-2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+    2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
 What would you like to do?
 ===================================================
 Filter completed
 ```
 
 Notes: The flags can by strung together _in any order_ such as `filter -price /from 1000 /to 3000 -name intermediate -built complete`. However, if the `-clear` flag is detected, this will take **precedence** and remove all filters regardless of other flags.
+Please note that you will still be able to edit the PCs that are not filtered as the filter is simply only for easier viewing of the PCs which you would like to edit.
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -411,6 +445,8 @@ Available flags:
 >
 > `-efficiency COMPONENT_EFFICIENCY`
 
+<div style="page-break-after: always;"></div>
+
 Functionality: Lists all components of type `COMPONENT_TYPE` with optional flags. List command shows only the names of components for readability. For detailed information, use the `-details` flag. Multiple flags can be used together.
 
 Example:
@@ -436,6 +472,8 @@ SOCKET: LGA1200
 ```
 
 Notes: Arguments with missing flags will be ignored. Flags that are not relevant to the component will also be ignored.
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -473,6 +511,8 @@ gpu added! : MSI GAMING Z TRIO RTX3080
 
 Notes: you can select any component at any time and do not need to list components before selecting as long as you know which index you want to add.
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 #### **Unselect Command**
@@ -504,6 +544,8 @@ What would you like to do?
 gpu removed!
 ```
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 #### **Compare Command**
@@ -531,17 +573,19 @@ ________________________________________________________________________________
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 <!-- @@author typingpanda -->
 
 #### **Budget Command**
 
-Usage: `budget POSITIVE_INTEGER`
+Usage: `budget INTEGER`
 
-Functionality: Sets the `BUDGET` of the current PC build to `POSITIVE_INTEGER`
+Functionality: Sets the `BUDGET` of the current PC build to either an `INTEGER` by entering a positive integer or to `INFINITE` by entering `-1` as arguments.
 
-Example Set `BUDGET` of the PC you are currently editing to be $1000
+Example: Set `BUDGET` of the PC you are currently editing to be $1000
 
 > input: budget 1000
 
@@ -564,6 +608,34 @@ What would you like to do?
 Current build budget is now: $1000.00
 
 ```
+
+<div style="page-break-after: always;"></div>
+
+Example: Set `BUDGET` of the PC you are currently editing to be `INFINITE`
+
+> input: budget -1
+
+```
+===================================================
+PC builder
+Custom-PC: [beginner (copy)] - $917.28/infinite - Complete
+Power Consumption: 234.5W/850.0W
+Components:
+CPU        : Intel core i3-10100
+CPU Cooler : Thermalright AXP90-X36
+GPU        : Gigabyte GAMING OC RTX3050
+Motherboard: Asus Prime Z590-P WiFi
+RAM        : G.Skill Ripjaws X 8 GB
+Storage    : ADATA XPG SPECTRIX S40G RGB
+PSU        : SeaSonic FOCUS PLUS 850 Gold
+Chassis    : Fractal Design Pop XL Air
+
+What would you like to do?
+===================================================       
+Current build budget is now: infinite
+
+```
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -595,6 +667,8 @@ What would you like to do?
 ===================================================
 Current build name is now: MyPc
 ```
+
+<div style="page-break-after: always;"></div>
 
 ---
 
@@ -637,6 +711,8 @@ Usage: `back`
 
 Functionality: Goes back to PCViewer menu
 
+<div style="page-break-after: always;"></div>
+
 ---
 
 <!-- @@author Magmanat -->
@@ -653,6 +729,8 @@ BigPP will check if your components that you added are compatible with each othe
 4. Your `CPU` and `MOTHERBOARD` needs to have the same `SOCKET`.
 
 Based on the rules stated above, the compatibility checker will throw the user error messages if he tries to add any component which breaks the rules, and suggest changes that the user can make to avoid adding incompatible components.
+
+<div style="page-break-after: always;"></div>
 
 Example: The `CPU` current added has a socket **LGA1200** and the new `MOTHERBOARD` that the user wants to add has a socket **AM5**.
 
@@ -677,6 +755,8 @@ What would you like to do?
 Motherboard socket is not compatible with current cpu socket
 Please choose another motherboard or change your cpu
 ```
+
+<div style="page-break-after: always;"></div>
 
 <!-- @@author Ryujikjs -->
 
@@ -719,6 +799,8 @@ Please choose another motherboard or change your cpu
 | COMPONENT_TYPE | Type of Component that is required to build a PC     | String           |                                                       `cpu`,`gpu`,`cpu-cooler`,`motherboard`,`ram`,`storage`,`psu` and `chassis`                                                       |
 | FORMFACTOR     | The standard size specification of the components    | String           |                                                                                `atx`,`mini` and `micro`                                                                                |
 
+<div style="page-break-after: always;"></div>
+
 ### Command Glossary
 
 |   Viewer Menu Commands    |                     Format                     |                                                Flags                                                |
@@ -744,6 +826,9 @@ Please choose another motherboard or change your cpu
 |          Name PC          |                 `name PC_NAME`                 |                                                 nil                                                 |
 |     Custom Component      |  `custom COMPONENT_TYPE SPEC_1\|SPEC_2\|...`   |                     [Acceptable Format](#acceptable-custom-component-commands)                      |
 |           Back            |                     `back`                     |                                                 nil                                                 |
+
+
+<div style="page-break-after: always;"></div>
 
 #### Acceptable Custom Component Commands
 

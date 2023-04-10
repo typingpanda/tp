@@ -1,8 +1,6 @@
-<!-- @@author Magmanat -->
-<!-- omit in toc -->
 # Prince Pereira - Project Portfolio Page
 
-<!-- omit in toc -->
+
 ## Table of Contents
 - [Overview](#overview)
 - [Contributions](#contributions)

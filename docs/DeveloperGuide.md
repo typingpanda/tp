@@ -162,19 +162,20 @@ Overall, this class diagram provides a high-level overview of the components tha
 
 ---
 
-<!-- @@author Reynold-SR -->
+<!-- @@author Reynold-SL -->
 
 ### Command class
 
 #### ===== `ViewerAddCommand` method (viewer mode) =====
 
-This Sequential analysis will show how the `ViewerAddCommand` method works, this will also serve as an example for the `ViewerDeleteCommand` and `ViewerViewCommand`.
-When an add command is detected in the user input, the Parser will call the `ViewerAddCommand` method with
-a name as its argument of type String. The `ViewerAddCommand` then calls a method to retrieve the argument.The `ViewerAddCommand`
+This sequential analysis will show how the `ViewerAddCommand` method works, this will also serve as an example for the `ViewerDeleteCommand` and `ViewerViewCommand`.
+When the user inputs a command of the form `add [PC_NAME]` in viewer mode, it is parsed by the `Parser.parseViewerCommand` method which
+recognises the first word as `add` and creates a new ViewerAddCommand object while passing the argument of type String which was part of the command.
+The `ViewerAddCommand.executeCommand()` method is then executed as part of the loop inside `BigPP.runLoopUntilExit()`.
+The `ViewerAddCommand` then calls a method to retrieve the argument. The `ViewerAddCommand`
 checks if the argument is empty and throws an `PPException` if it is empty. A `PC` object is created with the argument as
 an input. The `add` method is called by accessing the `dataStorage` and `pcList` classes to add the `PC` object to the list.
 Finally, a message is returned to inform the user that the `ViewerAddCommand` method has been executed successfully.
-
 A UML sequence diagram showing the interactions between the different objects involved in handling this method can be
 found below:
 ![Viewer Add Command Sequential Diagram](uml-pictures/ViewerAddCommand.png)
@@ -294,20 +295,486 @@ People who want to build PC's and keep track of their builds.
 
 1. Download the latest `.jar`  file from this [link](https://github.com/AY2223S2-CS2113-T12-2/tp/releases).
 2. Open the folder that the `.jar` file is in and run the program in your terminal using `java -jar bigpp.jar`.
+   - Expected output:
+       ```
+        User file does not exist. Creating new user file.
+        User PCs found, loading...
+                  _____                    _____                    _____                            _____                    _____
+                 /\    \                  /\    \                  /\    \                          /\    \                  /\    \
+                /::\    \                /::\    \                /::\    \                        /::\    \                /::\    \
+               /::::\    \               \:::\    \              /::::\    \                      /::::\    \              /::::\    \
+              /::::::\    \               \:::\    \            /::::::\    \                    /::::::\    \            /::::::\    \
+             /:::/\:::\    \               \:::\    \          /:::/\:::\    \                  /:::/\:::\    \          /:::/\:::\    \
+            /:::/__\:::\    \               \:::\    \        /:::/  \:::\    \                /:::/__\:::\    \        /:::/__\:::\    \
+           /::::\   \:::\    \              /::::\    \      /:::/    \:::\    \              /::::\   \:::\    \      /::::\   \:::\    \
+          /::::::\   \:::\    \    ____    /::::::\    \    /:::/    / \:::\    \            /::::::\   \:::\    \    /::::::\   \:::\    \
+         /:::/\:::\   \:::\ ___\  /\   \  /:::/\:::\    \  /:::/    /   \:::\ ___\          /:::/\:::\   \:::\____\  /:::/\:::\   \:::\____\
+        /:::/__\:::\   \:::|    |/::\   \/:::/  \:::\____\/:::/____/  ___\:::|    |        /:::/  \:::\   \:::|    |/:::/  \:::\   \:::|    |
+        \:::\   \:::\  /:::|____|\:::\  /:::/    \::/    /\:::\    \ /\  /:::|____|        \::/    \:::\  /:::|____|\::/    \:::\  /:::|____|
+         \:::\   \:::\/:::/    /  \:::\/:::/    / \/____/  \:::\    /::\ \::/    /          \/_____/\:::\/:::/    /  \/_____/\:::\/:::/    /
+          \:::\   \::::::/    /    \::::::/    /            \:::\   \:::\ \/____/                    \::::::/    /            \::::::/    /
+           \:::\   \::::/    /      \::::/____/              \:::\   \:::\____\                       \::::/    /              \::::/    /
+            \:::\  /:::/    /        \:::\    \               \:::\  /:::/    /                        \::/____/                \::/____/
+             \:::\/:::/    /          \:::\    \               \:::\/:::/    /                          ~~                       ~~
+              \::::::/    /            \:::\    \               \::::::/    /
+               \::::/    /              \:::\____\               \::::/    /
+                \::/____/                \::/    /                \::/____/
+                 ~~                       \/____/
+    
+    
+        Welcome to BigPP!
+        ===================================================
+        PC viewer
+        Here is the list of PC Builds:
+            1.Prebuilt-PC: [beginner] - $813.29/infinite - Complete
+            2.Prebuilt-PC: [intermediate] - $1499.36/infinite - Complete
+            3.Prebuilt-PC: [advanced] - $2149.75/infinite - Complete
+        What would you like to do?
+        =================================================== 
+       ```
 3. Read through user guide to get detailed documentation on functionality and commands of application.
 4. See all available commands by using `help`.
+   - Expected output (PCViewer Mode):
+     ```
+     Here are the list of valid commands: 
+     _____________________________________________________
+     | Command Type            | Command Usage           |
+     |-------------------------|-------------------------|
+     | Add new PC              | add PC_NAME             |
+     | Edit PC                 | edit PC_INDEX           |
+     | View PC Specs           | view PC_INDEX           |
+     | Delete PC               | delete PC_INDEX         |
+     | Filter PC List          | filter FILTER_FLAGS     |
+     | Exit program            | bye                     |
+     -----------------------------------------------------
+     For more detailed documentation on commands, please refer to our user guide!
+     ```
+   - Expected output (PCBuilder Mode):
+     ```
+     Here are the list of valid commands:
+     ______________________________________________________________________________
+     | Command Type            | Command Usage                                    |
+     |-------------------------|--------------------------------------------------|
+     | List Component          | list COMPONENT_TYPE [-COMPONENT_FLAG lIST_FLAG]  |
+     | Select Component        | select COMPONENT_TYPE COMPONENT_INDEX            |
+     | Unselect Component      | unselect COMPONENT_TYPE                          |
+     | Compare Components      | compare COMPONENT_TYPE INDEX_1 & INDEX_2         |
+     | Change Budget           | budget POSITIVE_INTEGER                          |
+     | Change PC Name          | name PC_NAME                                     |
+     | Create Custom Component | custom COMPONENT_TYPE SPEC1|SPEC_2|...           |
+     | Back Command            | back                                             |
+     | Exit program            | bye                                              |
+     ------------------------------------------------------------------------------
+     For more detailed documentation on commands, please refer to our user guide!
+     ```
 5. View Prebuilt PC specifications using `view 1`
+   - Expected output:
+     ```
+     ===================================================
+     PC VIEWER
+     Here is the list of PC Builds:
+         1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+         2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+         3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+     What would you like to do?
+     ===================================================
+     Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+     Power Consumption: 234.5W/850.0W
+     Components: 
+     CPU        : Intel core i3-10100
+     CPU Cooler : Thermalright AXP90-X36
+     GPU        : Gigabyte GAMING OC RTX3050
+     Motherboard: Asus Prime Z590-P WiFi
+     RAM        : G.Skill Ripjaws X 8 GB
+     Storage    : ADATA XPG SPECTRIX S40G RGB
+     PSU        : SeaSonic FOCUS PLUS 850 Gold
+     Chassis    : Fractal Design Pop XL Air
+     ```
 6. Create a new PC using `add newPC`.
+   - Expected output:
+     ```
+     ===================================================
+     PC viewer
+     Here is the list of PC Builds:
+         1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+         2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+         3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+         4.Custom-PC: [newPC] - $0.0/infinite - Incomplete
+     What would you like to do?
+     ===================================================
+     Custom PC: [ newPC ] has been created
+     ```
 7. Edit the newly created PC by using `edit 4`.
+   - Expected output:
+     ```
+     ===================================================
+     PC builder
+     Custom-PC: [newPC] - $0.0/infinite - Incomplete
+     Components:
+     CPU        : - Not Selected -
+     CPU Cooler : - Not Selected -
+     GPU        : - Not Selected -
+     Motherboard: - Not Selected -
+     RAM        : - Not Selected -
+     Storage    : - Not Selected -
+     PSU        : - Not Selected -
+     Chassis    : - Not Selected -
+
+     What would you like to do?
+     ===================================================
+     Currently editing PC: newPC
+     ```
 8. Set a Budget for the build by using `budget 1000`.
+   - Expected output:
+     ```
+     ===================================================
+     PC builder
+     Custom-PC: [newPC] - $0.0/infinite - Incomplete
+     Components:
+     CPU        : - Not Selected -
+     CPU Cooler : - Not Selected -
+     GPU        : - Not Selected -
+     Motherboard: - Not Selected -
+     RAM        : - Not Selected -
+     Storage    : - Not Selected -
+     PSU        : - Not Selected -
+     Chassis    : - Not Selected -
+
+     What would you like to do?
+     ===================================================
+     Current build budget is now: $1000.00
+     ```
 9. List all cpu components available by using `list cpu`.
-10. List cpu compoennts that are filterd by price by using `list cpu -price /from 0 /to 200`.
+   - Expected output:
+     ```
+     ===================================================
+     PC builder
+     Custom-PC: [newPC] - $0.0/infinite - Incomplete
+     Components:
+     CPU        : - Not Selected -
+     CPU Cooler : - Not Selected -
+     GPU        : - Not Selected -
+     Motherboard: - Not Selected -
+     RAM        : - Not Selected -
+     Storage    : - Not Selected -
+     PSU        : - Not Selected -
+     Chassis    : - Not Selected -
+
+     What would you like to do?
+     ===================================================
+     Here are all available components of type 'cpu':
+     1.
+     Intel core i3-10100
+     ================
+     2.
+     Intel core i5-10600k
+     ================
+     3.
+     Intel core i7-10700k
+     ================
+     4.
+     Intel core i3-12100f
+     ================
+     5.
+     Intel core i5-12600k
+     ================
+     6.
+     Intel core i7-12700k
+     ================
+     7.
+     AMD Ryzen 3 3200G
+     ================
+     8.
+     AMD Ryzen 5 5600X
+     ================
+     9.
+     AMD Ryzen 7 5800X
+     ================
+     10.
+     AMD Ryzen 5 7600X
+     ================
+     11.
+     AMD Ryzen 7 7700X
+     ================
+     12.
+     AMD Ryzen 9 7950X
+     ================
+     13.
+     Intel Core i2-11350
+     ================
+     14.
+     Intel Core i5-10400F
+     ================
+     15.
+     Intel Core i9-10950K
+     ================
+     16.
+     Intel Core i3-12260
+     ================
+     17.
+     Intel Core i7-12850
+     ================
+     18.
+     Intel Core i9-13900K
+     ================
+     19.
+     AMD Ryzen 3 3300X
+     ================
+     20.
+     AMD Ryzen 5 5500
+     ================
+     ```
+10. List cpu components that are filtered by price by using `list cpu -price /from 0 /to 200`.
+    - Expected output:
+      ```
+      ===================================================
+      PC builder
+      Custom-PC: [newPC] - $0.0/infinite - Incomplete
+      Components:
+      CPU        : - Not Selected -
+      CPU Cooler : - Not Selected -
+      GPU        : - Not Selected -
+      Motherboard: - Not Selected -
+      RAM        : - Not Selected -
+      Storage    : - Not Selected -
+      PSU        : - Not Selected -
+      Chassis    : - Not Selected -
+
+      What would you like to do?
+      ===================================================
+      Here are all available components of type 'cpu':
+      meeting the following criteria: 
+      price: 0 to 200
+      1.
+      Intel core i3-10100
+      ================
+      2.
+      Intel core i5-10600k
+      ================
+      3.
+      Intel core i7-10700k
+      ================
+      4.
+      Intel core i3-12100f
+      ================
+      5.
+      Intel core i5-12600k
+      ================
+      6.
+      Intel core i7-12700k
+      ================
+      7.
+      AMD Ryzen 3 3200G
+      ================
+      8.
+      AMD Ryzen 5 5600X
+      ================
+      9.
+      AMD Ryzen 7 5800X
+      ================
+      10.
+      AMD Ryzen 5 7600X
+      ================
+      11.
+      AMD Ryzen 7 7700X
+      ================
+      12.
+      AMD Ryzen 9 7950X
+      ================
+      13.
+      Intel Core i2-11350
+      ================
+      14.
+      Intel Core i5-10400F
+      ================
+      15.
+      Intel Core i9-10950K
+      ================
+      16.
+      Intel Core i3-12260
+      ================
+      17.
+      Intel Core i7-12850
+      ================
+      18.
+      Intel Core i9-13900K
+      ================
+      19.
+      AMD Ryzen 3 3300X
+      ================
+      20.
+      AMD Ryzen 5 5500
+      ================
+      ```
 11. Select cpu by using `select cpu 1`.
+    - Expected output:
+      ```
+      ===================================================
+      PC builder
+      Custom-PC: [newPC] - $99.5/$1000.00 - Incomplete
+      Power Consumption: 65.0W/0W
+      Components:
+      CPU        : Intel core i3-10100
+      CPU Cooler : - Not Selected -
+      GPU        : - Not Selected -
+      Motherboard: - Not Selected -
+      RAM        : - Not Selected -
+      Storage    : - Not Selected -
+      PSU        : - Not Selected -
+      Chassis    : - Not Selected -
+
+      What would you like to do?
+      ===================================================
+      cpu added! : Intel core i3-10100
+      ```
 12. Select compatible motherboard by using `select motherboard 1`.
+    - Expected output:
+      ```
+      ===================================================
+      PC builder
+      Custom-PC: [newPC] - $221.49/$1000.00 - Incomplete
+      Power Consumption: 110.0W/0W
+      Components:
+      CPU        : Intel core i3-10100
+      CPU Cooler : - Not Selected -
+      GPU        : - Not Selected -
+      Motherboard: Asus Prime Z590-P WiFi
+      RAM        : - Not Selected -
+      Storage    : - Not Selected -
+      PSU        : - Not Selected -
+      Chassis    : - Not Selected -
+
+      What would you like to do?
+      ===================================================
+      motherboard added! : Asus Prime Z590-P WiFi
+      ```
 13. Unselect cpu by using `unselect cpu`.
+    - Expected output:
+      ```
+      ===================================================
+      PC builder
+      Custom-PC: [newPC] - $121.99/$1000.00 - Incomplete
+      Power Consumption: 45.0W/0W
+      Components:
+      CPU        : - Not Selected -
+      CPU Cooler : - Not Selected -
+      GPU        : - Not Selected -
+      Motherboard: Asus Prime Z590-P WiFi
+      RAM        : - Not Selected -
+      Storage    : - Not Selected -
+      PSU        : - Not Selected -
+      Chassis    : - Not Selected -
+
+      What would you like to do?
+      ===================================================
+      cpu removed!
+      ```
 14. Compare two motherboard components by using `compare motherboard 2 & 7`.
+    - Expected output:
+      ```
+      ===================================================
+      PC builder
+      Custom-PC: [newPC] - $121.99/$1000.00 - Incomplete
+      Power Consumption: 45.0W/0W
+      Components:
+      CPU        : - Not Selected -
+      CPU Cooler : - Not Selected -
+      GPU        : - Not Selected -
+      Motherboard: Asus Prime Z590-P WiFi
+      RAM        : - Not Selected -
+      Storage    : - Not Selected -
+      PSU        : - Not Selected -
+      Chassis    : - Not Selected -
+
+      What would you like to do?
+      ===================================================
+      ________________________________________________________________________________________________
+      |NAME        |MSI MAG Z690 TOMAHAWK WIFI DDR4         |MSI B550M PRO-VDH WIFI                  |
+      |------------|----------------------------------------|----------------------------------------|
+      |PRICE       |$239.99                                 |$119.99                                 |
+      |SOCKET      |LGA1700                                 |AM4                                     |
+      |FORM FACTOR |atx                                     |micro                                   |
+      |POWER       |47.0W                                   |43.0W                                   |
+      ________________________________________________________________________________________________
+      ```
 15. Change the Name of the build by using `name notNewPC`.
+    - Expected output:
+      ```
+      ===================================================
+      PC builder
+      Custom-PC: [notNewPC] - $121.99/$1000.00 - Incomplete
+      Power Consumption: 45.0W/0W
+      Components:
+      CPU        : - Not Selected -
+      CPU Cooler : - Not Selected -
+      GPU        : - Not Selected -
+      Motherboard: Asus Prime Z590-P WiFi
+      RAM        : - Not Selected -
+      Storage    : - Not Selected -
+      PSU        : - Not Selected -
+      Chassis    : - Not Selected -
+
+      What would you like to do?
+      ===================================================
+      Current build name is now: notNewPC
+      ```
 16. Add custom cpu to the build by using `custom cpu Intel-new-cpu|Intel|99.5|4|8|3.5|4.6|122|LGA1200`.
+    - Expected output:
+      ```
+      ===================================================
+      PC builder
+      Custom-PC: [notNewPC] - $221.49/$1000.00 - Incomplete
+      Power Consumption: 167.0W/0W
+      Components:
+      CPU        : Intel-new-cpu
+      CPU Cooler : - Not Selected -
+      GPU        : - Not Selected -
+      Motherboard: Asus Prime Z590-P WiFi
+      RAM        : - Not Selected -
+      Storage    : - Not Selected -
+      PSU        : - Not Selected -
+      Chassis    : - Not Selected -
+
+      What would you like to do?
+      ===================================================
+      CPU added: Intel-new-cpu
+      ```
 17. Go back to the viewer menu by using `back`.
-18. Filter the avilable PC builds to see only incomplete builds by using `filter -built incomplete`.
+    - Expected output:
+      ```
+      ===================================================
+      PC VIEWER
+      Here is the list of PC Builds:
+          1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+          2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+          3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+          4.Custom-PC: [notNewPC] - $221.49/$1000.00 - Incomplete
+      What would you like to do?
+      ===================================================
+      returned to PCViewer
+      ```
+18. Filter the available PC builds to see only incomplete builds by using `filter -built incomplete`.
+    - Expected output:
+      ```
+      ===================================================
+      PC VIEWER
+      Here is the filtered list of PC Builds:
+          4.Custom-PC: [notNewPC] - $221.49/$1000.00 - Incomplete
+      What would you like to do?
+      ===================================================
+      Filter completed
+      ```
 19. Use `bye` to exit program.
+    - Expected output:
+      ```
+      ===================================================
+      PC VIEWER
+      Here is the list of PC Builds:
+          1.Prebuilt-PC: [beginner] - $917.28/infinite - Complete
+          2.Prebuilt-PC: [intermediate] - $1710.74/infinite - Complete
+          3.Prebuilt-PC: [expert] - $2339.74/infinite - Complete
+          4.Custom-PC: [notNewPC] - $221.49/$1000.00 - Incomplete
+      What would you like to do?
+      ===================================================
+      Bye. Hope to see you again soon!
+      ```

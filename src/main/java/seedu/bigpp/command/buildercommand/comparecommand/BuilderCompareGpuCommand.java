@@ -62,7 +62,7 @@ public class BuilderCompareGpuCommand extends Command {
                 "$" + secondComponentObject.getPrice());
         outputString += String.format("%n|%-12s|%-40s|%-40s|", "POWER", firstComponentObject.getPower() + "W",
                 secondComponentObject.getPower() + "W");
-        outputString += String.format("%n|%-12s|%-40s|%-40s|", "formfactor", firstComponentObject.getFormFactor(),
+        outputString += String.format("%n|%-12s|%-40s|%-40s|", "FORM FACTOR", firstComponentObject.getFormFactor(),
                 secondComponentObject.getFormFactor());
         outputString += String.format("%n%96s", "_".repeat(96));
         return outputString;
