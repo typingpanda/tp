@@ -48,6 +48,10 @@ public abstract class BuilderCustomComponentCommand extends Command {
             throw new PPException("price should be positive");
         }
 
+        if (price > 100000) {
+            throw new PPException("Component too expensive! Are you trying to build a quantum computer?");
+        }
+
         return addNewComponent(argumentList, dataStorage, name, brand, price);
     }
 
