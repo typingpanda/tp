@@ -13,7 +13,6 @@ public class BuilderListComponentCommandTest {
     /**
      *
      */
-    private static final String MISSING_NAME_EXCEPTION_MESSAGE = "Please enter a name after the flag";
 
     private static final String EXPECTED_OUTPUT = "Here are all available components of type 'cpu': \n" +
             "1.\nIntel core i3-10100\n================\n" +
@@ -53,7 +52,7 @@ public class BuilderListComponentCommandTest {
 
         Exception exception = assertThrows(PPException.class, () -> new BuilderListComponentCommand("cpu -name")
                 .executeCommand(dataStorage));
-        assertEquals(MISSING_NAME_EXCEPTION_MESSAGE, exception.getMessage());
+        assertEquals("Please enter a name after the name flag", exception.getMessage());
     }
 
     @Test
@@ -77,7 +76,7 @@ public class BuilderListComponentCommandTest {
 
         Exception exception = assertThrows(PPException.class, () -> new BuilderListComponentCommand("cpu -brand")
                 .executeCommand(dataStorage));
-        assertEquals("Please enter a brand after the flag", exception.getMessage());
+        assertEquals("Please enter a brand after the brand flag", exception.getMessage());
     }
 
     @Test
@@ -101,7 +100,7 @@ public class BuilderListComponentCommandTest {
 
         Exception exception = assertThrows(PPException.class, () -> new BuilderListComponentCommand("cpu -price")
                 .executeCommand(dataStorage));
-        assertEquals("Please enter a price description after the flag",
+        assertEquals("Please enter a price description after the price flag",
                 exception.getMessage());
     }
 

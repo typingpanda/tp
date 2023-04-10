@@ -265,7 +265,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int efficiencyIndex = indexOfFlag(flagAndDescriptionArray, EFFICIENCY_FLAG);
         if (efficiencyIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the efficiency flag");
         }
 
         String efficiencyDescription = flagAndDescriptionArray[efficiencyIndex + 1].trim().toLowerCase();
@@ -299,7 +299,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int sizeIndex = indexOfFlag(flagAndDescriptionArray, SIZE_FLAG);
         if (sizeIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the size flag");
         }
 
         String sizeDescription = flagAndDescriptionArray[sizeIndex + 1].trim().toLowerCase();
@@ -342,7 +342,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int typeIndex = indexOfFlag(flagAndDescriptionArray, TYPE_FLAG);
         if (typeIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the type flag");
         }
 
         String typeDescription = userInputString.split(TYPE_FLAG)[1].trim().toLowerCase();
@@ -379,7 +379,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int speedIndex = indexOfFlag(flagAndDescriptionArray, SPEED_FLAG);
         if (speedIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the speed flag");
         }
 
         String speedDescription = userInputString.split(SPEED_FLAG)[1].trim().toLowerCase();
@@ -421,7 +421,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int sticksIndex = indexOfFlag(flagAndDescriptionArray, STICKS_FLAG);
         if (sticksIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the sticks flag");
         }
 
         String sticksDescription = userInputString.split(STICKS_FLAG)[1].trim().toLowerCase();
@@ -442,7 +442,7 @@ public class BuilderListComponentCommand extends Command {
             throw new PPException("Please enter a valid sticks description (1 or 2))");
         }
         if (sticks != 1 && sticks != 2 && sticks != 3 && sticks != 4) {
-            throw new PPException("Please enter a valid sticks description (1, 2, 3 or 4))");
+            throw new PPException("Please enter a valid sticks description (1 or 2))");
         }
         flagsArray.add("Sticks: " + sticks);
         componentList = ComponentList.filterBySticks(componentList, sticks, componentIndexes);
@@ -463,7 +463,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int memoryIndex = indexOfFlag(flagAndDescriptionArray, MEMORY_FLAG);
         if (memoryIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the memory flag");
         }
 
         String memoryDescription = userInputString.split(MEMORY_FLAG)[1].trim().toLowerCase();
@@ -477,7 +477,7 @@ public class BuilderListComponentCommand extends Command {
         try {
             memory = Integer.parseInt(memoryDescriptionArray[0]);
         } catch (NumberFormatException e) {
-            throw new PPException("Please enter a valid memory description (8, 16 or 32)");
+            throw new PPException("Please enter a valid memory description (8, 16, 32 or 64)");
         }
         if (memory != 8 && memory != 16 && memory != 32 && memory != 64) {
             throw new PPException("Please enter a valid memory description (8, 16, 32 or 64)");
@@ -504,7 +504,7 @@ public class BuilderListComponentCommand extends Command {
             throws PPException {
         int formFactorIndex = indexOfFlag(flagAndDescriptionArray, FORM_FACTOR_FLAG);
         if (formFactorIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the formfactor flag");
         }
 
         String formFactorDescription = userInputString.split(FORM_FACTOR_FLAG)[1].trim().toLowerCase();
@@ -554,7 +554,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int rpmNoiseIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
         if (rpmNoiseIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the noise flag");
         }
 
         String noiseDescription = userInputString.split(NOISE_FLAG)[1].trim().toLowerCase();
@@ -625,7 +625,7 @@ public class BuilderListComponentCommand extends Command {
         int rpmFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
 
         if (rpmFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the rpm flag");
         }
 
         String rpmDescription = userInputString.split(RPM_FLAG)[1].trim().toLowerCase();
@@ -698,7 +698,7 @@ public class BuilderListComponentCommand extends Command {
             throws PPException {
         int socketFlagIndex = indexOfFlag(flagAndDescriptionArray, SOCKET_FLAG);
         if (socketFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the socket flag");
         }
 
         String socket = userInputString.split(SOCKET_FLAG)[1].trim().toLowerCase();
@@ -741,7 +741,7 @@ public class BuilderListComponentCommand extends Command {
             throws PPException {
         int powerFlagIndex = indexOfFlag(flagAndDescriptionArray, POWER_FLAG);
         if (powerFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the power flag");
         }
 
         String powerDescription = userInputString.split(POWER_FLAG)[1].trim().toLowerCase();
@@ -842,7 +842,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int boostClockFlagIndex = indexOfFlag(flagAndDescriptionArray, BOOST_CLOCK_FLAG);
         if (boostClockFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the boostclock flag");
         }
 
         String boostClockDescription = userInputString.split(BOOST_CLOCK_FLAG)[1].trim().toLowerCase();
@@ -912,7 +912,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int baseClockFlagIndex = indexOfFlag(flagAndDescriptionArray, BASE_CLOCK_FLAG);
         if (baseClockFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a description after the flag");
+            throw new PPException("Please enter a description after the baseclock flag");
         }
 
         String baseClockDescription = userInputString.split(BASE_CLOCK_FLAG)[1].trim().toLowerCase();
@@ -978,7 +978,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int threadFlagIndex = indexOfFlag(flagAndDescriptionArray, THREAD_FLAG);
         if (threadFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a thread number after the flag");
+            throw new PPException("Please enter a thread number after the thread flag");
         }
 
         String thread = flagAndDescriptionArray[threadFlagIndex + 1].trim().toLowerCase();
@@ -1019,7 +1019,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int coreFlagIndex = indexOfFlag(flagAndDescriptionArray, CORE_FLAG);
         if (coreFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a core number after the flag");
+            throw new PPException("Please enter a core number after the core flag");
         }
 
         String core = flagAndDescriptionArray[coreFlagIndex + 1].trim().toLowerCase();
@@ -1060,7 +1060,7 @@ public class BuilderListComponentCommand extends Command {
             throws PPException {
         int priceFlagIndex = indexOfFlag(flagAndDescriptionArray, PRICE_FLAG);
         if (priceFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a price description after the flag");
+            throw new PPException("Please enter a price description after the price flag");
         }
         String flagPriceDescription = userInputString.split(PRICE_FLAG)[1].trim();
         if (flagPriceDescription.split(" ").length < 4) {
@@ -1124,7 +1124,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int brandFlagIndex = indexOfFlag(flagAndDescriptionArray, BRAND_FLAG);
         if (brandFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a brand after the flag");
+            throw new PPException("Please enter a brand after the brand flag");
         }
         String brand = flagAndDescriptionArray[brandFlagIndex + 1].trim().toLowerCase();
         if (isFlag(brand)) {
@@ -1147,7 +1147,7 @@ public class BuilderListComponentCommand extends Command {
             String[] flagAndDescriptionArray, ArrayList<Integer> componentIndexes) throws PPException {
         int nameFlagIndex = indexOfFlag(flagAndDescriptionArray, NAME_FLAG);
         if (nameFlagIndex == flagAndDescriptionArray.length - 1) {
-            throw new PPException("Please enter a name after the flag");
+            throw new PPException("Please enter a name after the name flag");
         }
         String name = flagAndDescriptionArray[nameFlagIndex + 1].trim().toLowerCase();
         if (isFlag(name)) {

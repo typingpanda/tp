@@ -39,12 +39,12 @@ public class BuilderCustomRamCommand extends BuilderCustomComponentCommand {
             sticks = Integer.parseInt(argumentList[4]);
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "Sticks should be 1, 2 or 4");
+                    "Sticks should be 1 or 2");
         }
 
         if (sticks != 1 && sticks != 2 && sticks != 4) {
             throw new PPException(
-                    "Sticks should be 1, 2 or 4");
+                    "Sticks should be 1 or 2");
         }
 
         try {
