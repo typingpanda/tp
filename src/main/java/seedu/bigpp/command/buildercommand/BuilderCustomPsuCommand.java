@@ -22,21 +22,26 @@ public class BuilderCustomPsuCommand extends BuilderCustomComponentCommand {
         float power = 0;
 
         try {
-            price = Float.parseFloat(argumentList[5]);
-            power = Float.parseFloat(argumentList[4]);
-
-            // Check if all the values are positive
-            if (price < 0 || power < 0) {
-                throw new PPException("price and power should be positive");
-            }
-
+            price = Float.parseFloat(argumentList[2]);
         } catch (NumberFormatException e) {
             throw new PPException(
-                    "Please enter floats within 32 bits");
+                    "Please enter a valid price");
         }
 
-        String efficiency = argumentList[2].trim().toLowerCase();
-        String formFactor = argumentList[3].trim().toLowerCase();
+        try {
+            power = Float.parseFloat(argumentList[5]);
+        } catch (NumberFormatException e) {
+            throw new PPException(
+                    "Please enter a valid power");
+        }
+
+        // Check if all the values are positive
+        if (price < 0 || power < 0) {
+            throw new PPException("price and power should be positive");
+        }
+
+        String efficiency = argumentList[3].trim().toLowerCase();
+        String formFactor = argumentList[4].trim().toLowerCase();
         if (!efficiency.equals("gold") && !efficiency.equals("silver") && !efficiency.equals("bronze")) {
             throw new PPException("Please enter a valid efficiency for the custom component (gold, silver, bronze)");
         }
