@@ -477,10 +477,10 @@ public class BuilderListComponentCommand extends Command {
         try {
             memory = Integer.parseInt(memoryDescriptionArray[0]);
         } catch (NumberFormatException e) {
-            throw new PPException("Please enter a valid memory description (8, 16 or 32)");
+            throw new PPException("Please enter a valid memory description (8, 16, 32 or 64)");
         }
         if (memory != 8 && memory != 16 && memory != 32 && memory != 64) {
-            throw new PPException("Please enter a valid memory description (8, 16 or 32)");
+            throw new PPException("Please enter a valid memory description (8, 16, 32 or 64)");
 
         }
 
