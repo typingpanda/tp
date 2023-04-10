@@ -760,6 +760,14 @@ Motherboard socket is not compatible with current cpu socket
 Please choose another motherboard or change your cpu
 ```
 
+### Advanced User user.json
+You are able to edit the Json file to change the data of your custom built PCs as an advanced user. However if any formatting error is created due to this, the program would prompt:
+```
+Error loading user PCs, please backup your user json then delete it.
+```
+This will allow the application to create a new user json for you to freely use the app once again, and the backed-up json file will be there for you to refer to in case there is important information still there. 
+If certain attributes of the components have been deleted, such as "name", "price" etc, the application would still be able to load up, but these attributes would be set as null values. In order to change back these values, either add a custom component with the updated attributes, or exit the application and edit the values inside the user json file.
+
 <div style="page-break-after: always;"></div>
 
 <!-- @@author Ryujikjs -->
